@@ -85,12 +85,12 @@ void start_task(void *pvParameters)
                 (UBaseType_t)OFFLINE_CHECK_TASK_PRIO,        //任务优先级
                 (TaskHandle_t *)&User_Tasks[OFFLINE_TASK]); //任务句柄
 								
-	xTaskCreate((TaskFunction_t)PowerControl_task,          //任务函数
-                (const char *)"PowerControl_task",          //任务名称
-                (uint16_t)POWERCONTROL_STK_SIZE,            //任务堆栈大小
-                (void *)NULL,                        //传递给任务函数的参数
-                (UBaseType_t)POWERCONTROL_TASK_PRIO,        //任务优先级
-                (TaskHandle_t *)&User_Tasks[POWERCONTROL_TASK]); //任务句柄
+//	xTaskCreate((TaskFunction_t)PowerControl_task,          //任务函数
+//                (const char *)"PowerControl_task",          //任务名称
+//                (uint16_t)POWERCONTROL_STK_SIZE,            //任务堆栈大小
+//                (void *)NULL,                        //传递给任务函数的参数
+//                (UBaseType_t)POWERCONTROL_TASK_PRIO,        //任务优先级
+//                (TaskHandle_t *)&User_Tasks[POWERCONTROL_TASK]); //任务句柄
 								
 	xTaskCreate((TaskFunction_t)JudgeReceive_task,          //任务函数
                 (const char *)"JudgeReceive_task",          //任务名称

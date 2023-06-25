@@ -61,4 +61,6 @@ void PC_Process(Remote rc);
 
 void ModeChoose_task(void *pvParameters);
 
+extern uint8_t Gimbal_State_Update ;
+extern uint8_t Chassis_State_Update ;
 #endif

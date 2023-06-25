@@ -639,20 +639,33 @@ void Mouse_Key_Process(RC_Ctl_t RC_Ctl)
  *形    参: rc
  *返 回 值: 无
  **********************************************************************************************************/
-
+uint8_t Gimbal_State_Update ;
+uint8_t Chassis_State_Update ;
 void PC_Process(Remote rc)
 {
 	if (Mouse_Key_Flag != 5)
 	{
 		Mouse_Key_Flag = 5;
 		Budan = 0;
+		NAV_car.NAV_State = 1;
 	}
 
+	if((RC_Ctl.rc.ch3-1024)>300)//左上
+		NAV_car.NAV_State = 1;
+	if((RC_Ctl.rc.ch3-1024)<-300)//左下
+		NAV_car.NAV_State = 0;
+	
+	if(NAV_car.Last_NAV_State != NAV_car.NAV_State)
+	{
+		Gimbal_State_Update = 1;
+		Chassis_State_Update = 1;
+	}
+	
 	if (rc.s2 == 3) //底盘模式
 	{
 		Buff_Init = 0;
 		Status.GimbalMode = Gimbal_Powerdown_Mode;
-		Status.ChassisMode = Chassis_SelfProtect_Mode;//Chassis_Powerdown_Mode;
+		Status.ChassisMode = Chassis_PC_Mode;//Chassis_Powerdown_Mode;
 		Status.ShootMode = Shoot_Powerdown_Mode;
 		SteeringEngine_Set(Infantry.MagClose);
 	}
@@ -660,7 +673,7 @@ void PC_Process(Remote rc)
 	if (rc.s2 == 1) //全模式
 	{
 		Status.GimbalMode = Gimbal_PC_Mode;
-		Status.ChassisMode = Chassis_SelfProtect_Mode;
+		Status.ChassisMode = Chassis_PC_Mode;
 		Status.ShootMode = Shoot_Powerdown_Mode;
 		SteeringEngine_Set(Infantry.MagOpen);
 	}
@@ -674,6 +687,7 @@ void PC_Process(Remote rc)
 		SteeringEngine_Set(Infantry.MagOpen);
 	}
 
+	NAV_car.Last_NAV_State = NAV_car.NAV_State;
 }
 
 
