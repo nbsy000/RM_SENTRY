@@ -44,24 +44,21 @@ void ChassisYaw_PC_Act()
         Motor_9025.PCYaw = Gyro_ChassisYaw.YAW_ABS;//使PID参数都是正的
     }
 		
-//		if((chassis.PC_State==OUTPOST)||(chassis.PC_State==PATROL)||(chassis.PC_State==PATROL_SAFE))
-//		{
-//			if(Motor_9025.aim_flag == SYNE_NONE)//没有识别到目标
-//				Motor_9025.PCYaw = Motor_9025.PCYaw + Motor_9025.SYNEYaw;
-//			else//识别到目标
-//				Motor_9025.PCYaw = Gyro_ChassisYaw.YAW_ABS + Motor_9025.SYNEYaw;
-//		}
-//		
-//		else if((chassis.PC_State==TOPATH1)||(chassis.PC_State==BACKPATH1))
-//		{}
-//		else
-//				Motor_9025.PCYaw = Gyro_ChassisYaw.YAW_ABS;
-//		
-//		Motor_9025.PidPos.SetPoint = Motor_9025.PCYaw;
-//    //大Yaw限幅+赋值 限幅在PID中有
-//    Motor_9025.PidSpeed.SetPoint = PID_Calc(&Motor_9025.PidPos, Gyro_ChassisYaw.YAW_ABS);//目前用陀螺仪
+		if((chassis.PC_State==OUTPOST)||(chassis.PC_State==PATROL)||(chassis.PC_State==PATROL_SAFE))
+		{
+			if(Motor_9025.aim_flag == SYNE_NONE)//没有识别到目标
+				Motor_9025.PCYaw = Motor_9025.PCYaw + Motor_9025.SYNEYaw;
+			else//识别到目标
+				Motor_9025.PCYaw = Gyro_ChassisYaw.YAW_ABS + Motor_9025.SYNEYaw;
+		}	
+		else if((chassis.PC_State==TOPATH1)||(chassis.PC_State==BACKPATH1))
+		{}
+		else
+				Motor_9025.PCYaw = Gyro_ChassisYaw.YAW_ABS;
 		
-		Motor_9025.PidSpeed.SetPoint = chassis.NAV_vw;
+		Motor_9025.PidPos.SetPoint = Motor_9025.PCYaw;
+    //大Yaw限幅+赋值 限幅在PID中有
+    Motor_9025.PidSpeed.SetPoint = PID_Calc(&Motor_9025.PidPos, Gyro_ChassisYaw.YAW_ABS);//目前用陀螺仪
 
     C_I = PID_Calc(&Motor_9025.PidSpeed, Gyro_ChassisYaw.GZ);//使用陀螺仪Yaw轴数据,这个还需确定，看用不用反馈的Speed
 			
@@ -140,7 +137,9 @@ void ChassisYaw_STOP_Act(void)
 		float fsend;
 			  
     //大Yaw限幅+赋值 限幅在PID中有
-    Motor_9025.PidSpeed.SetPoint = PID_Calc(&Motor_9025.PidPos, Gyro_ChassisYaw.YAW_ABS);//取负数是因为陀螺仪与电机角相反
+//    Motor_9025.PidSpeed.SetPoint = PID_Calc(&Motor_9025.PidPos, Gyro_ChassisYaw.YAW_ABS);//取负数是因为陀螺仪与电机角相反
+		
+		Motor_9025.PidSpeed.SetPoint = chassis.NAV_vw;
     fsend = PID_Calc(&Motor_9025.PidSpeed, Gyro_ChassisYaw.GZ);//使用陀螺仪Yaw轴数据
 		C_I = LIMIT_MAX_MIN(fsend,2000,-2000);
 }

@@ -58,7 +58,7 @@
 ".\objects\ins.o"
 ".\objects\kalman_filter.o"
 ".\objects\quaternionekf.o"
-"D:\LangYa\Software\Keil\Arm\ARM\CMSIS\5.7.0\CMSIS\DSP\Lib\ARM\arm_cortexM4lf_math.lib"
+"..\..\..\..\..\..\..\..\Software\Keil\Arm\ARM\CMSIS\5.7.0\CMSIS\DSP\Lib\ARM\arm_cortexM4lf_math.lib"
 --library_type=microlib --strict --scatter ".\Objects\sentry_Gimbal_Up.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

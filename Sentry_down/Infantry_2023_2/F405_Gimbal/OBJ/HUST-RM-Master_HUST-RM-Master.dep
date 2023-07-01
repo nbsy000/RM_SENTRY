@@ -70,7 +70,7 @@ I (..\Task\DataSendTask.h)(0x6496CDE3)
 I (..\Task\DataReceivetask.h)(0x6496D119)
 I (..\Task\ActionTask.h)(0x649843DE)
 I (..\Task\GimbalTask.h)(0x6496D119)
-I (..\Task\ShootTask.h)(0x6496CDE3)
+I (..\Task\ShootTask.h)(0x649D90B5)
 I (..\Task\ChassisTask.h)(0x6498302E)
 I (..\Task\Start_Task.h)(0x6496CDE3)
 I (..\INS\GimbalEstimateTask.h)(0x6496CDE3)
@@ -558,7 +558,7 @@ I (..\Task\DataSendTask.h)(0x6496CDE3)
 I (..\Task\DataReceivetask.h)(0x6496D119)
 I (..\Task\ActionTask.h)(0x649843DE)
 I (..\Task\GimbalTask.h)(0x6496D119)
-I (..\Task\ShootTask.h)(0x6496CDE3)
+I (..\Task\ShootTask.h)(0x649D90B5)
 I (..\Task\ChassisTask.h)(0x6498302E)
 I (..\Task\Start_Task.h)(0x6496CDE3)
 I (..\INS\GimbalEstimateTask.h)(0x6496CDE3)
@@ -632,7 +632,7 @@ I (..\Task\DataSendTask.h)(0x6496CDE3)
 I (..\Task\DataReceivetask.h)(0x6496D119)
 I (..\Task\ActionTask.h)(0x649843DE)
 I (..\Task\GimbalTask.h)(0x6496D119)
-I (..\Task\ShootTask.h)(0x6496CDE3)
+I (..\Task\ShootTask.h)(0x649D90B5)
 I (..\Task\ChassisTask.h)(0x6498302E)
 I (..\Task\Start_Task.h)(0x6496CDE3)
 I (..\INS\GimbalEstimateTask.h)(0x6496CDE3)
@@ -706,7 +706,7 @@ I (..\Task\DataSendTask.h)(0x6496CDE3)
 I (..\Task\DataReceivetask.h)(0x6496D119)
 I (..\Task\ActionTask.h)(0x649843DE)
 I (..\Task\GimbalTask.h)(0x6496D119)
-I (..\Task\ShootTask.h)(0x6496CDE3)
+I (..\Task\ShootTask.h)(0x649D90B5)
 I (..\Task\ChassisTask.h)(0x6498302E)
 I (..\Task\Start_Task.h)(0x6496CDE3)
 I (..\INS\GimbalEstimateTask.h)(0x6496CDE3)
@@ -801,7 +801,7 @@ I (..\Task\DataSendTask.h)(0x6496CDE3)
 I (..\Task\DataReceivetask.h)(0x6496D119)
 I (..\Task\ActionTask.h)(0x649843DE)
 I (..\Task\GimbalTask.h)(0x6496D119)
-I (..\Task\ShootTask.h)(0x6496CDE3)
+I (..\Task\ShootTask.h)(0x649D90B5)
 I (..\Task\ChassisTask.h)(0x6498302E)
 I (..\Task\Start_Task.h)(0x6496CDE3)
 I (..\INS\GimbalEstimateTask.h)(0x6496CDE3)
@@ -875,7 +875,7 @@ I (..\Task\DataSendTask.h)(0x6496CDE3)
 I (..\Task\DataReceivetask.h)(0x6496D119)
 I (..\Task\ActionTask.h)(0x649843DE)
 I (..\Task\GimbalTask.h)(0x6496D119)
-I (..\Task\ShootTask.h)(0x6496CDE3)
+I (..\Task\ShootTask.h)(0x649D90B5)
 I (..\Task\ChassisTask.h)(0x6498302E)
 I (..\Task\Start_Task.h)(0x6496CDE3)
 I (..\INS\GimbalEstimateTask.h)(0x6496CDE3)
@@ -949,7 +949,7 @@ I (..\Task\DataSendTask.h)(0x6496CDE3)
 I (..\Task\DataReceivetask.h)(0x6496D119)
 I (..\Task\ActionTask.h)(0x649843DE)
 I (..\Task\GimbalTask.h)(0x6496D119)
-I (..\Task\ShootTask.h)(0x6496CDE3)
+I (..\Task\ShootTask.h)(0x649D90B5)
 I (..\Task\ChassisTask.h)(0x6498302E)
 I (..\Task\Start_Task.h)(0x6496CDE3)
 I (..\INS\GimbalEstimateTask.h)(0x6496CDE3)
@@ -1024,7 +1024,7 @@ I (..\Task\DataSendTask.h)(0x6496CDE3)
 I (..\Task\DataReceivetask.h)(0x6496D119)
 I (..\Task\ActionTask.h)(0x649843DE)
 I (..\Task\GimbalTask.h)(0x6496D119)
-I (..\Task\ShootTask.h)(0x6496CDE3)
+I (..\Task\ShootTask.h)(0x649D90B5)
 I (..\Task\ChassisTask.h)(0x6498302E)
 I (..\Task\Start_Task.h)(0x6496CDE3)
 I (..\INS\GimbalEstimateTask.h)(0x6496CDE3)
@@ -1098,7 +1098,7 @@ I (..\Task\DataSendTask.h)(0x6496CDE3)
 I (..\Task\DataReceivetask.h)(0x6496D119)
 I (..\Task\ActionTask.h)(0x649843DE)
 I (..\Task\GimbalTask.h)(0x6496D119)
-I (..\Task\ShootTask.h)(0x6496CDE3)
+I (..\Task\ShootTask.h)(0x649D90B5)
 I (..\Task\ChassisTask.h)(0x6498302E)
 I (..\Task\Start_Task.h)(0x6496CDE3)
 I (..\INS\GimbalEstimateTask.h)(0x6496CDE3)
@@ -1172,7 +1172,7 @@ I (..\Task\DataSendTask.h)(0x6496CDE3)
 I (..\Task\DataReceivetask.h)(0x6496D119)
 I (..\Task\ActionTask.h)(0x649843DE)
 I (..\Task\GimbalTask.h)(0x6496D119)
-I (..\Task\ShootTask.h)(0x6496CDE3)
+I (..\Task\ShootTask.h)(0x649D90B5)
 I (..\Task\ChassisTask.h)(0x6498302E)
 I (..\Task\Start_Task.h)(0x6496CDE3)
 I (..\INS\GimbalEstimateTask.h)(0x6496CDE3)
@@ -1246,7 +1246,7 @@ I (..\Task\DataSendTask.h)(0x6496CDE3)
 I (..\Task\DataReceivetask.h)(0x6496D119)
 I (..\Task\ActionTask.h)(0x649843DE)
 I (..\Task\GimbalTask.h)(0x6496D119)
-I (..\Task\ShootTask.h)(0x6496CDE3)
+I (..\Task\ShootTask.h)(0x649D90B5)
 I (..\Task\ChassisTask.h)(0x6498302E)
 I (..\Task\Start_Task.h)(0x6496CDE3)
 I (..\INS\GimbalEstimateTask.h)(0x6496CDE3)
@@ -1320,7 +1320,7 @@ I (..\Task\DataSendTask.h)(0x6496CDE3)
 I (..\Task\DataReceivetask.h)(0x6496D119)
 I (..\Task\ActionTask.h)(0x649843DE)
 I (..\Task\GimbalTask.h)(0x6496D119)
-I (..\Task\ShootTask.h)(0x6496CDE3)
+I (..\Task\ShootTask.h)(0x649D90B5)
 I (..\Task\ChassisTask.h)(0x6498302E)
 I (..\Task\Start_Task.h)(0x6496CDE3)
 I (..\INS\GimbalEstimateTask.h)(0x6496CDE3)
@@ -1369,7 +1369,7 @@ I (D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\include\math.h)(0x5E53505A)
 I (D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\include\stdio.h)(0x5E53505C)
 I (D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\include\stdlib.h)(0x5E53505C)
 I (..\Library\inc\stm32f4xx_dbgmcu.h)(0x6496CDE3)
-F (..\Mylib\pc_serial.c)(0x6496CDE3)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\User -I ..\Task -I ..\Mylib -I ..\Library\inc -I ..\Library\CMSIS -I ..\FreeRTOS\include -I ..\FreeRTOS\port\RVDS\ARM_CM4F -I ..\Algorithm -I ..\Algorithm -I ..\Task -I ..\RTOS_Test -I ..\INS -I ..\SEGGER_RTT_V784\RTT -I ..\SEGGER_RTT_V784\Config-I.\RTE\_HUST-RM-Master-ID:\LangYa\Software\Keil\Arm\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\LangYa\Software\Keil\Keil5\ARM\CMSIS\Include-ID:\LangYa\Software\Keil\Arm\Keil\STM32F4xx_DFP\2.16.0\Device\Include-D__UVISION_VERSION="530" -DSTM32F405xx -D_RTE_ -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx -DARM_MATH_CM4 -D__FPU_PRESENT="1" -D__FPU_USED="1" -D__CC_ARM-o ..\obj\pc_serial.o --omf_browse ..\obj\pc_serial.crf --depend ..\obj\pc_serial.d)
+F (..\Mylib\pc_serial.c)(0x649D8D5E)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\User -I ..\Task -I ..\Mylib -I ..\Library\inc -I ..\Library\CMSIS -I ..\FreeRTOS\include -I ..\FreeRTOS\port\RVDS\ARM_CM4F -I ..\Algorithm -I ..\Algorithm -I ..\Task -I ..\RTOS_Test -I ..\INS -I ..\SEGGER_RTT_V784\RTT -I ..\SEGGER_RTT_V784\Config-I.\RTE\_HUST-RM-Master-ID:\LangYa\Software\Keil\Arm\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\LangYa\Software\Keil\Keil5\ARM\CMSIS\Include-ID:\LangYa\Software\Keil\Arm\Keil\STM32F4xx_DFP\2.16.0\Device\Include-D__UVISION_VERSION="530" -DSTM32F405xx -D_RTE_ -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx -DARM_MATH_CM4 -D__FPU_PRESENT="1" -D__FPU_USED="1" -D__CC_ARM-o ..\obj\pc_serial.o --omf_browse ..\obj\pc_serial.crf --depend ..\obj\pc_serial.d)
 I (..\Mylib\pc_serial.h)(0x6496CDE3)
 I (..\Mylib\pc_uart.h)(0x6496CDE3)
 I (..\User\stm32f4xx.h)(0x6496CDE3)
@@ -1437,7 +1437,7 @@ I (..\Task\DataSendTask.h)(0x6496CDE3)
 I (..\Task\DataReceivetask.h)(0x6496D119)
 I (..\Task\ActionTask.h)(0x649843DE)
 I (..\Task\GimbalTask.h)(0x6496D119)
-I (..\Task\ShootTask.h)(0x6496CDE3)
+I (..\Task\ShootTask.h)(0x649D90B5)
 I (..\Task\ChassisTask.h)(0x6498302E)
 I (..\Task\Start_Task.h)(0x6496CDE3)
 I (..\INS\GimbalEstimateTask.h)(0x6496CDE3)
@@ -1537,7 +1537,7 @@ I (..\Task\DataSendTask.h)(0x6496CDE3)
 I (..\Task\DataReceivetask.h)(0x6496D119)
 I (..\Task\ActionTask.h)(0x649843DE)
 I (..\Task\GimbalTask.h)(0x6496D119)
-I (..\Task\ShootTask.h)(0x6496CDE3)
+I (..\Task\ShootTask.h)(0x649D90B5)
 I (..\Task\ChassisTask.h)(0x6498302E)
 I (..\Task\Start_Task.h)(0x6496CDE3)
 I (..\INS\GimbalEstimateTask.h)(0x6496CDE3)
@@ -1611,7 +1611,7 @@ I (..\Task\DataSendTask.h)(0x6496CDE3)
 I (..\Task\DataReceivetask.h)(0x6496D119)
 I (..\Task\ActionTask.h)(0x649843DE)
 I (..\Task\GimbalTask.h)(0x6496D119)
-I (..\Task\ShootTask.h)(0x6496CDE3)
+I (..\Task\ShootTask.h)(0x649D90B5)
 I (..\Task\ChassisTask.h)(0x6498302E)
 I (..\Task\Start_Task.h)(0x6496CDE3)
 I (..\INS\GimbalEstimateTask.h)(0x6496CDE3)
@@ -1685,7 +1685,7 @@ I (..\Task\DataSendTask.h)(0x6496CDE3)
 I (..\Task\DataReceivetask.h)(0x6496D119)
 I (..\Task\ActionTask.h)(0x649843DE)
 I (..\Task\GimbalTask.h)(0x6496D119)
-I (..\Task\ShootTask.h)(0x6496CDE3)
+I (..\Task\ShootTask.h)(0x649D90B5)
 I (..\Task\ChassisTask.h)(0x6498302E)
 I (..\Task\Start_Task.h)(0x6496CDE3)
 I (..\INS\GimbalEstimateTask.h)(0x6496CDE3)
@@ -1759,7 +1759,7 @@ I (..\Task\DataSendTask.h)(0x6496CDE3)
 I (..\Task\DataReceivetask.h)(0x6496D119)
 I (..\Task\ActionTask.h)(0x649843DE)
 I (..\Task\GimbalTask.h)(0x6496D119)
-I (..\Task\ShootTask.h)(0x6496CDE3)
+I (..\Task\ShootTask.h)(0x649D90B5)
 I (..\Task\ChassisTask.h)(0x6498302E)
 I (..\Task\Start_Task.h)(0x6496CDE3)
 I (..\INS\GimbalEstimateTask.h)(0x6496CDE3)
@@ -1831,7 +1831,7 @@ I (..\Task\DataSendTask.h)(0x6496CDE3)
 I (..\Task\DataReceivetask.h)(0x6496D119)
 I (..\Task\ActionTask.h)(0x649843DE)
 I (..\Task\GimbalTask.h)(0x6496D119)
-I (..\Task\ShootTask.h)(0x6496CDE3)
+I (..\Task\ShootTask.h)(0x649D90B5)
 I (..\Task\ChassisTask.h)(0x6498302E)
 I (..\Task\Start_Task.h)(0x6496CDE3)
 I (..\INS\GimbalEstimateTask.h)(0x6496CDE3)
@@ -1913,7 +1913,7 @@ I (..\Task\DataSendTask.h)(0x6496CDE3)
 I (..\Task\DataReceivetask.h)(0x6496D119)
 I (..\Task\ActionTask.h)(0x649843DE)
 I (..\Task\GimbalTask.h)(0x6496D119)
-I (..\Task\ShootTask.h)(0x6496CDE3)
+I (..\Task\ShootTask.h)(0x649D90B5)
 I (..\Task\ChassisTask.h)(0x6498302E)
 I (..\Task\Start_Task.h)(0x6496CDE3)
 I (..\INS\GimbalEstimateTask.h)(0x6496CDE3)
@@ -1987,7 +1987,7 @@ I (..\Task\DataSendTask.h)(0x6496CDE3)
 I (..\Task\DataReceivetask.h)(0x6496D119)
 I (..\Task\ActionTask.h)(0x649843DE)
 I (..\Task\GimbalTask.h)(0x6496D119)
-I (..\Task\ShootTask.h)(0x6496CDE3)
+I (..\Task\ShootTask.h)(0x649D90B5)
 I (..\Task\ChassisTask.h)(0x6498302E)
 I (..\Task\Start_Task.h)(0x6496CDE3)
 I (..\INS\GimbalEstimateTask.h)(0x6496CDE3)
@@ -2061,7 +2061,7 @@ I (..\Task\DataSendTask.h)(0x6496CDE3)
 I (..\Task\DataReceivetask.h)(0x6496D119)
 I (..\Task\ActionTask.h)(0x649843DE)
 I (..\Task\GimbalTask.h)(0x6496D119)
-I (..\Task\ShootTask.h)(0x6496CDE3)
+I (..\Task\ShootTask.h)(0x649D90B5)
 I (..\Task\ChassisTask.h)(0x6498302E)
 I (..\Task\Start_Task.h)(0x6496CDE3)
 I (..\INS\GimbalEstimateTask.h)(0x6496CDE3)
@@ -2085,7 +2085,7 @@ I (..\Mylib\mySensors.h)(0x6496CDE3)
 I (..\RTOS_Test\tools.h)(0x6496CDE3)
 I (..\RTOS_Test\os_tick.h)(0x6496CDE3)
 I (..\INS\debug.h)(0x6496CDE3)
-F (..\Task\ShootTask.c)(0x6496CDE3)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\User -I ..\Task -I ..\Mylib -I ..\Library\inc -I ..\Library\CMSIS -I ..\FreeRTOS\include -I ..\FreeRTOS\port\RVDS\ARM_CM4F -I ..\Algorithm -I ..\Algorithm -I ..\Task -I ..\RTOS_Test -I ..\INS -I ..\SEGGER_RTT_V784\RTT -I ..\SEGGER_RTT_V784\Config-I.\RTE\_HUST-RM-Master-ID:\LangYa\Software\Keil\Arm\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\LangYa\Software\Keil\Keil5\ARM\CMSIS\Include-ID:\LangYa\Software\Keil\Arm\Keil\STM32F4xx_DFP\2.16.0\Device\Include-D__UVISION_VERSION="530" -DSTM32F405xx -D_RTE_ -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx -DARM_MATH_CM4 -D__FPU_PRESENT="1" -D__FPU_USED="1" -D__CC_ARM-o ..\obj\shoottask.o --omf_browse ..\obj\shoottask.crf --depend ..\obj\shoottask.d)
+F (..\Task\ShootTask.c)(0x649DA04B)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\User -I ..\Task -I ..\Mylib -I ..\Library\inc -I ..\Library\CMSIS -I ..\FreeRTOS\include -I ..\FreeRTOS\port\RVDS\ARM_CM4F -I ..\Algorithm -I ..\Algorithm -I ..\Task -I ..\RTOS_Test -I ..\INS -I ..\SEGGER_RTT_V784\RTT -I ..\SEGGER_RTT_V784\Config-I.\RTE\_HUST-RM-Master-ID:\LangYa\Software\Keil\Arm\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\LangYa\Software\Keil\Keil5\ARM\CMSIS\Include-ID:\LangYa\Software\Keil\Arm\Keil\STM32F4xx_DFP\2.16.0\Device\Include-D__UVISION_VERSION="530" -DSTM32F405xx -D_RTE_ -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx -DARM_MATH_CM4 -D__FPU_PRESENT="1" -D__FPU_USED="1" -D__CC_ARM-o ..\obj\shoottask.o --omf_browse ..\obj\shoottask.crf --depend ..\obj\shoottask.d)
 I (..\User\main.h)(0x6496CDE3)
 I (..\User\stm32f4xx.h)(0x6496CDE3)
 I (..\Library\CMSIS\core_cm4.h)(0x6496CDE3)
@@ -2135,7 +2135,7 @@ I (..\Task\DataSendTask.h)(0x6496CDE3)
 I (..\Task\DataReceivetask.h)(0x6496D119)
 I (..\Task\ActionTask.h)(0x649843DE)
 I (..\Task\GimbalTask.h)(0x6496D119)
-I (..\Task\ShootTask.h)(0x6496CDE3)
+I (..\Task\ShootTask.h)(0x649D90B5)
 I (..\Task\ChassisTask.h)(0x6498302E)
 I (..\Task\Start_Task.h)(0x6496CDE3)
 I (..\INS\GimbalEstimateTask.h)(0x6496CDE3)
@@ -2209,7 +2209,7 @@ I (..\Task\DataSendTask.h)(0x6496CDE3)
 I (..\Task\DataReceivetask.h)(0x6496D119)
 I (..\Task\ActionTask.h)(0x649843DE)
 I (..\Task\GimbalTask.h)(0x6496D119)
-I (..\Task\ShootTask.h)(0x6496CDE3)
+I (..\Task\ShootTask.h)(0x649D90B5)
 I (..\Task\ChassisTask.h)(0x6498302E)
 I (..\Task\Start_Task.h)(0x6496CDE3)
 I (..\INS\GimbalEstimateTask.h)(0x6496CDE3)
@@ -2283,7 +2283,7 @@ I (..\Task\DataSendTask.h)(0x6496CDE3)
 I (..\Task\DataReceivetask.h)(0x6496D119)
 I (..\Task\ActionTask.h)(0x649843DE)
 I (..\Task\GimbalTask.h)(0x6496D119)
-I (..\Task\ShootTask.h)(0x6496CDE3)
+I (..\Task\ShootTask.h)(0x649D90B5)
 I (..\Task\ChassisTask.h)(0x6498302E)
 I (..\Task\Start_Task.h)(0x6496CDE3)
 I (..\INS\GimbalEstimateTask.h)(0x6496CDE3)
@@ -2358,7 +2358,7 @@ I (..\Task\DataSendTask.h)(0x6496CDE3)
 I (..\Task\DataReceivetask.h)(0x6496D119)
 I (..\Task\ActionTask.h)(0x649843DE)
 I (..\Task\GimbalTask.h)(0x6496D119)
-I (..\Task\ShootTask.h)(0x6496CDE3)
+I (..\Task\ShootTask.h)(0x649D90B5)
 I (..\Task\ChassisTask.h)(0x6498302E)
 I (..\Task\ControlTask.h)(0x6496CDE3)
 I (..\INS\RtosTaskCheck.h)(0x6496CDE3)
@@ -2431,7 +2431,7 @@ I (..\Task\DataSendTask.h)(0x6496CDE3)
 I (..\Task\DataReceivetask.h)(0x6496D119)
 I (..\Task\ActionTask.h)(0x649843DE)
 I (..\Task\GimbalTask.h)(0x6496D119)
-I (..\Task\ShootTask.h)(0x6496CDE3)
+I (..\Task\ShootTask.h)(0x649D90B5)
 I (..\Task\ChassisTask.h)(0x6498302E)
 I (..\Task\Start_Task.h)(0x6496CDE3)
 I (..\INS\GimbalEstimateTask.h)(0x6496CDE3)
@@ -2515,7 +2515,7 @@ I (..\Task\DataSendTask.h)(0x6496CDE3)
 I (..\Task\DataReceivetask.h)(0x6496D119)
 I (..\Task\ActionTask.h)(0x649843DE)
 I (..\Task\GimbalTask.h)(0x6496D119)
-I (..\Task\ShootTask.h)(0x6496CDE3)
+I (..\Task\ShootTask.h)(0x649D90B5)
 I (..\Task\ChassisTask.h)(0x6498302E)
 I (..\Task\ControlTask.h)(0x6496CDE3)
 I (..\INS\RtosTaskCheck.h)(0x6496CDE3)
@@ -2573,7 +2573,7 @@ I (..\Library\CMSIS\arm_math.h)(0x6496CDE3)
 I (..\Mylib\iwdg.h)(0x6496CDE3)
 I (..\Library\inc\stm32f4xx_iwdg.h)(0x6496CDE3)
 I (..\INS\RtosTaskCheck.h)(0x6496CDE3)
-F (..\Task\ControlTask.c)(0x6496CDE3)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\User -I ..\Task -I ..\Mylib -I ..\Library\inc -I ..\Library\CMSIS -I ..\FreeRTOS\include -I ..\FreeRTOS\port\RVDS\ARM_CM4F -I ..\Algorithm -I ..\Algorithm -I ..\Task -I ..\RTOS_Test -I ..\INS -I ..\SEGGER_RTT_V784\RTT -I ..\SEGGER_RTT_V784\Config-I.\RTE\_HUST-RM-Master-ID:\LangYa\Software\Keil\Arm\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\LangYa\Software\Keil\Keil5\ARM\CMSIS\Include-ID:\LangYa\Software\Keil\Arm\Keil\STM32F4xx_DFP\2.16.0\Device\Include-D__UVISION_VERSION="530" -DSTM32F405xx -D_RTE_ -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx -DARM_MATH_CM4 -D__FPU_PRESENT="1" -D__FPU_USED="1" -D__CC_ARM-o ..\obj\controltask.o --omf_browse ..\obj\controltask.crf --depend ..\obj\controltask.d)
+F (..\Task\ControlTask.c)(0x649C06D3)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\User -I ..\Task -I ..\Mylib -I ..\Library\inc -I ..\Library\CMSIS -I ..\FreeRTOS\include -I ..\FreeRTOS\port\RVDS\ARM_CM4F -I ..\Algorithm -I ..\Algorithm -I ..\Task -I ..\RTOS_Test -I ..\INS -I ..\SEGGER_RTT_V784\RTT -I ..\SEGGER_RTT_V784\Config-I.\RTE\_HUST-RM-Master-ID:\LangYa\Software\Keil\Arm\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\LangYa\Software\Keil\Keil5\ARM\CMSIS\Include-ID:\LangYa\Software\Keil\Arm\Keil\STM32F4xx_DFP\2.16.0\Device\Include-D__UVISION_VERSION="530" -DSTM32F405xx -D_RTE_ -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx -DARM_MATH_CM4 -D__FPU_PRESENT="1" -D__FPU_USED="1" -D__CC_ARM-o ..\obj\controltask.o --omf_browse ..\obj\controltask.crf --depend ..\obj\controltask.d)
 I (..\User\main.h)(0x6496CDE3)
 I (..\User\stm32f4xx.h)(0x6496CDE3)
 I (..\Library\CMSIS\core_cm4.h)(0x6496CDE3)
@@ -2623,7 +2623,7 @@ I (..\Task\DataSendTask.h)(0x6496CDE3)
 I (..\Task\DataReceivetask.h)(0x6496D119)
 I (..\Task\ActionTask.h)(0x649843DE)
 I (..\Task\GimbalTask.h)(0x6496D119)
-I (..\Task\ShootTask.h)(0x6496CDE3)
+I (..\Task\ShootTask.h)(0x649D90B5)
 I (..\Task\ChassisTask.h)(0x6498302E)
 I (..\Task\Start_Task.h)(0x6496CDE3)
 I (..\INS\GimbalEstimateTask.h)(0x6496CDE3)

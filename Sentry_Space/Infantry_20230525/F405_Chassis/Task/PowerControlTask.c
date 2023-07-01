@@ -217,67 +217,72 @@ int t;
 void ChargeControl(void)
 {
 	/******************充电控制*******************/
-   I_Set = ChargeCal(); 
-	if(PowerState == BAT)  //bat
-	{
-		if(CAP_CrossoverFlag == 1)			//启动/停止，大幅转向，有大电流，直接关闭电容充电
-		{
-			t++;
-			if(t>500)
-			{
-			CAP_CrossoverFlag = 0;
-			t=0;
-			}
-			I_Set = 0;
-		}
-		else if(Chassis_Run_Flag)
-		{
-			I_Set = 0;
-		}
-	}
-	
-	
-	if(JudgeReceive.MaxPower > 70)
-	{
-	I_Set = LIMIT_MAX_MIN(I_Set,MaxChargeCurrent_H,0);  //功率较高时设置较大的充电电流快速充满
-	}
-	else
-	{
-	I_Set = LIMIT_MAX_MIN(I_Set,MaxChargeCurrent_L,0);  //功率较低时，设置较小的充电电流
-	}
-	
-	
+//   I_Set = ChargeCal(); 
+//	if(PowerState == BAT)  //bat
+//	{
+//		if(CAP_CrossoverFlag == 1)			//启动/停止，大幅转向，有大电流，直接关闭电容充电
+//		{
+//			t++;
+//			if(t>500)
+//			{
+//			CAP_CrossoverFlag = 0;
+//			t=0;
+//			}
+//			I_Set = 0;
+//		}
+//		else if(Chassis_Run_Flag)
+//		{
+//			I_Set = 0;
+//		}
+//	}
+//	
+//	
+//	if(JudgeReceive.MaxPower > 70)
+//	{
+//	I_Set = LIMIT_MAX_MIN(I_Set,MaxChargeCurrent_H,0);  //功率较高时设置较大的充电电流快速充满
+//	}
+//	else
+//	{
+//	I_Set = LIMIT_MAX_MIN(I_Set,MaxChargeCurrent_L,0);  //功率较低时，设置较小的充电电流
+//	}
+//	
+	I_Set = 8.0f;
 	Charge_Set(I_Set);
 	/******************放电控制*******************/
-	if(F405.SuperPowerLimit == 0)			//操作手关闭超级电容
-	{
-		if(PowerState == CAP)		//刚从电容切回
-		{
-			if(JudgeReceive.remainEnergy > 20)		//缓存能量够用才切回
-				{
-					CAP_off;   
-					Bat_on;
-					PowerState = BAT;
-				}
-		}
-	}
+//	if(F405.SuperPowerLimit == 0)			//操作手关闭超级电容
+//	{
+//		if(PowerState == CAP)		//刚从电容切回
+//		{
+//			if(JudgeReceive.remainEnergy > 20)		//缓存能量够用才切回
+//				{
+//					CAP_off;   
+//					Bat_on;
+//					PowerState = BAT;
+//				}
+//		}
+//	}
 
-//AD_L AD_H有差值：刚开启电容时，由于电容有内阻，瞬间会有4V压降
-	else if(F405.SuperPowerLimit > 0)				//操作手开启超级电容
-	{
-		if(AD_actual_value<AD_L)  	//电容实际电压<10V
-		{
+////AD_L AD_H有差值：刚开启电容时，由于电容有内阻，瞬间会有4V压降
+//	else if(F405.SuperPowerLimit > 0)				//操作手开启超级电容
+//	{
+//		if(AD_actual_value<AD_L)  	//电容实际电压<10V
+//		{
+//			PowerState = BAT;						//电池放电
+//			CAP_off;   
+//			Bat_on;
+//		}
+//		else if(AD_actual_value>AD_H)  
+//		{
+//			PowerState = CAP;  					//电容放电
+//			Bat_off;
+//			CAP_on;
+//		}
+//	}
+
 			PowerState = BAT;						//电池放电
 			CAP_off;   
 			Bat_on;
-		}
-		else if(AD_actual_value>AD_H)  
-		{
-			PowerState = CAP;  					//电容放电
-			Bat_off;
-			CAP_on;
-		}
-	}
+	
 }
 
 /**********************************************************************************************************

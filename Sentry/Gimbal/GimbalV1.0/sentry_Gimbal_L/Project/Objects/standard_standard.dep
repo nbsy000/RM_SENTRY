@@ -388,7 +388,7 @@ I (..\tasks\task_ZeroCheck.h)(0x644D4ECD)
 I (..\tasks\task_ActionUpdate.h)(0x644E2BEF)
 I (..\tasks\task_DataSend.h)(0x644D4ECD)
 I (..\tasks\task_Gimbal_L.h)(0x64622BA9)
-I (..\tasks\task_Shoot.h)(0x646459E6)
+I (..\tasks\task_Shoot.h)(0x649C06D1)
 I (..\tasks\task_StateLED.h)(0x644D4ECD)
 I (..\tasks\task_UsageCPU.h)(0x644D4ECD)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x644D4ECD)
@@ -464,7 +464,7 @@ I (..\tasks\task_ZeroCheck.h)(0x644D4ECD)
 I (..\tasks\task_ActionUpdate.h)(0x644E2BEF)
 I (..\tasks\task_DataSend.h)(0x644D4ECD)
 I (..\tasks\task_Gimbal_L.h)(0x64622BA9)
-I (..\tasks\task_Shoot.h)(0x646459E6)
+I (..\tasks\task_Shoot.h)(0x649C06D1)
 I (..\tasks\task_StateLED.h)(0x644D4ECD)
 I (..\tasks\task_UsageCPU.h)(0x644D4ECD)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x644D4ECD)
@@ -553,7 +553,7 @@ I (..\tasks\task_ZeroCheck.h)(0x644D4ECD)
 I (..\tasks\task_ActionUpdate.h)(0x644E2BEF)
 I (..\tasks\task_DataSend.h)(0x644D4ECD)
 I (..\tasks\task_Gimbal_L.h)(0x64622BA9)
-I (..\tasks\task_Shoot.h)(0x646459E6)
+I (..\tasks\task_Shoot.h)(0x649C06D1)
 I (..\tasks\task_StateLED.h)(0x644D4ECD)
 I (..\tasks\task_UsageCPU.h)(0x644D4ECD)
 I (..\tasks\task_BlockDisconnect.h)(0x644D4ECD)
@@ -618,7 +618,7 @@ I (..\tasks\task_ZeroCheck.h)(0x644D4ECD)
 I (..\tasks\task_ActionUpdate.h)(0x644E2BEF)
 I (..\tasks\task_DataSend.h)(0x644D4ECD)
 I (..\tasks\task_Gimbal_L.h)(0x64622BA9)
-I (..\tasks\task_Shoot.h)(0x646459E6)
+I (..\tasks\task_Shoot.h)(0x649C06D1)
 I (..\tasks\task_StateLED.h)(0x644D4ECD)
 I (..\tasks\task_UsageCPU.h)(0x644D4ECD)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x644D4ECD)
@@ -636,7 +636,7 @@ I (..\tasks\taskIT_DataReceive.h)(0x64659B77)
 I (..\FreeRTOS\include\task.h)(0x644D4ECD)
 I (..\FreeRTOS\include\list.h)(0x644D4ECD)
 I (..\tasks\start_task.h)(0x644D4ECD)
-F (..\tasks\task_ActionUpdate.c)(0x646A2B8B)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\FWLIB\inc -I ..\User -I ..\FreeRTOS\include -I ..\FreeRTOS\portable -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\user\user_lib -I ..\hardware -I ..\tasks -I ..\algo -I ..\DSP\Include -I ..\FWLIB\SEGGER_RTT_V784\RTT -I ..\FWLIB\SEGGER_RTT_V784\Config-I.\RTE\_standard-ID:\LangYa\Software\Keil\Arm\ARM\CMSIS\5.7.0\CMSIS\DSP\Include-ID:\LangYa\Software\Keil\Arm\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\LangYa\Software\Keil\Keil5\ARM\CMSIS\Include-D__UVISION_VERSION="530" -D_RTE_ -DSTM32F405xx -D_RTE_ -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_USED -D__FPU_PRESENT -DARM_MATH_CM4 -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING-o .\objects\task_actionupdate.o --omf_browse .\objects\task_actionupdate.crf --depend .\objects\task_actionupdate.d)
+F (..\tasks\task_ActionUpdate.c)(0x649C06D1)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\FWLIB\inc -I ..\User -I ..\FreeRTOS\include -I ..\FreeRTOS\portable -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\user\user_lib -I ..\hardware -I ..\tasks -I ..\algo -I ..\DSP\Include -I ..\FWLIB\SEGGER_RTT_V784\RTT -I ..\FWLIB\SEGGER_RTT_V784\Config-I.\RTE\_standard-ID:\LangYa\Software\Keil\Arm\ARM\CMSIS\5.7.0\CMSIS\DSP\Include-ID:\LangYa\Software\Keil\Arm\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\LangYa\Software\Keil\Keil5\ARM\CMSIS\Include-D__UVISION_VERSION="530" -D_RTE_ -DSTM32F405xx -D_RTE_ -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_USED -D__FPU_PRESENT -DARM_MATH_CM4 -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING-o .\objects\task_actionupdate.o --omf_browse .\objects\task_actionupdate.crf --depend .\objects\task_actionupdate.d)
 I (..\User\main.h)(0x6468EE1B)
 I (..\CMSIS\stm32f4xx.h)(0x644D4ECD)
 I (..\CMSIS\core_cm4.h)(0x644D4ECD)
@@ -694,7 +694,7 @@ I (..\tasks\task_ZeroCheck.h)(0x644D4ECD)
 I (..\tasks\task_ActionUpdate.h)(0x644E2BEF)
 I (..\tasks\task_DataSend.h)(0x644D4ECD)
 I (..\tasks\task_Gimbal_L.h)(0x64622BA9)
-I (..\tasks\task_Shoot.h)(0x646459E6)
+I (..\tasks\task_Shoot.h)(0x649C06D1)
 I (..\tasks\task_StateLED.h)(0x644D4ECD)
 I (..\tasks\task_UsageCPU.h)(0x644D4ECD)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x644D4ECD)
@@ -770,7 +770,7 @@ I (..\tasks\task_ZeroCheck.h)(0x644D4ECD)
 I (..\tasks\task_ActionUpdate.h)(0x644E2BEF)
 I (..\tasks\task_DataSend.h)(0x644D4ECD)
 I (..\tasks\task_Gimbal_L.h)(0x64622BA9)
-I (..\tasks\task_Shoot.h)(0x646459E6)
+I (..\tasks\task_Shoot.h)(0x649C06D1)
 I (..\tasks\task_StateLED.h)(0x644D4ECD)
 I (..\tasks\task_UsageCPU.h)(0x644D4ECD)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x644D4ECD)
@@ -846,7 +846,7 @@ I (..\tasks\task_ZeroCheck.h)(0x644D4ECD)
 I (..\tasks\task_ActionUpdate.h)(0x644E2BEF)
 I (..\tasks\task_DataSend.h)(0x644D4ECD)
 I (..\tasks\task_Gimbal_L.h)(0x64622BA9)
-I (..\tasks\task_Shoot.h)(0x646459E6)
+I (..\tasks\task_Shoot.h)(0x649C06D1)
 I (..\tasks\task_StateLED.h)(0x644D4ECD)
 I (..\tasks\task_UsageCPU.h)(0x644D4ECD)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x644D4ECD)
@@ -932,7 +932,7 @@ I (..\tasks\task_ZeroCheck.h)(0x644D4ECD)
 I (..\tasks\task_ActionUpdate.h)(0x644E2BEF)
 I (..\tasks\task_DataSend.h)(0x644D4ECD)
 I (..\tasks\task_Gimbal_L.h)(0x64622BA9)
-I (..\tasks\task_Shoot.h)(0x646459E6)
+I (..\tasks\task_Shoot.h)(0x649C06D1)
 I (..\tasks\task_StateLED.h)(0x644D4ECD)
 I (..\tasks\task_BlockDisconnect.h)(0x644D4ECD)
 I (..\tasks\task_CV_DataSend.h)(0x64660FED)
@@ -940,7 +940,7 @@ I (..\tasks\task_ins.h)(0x644D4ECD)
 I (..\tasks\taskIT_DataReceive.h)(0x64659B77)
 I (..\FreeRTOS\include\task.h)(0x644D4ECD)
 I (..\FreeRTOS\include\list.h)(0x644D4ECD)
-F (..\tasks\taskIT_DataReceive.c)(0x646DFE1A)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\FWLIB\inc -I ..\User -I ..\FreeRTOS\include -I ..\FreeRTOS\portable -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\user\user_lib -I ..\hardware -I ..\tasks -I ..\algo -I ..\DSP\Include -I ..\FWLIB\SEGGER_RTT_V784\RTT -I ..\FWLIB\SEGGER_RTT_V784\Config-I.\RTE\_standard-ID:\LangYa\Software\Keil\Arm\ARM\CMSIS\5.7.0\CMSIS\DSP\Include-ID:\LangYa\Software\Keil\Arm\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\LangYa\Software\Keil\Keil5\ARM\CMSIS\Include-D__UVISION_VERSION="530" -D_RTE_ -DSTM32F405xx -D_RTE_ -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_USED -D__FPU_PRESENT -DARM_MATH_CM4 -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING-o .\objects\taskit_datareceive.o --omf_browse .\objects\taskit_datareceive.crf --depend .\objects\taskit_datareceive.d)
+F (..\tasks\taskIT_DataReceive.c)(0x649C06D1)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\FWLIB\inc -I ..\User -I ..\FreeRTOS\include -I ..\FreeRTOS\portable -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\user\user_lib -I ..\hardware -I ..\tasks -I ..\algo -I ..\DSP\Include -I ..\FWLIB\SEGGER_RTT_V784\RTT -I ..\FWLIB\SEGGER_RTT_V784\Config-I.\RTE\_standard-ID:\LangYa\Software\Keil\Arm\ARM\CMSIS\5.7.0\CMSIS\DSP\Include-ID:\LangYa\Software\Keil\Arm\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\LangYa\Software\Keil\Keil5\ARM\CMSIS\Include-D__UVISION_VERSION="530" -D_RTE_ -DSTM32F405xx -D_RTE_ -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_USED -D__FPU_PRESENT -DARM_MATH_CM4 -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING-o .\objects\taskit_datareceive.o --omf_browse .\objects\taskit_datareceive.crf --depend .\objects\taskit_datareceive.d)
 I (..\User\main.h)(0x6468EE1B)
 I (..\CMSIS\stm32f4xx.h)(0x644D4ECD)
 I (..\CMSIS\core_cm4.h)(0x644D4ECD)
@@ -998,7 +998,7 @@ I (..\tasks\task_ZeroCheck.h)(0x644D4ECD)
 I (..\tasks\task_ActionUpdate.h)(0x644E2BEF)
 I (..\tasks\task_DataSend.h)(0x644D4ECD)
 I (..\tasks\task_Gimbal_L.h)(0x64622BA9)
-I (..\tasks\task_Shoot.h)(0x646459E6)
+I (..\tasks\task_Shoot.h)(0x649C06D1)
 I (..\tasks\task_StateLED.h)(0x644D4ECD)
 I (..\tasks\task_UsageCPU.h)(0x644D4ECD)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x644D4ECD)
@@ -1074,7 +1074,7 @@ I (..\tasks\task_ZeroCheck.h)(0x644D4ECD)
 I (..\tasks\task_ActionUpdate.h)(0x644E2BEF)
 I (..\tasks\task_DataSend.h)(0x644D4ECD)
 I (..\tasks\task_Gimbal_L.h)(0x64622BA9)
-I (..\tasks\task_Shoot.h)(0x646459E6)
+I (..\tasks\task_Shoot.h)(0x649C06D1)
 I (..\tasks\task_StateLED.h)(0x644D4ECD)
 I (..\tasks\task_UsageCPU.h)(0x644D4ECD)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x644D4ECD)
@@ -1092,7 +1092,7 @@ I (..\tasks\taskIT_DataReceive.h)(0x64659B77)
 I (..\FreeRTOS\include\task.h)(0x644D4ECD)
 I (..\FreeRTOS\include\list.h)(0x644D4ECD)
 I (..\tasks\start_task.h)(0x644D4ECD)
-F (..\tasks\task_Shoot.c)(0x64717C9B)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\FWLIB\inc -I ..\User -I ..\FreeRTOS\include -I ..\FreeRTOS\portable -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\user\user_lib -I ..\hardware -I ..\tasks -I ..\algo -I ..\DSP\Include -I ..\FWLIB\SEGGER_RTT_V784\RTT -I ..\FWLIB\SEGGER_RTT_V784\Config-I.\RTE\_standard-ID:\LangYa\Software\Keil\Arm\ARM\CMSIS\5.7.0\CMSIS\DSP\Include-ID:\LangYa\Software\Keil\Arm\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\LangYa\Software\Keil\Keil5\ARM\CMSIS\Include-D__UVISION_VERSION="530" -D_RTE_ -DSTM32F405xx -D_RTE_ -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_USED -D__FPU_PRESENT -DARM_MATH_CM4 -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING-o .\objects\task_shoot.o --omf_browse .\objects\task_shoot.crf --depend .\objects\task_shoot.d)
+F (..\tasks\task_Shoot.c)(0x649FA489)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\FWLIB\inc -I ..\User -I ..\FreeRTOS\include -I ..\FreeRTOS\portable -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\user\user_lib -I ..\hardware -I ..\tasks -I ..\algo -I ..\DSP\Include -I ..\FWLIB\SEGGER_RTT_V784\RTT -I ..\FWLIB\SEGGER_RTT_V784\Config-I.\RTE\_standard-ID:\LangYa\Software\Keil\Arm\ARM\CMSIS\5.7.0\CMSIS\DSP\Include-ID:\LangYa\Software\Keil\Arm\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\LangYa\Software\Keil\Keil5\ARM\CMSIS\Include-D__UVISION_VERSION="530" -D_RTE_ -DSTM32F405xx -D_RTE_ -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_USED -D__FPU_PRESENT -DARM_MATH_CM4 -D__CC_ARM -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING-o .\objects\task_shoot.o --omf_browse .\objects\task_shoot.crf --depend .\objects\task_shoot.d)
 I (..\User\main.h)(0x6468EE1B)
 I (..\CMSIS\stm32f4xx.h)(0x644D4ECD)
 I (..\CMSIS\core_cm4.h)(0x644D4ECD)
@@ -1150,7 +1150,7 @@ I (..\tasks\task_ZeroCheck.h)(0x644D4ECD)
 I (..\tasks\task_ActionUpdate.h)(0x644E2BEF)
 I (..\tasks\task_DataSend.h)(0x644D4ECD)
 I (..\tasks\task_Gimbal_L.h)(0x64622BA9)
-I (..\tasks\task_Shoot.h)(0x646459E6)
+I (..\tasks\task_Shoot.h)(0x649C06D1)
 I (..\tasks\task_StateLED.h)(0x644D4ECD)
 I (..\tasks\task_UsageCPU.h)(0x644D4ECD)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x644D4ECD)
@@ -1226,7 +1226,7 @@ I (..\tasks\task_ZeroCheck.h)(0x644D4ECD)
 I (..\tasks\task_ActionUpdate.h)(0x644E2BEF)
 I (..\tasks\task_DataSend.h)(0x644D4ECD)
 I (..\tasks\task_Gimbal_L.h)(0x64622BA9)
-I (..\tasks\task_Shoot.h)(0x646459E6)
+I (..\tasks\task_Shoot.h)(0x649C06D1)
 I (..\tasks\task_StateLED.h)(0x644D4ECD)
 I (..\tasks\task_UsageCPU.h)(0x644D4ECD)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x644D4ECD)
@@ -1302,7 +1302,7 @@ I (..\tasks\task_ZeroCheck.h)(0x644D4ECD)
 I (..\tasks\task_ActionUpdate.h)(0x644E2BEF)
 I (..\tasks\task_DataSend.h)(0x644D4ECD)
 I (..\tasks\task_Gimbal_L.h)(0x64622BA9)
-I (..\tasks\task_Shoot.h)(0x646459E6)
+I (..\tasks\task_Shoot.h)(0x649C06D1)
 I (..\tasks\task_StateLED.h)(0x644D4ECD)
 I (..\tasks\task_UsageCPU.h)(0x644D4ECD)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x644D4ECD)
@@ -1649,7 +1649,7 @@ I (..\tasks\task_ZeroCheck.h)(0x644D4ECD)
 I (..\tasks\task_ActionUpdate.h)(0x644E2BEF)
 I (..\tasks\task_DataSend.h)(0x644D4ECD)
 I (..\tasks\task_Gimbal_L.h)(0x64622BA9)
-I (..\tasks\task_Shoot.h)(0x646459E6)
+I (..\tasks\task_Shoot.h)(0x649C06D1)
 I (..\tasks\task_StateLED.h)(0x644D4ECD)
 I (..\tasks\task_UsageCPU.h)(0x644D4ECD)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x644D4ECD)
@@ -1725,7 +1725,7 @@ I (..\tasks\task_ZeroCheck.h)(0x644D4ECD)
 I (..\tasks\task_ActionUpdate.h)(0x644E2BEF)
 I (..\tasks\task_DataSend.h)(0x644D4ECD)
 I (..\tasks\task_Gimbal_L.h)(0x64622BA9)
-I (..\tasks\task_Shoot.h)(0x646459E6)
+I (..\tasks\task_Shoot.h)(0x649C06D1)
 I (..\tasks\task_StateLED.h)(0x644D4ECD)
 I (..\tasks\task_UsageCPU.h)(0x644D4ECD)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x644D4ECD)
@@ -1801,7 +1801,7 @@ I (..\tasks\task_ZeroCheck.h)(0x644D4ECD)
 I (..\tasks\task_ActionUpdate.h)(0x644E2BEF)
 I (..\tasks\task_DataSend.h)(0x644D4ECD)
 I (..\tasks\task_Gimbal_L.h)(0x64622BA9)
-I (..\tasks\task_Shoot.h)(0x646459E6)
+I (..\tasks\task_Shoot.h)(0x649C06D1)
 I (..\tasks\task_StateLED.h)(0x644D4ECD)
 I (..\tasks\task_UsageCPU.h)(0x644D4ECD)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x644D4ECD)
@@ -1877,7 +1877,7 @@ I (..\tasks\task_ZeroCheck.h)(0x644D4ECD)
 I (..\tasks\task_ActionUpdate.h)(0x644E2BEF)
 I (..\tasks\task_DataSend.h)(0x644D4ECD)
 I (..\tasks\task_Gimbal_L.h)(0x64622BA9)
-I (..\tasks\task_Shoot.h)(0x646459E6)
+I (..\tasks\task_Shoot.h)(0x649C06D1)
 I (..\tasks\task_StateLED.h)(0x644D4ECD)
 I (..\tasks\task_UsageCPU.h)(0x644D4ECD)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x644D4ECD)
@@ -1953,7 +1953,7 @@ I (..\tasks\task_ZeroCheck.h)(0x644D4ECD)
 I (..\tasks\task_ActionUpdate.h)(0x644E2BEF)
 I (..\tasks\task_DataSend.h)(0x644D4ECD)
 I (..\tasks\task_Gimbal_L.h)(0x64622BA9)
-I (..\tasks\task_Shoot.h)(0x646459E6)
+I (..\tasks\task_Shoot.h)(0x649C06D1)
 I (..\tasks\task_StateLED.h)(0x644D4ECD)
 I (..\tasks\task_UsageCPU.h)(0x644D4ECD)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x644D4ECD)
@@ -2029,7 +2029,7 @@ I (..\tasks\task_ZeroCheck.h)(0x644D4ECD)
 I (..\tasks\task_ActionUpdate.h)(0x644E2BEF)
 I (..\tasks\task_DataSend.h)(0x644D4ECD)
 I (..\tasks\task_Gimbal_L.h)(0x64622BA9)
-I (..\tasks\task_Shoot.h)(0x646459E6)
+I (..\tasks\task_Shoot.h)(0x649C06D1)
 I (..\tasks\task_StateLED.h)(0x644D4ECD)
 I (..\tasks\task_UsageCPU.h)(0x644D4ECD)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x644D4ECD)
@@ -2105,7 +2105,7 @@ I (..\tasks\task_ZeroCheck.h)(0x644D4ECD)
 I (..\tasks\task_ActionUpdate.h)(0x644E2BEF)
 I (..\tasks\task_DataSend.h)(0x644D4ECD)
 I (..\tasks\task_Gimbal_L.h)(0x64622BA9)
-I (..\tasks\task_Shoot.h)(0x646459E6)
+I (..\tasks\task_Shoot.h)(0x649C06D1)
 I (..\tasks\task_StateLED.h)(0x644D4ECD)
 I (..\tasks\task_UsageCPU.h)(0x644D4ECD)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x644D4ECD)
@@ -2181,7 +2181,7 @@ I (..\tasks\task_ZeroCheck.h)(0x644D4ECD)
 I (..\tasks\task_ActionUpdate.h)(0x644E2BEF)
 I (..\tasks\task_DataSend.h)(0x644D4ECD)
 I (..\tasks\task_Gimbal_L.h)(0x64622BA9)
-I (..\tasks\task_Shoot.h)(0x646459E6)
+I (..\tasks\task_Shoot.h)(0x649C06D1)
 I (..\tasks\task_StateLED.h)(0x644D4ECD)
 I (..\tasks\task_UsageCPU.h)(0x644D4ECD)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x644D4ECD)
@@ -2313,7 +2313,7 @@ I (..\tasks\task_ZeroCheck.h)(0x644D4ECD)
 I (..\tasks\task_ActionUpdate.h)(0x644E2BEF)
 I (..\tasks\task_DataSend.h)(0x644D4ECD)
 I (..\tasks\task_Gimbal_L.h)(0x64622BA9)
-I (..\tasks\task_Shoot.h)(0x646459E6)
+I (..\tasks\task_Shoot.h)(0x649C06D1)
 I (..\tasks\task_StateLED.h)(0x644D4ECD)
 I (..\tasks\task_UsageCPU.h)(0x644D4ECD)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x644D4ECD)
@@ -2389,7 +2389,7 @@ I (..\tasks\task_ZeroCheck.h)(0x644D4ECD)
 I (..\tasks\task_ActionUpdate.h)(0x644E2BEF)
 I (..\tasks\task_DataSend.h)(0x644D4ECD)
 I (..\tasks\task_Gimbal_L.h)(0x64622BA9)
-I (..\tasks\task_Shoot.h)(0x646459E6)
+I (..\tasks\task_Shoot.h)(0x649C06D1)
 I (..\tasks\task_StateLED.h)(0x644D4ECD)
 I (..\tasks\task_UsageCPU.h)(0x644D4ECD)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x644D4ECD)
@@ -2465,7 +2465,7 @@ I (..\tasks\task_ZeroCheck.h)(0x644D4ECD)
 I (..\tasks\task_ActionUpdate.h)(0x644E2BEF)
 I (..\tasks\task_DataSend.h)(0x644D4ECD)
 I (..\tasks\task_Gimbal_L.h)(0x64622BA9)
-I (..\tasks\task_Shoot.h)(0x646459E6)
+I (..\tasks\task_Shoot.h)(0x649C06D1)
 I (..\tasks\task_StateLED.h)(0x644D4ECD)
 I (..\tasks\task_UsageCPU.h)(0x644D4ECD)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x644D4ECD)
@@ -2541,7 +2541,7 @@ I (..\tasks\task_ZeroCheck.h)(0x644D4ECD)
 I (..\tasks\task_ActionUpdate.h)(0x644E2BEF)
 I (..\tasks\task_DataSend.h)(0x644D4ECD)
 I (..\tasks\task_Gimbal_L.h)(0x64622BA9)
-I (..\tasks\task_Shoot.h)(0x646459E6)
+I (..\tasks\task_Shoot.h)(0x649C06D1)
 I (..\tasks\task_StateLED.h)(0x644D4ECD)
 I (..\tasks\task_UsageCPU.h)(0x644D4ECD)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x644D4ECD)
@@ -2617,7 +2617,7 @@ I (..\tasks\task_ZeroCheck.h)(0x644D4ECD)
 I (..\tasks\task_ActionUpdate.h)(0x644E2BEF)
 I (..\tasks\task_DataSend.h)(0x644D4ECD)
 I (..\tasks\task_Gimbal_L.h)(0x64622BA9)
-I (..\tasks\task_Shoot.h)(0x646459E6)
+I (..\tasks\task_Shoot.h)(0x649C06D1)
 I (..\tasks\task_StateLED.h)(0x644D4ECD)
 I (..\tasks\task_UsageCPU.h)(0x644D4ECD)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x644D4ECD)
@@ -2693,7 +2693,7 @@ I (..\tasks\task_ZeroCheck.h)(0x644D4ECD)
 I (..\tasks\task_ActionUpdate.h)(0x644E2BEF)
 I (..\tasks\task_DataSend.h)(0x644D4ECD)
 I (..\tasks\task_Gimbal_L.h)(0x64622BA9)
-I (..\tasks\task_Shoot.h)(0x646459E6)
+I (..\tasks\task_Shoot.h)(0x649C06D1)
 I (..\tasks\task_StateLED.h)(0x644D4ECD)
 I (..\tasks\task_UsageCPU.h)(0x644D4ECD)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x644D4ECD)

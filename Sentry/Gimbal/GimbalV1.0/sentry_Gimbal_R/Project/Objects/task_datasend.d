@@ -43,6 +43,7 @@
 .\objects\task_datasend.o: ..\FWLIB\SEGGER_RTT_V784\RTT\SEGGER_RTT.h
 .\objects\task_datasend.o: ..\FWLIB\SEGGER_RTT_V784\RTT\../Config/SEGGER_RTT_Conf.h
 .\objects\task_datasend.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\objects\task_datasend.o: ..\user\user_math_lib\user_lib.h
 .\objects\task_datasend.o: ..\algo\algo_PID.h
 .\objects\task_datasend.o: ..\algo\algo_CRC.h
 .\objects\task_datasend.o: ..\algo\algo_ADT_LoopQueue.h
@@ -53,6 +54,7 @@
 .\objects\task_datasend.o: ..\algo\kalman_filter.h
 .\objects\task_datasend.o: ..\DSP\Include\arm_math.h
 .\objects\task_datasend.o: ..\CMSIS\core_cm4.h
+.\objects\task_datasend.o: ..\algo\TD.h
 .\objects\task_datasend.o: ..\tasks\task_ZeroCheck.h
 .\objects\task_datasend.o: ..\tasks\task_ActionUpdate.h
 .\objects\task_datasend.o: ..\tasks\task_DataSend.h

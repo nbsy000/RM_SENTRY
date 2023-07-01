@@ -140,7 +140,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGUARM</Key>
-          <Name></Name>
+          <Name>d</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -1117,6 +1117,11 @@
           <WinNumber>2</WinNumber>
           <ItemText>Gyro_Right</ItemText>
         </Ww>
+        <Ww>
+          <count>64</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>\\sentry_Gimbal_Up\../tasks/task_GimbalR.c\MotoPitch.gyroAngle</ItemText>
+        </Ww>
       </WatchWindow2>
       <MemoryWindow1>
         <Mm>
@@ -1420,7 +1425,7 @@
 
   <Group>
     <GroupName>user_lib</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -1953,6 +1958,18 @@
       <bDave2>0</bDave2>
       <PathWithFileName>..\algo\QuaternionEKF.c</PathWithFileName>
       <FilenameWithoutPath>QuaternionEKF.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>9</GroupNumber>
+      <FileNumber>60</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\algo\TD.c</PathWithFileName>
+      <FilenameWithoutPath>TD.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

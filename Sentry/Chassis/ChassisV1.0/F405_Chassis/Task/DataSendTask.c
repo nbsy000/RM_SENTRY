@@ -67,9 +67,6 @@ void ShootingHeat_CAN2Send(void)
   tx_message.Data[5] = Judge_Lost;//裁判系统离线标志位
   tx_message.Data[6] = Attack_color;//1红0蓝（自己）
   tx_message.Data[7] = chassis.armor_hurt_flag[1];
-	
-  tx_message.Data[0] = 0;//1号发射机构
-  tx_message.Data[1] = 0;//2号发射机构
 
   CAN_Transmit(CAN2, &tx_message);
 }

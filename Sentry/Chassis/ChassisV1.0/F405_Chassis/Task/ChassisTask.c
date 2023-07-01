@@ -190,6 +190,7 @@ void PowerLimit(void)
 *形    参: 无
 *返 回 值: 无
 **********************************************************************************************************/
+int x_cnt = 0;
 void Chassis_RC_Act(void)
 {
 	static float chassis_yaw_init;
@@ -211,14 +212,15 @@ void Chassis_RC_Act(void)
 	chassis.carSpeedx = (RC_Ctl.rc.ch1-1024)*8*SinTheTa + (RC_Ctl.rc.ch0-1024)*8*CosTheTa; //364-1684  即660*8最大为5280mm/s
 	chassis.carSpeedy = (RC_Ctl.rc.ch1-1024)*8*CosTheTa - (RC_Ctl.rc.ch0-1024)*8*SinTheTa;	
 	
-//	if((RC_Ctl.rc.ch3-1024)>50)
-//		chassis.carSpeedw = (RC_Ctl.rc.ch3-1074)*0.2;
-//	else if((RC_Ctl.rc.ch3-1024)<-50)
-//		chassis.carSpeedw = (RC_Ctl.rc.ch3-974)*0.2;
-//	else 
-//		chassis.carSpeedw = 0 ;
+	if((RC_Ctl.rc.ch3-1024)>50)
+		chassis.carSpeedw = (RC_Ctl.rc.ch3-1074)*0.2;
+	else if((RC_Ctl.rc.ch3-1024)<-50)
+		chassis.carSpeedw = (RC_Ctl.rc.ch3-974)*0.2;
+	else 
+		chassis.carSpeedw = 0 ;
 	
 	chassis.carSpeedw = (Theta_init - Theta)*180.0f*10/(6.0f*PI);//单位变为rpm
+	
 	
 	//计算每个电机的目标转速
 	aimRSpeed[0] = -chassis.carSpeedy*60*reRatio/(2*PI*Wheel_R) - chassis.carSpeedw*Chassis_R*reRatio/Wheel_R;
@@ -753,7 +755,7 @@ float set_Speed = 300;
 int MAX_DISTANCE = 500;
 float step_x = 50.0f;//0.8m/s
 float PC_setx,PC_sety;
-int x_cnt = 0;
+
 void Patrol_Act()
 {
 	static uint8_t Toword = 1;
@@ -797,7 +799,7 @@ void Patrol_Act()
 //	else
 	chassis.carSpeedy = 0;
 	chassis.carSpeedw = 0;
-	if(x_cnt<1000)
+	if(x_cnt<1000+rand()%200-100)
 	{
 		chassis.carSpeedx = 1000;
 	}
@@ -854,7 +856,7 @@ void Patrol_Safe_Act()
 //	}
 //	else
 		chassis.carSpeedx = 0;
-	chassis.carSpeedy = 0;
+		chassis.carSpeedy = 0;
 		chassis.carSpeedw = 60;
 
 	//分解到每个电机的转速

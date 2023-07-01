@@ -11,6 +11,7 @@
 	
 float PID_Calc(PID_Typedef *P, float ActualValue,uint8_t way)
 {
+		P->ActualValue = ActualValue;
 		P->PreError = P->SetPoint - ActualValue;
 		P->dError = P->PreError - P->LastError;
 	
@@ -41,57 +42,18 @@ float PID_Calc(PID_Typedef *P, float ActualValue,uint8_t way)
 		return LIMIT_MAX_MIN( P->POut+P->IOut+P->DOut,P->OutMax,-P->OutMax);
 }
 	
-	
-//float PID_Calc(PID_Typedef *P,float ActualValue,uint8_t I_Sep)
-//{
-//		P->LastValue = P->ActualValue;
-//		P->ActualValue = ActualValue;
-//		P->LastError = P->PreError;
-//		P->PreError = P->SetPoint - P->ActualValue;
-//	  if((ABS(P->PreError)< P->DeadZone ))   //死区控制
-//		{
-//			P->PreError = 0.0f;			
-//		}
-//		
-//		      //微分先行
-//		float DM = P->D*(P->ActualValue - P->LastValue);   //微分先行
-//		
-//		if(I_Sep == I_SEP)//积分分离
-//		{
-//					 //变速积分   (积分分离)
-//			if(ABS(P->PreError) < P->I_L )			
-//			{					 
-//				P->SumError += P->PreError;    
-//				P->SumError = LIMIT_MAX_MIN(P->SumError,P->IMax,- P->IMax);
-//			}
-//			 else if( ABS(P->PreError) < P->I_U )
-//			{
-//					 
-//				P->SumError += P->PreError*(P->I_U - ABS(P->PreError))/(P->I_U - P->I_L);    
-//				P->SumError = LIMIT_MAX_MIN(P->SumError,P->IMax,- P->IMax);		
-//			}
-//			else
-//				P->SumError = 0;
-//		}
-//		else 
-//		{
-//				P->SumError += P->PreError;    
-//				P->SumError = LIMIT_MAX_MIN(P->SumError,P->IMax,- P->IMax);		
-//		}
-//				
-//		P->POut = P->P * P->PreError;
-//		
-//		P->IOut = P->I * P->SumError;
-//		    
-//		    //不完全微分
-//		P->DOut_last = P->DOut; 
-//		P->DOut = DM * P->RC_DF + P->DOut_last * ( 1 - P->RC_DF );    
-//		
-//		P->Out_last  = P->Out;
-//		P->Out = LIMIT_MAX_MIN(P->POut+P->IOut+P->DOut,P->OutMax,-P->OutMax);
-////	P->Out = P->POut+P->IOut+P->DOut;		
-//		return P->Out; 
-//}
+/**
+    * @brief  PID 参数清零
+    * @param  None
+    * @retval None
+    */	
+void PID_Clear(PID_Typedef *P)
+{
+	P->LastError = 0;
+	P->DOut_last = 0;
+	P->SumError = 0;
+}
+
 /**********************************************************************************************************
 *函 数 名: FeedForward_Calc
 *功能说明: 前馈算法

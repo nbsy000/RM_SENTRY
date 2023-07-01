@@ -1009,21 +1009,21 @@ void Chassis_task(void *pvParameters)
 		}
 		
 		//电容充放电控制
-		if(JudgeReceive.remainEnergy<20)
-		{
-      Charge_Off;
-      ChargeState = ChargeOff ;
-		}
-//		else if(AD_actual_value >= 19.0f)
+//		if(JudgeReceive.remainEnergy<20)
 //		{
-//			Charge_Off;
-//			ChargeState = ChargeOff;
+//      Charge_Off;
+//      ChargeState = ChargeOff ;
 //		}
-		else
-		{
+////		else if(AD_actual_value >= 19.0f)
+////		{
+////			Charge_Off;
+////			ChargeState = ChargeOff;
+////		}
+//		else
+//		{
 			Charge_On;
 			ChargeState = ChargeOn;
-		}	
+//		}	
 	
 		//功率限制
     Chassis_CurrentPid_Cal();

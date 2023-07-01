@@ -416,6 +416,44 @@ void Shoot_Tx2_Cal()
 
 
 /**********************************************************************************************************
+*函 数 名: Shoot_PC_Cal
+*功能说明: 滤波
+*形    参: 无
+*返 回 值: 无
+**********************************************************************************************************/
+float bodanLastPos;              //存放上次单发结束时的拨弹电机位置值
+float now_time = 0;
+float IntervalTime;
+const int Shoot_IntervalTime = 80;
+void Shoot_PC_Cal()
+{
+	if(ShootAct_Init_Flag!=5)
+	{
+		MirocPosition = 0;
+		ShootAct_Init_Flag=5;
+		bodanLastPos = Bodan_Pos;
+		now_time = xTaskGetTickCount();
+//		SendToTx2BullectCnt=PC_Receive.ReceiveFromTx2BullectCnt=0;
+	}
+	
+	
+		if(Shoot.HeatControl.IsShootAble==1 && PC_Shoot_flag/*shoot_test_flag*/ != 0)
+    {
+			if(ABS(pc_pitch - Gimbal.Pitch.Gyro)<0.8f && ABS(pc_yaw - Gimbal.Yaw.Gyro)<0.8f)	//已经辅瞄到位，自动开火
+			{
+				IntervalTime = xTaskGetTickCount() - now_time;
+				if(IntervalTime > Shoot_IntervalTime)
+				{
+					now_time = xTaskGetTickCount();
+					bodanLastPos = Bodan_Pos;					
+				}
+			}
+		}
+	PidBodanMotorPos.SetPoint=bodanLastPos + Onegrid;
+}
+	
+
+/**********************************************************************************************************
 *函 数 名: FrictionWheel_CurrentPid_Cal
 *功能说明: 设置摩擦轮PID速度
 *形    参: 无
@@ -463,6 +501,10 @@ void BodanMotorPos_Set(){
 		case Shoot_Powerdown_Mode:
 			Shoot_Powerdown_Cal();
 			break;
+		
+		case Shoot_PC_Mode:
+			Shoot_PC_Cal();
+			break;
 
 		default:
 			break;
@@ -488,6 +530,7 @@ void BodanMotor_CurrentPid_Cal(void)
 			}
 		case Shoot_Tx2_Mode:
 		case Shoot_Powerdown_Mode:
+		case Shoot_PC_Mode:
 				PidBodanMotorPos.ActualValue = Bodan_Pos;
 				PidBodanMotorSpeed.SetPoint = PID_Calc(&PidBodanMotorPos);	
 			break;

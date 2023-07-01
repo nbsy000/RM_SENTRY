@@ -33,8 +33,12 @@ void PCReceive(unsigned char *PCbuffer)
         pc_pitch = pc_recv_data.pitch/100.0f;
         pc_yaw = pc_recv_data.yaw;
         /*射击标志位*/
-        PC_Shoot_flag = pc_recv_data.shoot_flag - last_shoot_flag;
-        last_shoot_flag = pc_recv_data.shoot_flag;
+//        PC_Shoot_flag = pc_recv_data.shoot_flag - last_shoot_flag;
+//        last_shoot_flag = pc_recv_data.shoot_flag;
+				if(pc_recv_data.enemy_id != 0)
+					PC_Shoot_flag = 1;
+				else
+					PC_Shoot_flag = 0;
         PCSolve();
     }
 }

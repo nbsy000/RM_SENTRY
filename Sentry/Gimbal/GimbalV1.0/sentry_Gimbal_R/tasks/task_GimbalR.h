@@ -4,6 +4,8 @@
 #define LimitYaw   30000  //6020限制电压
 #define LimitPitch 30000
 
+#include "main.h"
+
 //云台是否进行协同
 enum Syne_Type
 {
@@ -54,6 +56,7 @@ typedef struct
 	float gyroAngle;//当前实际陀螺仪角度
 	float Gyro_Speed;
 	float PCsetAngle;//PC自动的设置值
+	float TargetPos;//电机的目标值
 	
 	//普通PID
 	PID_Typedef PidCurrent;
@@ -85,6 +88,9 @@ typedef struct
 	
 	//低通系数
 	float K_LP;
+	
+	//跟综微分
+	TD_t TD;
 }gimbal_motor_t;
 
 
@@ -98,6 +104,7 @@ typedef struct
 	uint8_t LastMode;//上一次模式
 	uint8_t patrol_dir_pitch;
 	uint8_t patrol_dir_yaw;
+	int Mode_Update_cnt;
 	
 	gimbal_motor_t *Pitch;
 	gimbal_motor_t *Yaw;
@@ -116,6 +123,7 @@ void Gimbal_Limit_Init(void);//云台角度限幅函数
 void PID_Gimbal_Init(void);
 void Gimbal_GYRO_Cal(void);
 void Gimbal_Init(void);//初始化
+void Gimbal_Clear(Gimbal_Typedef *Gimbal);
 float Gimbal_Limit(gimbal_motor_t Gimbal_Motor,uint8_t TYPE);
 
 void Gimbal_PC_Act(uint8_t Syne_Flag);
@@ -132,7 +140,6 @@ void Gimbal_Attack_None(void);
 void Gimbal_Attack_Nosyne(void);
 
 void Gimbal_PID_Cal(Gimbal_Typedef *Gimbal,uint8_t Feedback_Type,uint8_t Is_Debug);
-
 void Gimbal_Cruise(Gimbal_Typedef *Gimbal,uint8_t Cruise_Mode);
 
 extern Gimbal_Typedef Gimbal_R,Gimbal_L;

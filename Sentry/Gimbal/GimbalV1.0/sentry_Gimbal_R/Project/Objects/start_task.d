@@ -60,10 +60,12 @@
 .\objects\start_task.o: ..\FWLIB\SEGGER_RTT_V784\RTT\SEGGER_RTT.h
 .\objects\start_task.o: ..\FWLIB\SEGGER_RTT_V784\RTT\../Config/SEGGER_RTT_Conf.h
 .\objects\start_task.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\objects\start_task.o: ..\user\user_math_lib\user_lib.h
 .\objects\start_task.o: ..\algo\algo_PID.h
 .\objects\start_task.o: ..\algo\algo_CRC.h
 .\objects\start_task.o: ..\algo\algo_ADT_LoopQueue.h
 .\objects\start_task.o: ..\algo\algo_FIR.h
+.\objects\start_task.o: ..\algo\TD.h
 .\objects\start_task.o: ..\tasks\task_ZeroCheck.h
 .\objects\start_task.o: ..\tasks\task_ActionUpdate.h
 .\objects\start_task.o: ..\tasks\task_DataSend.h

@@ -35,6 +35,7 @@ void Shoot_Fire_Cal(void);
 void Shoot_Powerdown_Cal(void);
 void Shoot_Tx2_Cal(void);
 void Shoot_Test_Cal(void);
+void Shoot_PC_Cal(void);
 void HeatControl(float dt);
 void FrictionWheel_CurrentPid_Cal(void);
 void BodanMotor_CurrentPid_Cal(void);

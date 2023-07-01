@@ -107,7 +107,7 @@ static void update_state_with_RCdata(void)
                                  Shoot_R_SLEEP,
                                  Shoot_L_SLEEP,
                                  Chassis_Protect,
-																 ChassisYaw_PC);
+																 ChassisYaw_STOP);
             break;
         case 2: //ÏÂÔÆÌ¨Ò£¿ØÆ÷µ÷ÊÔ
             sentry_state_reflect(Gimbal_R_SLEEP,

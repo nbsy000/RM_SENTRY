@@ -75,6 +75,7 @@ typedef double fp64;
 #include "tim4.h"
 #include "counter.h"
 #include "debug.h"
+#include "user_lib.h"
 
 //Algorithm
 #include "algo_PID.h"
@@ -85,6 +86,7 @@ typedef double fp64;
 #include "ins.h"
 #include "kalman_filter.h"
 #include "QuaternionEKF.h"
+#include "TD.h"
 
 //tasks
 #include "task_ZeroCheck.h"

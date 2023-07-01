@@ -1,53 +1,63 @@
-#ifndef USER_LIB_H
-#define USER_LIB_H
-#include "main.h"
+/**
+ ******************************************************************************
+ * @file	 user_lib.h
+ * @author  Wang Hongxi
+ * @version V1.0.0
+ * @date    2021/2/18
+ * @brief
+ ******************************************************************************
+ * @attention
+ * copied from https://github.com/WangHongxi2001/RoboMaster-C-Board-INS-Example
+ ******************************************************************************
+ */
+#ifndef _USER_LIB_H
+#define _USER_LIB_H
+#include "stdint.h"
 
-typedef __packed struct
+#define user_malloc malloc
+
+/* boolean type definitions */
+#ifndef TRUE
+#define TRUE 1 /**< boolean true  */
+#endif
+
+#ifndef FALSE
+#define FALSE 0 /**< boolean fails */
+#endif
+
+/* math relevant */
+
+/* circumference ratio */
+#ifndef PI
+#define PI 3.14159265354f
+#endif
+
+typedef struct Ordinary_Least_Squares_t
 {
-    fp32 input;        //ÊäÈëÊý¾Ý
-    fp32 out;          //Êä³öÊý¾Ý
-    fp32 min_value;    //ÏÞ·ù×îÐ¡Öµ
-    fp32 max_value;    //ÏÞ·ù×î´óÖµ
-    fp32 frame_period; //Ê±¼ä¼ä¸ô
-} ramp_function_source_t;
+    uint16_t Order;
+    uint32_t Count;
 
-typedef __packed struct
-{
-    fp32 input;        //ÊäÈëÊý¾Ý
-    fp32 out;          //ÂË²¨Êä³öµÄÊý¾Ý
-    fp32 num[1];       //ÂË²¨²ÎÊý
-    fp32 frame_period; //ÂË²¨µÄÊ±¼ä¼ä¸ô µ¥Î» s
-} first_order_filter_type_t;
-//¿ìËÙ¿ª·½
-extern fp32 invSqrt(fp32 num);
+    float *x;
+    float *y;
 
-//Ð±²¨º¯Êý³õÊ¼»¯
-void ramp_init(ramp_function_source_t *ramp_source_type, fp32 frame_period, fp32 max, fp32 min);
+    float k;
+    float b;
 
-//Ð±²¨º¯Êý¼ÆËã
-void ramp_calc(ramp_function_source_t *ramp_source_type, fp32 input);
-//Ò»½×ÂË²¨³õÊ¼»¯
-extern void first_order_filter_init(first_order_filter_type_t *first_order_filter_type, fp32 frame_period, const fp32 num[1]);
-//Ò»½×ÂË²¨¼ÆËã
-extern void first_order_filter_cali(first_order_filter_type_t *first_order_filter_type, fp32 input);
-//¾ø¶ÔÏÞÖÆ
-extern void abs_limit(fp32 *num, fp32 Limit);
-//ÅÐ¶Ï·ûºÅÎ»
-extern fp32 sign(fp32 value);
-//¸¡µãËÀÇø
-extern fp32 fp32_deadline(fp32 Value, fp32 minValue, fp32 maxValue);
-//int26ËÀÇø
-extern int16_t int16_deadline(int16_t Value, int16_t minValue, int16_t maxValue);
-//ÏÞ·ùº¯Êý
-extern fp32 fp32_constrain(fp32 Value, fp32 minValue, fp32 maxValue);
-//ÏÞ·ùº¯Êý
-extern int16_t int16_constrain(int16_t Value, int16_t minValue, int16_t maxValue);
-//Ñ­»·ÏÞ·ùº¯Êý
-extern fp32 loop_fp32_constrain(fp32 Input, fp32 minValue, fp32 maxValue);
-//½Ç¶È ¡ãÏÞ·ù 180 ~ -180
-extern fp32 theta_format(fp32 Ang);
+    float StandardDeviation;
 
-//»¡¶È¸ñÊ½»¯Îª-PI~PI
-#define rad_format(Ang) loop_fp32_constrain((Ang), -PI, PI)
+    float t[4];
+} Ordinary_Least_Squares_t;
+
+//å¿«é€Ÿå¼€æ–¹
+float Sqrt(float x);
+void Deadzone(float *x, float deadzone);
+float sign(float value);
+
+void OLS_Init(Ordinary_Least_Squares_t *OLS, uint16_t order);
+void OLS_Update(Ordinary_Least_Squares_t *OLS, float deltax, float y);
+float OLS_Derivative(Ordinary_Least_Squares_t *OLS, float deltax, float y);
+float OLS_Smooth(Ordinary_Least_Squares_t *OLS, float deltax, float y);
+float Get_OLS_Derivative(Ordinary_Least_Squares_t *OLS);
+float Get_OLS_Smooth(Ordinary_Least_Squares_t *OLS);
 
 #endif

@@ -43,6 +43,7 @@
 .\objects\hw_uart4_debugpc.o: ..\FWLIB\SEGGER_RTT_V784\RTT\SEGGER_RTT.h
 .\objects\hw_uart4_debugpc.o: ..\FWLIB\SEGGER_RTT_V784\RTT\../Config/SEGGER_RTT_Conf.h
 .\objects\hw_uart4_debugpc.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\objects\hw_uart4_debugpc.o: ..\user\user_math_lib\user_lib.h
 .\objects\hw_uart4_debugpc.o: ..\algo\algo_PID.h
 .\objects\hw_uart4_debugpc.o: ..\algo\algo_CRC.h
 .\objects\hw_uart4_debugpc.o: ..\algo\algo_ADT_LoopQueue.h
@@ -53,6 +54,7 @@
 .\objects\hw_uart4_debugpc.o: ..\algo\kalman_filter.h
 .\objects\hw_uart4_debugpc.o: ..\DSP\Include\arm_math.h
 .\objects\hw_uart4_debugpc.o: ..\CMSIS\core_cm4.h
+.\objects\hw_uart4_debugpc.o: ..\algo\TD.h
 .\objects\hw_uart4_debugpc.o: ..\tasks\task_ZeroCheck.h
 .\objects\hw_uart4_debugpc.o: ..\tasks\task_ActionUpdate.h
 .\objects\hw_uart4_debugpc.o: ..\tasks\task_DataSend.h

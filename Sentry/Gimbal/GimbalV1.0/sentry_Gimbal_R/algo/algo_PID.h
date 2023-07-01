@@ -94,6 +94,7 @@ typedef struct
 }FuzzyPID;
 
 float PID_Calc(PID_Typedef *P, float ActualValue,uint8_t I_Sep);
+void PID_Clear(PID_Typedef *P);
 float FeedForward_Calc(FeedForward_Typedef *FF);
 float FuzzyPID_Calc(FuzzyPID *P,float ActualValue);
 #endif //__ALGO_PID_H

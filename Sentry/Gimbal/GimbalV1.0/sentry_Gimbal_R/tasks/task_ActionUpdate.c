@@ -68,7 +68,7 @@ static void update_state_with_RCdata(void)
                                  Chassis_Patrol,
 																 ChassisYaw_PC);
             break;
-        case 3: //挂在短滑轨上的辅瞄模式
+        case 3: //辅瞄模式
             sentry_state_reflect(Gimbal_R_PC,
                                  Gimbal_L_PC,
                                  Shoot_R_SLEEP,

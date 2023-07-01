@@ -32,6 +32,7 @@ void task_GimbalR(void *parameter)
     Gimbal_Limit_Init();    //限幅校正
 		Gimbal_Init();//初始化
 		
+	
     while (1)
     {
 			//云台姿态结算
@@ -58,7 +59,13 @@ void task_GimbalR(void *parameter)
 			//主云台
 			{
         Gimbal_R.ModeUpdate_Flag = (Gimbal_R.LastMode != Sentry_State.Gimbal_R_Mode); //判断模式是否更换
-        Gimbal_R.LastMode = Sentry_State.Gimbal_R_Mode;                               //更新上次状态
+        Gimbal_R.LastMode = Sentry_State.Gimbal_R_Mode;    				//更新上次状态
+				
+				if(Gimbal_R.ModeUpdate_Flag)
+				{
+						Gimbal_Clear(&Gimbal_R);
+						Gimbal_R.Mode_Update_cnt = 200;
+				}
 
 				//获取姿态
         MotoYaw.actualAngle = CombYawOutput(GIMBAL_RIGHT);
@@ -78,6 +85,12 @@ void task_GimbalR(void *parameter)
 					Gimbal_L.ModeUpdate_Flag = (Gimbal_L.LastMode != Sentry_State.Gimbal_L_Mode); //判断模式是否更换
 					Gimbal_L.LastMode = Sentry_State.Gimbal_L_Mode;                               //更新上次状态
 				
+					if(Gimbal_L.ModeUpdate_Flag)
+					{
+						Gimbal_Clear(&Gimbal_L);
+						Gimbal_L.Mode_Update_cnt = 200;
+					}
+				
 					//获取姿态
 					MotoYaw_L.actualAngle = CombYawOutput(GIMBAL_LEFT);
 					MotoPitch_L.actualAngle = CombPitchOutput(GIMBAL_LEFT);
@@ -96,7 +109,9 @@ void task_GimbalR(void *parameter)
 			if((Sentry_State.Gimbal_L_Mode == Gimbal_L_PC)&&(Sentry_State.Gimbal_R_Mode == Gimbal_R_PC))
 			{	
 					Gimbal_PC_Act(NO_SYNE);//目前是没有协同的
-					Gimbal_SLEEP_Act(&Gimbal_R);	
+//
+				Gimbal_SLEEP_Act(&Gimbal_L);	
+				
 			}		
 			
 			PitchYaw_Can2Send(MotoPitch.I_Set,MotoYaw.I_Set,MotoPitch_L.I_Set,MotoYaw_L.I_Set);//发送电流值
@@ -114,8 +129,8 @@ void Gimbal_DEBUG_Act(Gimbal_Typedef *Gimbal)
 		gimbal_motor_t *MotoPitch  = Gimbal->Pitch;
 		gimbal_motor_t *MotoYaw = Gimbal->Yaw;	
 
-    MotoYaw->PidPos.SetPoint = Test_Yaw_Pos;                            
-    MotoPitch->PidPos.SetPoint = Test_Pitch_Pos;        
+    MotoYaw->TargetPos = Test_Yaw_Pos;                            
+    MotoPitch->TargetPos = Test_Pitch_Pos;        
 	
 		Gimbal_PID_Cal(Gimbal,GYRO,DEBUG_PID);
 }
@@ -133,13 +148,13 @@ void Gimbal_RC_Act(Gimbal_Typedef *Gimbal)
 
     if (Gimbal->ModeUpdate_Flag) //应该是用来防止模式切换的时候运动抽风的
     {
-        MotoYaw->PidPos.SetPoint = MotoYaw->actualAngle;
-        MotoPitch->PidPos.SetPoint = MotoPitch->actualAngle;
+        MotoYaw->TargetPos = MotoYaw->actualAngle;
+        MotoPitch->TargetPos = MotoPitch->actualAngle;
     }
     else
     { //如果模式没有发生变化，则正常执行遥控器赋值的部分
-        MotoYaw->PidPos.SetPoint += RCYaw_Scal * (RC_Ctl.rc.ch0 - 1024);
-        MotoPitch->PidPos.SetPoint -= RCPitch_Scal * (RC_Ctl.rc.ch1 - 1024);//-号与云台转向有关，现在的云台是左大右小，与遥控器相反
+        MotoYaw->TargetPos += RCYaw_Scal * (RC_Ctl.rc.ch0 - 1024);
+        MotoPitch->TargetPos -= RCPitch_Scal * (RC_Ctl.rc.ch1 - 1024);//-号与云台转向有关，现在的云台是左大右小，与遥控器相反
     }
  
 		Gimbal_PID_Cal(Gimbal,GYRO,NO_DEBUG_PID);
@@ -172,43 +187,45 @@ void Gimbal_PC_Act(uint8_t Syne_Flag)
     }
 
 
-			if(armor_flag == SYNE_LEFT)//识别到目标
-			{
-					ChassisYaw_Cnt = 500;//识别到后进行3周的正弦巡航
-					if(Syne_Flag == SYNE)//开启协同
-					{
-							switch(armor_flag)
-							{
-								case SYNE_LEFT:
-									Gimbal_Attack_Left();	
-									break;
-								case SYNE_RIGHT:
-									Gimbal_Attack_Right();
-									break;	
-								case SYNE_BOTH:
-									Gimbal_Attack_Both();
-									break;														
-								default:
-									Gimbal_Attack_Nosyne();
-									break;
-							}				
-					}
-					else//没开启协同
-						Gimbal_Attack_Nosyne();			
-			}
-			
-			else//没有识别到目标
+//			if(armor_flag == SYNE_LEFT)//识别到目标
+//			{
+//					ChassisYaw_Cnt = 500;//识别到后进行3周的正弦巡航
+//					if(Syne_Flag == SYNE)//开启协同
+//					{
+//							switch(armor_flag)
+//							{
+//								case SYNE_LEFT:
+//									Gimbal_Attack_Left();	
+//									break;
+//								case SYNE_RIGHT:
+//									Gimbal_Attack_Right();
+//									break;	
+//								case SYNE_BOTH:
+//									Gimbal_Attack_Both();
+//									break;														
+//								default:
+//									Gimbal_Attack_Nosyne();
+//									break;
+//							}				
+//					}
+//					else//没开启协同
+//						Gimbal_Attack_Nosyne();			
+//			}
+//			
+//			else//没有识别到目标
 				Gimbal_Attack_None();
 
 			
-		MotoPitch.PidPos.SetPoint = MotoPitch.PCsetAngle;
-		MotoYaw.PidPos.SetPoint = MotoYaw.PCsetAngle;	
+//		//低通滤波
+//		MotoPitch_L.PCsetAngle = K_AIM_pitch*MotoPitch_L.PCsetAngle + (1-K_AIM_pitch)*Last_Pitch_L;
+//		MotoYaw_L.PCsetAngle = K_AIM_yaw*MotoYaw_L.PCsetAngle + (1-K_AIM_yaw)*Last_Yaw_L;	
 			
-		MotoPitch_L.PCsetAngle = K_AIM_pitch*MotoPitch_L.PCsetAngle + (1-K_AIM_pitch)*Last_Pitch_L;
-		MotoYaw_L.PCsetAngle = K_AIM_yaw*MotoYaw_L.PCsetAngle + (1-K_AIM_yaw)*Last_Yaw_L;
+		//目标值赋值	
+		MotoPitch.TargetPos = MotoPitch.PCsetAngle;
+		MotoYaw.TargetPos = MotoYaw.PCsetAngle;	
 			
-		MotoPitch_L.PidPos.SetPoint = MotoPitch_L.PCsetAngle;
-		MotoYaw_L.PidPos.SetPoint = MotoYaw_L.PCsetAngle;
+		MotoPitch_L.TargetPos = MotoPitch_L.PCsetAngle;
+		MotoYaw_L.TargetPos = MotoYaw_L.PCsetAngle;
 		
 		Last_Pitch_L = MotoPitch_L.PCsetAngle;
 		Last_Yaw_L = MotoYaw_L.PCsetAngle;
@@ -385,19 +402,19 @@ void Gimbal_Attack_None()
 		Gimbal_Cruise(&Gimbal_R,ONLY_PITCH);	
 		
 		//左
-				if(time_cnt_l == 0)
-					Gimbal_Cruise(&Gimbal_L,ONLY_PITCH);
-				else
-					time_cnt_l = time_cnt_l-1;
+//		if(time_cnt_l == 0)
+		Gimbal_Cruise(&Gimbal_L,ONLY_PITCH);
+//		else
+//			time_cnt_l = time_cnt_l-1;
 
 	
 		//大Yaw轴(目前假设右云台活动范围为正，左云台活动范围为负)
-		if(ChassisYaw_Cnt > 0)
-		{
-//			ChassisYaw_Inc = -Chassis_Yaw_Speed/500.0f*arm_cos_f32((Chassis_Yaw_Speed/(35.0f*K_Chassis_Yaw))*(float)ChassisYaw_Cnt/1000.0f);//最大速度为70，最大范围为2*35
-			ChassisYaw_Cnt -- ;
-		}
-		else
+//		if(ChassisYaw_Cnt > 0)
+//		{
+////			ChassisYaw_Inc = -Chassis_Yaw_Speed/500.0f*arm_cos_f32((Chassis_Yaw_Speed/(35.0f*K_Chassis_Yaw))*(float)ChassisYaw_Cnt/1000.0f);//最大速度为70，最大范围为2*35
+//			ChassisYaw_Cnt -- ;
+//		}
+//		else
 			ChassisYaw_Inc = -0.12f;//80.0?
 	
 }
@@ -518,8 +535,7 @@ int32_t count = 0;
 uint8_t Fuzzy_Flag = 0;
 void Gimbal_PID_Cal(Gimbal_Typedef *Gimbal,uint8_t Feedback_Type,uint8_t Is_Debug)
 {
-		gimbal_motor_t *MotoPitch  = Gimbal->Pitch;
-		gimbal_motor_t *MotoYaw = Gimbal->Yaw;	
+	
 
 //		float fsendpitch,fsendyaw;//电流PID输出，这里需要设置一个中间变量，直接将结果赋值给I_set容易出现越界，
 //		float yaw_speed,pitch_speed;
@@ -581,11 +597,33 @@ void Gimbal_PID_Cal(Gimbal_Typedef *Gimbal,uint8_t Feedback_Type,uint8_t Is_Debu
 //		MotoPitch->I_Set = (1-K_pitch)*MotoPitch->I_Set + K_pitch*fsendpitch;
 //		MotoYaw->I_Set = (1-K_yaw)*MotoYaw->I_Set + K_yaw*fsendyaw;
 
+
+		gimbal_motor_t *MotoPitch  = Gimbal->Pitch;
+		gimbal_motor_t *MotoYaw = Gimbal->Yaw;
 		float fsend; 
 		int Last_Pitch_I,Last_Yaw_I;
+		float td_pitch,td_yaw;
+		
+		MotoPitch->TargetPos = LIMIT_MAX_MIN(MotoPitch->TargetPos, MotoPitch->MAX_ANGLE, MotoPitch->MIN_ANGLE);
+		td_pitch = TD_Calculate(&MotoPitch->TD,MotoPitch->TargetPos);
+		MotoYaw->TargetPos = LIMIT_MAX_MIN(MotoYaw->TargetPos, MotoYaw->MAX_ANGLE, MotoYaw->MIN_ANGLE);
+		td_yaw = TD_Calculate(&MotoYaw->TD,MotoYaw->TargetPos);
+		
+		if(Gimbal->Mode_Update_cnt)//切换模式的时候需要进行延时，否则使用跟踪微分的时候在切模式瞬间可能会抖
+		{
+			Gimbal->Mode_Update_cnt--;
+			MotoPitch->PidPos.SetPoint = MotoPitch->actualAngle;
+			MotoYaw->PidPos.SetPoint = MotoYaw->actualAngle;
+		}
+		else
+		{
+			MotoPitch->PidPos.SetPoint = td_pitch;
+			MotoYaw->PidPos.SetPoint = td_yaw;
+			Gimbal->Mode_Update_cnt = 0;
+		}
 		
 		Last_Pitch_I = MotoPitch->I_Set;
-    MotoPitch->PidPos.SetPoint = LIMIT_MAX_MIN(MotoPitch->PidPos.SetPoint, MotoPitch->MAX_ANGLE, MotoPitch->MIN_ANGLE);
+		
     MotoPitch->PidSpeed.SetPoint = PID_Calc(&MotoPitch->PidPos, MotoPitch->actualAngle, 0) ;
 		fsend = PID_Calc(&MotoPitch->PidSpeed, MotoPitch->Gyro_Speed, 0);
 		MotoPitch->I_Set = LIMIT_MAX_MIN(fsend, LimitPitch, -LimitPitch);
@@ -595,12 +633,12 @@ void Gimbal_PID_Cal(Gimbal_Typedef *Gimbal,uint8_t Feedback_Type,uint8_t Is_Debu
 		
 		
 		Last_Yaw_I = MotoYaw->I_Set;
-    MotoYaw->PidPos.SetPoint = LIMIT_MAX_MIN(MotoYaw->PidPos.SetPoint, MotoYaw->MAX_ANGLE, MotoYaw->MIN_ANGLE);
     MotoYaw->PidSpeed.SetPoint = PID_Calc(&MotoYaw->PidPos, MotoYaw->actualAngle, 0);
 		fsend = PID_Calc(&MotoYaw->PidSpeed, MotoYaw->Gyro_Speed, 0);
 		MotoYaw->I_Set = LIMIT_MAX_MIN(fsend, LimitYaw, -LimitYaw);
-		MotoYaw->I_Set = (1-MotoYaw->K_LP)*MotoYaw->I_Set + MotoYaw->K_LP*Last_Yaw_I;
+//		MotoYaw->I_Set = (1-MotoYaw->K_LP)*MotoYaw->I_Set + MotoYaw->K_LP*Last_Yaw_I;
 }
+
 
 
 /**
@@ -617,6 +655,8 @@ void Gimbal_Init()
 		Gimbal_L.LastMode = Gimbal_L_SLEEP;
 		Gimbal_L.Pitch = &MotoPitch_L;
 		Gimbal_L.Yaw = &MotoYaw_L;	
+	  TD_Init(&Gimbal_L.Yaw->TD,20000,0.02);
+		TD_Init(&Gimbal_L.Pitch->TD,10000,0.015);	
 
 		//右云台
 		Gimbal_R.GimbalType = GIMBAL_RIGHT;
@@ -625,9 +665,28 @@ void Gimbal_Init()
 		Gimbal_R.LastMode = Gimbal_R_SLEEP;
 		Gimbal_R.Pitch = &MotoPitch;
 		Gimbal_R.Yaw = &MotoYaw;
+		TD_Init(&Gimbal_R.Yaw->TD,20000,0.02);
+		TD_Init(&Gimbal_R.Pitch->TD,10000,0.015);	
 
 }
 
+
+/**
+  * @brief  云台结构体控制清零
+  * @param  云台结构体
+  * @retval None
+  */
+void Gimbal_Clear(Gimbal_Typedef *Gimbal)
+{
+	//PID清零
+	PID_Clear(&Gimbal->Pitch->PidPos);
+	PID_Clear(&Gimbal->Pitch->PidSpeed);	
+	PID_Clear(&Gimbal->Yaw->PidPos);
+	PID_Clear(&Gimbal->Yaw->PidSpeed);	
+	
+	//TD清零
+//	TD_Clear(&Gimbal->Pitch->TD);
+}
 
 /**
   * @brief  云台限幅，主要用于陀螺仪角作为反馈时用电机角限幅，目前暂时不适用
@@ -721,14 +780,14 @@ void Gimbal_GYRO_Cal(void)
 void Gimbal_Limit_Init(void)
 {
 
-		//主云台  pitch 2222下-1620上   中：2030 
-		MotoPitch.MAX_ANGLE = +(2200.0f-1950)/8192.0f*360.0f; 
+		//主云台  pitch 2300下-1650上   中：2030 
+		MotoPitch.MAX_ANGLE = +(2300.0f-1950)/8192.0f*360.0f; 
 		MotoPitch.ZERO_POS = 0.0f;
-		MotoPitch.MIN_ANGLE =-(1950.0f-1680)/8192.0f*360.0f;
-		//面朝云台  左 633- 右2000   1100
-    MotoYaw.MAX_ANGLE = (2000.0f-1250)/8192.0f*360.0f;
+		MotoPitch.MIN_ANGLE =-(1950.0f-1650)/8192.0f*360.0f;
+		//面朝云台  左 622- 右2400   1100
+    MotoYaw.MAX_ANGLE = (2400.0f-1250)/8192.0f*360.0f;
     MotoYaw.ZERO_POS = 0.0f;
-    MotoYaw.MIN_ANGLE = -(1250.0f-640)/8192.0f*360.0f;
+    MotoYaw.MIN_ANGLE = -(1250.0f-630)/8192.0f*360.0f;
 		//巡逻的范围一般比限位的范围要窄，因为相机的广角足够宽
 		//2400     1980
     MotoPitch.PATROL_MAX_ANGLE =+(2200.0f-1950)/8192.0f*360.0f;;
@@ -740,14 +799,14 @@ void Gimbal_Limit_Init(void)
     MotoYaw.PATROL_ZERO_POS =  0;
     MotoYaw.PATROL_MIN_ANGLE =-(1250.0f-860)/8192.0f*360.0f;
 		
-		//左云台 5040  4500 中4762
-		MotoPitch_L.MAX_ANGLE = +(5040.0f-4762)/8192.0f*360.0f; 
+		//左云台 5100  4440 中4762
+		MotoPitch_L.MAX_ANGLE = +(5100.0f-4762)/8192.0f*360.0f; 
 		MotoPitch_L.ZERO_POS = 0.0f;
-		MotoPitch_L.MIN_ANGLE =-(4762.0f-4500)/8192.0f*360.0f;
-		//左 8240  6900   7780  4300 5500 630
+		MotoPitch_L.MIN_ANGLE =-(4762.0f-4440)/8192.0f*360.0f;
+		//左   4300 5500 630
 		MotoYaw_L.MAX_ANGLE = (5500.0f-4870)/8192.0f*360.0f;
     MotoYaw_L.ZERO_POS = 0.0f;
-    MotoYaw_L.MIN_ANGLE = -(4870.0f-4400)/8192.0f*360.0f;
+    MotoYaw_L.MIN_ANGLE = -(4870.0f-4300)/8192.0f*360.0f;
 		//巡逻的范围一般比限位的范围要窄，因为相机的广角足够宽
 		//1900
     MotoPitch_L.PATROL_MAX_ANGLE =+(5010.0f-4762)/8192.0f*360.0f;
@@ -769,22 +828,22 @@ void PID_Gimbal_Init(void)
 {
 /*陀螺仪反馈*/
 		//主云台
-    MotoPitch.PidPos.P = 16.0f;//100;//15.0f;//7.0;//7.3;//25.0f;
-    MotoPitch.PidPos.I = 0.2;//0.3;//0.0f;//0.22;//0.0f;
-    MotoPitch.PidPos.D = 20.0f;//1400;//0;//3;//3.0f;
-    MotoPitch.PidPos.IMax = 50.0f;
+    MotoPitch.PidPos.P = 22.0f;//100;//15.0f;//7.0;//7.3;//25.0f;
+    MotoPitch.PidPos.I = 0.12;//0.3;//0.0f;//0.22;//0.0f;
+    MotoPitch.PidPos.D = 30.0f;//1400;//0;//3;//3.0f;
+    MotoPitch.PidPos.IMax = 40.0f;
 		MotoPitch.PidPos.I_U = 2.0;
 		MotoPitch.PidPos.I_L = 0.4;
     MotoPitch.PidPos.RC_DF = 0.5;//没有很明显的滤波效果
-		MotoPitch.PidPos.OutMax = 125.0f;
+		MotoPitch.PidPos.OutMax = 100.0f;
 
-    MotoPitch.PidSpeed.P = 145;//28;//180;//260;//300;//130.0f;//160.0f;
-    MotoPitch.PidSpeed.I = 2.4;//0.5;//2;//1.4;//1.5;//1.6f;
-    MotoPitch.PidSpeed.D = 2400;//0;//4;//0.0f;                
-    MotoPitch.PidSpeed.IMax = 2000;  
+    MotoPitch.PidSpeed.P = 210;//28;//180;//260;//300;//130.0f;//160.0f;
+    MotoPitch.PidSpeed.I = 2.8;//0.5;//2;//1.4;//1.5;//1.6f;
+    MotoPitch.PidSpeed.D = 1000;//0;//4;//0.0f;                
+    MotoPitch.PidSpeed.IMax = 1400;  
 		MotoPitch.PidSpeed.I_U = 20;//28;
 		MotoPitch.PidSpeed.I_L = 6;//8;
-		MotoPitch.PidSpeed.RC_DF = 0.4;
+		MotoPitch.PidSpeed.RC_DF = 0.5;
 		MotoPitch.PidSpeed.OutMax = 28000;
 	
 		MotoPitch.K1 = 0.0f;//130.0f;
@@ -806,50 +865,43 @@ void PID_Gimbal_Init(void)
 		MotoPitch.PidSpeedF.Kd_stair = 0.0f;
 			
     //////////////////////////////////////////////////////////////
-    MotoYaw.PidPos.P = 16.0f;//18.0f;
-    MotoYaw.PidPos.I = 0.0f;
-    MotoYaw.PidPos.D = 0.0f;
-    MotoYaw.PidPos.IMax = 0.0f;
+    MotoYaw.PidPos.P = 20.0f;//18.0f;
+    MotoYaw.PidPos.I = 0.12f;
+    MotoYaw.PidPos.D = 30.0f;
+    MotoYaw.PidPos.IMax = 40.0f;
     MotoYaw.PidPos.RC_DF = 0.5;//没有很明显的滤波效果
-		MotoYaw.PidPos.OutMax = 200.0f;
+		MotoYaw.PidPos.OutMax = 150.0f;
 
-    MotoYaw.PidSpeed.P = 200.0f;//230.0f;
-    MotoYaw.PidSpeed.I = 1.7f;//2.1f;
-    MotoYaw.PidSpeed.D = 0.0f;    
+    MotoYaw.PidSpeed.P = 180.0f;//230.0f;
+    MotoYaw.PidSpeed.I = 1.5f;//2.1f;
+    MotoYaw.PidSpeed.D = 800.0f;    
     MotoYaw.PidSpeed.IMax = 900.0f;
 		MotoYaw.PidSpeed.I_U = 28;
 		MotoYaw.PidSpeed.I_L = 7;
+		MotoYaw.PidSpeed.RC_DF = 0.5;
 		MotoYaw.PidSpeed.OutMax = 28000;
-		
-	  MotoYaw.K1 = 0.0f;
+
+
+		MotoYaw.K1 = 0.0f;
 		MotoYaw.K2 = 0.0f;
 				
 		//左云台
 		//左云台
-    MotoPitch_L.PidPos.P = 14.0f;//7.1f;//20.0f;
-    MotoPitch_L.PidPos.I = 0.22;//0.32f;
-    MotoPitch_L.PidPos.D = 10;//6.0f;
-    MotoPitch_L.PidPos.IMax = 60;//90.0f;
+    MotoPitch_L.PidPos.P = 22.0f;//7.1f;//20.0f;
+    MotoPitch_L.PidPos.I = 0.14;//0.32f;
+    MotoPitch_L.PidPos.D = 20;//6.0f;
+    MotoPitch_L.PidPos.IMax = 50;//90.0f;
     MotoPitch_L.PidPos.RC_DF = 0.5;//没有很明显的滤波效果
-		MotoPitch_L.PidPos.OutMax = 125.0f;
+		MotoPitch_L.PidPos.OutMax = 170.0f;
 
-    MotoPitch_L.PidSpeed.P = 145;//220.0f;//150.0f;
-    MotoPitch_L.PidSpeed.I = 3.2;//1.45f;
-    MotoPitch_L.PidSpeed.D = 0;//1600;//4.0f;                
-    MotoPitch_L.PidSpeed.IMax = 2000.0f;
+    MotoPitch_L.PidSpeed.P = 190;//220.0f;//150.0f;
+    MotoPitch_L.PidSpeed.I = 5.2;//1.45f;
+    MotoPitch_L.PidSpeed.D = 1200;//1600;//4.0f;                
+    MotoPitch_L.PidSpeed.IMax = 1300.0f;
 		MotoPitch_L.PidSpeed.I_U = 20;//28;
 		MotoPitch_L.PidSpeed.I_L = 6;//8;
-		MotoPitch_L.PidSpeed.OutMax = 19000;
+		MotoPitch_L.PidSpeed.OutMax = 28000;
 		MotoPitch_L.PidSpeed.RC_DF = 0.5;
-		
-    MotoPitch_L.PidCurrent.P = 1.6;
-    MotoPitch_L.PidCurrent.I = 10.0;
-    MotoPitch_L.PidCurrent.D = 0;               
-    MotoPitch_L.PidCurrent.IMax = 900.0f;
-		MotoPitch_L.PidCurrent.I_U = 20;
-		MotoPitch_L.PidCurrent.I_L = 6;
-		MotoPitch_L.PidCurrent.OutMax = 28000;
-		MotoPitch_L.PidCurrent.RC_DF = 0.5;		
 
 		MotoPitch_L.K1 = 0.0f;
 		MotoPitch_L.K2 = 0.0f;
@@ -872,20 +924,21 @@ void PID_Gimbal_Init(void)
 		
 		
     //////////////////////////////////////////////////////////////
-    MotoYaw_L.PidPos.P = 15.0f;//18.0f;
-    MotoYaw_L.PidPos.I = 0.0f;
-    MotoYaw_L.PidPos.D = 0.0f;
-    MotoYaw_L.PidPos.IMax = 0.0f;
+    MotoYaw_L.PidPos.P = 23.0f;//18.0f;
+    MotoYaw_L.PidPos.I = 0.1f;
+    MotoYaw_L.PidPos.D = 15.0f;
+    MotoYaw_L.PidPos.IMax = 60.0f;
     MotoYaw_L.PidPos.RC_DF = 0.5;//没有很明显的滤波效果
 		MotoYaw_L.PidPos.OutMax = 200.0f;
 
-    MotoYaw_L.PidSpeed.P = 160.0f;//230.0f;
-    MotoYaw_L.PidSpeed.I = 1.5f;//2.1f;
-    MotoYaw_L.PidSpeed.D = 0.0f;    
+    MotoYaw_L.PidSpeed.P = 210.0f;//230.0f;
+    MotoYaw_L.PidSpeed.I = 1.3f;//2.1f;
+    MotoYaw_L.PidSpeed.D = 500.0f;    
     MotoYaw_L.PidSpeed.IMax = 900.0f;
 		MotoYaw_L.PidSpeed.I_U = 28;
 		MotoYaw_L.PidSpeed.I_L = 7;
 		MotoYaw_L.PidSpeed.OutMax = 28000;
+		MotoYaw_L.PidSpeed.RC_DF = 0.5;
 		
 	  MotoYaw_L.K1 = 0.0f;
 		MotoYaw_L.K2 = 0.0f;
