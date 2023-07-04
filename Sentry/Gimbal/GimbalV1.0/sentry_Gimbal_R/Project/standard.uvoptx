@@ -840,287 +840,32 @@
         <Ww>
           <count>8</count>
           <WinNumber>2</WinNumber>
-          <ItemText>Test_Pitch_Pos</ItemText>
+          <ItemText>pc_recv_data,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>9</count>
           <WinNumber>2</WinNumber>
-          <ItemText>Test_Yaw_Pos</ItemText>
+          <ItemText>pc_send_data,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>10</count>
           <WinNumber>2</WinNumber>
-          <ItemText>debug_pitch,0x0A</ItemText>
+          <ItemText>Gimbal_R.armor_state</ItemText>
         </Ww>
         <Ww>
           <count>11</count>
           <WinNumber>2</WinNumber>
-          <ItemText>debug_yaw,0x0A</ItemText>
+          <ItemText>armor_flag</ItemText>
         </Ww>
         <Ww>
           <count>12</count>
           <WinNumber>2</WinNumber>
-          <ItemText>MotoYaw.actualAngle</ItemText>
+          <ItemText>Gimbal_L.armor_state</ItemText>
         </Ww>
         <Ww>
           <count>13</count>
           <WinNumber>2</WinNumber>
-          <ItemText>MotoPitch.actualAngle</ItemText>
-        </Ww>
-        <Ww>
-          <count>14</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>MotoPitch.Gyro_Speed</ItemText>
-        </Ww>
-        <Ww>
-          <count>15</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>MotoYaw.Gyro_Speed</ItemText>
-        </Ww>
-        <Ww>
-          <count>16</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>speed_debug,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>17</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>test_pitch_speed</ItemText>
-        </Ww>
-        <Ww>
-          <count>18</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>test_yaw_speed</ItemText>
-        </Ww>
-        <Ww>
-          <count>19</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>A_Speed_Pitch</ItemText>
-        </Ww>
-        <Ww>
-          <count>20</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>count,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>21</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>\\sentry_Gimbal_Up\../tasks/task_GimbalR.c\MotoPitch,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>22</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>aim_yaw</ItemText>
-        </Ww>
-        <Ww>
-          <count>23</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>aim_pitch</ItemText>
-        </Ww>
-        <Ww>
-          <count>24</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>Gimbal_L,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>25</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>aim_pitch_l</ItemText>
-        </Ww>
-        <Ww>
-          <count>26</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>aim_yaw_l</ItemText>
-        </Ww>
-        <Ww>
-          <count>27</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>aim_yaw</ItemText>
-        </Ww>
-        <Ww>
-          <count>28</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>aim_pitch</ItemText>
-        </Ww>
-        <Ww>
-          <count>29</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>Fuzzy_Flag,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>30</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>FrictionMotor,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>31</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>BodanMotor</ItemText>
-        </Ww>
-        <Ww>
-          <count>32</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>Heat_ShootAbleFlag</ItemText>
-        </Ww>
-        <Ww>
-          <count>33</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>delayTick_oneShot,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>34</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>Gimbal_R.armor_state</ItemText>
-        </Ww>
-        <Ww>
-          <count>35</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>Gimbal_R</ItemText>
-        </Ww>
-        <Ww>
-          <count>36</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>PC_Receive</ItemText>
-        </Ww>
-        <Ww>
-          <count>37</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>armor_flag</ItemText>
-        </Ww>
-        <Ww>
-          <count>38</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>ChassisYaw_Inc</ItemText>
-        </Ww>
-        <Ww>
-          <count>39</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>MotoYaw_L.PCsetAngle</ItemText>
-        </Ww>
-        <Ww>
-          <count>40</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>MotoYaw.PCsetAngle</ItemText>
-        </Ww>
-        <Ww>
-          <count>41</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>delayTick_oneShot,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>42</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>K_LP</ItemText>
-        </Ww>
-        <Ww>
-          <count>43</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>K_LP</ItemText>
-        </Ww>
-        <Ww>
-          <count>44</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>target_id,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>45</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>PCReceivebuffer</ItemText>
-        </Ww>
-        <Ww>
-          <count>46</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>target_id_l</ItemText>
-        </Ww>
-        <Ww>
-          <count>47</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>K_pitch</ItemText>
-        </Ww>
-        <Ww>
-          <count>48</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>\\sentry_Gimbal_Up\../tasks/task_GimbalR.c\MotoPitch.PidPos.SetPoint</ItemText>
-        </Ww>
-        <Ww>
-          <count>49</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>K_pitch</ItemText>
-        </Ww>
-        <Ww>
-          <count>50</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>K_yaw</ItemText>
-        </Ww>
-        <Ww>
-          <count>51</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>Heat_ShootAbleFlag</ItemText>
-        </Ww>
-        <Ww>
-          <count>52</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>MotoPitch.Gyro_Speed</ItemText>
-        </Ww>
-        <Ww>
-          <count>53</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>PCbuffer</ItemText>
-        </Ww>
-        <Ww>
-          <count>54</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>PC_SENDBUF_SIZE</ItemText>
-        </Ww>
-        <Ww>
-          <count>55</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>SendToPC_Buff</ItemText>
-        </Ww>
-        <Ww>
-          <count>56</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>Attack_color</ItemText>
-        </Ww>
-        <Ww>
-          <count>57</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>inc_pitch</ItemText>
-        </Ww>
-        <Ww>
-          <count>58</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>inc_yaw</ItemText>
-        </Ww>
-        <Ww>
-          <count>59</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>K_AIM_pitch</ItemText>
-        </Ww>
-        <Ww>
-          <count>60</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>K_AIM_yaw</ItemText>
-        </Ww>
-        <Ww>
-          <count>61</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>time_cnt_l,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>62</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>Gyro_Left</ItemText>
-        </Ww>
-        <Ww>
-          <count>63</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>Gyro_Right</ItemText>
-        </Ww>
-        <Ww>
-          <count>64</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>\\sentry_Gimbal_Up\../tasks/task_GimbalR.c\MotoPitch.gyroAngle</ItemText>
+          <ItemText>CV_Shoot_ABLE</ItemText>
         </Ww>
       </WatchWindow2>
       <MemoryWindow1>
@@ -1881,6 +1626,18 @@
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
+    <File>
+      <GroupNumber>8</GroupNumber>
+      <FileNumber>54</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\hardware\uart5.c</PathWithFileName>
+      <FilenameWithoutPath>uart5.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
   </Group>
 
   <Group>
@@ -1891,7 +1648,7 @@
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>9</GroupNumber>
-      <FileNumber>54</FileNumber>
+      <FileNumber>55</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1903,7 +1660,7 @@
     </File>
     <File>
       <GroupNumber>9</GroupNumber>
-      <FileNumber>55</FileNumber>
+      <FileNumber>56</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1915,7 +1672,7 @@
     </File>
     <File>
       <GroupNumber>9</GroupNumber>
-      <FileNumber>56</FileNumber>
+      <FileNumber>57</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1927,7 +1684,7 @@
     </File>
     <File>
       <GroupNumber>9</GroupNumber>
-      <FileNumber>57</FileNumber>
+      <FileNumber>58</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1939,7 +1696,7 @@
     </File>
     <File>
       <GroupNumber>9</GroupNumber>
-      <FileNumber>58</FileNumber>
+      <FileNumber>59</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1951,7 +1708,7 @@
     </File>
     <File>
       <GroupNumber>9</GroupNumber>
-      <FileNumber>59</FileNumber>
+      <FileNumber>60</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1963,7 +1720,7 @@
     </File>
     <File>
       <GroupNumber>9</GroupNumber>
-      <FileNumber>60</FileNumber>
+      <FileNumber>61</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>

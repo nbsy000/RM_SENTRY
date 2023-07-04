@@ -52,6 +52,7 @@ void UART5_Configuration(void)
 //    nvic.NVIC_IRQChannelPreemptionPriority = 1;
 //    nvic.NVIC_IRQChannelSubPriority = 1;
 //    nvic.NVIC_IRQChannelCmd = ENABLE;
+//		NVIC_Init(&nvic);
 
 		nvic.NVIC_IRQChannel = DMA1_Stream0_IRQn;
     nvic.NVIC_IRQChannelPreemptionPriority = 1;
@@ -83,6 +84,30 @@ void UART5_Configuration(void)
 			DMA_Cmd(DMA1_Stream0,ENABLE);
 		}	
 }
+
+/**
+  * @brief  ´®¿Ú2¿ÕÏÐÖÐ¶ÏÅäÖÃ
+  * @param  None
+  * @retval None
+  */
+void UART5_IRQHandler(void)
+{
+    if (USART_GetITStatus(UART5, USART_IT_IDLE) != RESET)
+    {
+        (void)UART5->SR; //clear the IDLE int
+        (void)UART5->DR;
+				
+			  DMA_Cmd(DMA1_Stream0, DISABLE);
+        DMA_ClearFlag(DMA1_Stream0, DMA_FLAG_TCIF0);
+        DMA_ClearITPendingBit(DMA1_Stream0, DMA_IT_TCIF0);
+
+        NAVReceive(NAV_Recv_Buf);
+
+        DMA_SetCurrDataCounter(DMA1_Stream0, 20);
+        DMA_Cmd(DMA1_Stream0, ENABLE);
+    }
+}
+
 
 /**********************************************************************************************************
 *º¯ Êý Ãû: DMA1_Stream0_IRQHandler

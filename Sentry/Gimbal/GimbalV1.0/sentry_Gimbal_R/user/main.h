@@ -76,6 +76,7 @@ typedef double fp64;
 #include "counter.h"
 #include "debug.h"
 #include "user_lib.h"
+#include "uart5.h"
 
 //Algorithm
 #include "algo_PID.h"

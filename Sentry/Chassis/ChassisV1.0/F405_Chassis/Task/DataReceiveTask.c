@@ -298,9 +298,9 @@ void Can2Receive0(CanRxMsg rx_message)
 				break;
 		case NAV_DATA_ID:
 				memcpy(&PCReceive,&rx_message.Data[0], 7);
-				chassis.NAV_vx = LIMIT_MAX_MIN(PCReceive.now_x,500,-500);//mm/s
-				chassis.NAV_vy = LIMIT_MAX_MIN(PCReceive.now_y,500,-500);
-				chassis.NAV_vw = LIMIT_MAX_MIN((PCReceive.now_w/1000.0f)*180.0f/PI,50,-50);
+				chassis.NAV_vx = LIMIT_MAX_MIN(PCReceive.now_x,3500,-3500);//mm/s
+				chassis.NAV_vy = LIMIT_MAX_MIN(PCReceive.now_y,3500,-3500);
+				chassis.NAV_vw = LIMIT_MAX_MIN((PCReceive.now_w/1000.0f)*180.0f/PI,70,-70);
 				break;
 		case GIMBAL_SYNE_ID:
 				Motor_9025.aim_flag = rx_message.Data[0];

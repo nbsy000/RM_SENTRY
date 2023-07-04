@@ -115,7 +115,7 @@ static void update_state_with_RCdata(void)
                                  Shoot_R_SLEEP,
                                  Shoot_L_SLEEP,
                                  Chassis_SLEEP,
-																 ChassisYaw_PC);
+																 ChassisYaw_SLEEP);
             break;
         case 3: //底盘检录模式，底盘运动
             sentry_state_reflect(Gimbal_R_RC,

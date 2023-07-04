@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\HUST RM.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\HUST RM.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sat Jul 01 23:20:43 2023
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Tue Jul 04 19:03:49 2023
 <BR><P>
 <H3>Maximum Stack Usage =        376 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -393,23 +393,24 @@ Global Symbols
 <P><STRONG><a name="[a]"></a>WWDG_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_stm32f40_41xxx.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40_41xxx.o(RESET)
 </UL>
-<P><STRONG><a name="[ee]"></a>rand</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, rand.o(.text))
+<P><STRONG><a name="[c5]"></a>rand</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, rand.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Patrol_Act
+<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_Patrol_Act2
 </UL>
 
 <P><STRONG><a name="[14d]"></a>srand</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, rand.o(.text), UNUSED)
 
-<P><STRONG><a name="[e4]"></a>__aeabi_memcpy</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, memcpya.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;JudgeBuffReceive
+<P><STRONG><a name="[e5]"></a>__aeabi_memcpy</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, memcpya.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;JudgeBuffReceive
 <LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_WriteNoCheck
 <LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_WriteBlocking
 </UL>
 
-<P><STRONG><a name="[db]"></a>__aeabi_memcpy4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text))
+<P><STRONG><a name="[dc]"></a>__aeabi_memcpy4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_QuaternionEKF_xhatUpdate
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_QuaternionEKF_Observe
-<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_QuaternionEKF_Init
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VOFA_Send
+<LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_QuaternionEKF_Init
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VOFA_Send
 </UL>
 
 <P><STRONG><a name="[14e]"></a>__aeabi_memcpy8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text), UNUSED)
@@ -427,13 +428,13 @@ Global Symbols
 <P><STRONG><a name="[71]"></a>__aeabi_memclr</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, memseta.o(.text))
 <BR><BR>[Calls]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kalman_Filter_Init
+<BR>[Called By]<UL><LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kalman_Filter_Init
 </UL>
 
 <P><STRONG><a name="[88]"></a>__aeabi_memclr4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_QuaternionEKF_SetH
 <LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;arm_mat_inverse_f32
-<LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kalman_Filter_Init
+<LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kalman_Filter_Init
 <LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DoInit
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_task
 </UL>
@@ -462,7 +463,7 @@ Global Symbols
 <LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_round
 <LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_epilogue
 </UL>
-<BR>[Called By]<UL><LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LowPass_SetChassis
+<BR>[Called By]<UL><LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LowPass_SetChassis
 <LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ChassisYaw_RC_Act
 <LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ChassisYaw_DEBUG_Act
 <LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
@@ -482,10 +483,10 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_epilogue
 </UL>
-<BR>[Called By]<UL><LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LowPass_SetChassis
+<BR>[Called By]<UL><LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LowPass_SetChassis
 <LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ChassisYaw_RC_Act
 <LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ChassisYaw_DEBUG_Act
-<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_RC_Act
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_RC_Act
 </UL>
 
 <P><STRONG><a name="[7c]"></a>__aeabi_ddiv</STRONG> (Thumb, 222 bytes, Stack size 32 bytes, ddiv.o(.text))
@@ -493,7 +494,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_round
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PowerLimit
+<BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PowerLimit
 </UL>
 
 <P><STRONG><a name="[7d]"></a>__aeabi_l2f</STRONG> (Thumb, 44 bytes, Stack size 16 bytes, ffltl.o(.text))
@@ -501,8 +502,9 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_float_epilogue
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_RC_Act
-<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_Protect_Act
+<BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_RC_Act
+<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_Protect_Act
+<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_Patrol_Act2
 </UL>
 
 <P><STRONG><a name="[7f]"></a>__aeabi_i2d</STRONG> (Thumb, 34 bytes, Stack size 16 bytes, dflti.o(.text))
@@ -512,7 +514,7 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ChassisYaw_RC_Act
 <LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ChassisYaw_DEBUG_Act
-<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_RC_Act
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_RC_Act
 </UL>
 
 <P><STRONG><a name="[80]"></a>__aeabi_f2lz</STRONG> (Thumb, 66 bytes, Stack size 8 bytes, ffixl.o(.text))
@@ -528,15 +530,15 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsr
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_RC_Act
+<BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_RC_Act
 </UL>
 
 <P><STRONG><a name="[b5]"></a>__aeabi_f2d</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, f2d.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chassisNavigate
-<LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LowPass_SetChassis
+<BR><BR>[Called By]<UL><LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chassisNavigate
+<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LowPass_SetChassis
 <LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ChassisYaw_RC_Act
 <LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ChassisYaw_DEBUG_Act
-<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PowerLimit
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PowerLimit
 </UL>
 
 <P><STRONG><a name="[83]"></a>__aeabi_d2f</STRONG> (Thumb, 56 bytes, Stack size 8 bytes, d2f.o(.text))
@@ -544,11 +546,11 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_float_round
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chassisNavigate
-<LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LowPass_SetChassis
+<BR>[Called By]<UL><LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chassisNavigate
+<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LowPass_SetChassis
 <LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ChassisYaw_RC_Act
 <LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ChassisYaw_DEBUG_Act
-<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PowerLimit
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PowerLimit
 </UL>
 
 <P><STRONG><a name="[152]"></a>__aeabi_uidiv</STRONG> (Thumb, 0 bytes, Stack size 12 bytes, uidiv.o(.text), UNUSED)
@@ -634,14 +636,14 @@ Global Symbols
 <P><STRONG><a name="[159]"></a>__decompress1</STRONG> (Thumb, 86 bytes, Stack size unknown bytes, __dczerorl2.o(.text), UNUSED)
 
 <P><STRONG><a name="[c3]"></a>arm_cos_f32</STRONG> (Thumb, 152 bytes, Stack size 0 bytes, arm_cos_f32.o(.text.arm_cos_f32))
-<BR><BR>[Called By]<UL><LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chassisNavigate
-<LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Position_Control
-<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Patrol_Safe_Act
+<BR><BR>[Called By]<UL><LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chassisNavigate
+<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Position_Control
 <LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Patrol_Act
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Outpost_Act
 <LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NAV_PATH_Act
-<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_RC_Act
-<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_Protect_Act
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_RC_Act
+<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_Protect_Act
+<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_Patrol_Act2
 </UL>
 
 <P><STRONG><a name="[87]"></a>arm_mat_inverse_f32</STRONG> (Thumb, 756 bytes, Stack size 104 bytes, arm_mat_inverse_f32.o(.text.arm_mat_inverse_f32))
@@ -652,21 +654,21 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_QuaternionEKF_xhatUpdate
 </UL>
 
-<P><STRONG><a name="[dc]"></a>arm_mat_trans_f32</STRONG> (Thumb, 162 bytes, Stack size 36 bytes, arm_mat_trans_f32.o(.text.arm_mat_trans_f32))
+<P><STRONG><a name="[dd]"></a>arm_mat_trans_f32</STRONG> (Thumb, 162 bytes, Stack size 36 bytes, arm_mat_trans_f32.o(.text.arm_mat_trans_f32))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = arm_mat_trans_f32
 </UL>
 <BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_QuaternionEKF_xhatUpdate
 </UL>
 
 <P><STRONG><a name="[c4]"></a>arm_sin_f32</STRONG> (Thumb, 144 bytes, Stack size 0 bytes, arm_sin_f32.o(.text.arm_sin_f32))
-<BR><BR>[Called By]<UL><LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chassisNavigate
-<LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Position_Control
-<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Patrol_Safe_Act
+<BR><BR>[Called By]<UL><LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chassisNavigate
+<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Position_Control
 <LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Patrol_Act
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Outpost_Act
 <LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NAV_PATH_Act
-<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_RC_Act
-<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_Protect_Act
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_RC_Act
+<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_Protect_Act
+<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_Patrol_Act2
 </UL>
 
 <P><STRONG><a name="[89]"></a>BSP_Init</STRONG> (Thumb, 42 bytes, Stack size 8 bytes, main.o(i.BSP_Init))
@@ -690,7 +692,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN_Transmit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;JudgeBuffReceive
+<BR>[Called By]<UL><LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;JudgeBuffReceive
 </UL>
 
 <P><STRONG><a name="[4]"></a>BusFault_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_it.o(i.BusFault_Handler))
@@ -854,7 +856,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = CAN_Transmit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ChassisMotorSend
-<LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ShootingHeat_CAN2Send
+<LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ShootingHeat_CAN2Send
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BulletSpeed_CAN2Send
 <LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Yaw_I_Control
 </UL>
@@ -934,7 +936,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Robot_Init
 </UL>
 
-<P><STRONG><a name="[b8]"></a>ChassisYaw_PC_Act</STRONG> (Thumb, 204 bytes, Stack size 8 bytes, chassisyawtask.o(i.ChassisYaw_PC_Act))
+<P><STRONG><a name="[b8]"></a>ChassisYaw_PC_Act</STRONG> (Thumb, 212 bytes, Stack size 8 bytes, chassisyawtask.o(i.ChassisYaw_PC_Act))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = ChassisYaw_PC_Act
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_Calc
@@ -980,29 +982,42 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> starttask.o(i.start_task)
 </UL>
-<P><STRONG><a name="[bd]"></a>Chassis_Patrol_Act</STRONG> (Thumb, 502 bytes, Stack size 8 bytes, chassistask.o(i.Chassis_Patrol_Act))
+<P><STRONG><a name="[bd]"></a>Chassis_Patrol_Act</STRONG> (Thumb, 510 bytes, Stack size 8 bytes, chassistask.o(i.Chassis_Patrol_Act))
 <BR><BR>[Stack]<UL><LI>Max Depth = 216<LI>Call Chain = Chassis_Patrol_Act &rArr; NAV_PATH_Act &rArr; chassisNavigate &rArr; __hardfp_sqrt &rArr; _dsqrt &rArr; _double_round
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Patrol_Safe_Act
-<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Patrol_Act
+<BR>[Calls]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Patrol_Act
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Outpost_Act
 <LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NAV_PATH_Act
+<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_SLEEP_Act
+<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_Patrol_Act2
 </UL>
 <BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_task
 </UL>
 
-<P><STRONG><a name="[c2]"></a>Chassis_Protect_Act</STRONG> (Thumb, 862 bytes, Stack size 24 bytes, chassistask.o(i.Chassis_Protect_Act))
+<P><STRONG><a name="[c0]"></a>Chassis_Patrol_Act2</STRONG> (Thumb, 798 bytes, Stack size 24 bytes, chassistask.o(i.Chassis_Patrol_Act2))
+<BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = Chassis_Patrol_Act2 &rArr; Pid_SpeedCurrent &rArr; LowPass_SetChassis &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
+</UL>
+<BR>[Calls]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;arm_sin_f32
+<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;arm_cos_f32
+<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_l2f
+<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pid_SpeedCurrent
+<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rand
+</UL>
+<BR>[Called By]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_Patrol_Act
+</UL>
+
+<P><STRONG><a name="[c7]"></a>Chassis_Protect_Act</STRONG> (Thumb, 1340 bytes, Stack size 24 bytes, chassistask.o(i.Chassis_Protect_Act))
 <BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = Chassis_Protect_Act &rArr; Pid_SpeedCurrent &rArr; LowPass_SetChassis &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;arm_sin_f32
 <LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;arm_cos_f32
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_l2f
-<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pid_SpeedCurrent
+<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pid_SpeedCurrent
 </UL>
 <BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_task
 </UL>
 
-<P><STRONG><a name="[c6]"></a>Chassis_RC_Act</STRONG> (Thumb, 890 bytes, Stack size 48 bytes, chassistask.o(i.Chassis_RC_Act))
+<P><STRONG><a name="[c8]"></a>Chassis_RC_Act</STRONG> (Thumb, 890 bytes, Stack size 48 bytes, chassistask.o(i.Chassis_RC_Act))
 <BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = Chassis_RC_Act &rArr; Pid_SpeedCurrent &rArr; LowPass_SetChassis &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;arm_sin_f32
@@ -1011,42 +1026,43 @@ Global Symbols
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_l2f
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
-<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pid_SpeedCurrent
+<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pid_SpeedCurrent
 </UL>
 <BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_task
 </UL>
 
-<P><STRONG><a name="[c8]"></a>Chassis_SLEEP_Act</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, chassistask.o(i.Chassis_SLEEP_Act))
+<P><STRONG><a name="[c2]"></a>Chassis_SLEEP_Act</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, chassistask.o(i.Chassis_SLEEP_Act))
 <BR><BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_task
+<LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_Patrol_Act
 </UL>
 
 <P><STRONG><a name="[b2]"></a>Chassis_Yaw_Receive</STRONG> (Thumb, 58 bytes, Stack size 0 bytes, rmd_l_control.o(i.Chassis_Yaw_Receive))
 <BR><BR>[Called By]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Can1Receive1
 </UL>
 
-<P><STRONG><a name="[68]"></a>Chassis_task</STRONG> (Thumb, 170 bytes, Stack size 8 bytes, chassistask.o(i.Chassis_task))
+<P><STRONG><a name="[68]"></a>Chassis_task</STRONG> (Thumb, 164 bytes, Stack size 8 bytes, chassistask.o(i.Chassis_task))
 <BR><BR>[Stack]<UL><LI>Max Depth = 224<LI>Call Chain = Chassis_task &rArr; Chassis_Patrol_Act &rArr; NAV_PATH_Act &rArr; chassisNavigate &rArr; __hardfp_sqrt &rArr; _dsqrt &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uxTaskGetStackHighWaterMark
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IWDG_Feed
+<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IWDG_Feed
 <LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ChassisMotorSend
-<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskGetTickCount
-<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelayUntil
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VOFA_Send
-<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PowerLimit
-<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_SLEEP_Act
-<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_RC_Act
-<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_Protect_Act
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskGetTickCount
+<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelayUntil
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VOFA_Send
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PowerLimit
+<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_SLEEP_Act
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_RC_Act
+<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_Protect_Act
 <LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_Patrol_Act
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> starttask.o(i.start_task)
 </UL>
-<P><STRONG><a name="[cd]"></a>Current_Filter_Excu</STRONG> (Thumb, 54 bytes, Stack size 8 bytes, chassistask.o(i.Current_Filter_Excu))
+<P><STRONG><a name="[ce]"></a>Current_Filter_Excu</STRONG> (Thumb, 54 bytes, Stack size 8 bytes, chassistask.o(i.Current_Filter_Excu))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = Current_Filter_Excu &rArr; Fir
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Fir
+<BR>[Calls]<UL><LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Fir
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PowerLimit
+<BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PowerLimit
 </UL>
 
 <P><STRONG><a name="[a8]"></a>DBGMCU_Config</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f4xx_dbgmcu.o(i.DBGMCU_Config))
@@ -1056,45 +1072,45 @@ Global Symbols
 <P><STRONG><a name="[17]"></a>DMA1_Stream2_IRQHandler</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, uart4.o(i.DMA1_Stream2_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = DMA1_Stream2_IRQHandler &rArr; DMA_GetITStatus
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_ClearITPendingBit
-<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_GetITStatus
+<BR>[Calls]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_ClearITPendingBit
+<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_GetITStatus
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40_41xxx.o(RESET)
 </UL>
 <P><STRONG><a name="[19]"></a>DMA1_Stream4_IRQHandler</STRONG> (Thumb, 38 bytes, Stack size 8 bytes, uart4.o(i.DMA1_Stream4_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = DMA1_Stream4_IRQHandler &rArr; DMA_GetITStatus
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Cmd
-<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_ClearITPendingBit
-<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_ClearFlag
-<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_GetITStatus
+<BR>[Calls]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Cmd
+<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_ClearITPendingBit
+<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_ClearFlag
+<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_GetITStatus
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40_41xxx.o(RESET)
 </UL>
 <P><STRONG><a name="[1b]"></a>DMA1_Stream6_IRQHandler</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, usart2.o(i.DMA1_Stream6_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = DMA1_Stream6_IRQHandler &rArr; DMA_GetITStatus
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Cmd
-<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_ClearITPendingBit
-<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_GetITStatus
+<BR>[Calls]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Cmd
+<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_ClearITPendingBit
+<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_GetITStatus
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40_41xxx.o(RESET)
 </UL>
-<P><STRONG><a name="[d1]"></a>DMA_ClearFlag</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, stm32f4xx_dma.o(i.DMA_ClearFlag))
+<P><STRONG><a name="[d2]"></a>DMA_ClearFlag</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, stm32f4xx_dma.o(i.DMA_ClearFlag))
 <BR><BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VOFA_USART_Configuration
 <LI><a href="#[19]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA1_Stream4_IRQHandler
 </UL>
 
-<P><STRONG><a name="[d0]"></a>DMA_ClearITPendingBit</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, stm32f4xx_dma.o(i.DMA_ClearITPendingBit))
+<P><STRONG><a name="[d1]"></a>DMA_ClearITPendingBit</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, stm32f4xx_dma.o(i.DMA_ClearITPendingBit))
 <BR><BR>[Called By]<UL><LI><a href="#[1b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA1_Stream6_IRQHandler
 <LI><a href="#[19]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA1_Stream4_IRQHandler
 <LI><a href="#[17]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA1_Stream2_IRQHandler
 </UL>
 
-<P><STRONG><a name="[d2]"></a>DMA_Cmd</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, stm32f4xx_dma.o(i.DMA_Cmd))
+<P><STRONG><a name="[d3]"></a>DMA_Cmd</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, stm32f4xx_dma.o(i.DMA_Cmd))
 <BR><BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VOFA_USART_Configuration
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART4_Configuration
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VOFA_Send
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VOFA_Send
 <LI><a href="#[1b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA1_Stream6_IRQHandler
 <LI><a href="#[19]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA1_Stream4_IRQHandler
 </UL>
@@ -1104,7 +1120,7 @@ Global Symbols
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART4_Configuration
 </UL>
 
-<P><STRONG><a name="[cf]"></a>DMA_GetITStatus</STRONG> (Thumb, 82 bytes, Stack size 16 bytes, stm32f4xx_dma.o(i.DMA_GetITStatus))
+<P><STRONG><a name="[d0]"></a>DMA_GetITStatus</STRONG> (Thumb, 82 bytes, Stack size 16 bytes, stm32f4xx_dma.o(i.DMA_GetITStatus))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = DMA_GetITStatus
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA1_Stream6_IRQHandler
@@ -1129,10 +1145,10 @@ Global Symbols
 <P><STRONG><a name="[7]"></a>DebugMon_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f4xx_it.o(i.DebugMon_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40_41xxx.o(RESET)
 </UL>
-<P><STRONG><a name="[ce]"></a>Fir</STRONG> (Thumb, 176 bytes, Stack size 12 bytes, fir.o(i.Fir))
+<P><STRONG><a name="[cf]"></a>Fir</STRONG> (Thumb, 176 bytes, Stack size 12 bytes, fir.o(i.Fir))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = Fir
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Current_Filter_Excu
+<BR>[Called By]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Current_Filter_Excu
 </UL>
 
 <P><STRONG><a name="[b1]"></a>Frame_Acceptance_Rate</STRONG> (Thumb, 200 bytes, Stack size 0 bytes, datareceivetask.o(i.Frame_Acceptance_Rate))
@@ -1165,38 +1181,38 @@ Global Symbols
 <P><STRONG><a name="[10c]"></a>Get_CRC16_Check_Sum</STRONG> (Thumb, 46 bytes, Stack size 12 bytes, algorithmofcrc.o(i.Get_CRC16_Check_Sum))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = Get_CRC16_Check_Sum
 </UL>
-<BR>[Called By]<UL><LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Verify_CRC16_Check_Sum
+<BR>[Called By]<UL><LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Verify_CRC16_Check_Sum
 </UL>
 
 <P><STRONG><a name="[10d]"></a>Get_CRC8_Check_Sum</STRONG> (Thumb, 30 bytes, Stack size 12 bytes, algorithmofcrc.o(i.Get_CRC8_Check_Sum))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = Get_CRC8_Check_Sum
 </UL>
-<BR>[Called By]<UL><LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Verify_CRC8_Check_Sum
+<BR>[Called By]<UL><LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Verify_CRC8_Check_Sum
 </UL>
 
 <P><STRONG><a name="[2]"></a>HardFault_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_it.o(i.HardFault_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40_41xxx.o(RESET)
 </UL>
-<P><STRONG><a name="[d4]"></a>HeatControl_0</STRONG> (Thumb, 156 bytes, Stack size 0 bytes, algo_heatcontrol.o(i.HeatControl_0))
-<BR><BR>[Called By]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HeatUpdate_0
+<P><STRONG><a name="[d5]"></a>HeatControl_0</STRONG> (Thumb, 156 bytes, Stack size 0 bytes, algo_heatcontrol.o(i.HeatControl_0))
+<BR><BR>[Called By]<UL><LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HeatUpdate_0
 </UL>
 
-<P><STRONG><a name="[d6]"></a>HeatControl_2</STRONG> (Thumb, 156 bytes, Stack size 0 bytes, algo_heatcontrol.o(i.HeatControl_2))
-<BR><BR>[Called By]<UL><LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HeatUpdate_2
+<P><STRONG><a name="[d7]"></a>HeatControl_2</STRONG> (Thumb, 156 bytes, Stack size 0 bytes, algo_heatcontrol.o(i.HeatControl_2))
+<BR><BR>[Called By]<UL><LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HeatUpdate_2
 </UL>
 
-<P><STRONG><a name="[d3]"></a>HeatUpdate_0</STRONG> (Thumb, 156 bytes, Stack size 4 bytes, algo_heatcontrol.o(i.HeatUpdate_0))
+<P><STRONG><a name="[d4]"></a>HeatUpdate_0</STRONG> (Thumb, 156 bytes, Stack size 4 bytes, algo_heatcontrol.o(i.HeatUpdate_0))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = HeatUpdate_0
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HeatControl_0
+<BR>[Calls]<UL><LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HeatControl_0
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;JudgeReceive_task
 </UL>
 
-<P><STRONG><a name="[d5]"></a>HeatUpdate_2</STRONG> (Thumb, 156 bytes, Stack size 4 bytes, algo_heatcontrol.o(i.HeatUpdate_2))
+<P><STRONG><a name="[d6]"></a>HeatUpdate_2</STRONG> (Thumb, 156 bytes, Stack size 4 bytes, algo_heatcontrol.o(i.HeatUpdate_2))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = HeatUpdate_2
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HeatControl_2
+<BR>[Calls]<UL><LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HeatControl_2
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;JudgeReceive_task
 </UL>
@@ -1205,45 +1221,45 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Robot_Init
 </UL>
 
-<P><STRONG><a name="[d8]"></a>IMU_QuaternionEKF_Init</STRONG> (Thumb, 264 bytes, Stack size 32 bytes, quaternionekf.o(i.IMU_QuaternionEKF_Init))
+<P><STRONG><a name="[d9]"></a>IMU_QuaternionEKF_Init</STRONG> (Thumb, 264 bytes, Stack size 32 bytes, quaternionekf.o(i.IMU_QuaternionEKF_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = IMU_QuaternionEKF_Init &rArr; Kalman_Filter_Init &rArr; malloc
 </UL>
-<BR>[Calls]<UL><LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;arm_mat_init_f32
-<LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kalman_Filter_Init
-<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
+<BR>[Calls]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;arm_mat_init_f32
+<LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kalman_Filter_Init
+<LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
 </UL>
-<BR>[Called By]<UL><LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;INS_Init
+<BR>[Called By]<UL><LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;INS_Init
 </UL>
 
-<P><STRONG><a name="[e1]"></a>INS_Init</STRONG> (Thumb, 94 bytes, Stack size 8 bytes, ins.o(i.INS_Init))
+<P><STRONG><a name="[e2]"></a>INS_Init</STRONG> (Thumb, 94 bytes, Stack size 8 bytes, ins.o(i.INS_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 92<LI>Call Chain = INS_Init &rArr; IMU_QuaternionEKF_Init &rArr; Kalman_Filter_Init &rArr; malloc
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_QuaternionEKF_Init
+<BR>[Calls]<UL><LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_QuaternionEKF_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Robot_Init
 </UL>
 
-<P><STRONG><a name="[ca]"></a>IWDG_Feed</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, iwdg.o(i.IWDG_Feed))
+<P><STRONG><a name="[cb]"></a>IWDG_Feed</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, iwdg.o(i.IWDG_Feed))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = IWDG_Feed
 </UL>
-<BR>[Calls]<UL><LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IWDG_ReloadCounter
+<BR>[Calls]<UL><LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IWDG_ReloadCounter
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Offline_Check_task
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_task
 </UL>
 
-<P><STRONG><a name="[e2]"></a>IWDG_ReloadCounter</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32f4xx_iwdg.o(i.IWDG_ReloadCounter))
-<BR><BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IWDG_Feed
+<P><STRONG><a name="[e3]"></a>IWDG_ReloadCounter</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32f4xx_iwdg.o(i.IWDG_ReloadCounter))
+<BR><BR>[Called By]<UL><LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IWDG_Feed
 </UL>
 
-<P><STRONG><a name="[e3]"></a>JudgeBuffReceive</STRONG> (Thumb, 1436 bytes, Stack size 24 bytes, datareceivetask.o(i.JudgeBuffReceive))
+<P><STRONG><a name="[e4]"></a>JudgeBuffReceive</STRONG> (Thumb, 1436 bytes, Stack size 24 bytes, datareceivetask.o(i.JudgeBuffReceive))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = JudgeBuffReceive &rArr; ShootingHeat_CAN2Send &rArr; CAN_Transmit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Verify_CRC8_Check_Sum
-<LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Verify_CRC16_Check_Sum
-<LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ShootingHeat_CAN2Send
+<BR>[Calls]<UL><LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Verify_CRC8_Check_Sum
+<LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Verify_CRC16_Check_Sum
+<LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ShootingHeat_CAN2Send
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BulletSpeed_CAN2Send
-<LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
+<LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;JudgeReceive_task
 </UL>
@@ -1251,33 +1267,33 @@ Global Symbols
 <P><STRONG><a name="[6b]"></a>JudgeReceive_task</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, judgetask.o(i.JudgeReceive_task))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = JudgeReceive_task &rArr; vTaskDelay &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HeatUpdate_2
-<LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HeatUpdate_0
+<BR>[Calls]<UL><LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HeatUpdate_2
+<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HeatUpdate_0
 <LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
-<LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;JudgeBuffReceive
+<LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;JudgeBuffReceive
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> starttask.o(i.start_task)
 </UL>
-<P><STRONG><a name="[ec]"></a>Judge_Rst</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, main.o(i.Judge_Rst))
+<P><STRONG><a name="[ed]"></a>Judge_Rst</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, main.o(i.Judge_Rst))
 <BR><BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Offline_Check_task
 </UL>
 
-<P><STRONG><a name="[d9]"></a>Kalman_Filter_Init</STRONG> (Thumb, 1800 bytes, Stack size 32 bytes, kalman_filter.o(i.Kalman_Filter_Init))
+<P><STRONG><a name="[da]"></a>Kalman_Filter_Init</STRONG> (Thumb, 1800 bytes, Stack size 32 bytes, kalman_filter.o(i.Kalman_Filter_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = Kalman_Filter_Init &rArr; malloc
 </UL>
-<BR>[Calls]<UL><LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;arm_mat_init_f32
+<BR>[Calls]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;arm_mat_init_f32
 <LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 <LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
-<LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;malloc
+<LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;malloc
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_QuaternionEKF_Init
+<BR>[Called By]<UL><LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_QuaternionEKF_Init
 </UL>
 
 <P><STRONG><a name="[b7]"></a>LowPass</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, fir.o(i.LowPass))
 <BR><BR>[Called By]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ChassisYaw_DEBUG_Act
 </UL>
 
-<P><STRONG><a name="[e9]"></a>LowPass_SetChassis</STRONG> (Thumb, 98 bytes, Stack size 48 bytes, fir.o(i.LowPass_SetChassis))
+<P><STRONG><a name="[ea]"></a>LowPass_SetChassis</STRONG> (Thumb, 98 bytes, Stack size 48 bytes, fir.o(i.LowPass_SetChassis))
 <BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = LowPass_SetChassis &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
@@ -1285,7 +1301,7 @@ Global Symbols
 <LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 <LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pid_SpeedCurrent
+<BR>[Called By]<UL><LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pid_SpeedCurrent
 </UL>
 
 <P><STRONG><a name="[3]"></a>MemManage_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_it.o(i.MemManage_Handler))
@@ -1296,8 +1312,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;arm_sin_f32
 <LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;arm_cos_f32
-<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chassisNavigate
-<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pid_SpeedCurrent
+<LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chassisNavigate
+<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pid_SpeedCurrent
 </UL>
 <BR>[Called By]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_Patrol_Act
 </UL>
@@ -1321,9 +1337,9 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
 <LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uxTaskGetStackHighWaterMark
-<LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RC_Rst
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IWDG_Feed
-<LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Judge_Rst
+<LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RC_Rst
+<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IWDG_Feed
+<LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Judge_Rst
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> starttask.o(i.start_task)
 </UL>
@@ -1332,43 +1348,33 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;arm_sin_f32
 <LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;arm_cos_f32
-<LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Position_Control
-<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pid_SpeedCurrent
+<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Position_Control
+<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pid_SpeedCurrent
 </UL>
 <BR>[Called By]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_Patrol_Act
 </UL>
 
 <P><STRONG><a name="[b6]"></a>PID_Calc</STRONG> (Thumb, 760 bytes, Stack size 0 bytes, pid.o(i.PID_Calc))
-<BR><BR>[Called By]<UL><LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chassisNavigate
+<BR><BR>[Called By]<UL><LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chassisNavigate
 <LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ChassisYaw_STOP_Act
 <LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ChassisYaw_RC_Act
 <LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ChassisYaw_PC_Act
 <LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ChassisYaw_DEBUG_Act
-<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PowerLimit
-<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pid_SpeedCurrent
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PowerLimit
+<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pid_SpeedCurrent
 </UL>
 
 <P><STRONG><a name="[f3]"></a>PathInit</STRONG> (Thumb, 138 bytes, Stack size 0 bytes, navi_path.o(i.PathInit))
 <BR><BR>[Called By]<UL><LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Robot_Init
 </UL>
 
-<P><STRONG><a name="[c1]"></a>Patrol_Act</STRONG> (Thumb, 658 bytes, Stack size 16 bytes, chassistask.o(i.Patrol_Act))
+<P><STRONG><a name="[c1]"></a>Patrol_Act</STRONG> (Thumb, 720 bytes, Stack size 16 bytes, chassistask.o(i.Patrol_Act))
 <BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = Patrol_Act &rArr; Pid_SpeedCurrent &rArr; LowPass_SetChassis &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;arm_sin_f32
 <LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;arm_cos_f32
-<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pid_SpeedCurrent
-<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rand
-</UL>
-<BR>[Called By]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_Patrol_Act
-</UL>
-
-<P><STRONG><a name="[c0]"></a>Patrol_Safe_Act</STRONG> (Thumb, 580 bytes, Stack size 16 bytes, chassistask.o(i.Patrol_Safe_Act))
-<BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = Patrol_Safe_Act &rArr; Pid_SpeedCurrent &rArr; LowPass_SetChassis &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
-</UL>
-<BR>[Calls]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;arm_sin_f32
-<LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;arm_cos_f32
-<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pid_SpeedCurrent
+<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pid_SpeedCurrent
+<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rand
 </UL>
 <BR>[Called By]<UL><LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_Patrol_Act
 </UL>
@@ -1377,21 +1383,21 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Robot_Init
 </UL>
 
-<P><STRONG><a name="[c5]"></a>Pid_SpeedCurrent</STRONG> (Thumb, 172 bytes, Stack size 16 bytes, chassistask.o(i.Pid_SpeedCurrent))
+<P><STRONG><a name="[c6]"></a>Pid_SpeedCurrent</STRONG> (Thumb, 172 bytes, Stack size 16 bytes, chassistask.o(i.Pid_SpeedCurrent))
 <BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = Pid_SpeedCurrent &rArr; LowPass_SetChassis &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_Calc
-<LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LowPass_SetChassis
+<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LowPass_SetChassis
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Patrol_Safe_Act
-<LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Patrol_Act
+<BR>[Called By]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Patrol_Act
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Outpost_Act
 <LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NAV_PATH_Act
-<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_RC_Act
-<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_Protect_Act
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_RC_Act
+<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_Protect_Act
+<LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_Patrol_Act2
 </UL>
 
-<P><STRONG><a name="[ed]"></a>Position_Control</STRONG> (Thumb, 230 bytes, Stack size 32 bytes, chassistask.o(i.Position_Control))
+<P><STRONG><a name="[ee]"></a>Position_Control</STRONG> (Thumb, 230 bytes, Stack size 32 bytes, chassistask.o(i.Position_Control))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = Position_Control
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;arm_sin_f32
@@ -1400,14 +1406,14 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Outpost_Act
 </UL>
 
-<P><STRONG><a name="[c9]"></a>PowerLimit</STRONG> (Thumb, 766 bytes, Stack size 32 bytes, chassistask.o(i.PowerLimit))
+<P><STRONG><a name="[ca]"></a>PowerLimit</STRONG> (Thumb, 766 bytes, Stack size 32 bytes, chassistask.o(i.PowerLimit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = PowerLimit &rArr; __aeabi_ddiv &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_Calc
 <LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
 <LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
 <LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
-<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Current_Filter_Excu
+<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Current_Filter_Excu
 </UL>
 <BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_task
 </UL>
@@ -1440,7 +1446,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
 </UL>
 
-<P><STRONG><a name="[eb]"></a>RC_Rst</STRONG> (Thumb, 68 bytes, Stack size 0 bytes, datareceivetask.o(i.RC_Rst))
+<P><STRONG><a name="[ec]"></a>RC_Rst</STRONG> (Thumb, 68 bytes, Stack size 0 bytes, datareceivetask.o(i.RC_Rst))
 <BR><BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Offline_Check_task
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;task_ActionUpdate
 </UL>
@@ -1451,7 +1457,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 <LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pid_ChassisWheelInit
 <LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PathInit
-<LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;INS_Init
+<LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;INS_Init
 <LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ICM20602_init
 <LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ChassisYaw_Init
 </UL>
@@ -1512,12 +1518,12 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SEGGER_RTT_printf
 </UL>
 
-<P><STRONG><a name="[e7]"></a>ShootingHeat_CAN2Send</STRONG> (Thumb, 106 bytes, Stack size 24 bytes, datasendtask.o(i.ShootingHeat_CAN2Send))
+<P><STRONG><a name="[e8]"></a>ShootingHeat_CAN2Send</STRONG> (Thumb, 106 bytes, Stack size 24 bytes, datasendtask.o(i.ShootingHeat_CAN2Send))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = ShootingHeat_CAN2Send &rArr; CAN_Transmit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN_Transmit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;JudgeBuffReceive
+<BR>[Called By]<UL><LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;JudgeBuffReceive
 </UL>
 
 <P><STRONG><a name="[9]"></a>SysTick_Handler</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, stm32f4xx_it.o(i.SysTick_Handler))
@@ -1621,7 +1627,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 164<LI>Call Chain = UART4_Configuration &rArr; USART_Init &rArr; RCC_GetClocksFreq
 </UL>
 <BR>[Calls]<UL><LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_DeInit
-<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Cmd
+<LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Cmd
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
 <LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PinAFConfig
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
@@ -1663,11 +1669,11 @@ Global Symbols
 <P><STRONG><a name="[5]"></a>UsageFault_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_it.o(i.UsageFault_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40_41xxx.o(RESET)
 </UL>
-<P><STRONG><a name="[cb]"></a>VOFA_Send</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, usart2.o(i.VOFA_Send))
+<P><STRONG><a name="[cc]"></a>VOFA_Send</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, usart2.o(i.VOFA_Send))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = VOFA_Send
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Cmd
-<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
+<BR>[Calls]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Cmd
+<LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
 </UL>
 <BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_task
 </UL>
@@ -1676,8 +1682,8 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = VOFA_USART_Configuration &rArr; USART_Init &rArr; RCC_GetClocksFreq
 </UL>
 <BR>[Calls]<UL><LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_DeInit
-<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Cmd
-<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_ClearFlag
+<LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_Cmd
+<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA_ClearFlag
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
 <LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PinAFConfig
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
@@ -1692,20 +1698,20 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_Init
 </UL>
 
-<P><STRONG><a name="[e6]"></a>Verify_CRC16_Check_Sum</STRONG> (Thumb, 60 bytes, Stack size 16 bytes, algorithmofcrc.o(i.Verify_CRC16_Check_Sum))
+<P><STRONG><a name="[e7]"></a>Verify_CRC16_Check_Sum</STRONG> (Thumb, 60 bytes, Stack size 16 bytes, algorithmofcrc.o(i.Verify_CRC16_Check_Sum))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = Verify_CRC16_Check_Sum &rArr; Get_CRC16_Check_Sum
 </UL>
 <BR>[Calls]<UL><LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Get_CRC16_Check_Sum
 </UL>
-<BR>[Called By]<UL><LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;JudgeBuffReceive
+<BR>[Called By]<UL><LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;JudgeBuffReceive
 </UL>
 
-<P><STRONG><a name="[e5]"></a>Verify_CRC8_Check_Sum</STRONG> (Thumb, 50 bytes, Stack size 16 bytes, algorithmofcrc.o(i.Verify_CRC8_Check_Sum))
+<P><STRONG><a name="[e6]"></a>Verify_CRC8_Check_Sum</STRONG> (Thumb, 50 bytes, Stack size 16 bytes, algorithmofcrc.o(i.Verify_CRC8_Check_Sum))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = Verify_CRC8_Check_Sum &rArr; Get_CRC8_Check_Sum
 </UL>
 <BR>[Calls]<UL><LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Get_CRC8_Check_Sum
 </UL>
-<BR>[Called By]<UL><LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;JudgeBuffReceive
+<BR>[Called By]<UL><LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;JudgeBuffReceive
 </UL>
 
 <P><STRONG><a name="[bc]"></a>Yaw_I_Control</STRONG> (Thumb, 82 bytes, Stack size 32 bytes, rmd_l_control.o(i.Yaw_I_Control))
@@ -1747,7 +1753,7 @@ Global Symbols
 <LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskGetRunTimeStats
 </UL>
 
-<P><STRONG><a name="[df]"></a>__hardfp_acosf</STRONG> (Thumb, 234 bytes, Stack size 16 bytes, acosf.o(i.__hardfp_acosf))
+<P><STRONG><a name="[e0]"></a>__hardfp_acosf</STRONG> (Thumb, 234 bytes, Stack size 16 bytes, acosf.o(i.__hardfp_acosf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = __hardfp_acosf &rArr; sqrtf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sqrtf
@@ -1764,15 +1770,15 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dsqrt
 <LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__set_errno
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chassisNavigate
+<BR>[Called By]<UL><LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chassisNavigate
 </UL>
 
 <P><STRONG><a name="[113]"></a>__mathlib_flt_infnan</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, funder.o(i.__mathlib_flt_infnan))
-<BR><BR>[Called By]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_acosf
+<BR><BR>[Called By]<UL><LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_acosf
 </UL>
 
 <P><STRONG><a name="[115]"></a>__mathlib_flt_invalid</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, funder.o(i.__mathlib_flt_invalid))
-<BR><BR>[Called By]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_acosf
+<BR><BR>[Called By]<UL><LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_acosf
 </UL>
 
 <P><STRONG><a name="[15b]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
@@ -1784,33 +1790,33 @@ Global Symbols
 <P><STRONG><a name="[114]"></a>__set_errno</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, errno.o(i.__set_errno))
 <BR><BR>[Called By]<UL><LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sqrtf
 <LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_sqrt
-<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_acosf
+<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_acosf
 </UL>
 
-<P><STRONG><a name="[de]"></a>arm_mat_add_f32</STRONG> (Thumb, 192 bytes, Stack size 28 bytes, arm_mat_add_f32.o(i.arm_mat_add_f32))
+<P><STRONG><a name="[df]"></a>arm_mat_add_f32</STRONG> (Thumb, 192 bytes, Stack size 28 bytes, arm_mat_add_f32.o(i.arm_mat_add_f32))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = arm_mat_add_f32
 </UL>
 <BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_QuaternionEKF_xhatUpdate
 </UL>
 
-<P><STRONG><a name="[da]"></a>arm_mat_init_f32</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, arm_mat_init_f32.o(i.arm_mat_init_f32))
-<BR><BR>[Called By]<UL><LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kalman_Filter_Init
-<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_QuaternionEKF_Init
+<P><STRONG><a name="[db]"></a>arm_mat_init_f32</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, arm_mat_init_f32.o(i.arm_mat_init_f32))
+<BR><BR>[Called By]<UL><LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kalman_Filter_Init
+<LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_QuaternionEKF_Init
 </UL>
 
-<P><STRONG><a name="[dd]"></a>arm_mat_mult_f32</STRONG> (Thumb, 320 bytes, Stack size 60 bytes, arm_mat_mult_f32.o(i.arm_mat_mult_f32))
+<P><STRONG><a name="[de]"></a>arm_mat_mult_f32</STRONG> (Thumb, 320 bytes, Stack size 60 bytes, arm_mat_mult_f32.o(i.arm_mat_mult_f32))
 <BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = arm_mat_mult_f32
 </UL>
 <BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_QuaternionEKF_xhatUpdate
 </UL>
 
-<P><STRONG><a name="[e0]"></a>arm_mat_sub_f32</STRONG> (Thumb, 192 bytes, Stack size 28 bytes, arm_mat_sub_f32.o(i.arm_mat_sub_f32))
+<P><STRONG><a name="[e1]"></a>arm_mat_sub_f32</STRONG> (Thumb, 192 bytes, Stack size 28 bytes, arm_mat_sub_f32.o(i.arm_mat_sub_f32))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = arm_mat_sub_f32
 </UL>
 <BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_QuaternionEKF_xhatUpdate
 </UL>
 
-<P><STRONG><a name="[ea]"></a>chassisNavigate</STRONG> (Thumb, 1126 bytes, Stack size 112 bytes, navi_path.o(i.chassisNavigate))
+<P><STRONG><a name="[eb]"></a>chassisNavigate</STRONG> (Thumb, 1126 bytes, Stack size 112 bytes, navi_path.o(i.chassisNavigate))
 <BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = chassisNavigate &rArr; __hardfp_sqrt &rArr; _dsqrt &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;arm_sin_f32
@@ -1863,10 +1869,10 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL>
-<P><STRONG><a name="[e8]"></a>malloc</STRONG> (Thumb, 92 bytes, Stack size 20 bytes, malloc.o(i.malloc))
+<P><STRONG><a name="[e9]"></a>malloc</STRONG> (Thumb, 92 bytes, Stack size 20 bytes, malloc.o(i.malloc))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = malloc
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kalman_Filter_Init
+<BR>[Called By]<UL><LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kalman_Filter_Init
 </UL>
 
 <P><STRONG><a name="[134]"></a>pvPortMalloc</STRONG> (Thumb, 188 bytes, Stack size 24 bytes, heap_4.o(i.pvPortMalloc))
@@ -1891,7 +1897,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__set_errno
 </UL>
-<BR>[Called By]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_acosf
+<BR>[Called By]<UL><LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_acosf
 </UL>
 
 <P><STRONG><a name="[11e]"></a>startTast</STRONG> (Thumb, 24 bytes, Stack size 16 bytes, starttask.o(i.startTast))
@@ -1916,7 +1922,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = task_ActionUpdate &rArr; vTaskDelay &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
-<LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RC_Rst
+<LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RC_Rst
 <LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Rst_Debug
 <LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_state_with_RCdata
 </UL>
@@ -2032,7 +2038,7 @@ Global Symbols
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPU_task
 </UL>
 
-<P><STRONG><a name="[cc]"></a>vTaskDelayUntil</STRONG> (Thumb, 106 bytes, Stack size 32 bytes, tasks.o(i.vTaskDelayUntil))
+<P><STRONG><a name="[cd]"></a>vTaskDelayUntil</STRONG> (Thumb, 106 bytes, Stack size 32 bytes, tasks.o(i.vTaskDelayUntil))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = vTaskDelayUntil &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
 </UL>
 <BR>[Calls]<UL><LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskResumeAll
@@ -2105,7 +2111,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
 <LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortFree
 <LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pvPortMalloc
-<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelayUntil
+<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelayUntil
 <LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskGetInfo
 <LI><a href="#[13e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uxTaskGetSystemState
 <LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvCheckTasksWaitingTermination
@@ -2146,7 +2152,7 @@ Global Symbols
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;start_task
 </UL>
 
-<P><STRONG><a name="[c7]"></a>xTaskGetTickCount</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, tasks.o(i.xTaskGetTickCount))
+<P><STRONG><a name="[c9]"></a>xTaskGetTickCount</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, tasks.o(i.xTaskGetTickCount))
 <BR><BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_task
 </UL>
 
@@ -2174,7 +2180,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
 <LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortFree
 <LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pvPortMalloc
-<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelayUntil
+<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelayUntil
 <LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskGetInfo
 <LI><a href="#[13e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uxTaskGetSystemState
 <LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvCheckTasksWaitingTermination
@@ -2192,14 +2198,14 @@ Local Symbols
 <P><STRONG><a name="[60]"></a>IMU_QuaternionEKF_F_Linearization_P_Fading</STRONG> (Thumb, 540 bytes, Stack size 8 bytes, quaternionekf.o(i.IMU_QuaternionEKF_F_Linearization_P_Fading))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = IMU_QuaternionEKF_F_Linearization_P_Fading
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;invSqrt
+<BR>[Calls]<UL><LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;invSqrt
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> quaternionekf.o(i.IMU_QuaternionEKF_Init)
 </UL>
 <P><STRONG><a name="[5f]"></a>IMU_QuaternionEKF_Observe</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, quaternionekf.o(i.IMU_QuaternionEKF_Observe))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = IMU_QuaternionEKF_Observe
 </UL>
-<BR>[Calls]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
+<BR>[Calls]<UL><LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> quaternionekf.o(i.IMU_QuaternionEKF_Init)
 </UL>
@@ -2213,17 +2219,17 @@ Local Symbols
 <P><STRONG><a name="[62]"></a>IMU_QuaternionEKF_xhatUpdate</STRONG> (Thumb, 1284 bytes, Stack size 24 bytes, quaternionekf.o(i.IMU_QuaternionEKF_xhatUpdate))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = IMU_QuaternionEKF_xhatUpdate &rArr; arm_mat_inverse_f32
 </UL>
-<BR>[Calls]<UL><LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;arm_mat_trans_f32
-<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;arm_mat_sub_f32
-<LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;arm_mat_mult_f32
+<BR>[Calls]<UL><LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;arm_mat_trans_f32
+<LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;arm_mat_sub_f32
+<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;arm_mat_mult_f32
 <LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;arm_mat_inverse_f32
-<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;arm_mat_add_f32
-<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
-<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_acosf
+<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;arm_mat_add_f32
+<LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
+<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_acosf
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> quaternionekf.o(i.IMU_QuaternionEKF_Init)
 </UL>
-<P><STRONG><a name="[d7]"></a>invSqrt</STRONG> (Thumb, 56 bytes, Stack size 0 bytes, quaternionekf.o(i.invSqrt))
+<P><STRONG><a name="[d8]"></a>invSqrt</STRONG> (Thumb, 56 bytes, Stack size 0 bytes, quaternionekf.o(i.invSqrt))
 <BR><BR>[Called By]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IMU_QuaternionEKF_F_Linearization_P_Fading
 </UL>
 
@@ -2250,7 +2256,7 @@ Local Symbols
 <P><STRONG><a name="[f5]"></a>_WriteBlocking</STRONG> (Thumb, 118 bytes, Stack size 40 bytes, segger_rtt.o(i._WriteBlocking))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = _WriteBlocking
 </UL>
-<BR>[Calls]<UL><LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
+<BR>[Calls]<UL><LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 </UL>
 <BR>[Called By]<UL><LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SEGGER_RTT_WriteNoLock
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SEGGER_RTT_SetTerminal
@@ -2259,7 +2265,7 @@ Local Symbols
 <P><STRONG><a name="[f7]"></a>_WriteNoCheck</STRONG> (Thumb, 88 bytes, Stack size 32 bytes, segger_rtt.o(i._WriteNoCheck))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = _WriteNoCheck
 </UL>
-<BR>[Calls]<UL><LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
+<BR>[Calls]<UL><LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 </UL>
 <BR>[Called By]<UL><LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SEGGER_RTT_WriteNoLock
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SEGGER_RTT_SetTerminal
@@ -2299,7 +2305,7 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update_state_with_RCdata
 </UL>
 
-<P><STRONG><a name="[13a]"></a>update_state_with_RCdata</STRONG> (Thumb, 284 bytes, Stack size 16 bytes, task_actionupdate.o(i.update_state_with_RCdata))
+<P><STRONG><a name="[13a]"></a>update_state_with_RCdata</STRONG> (Thumb, 282 bytes, Stack size 16 bytes, task_actionupdate.o(i.update_state_with_RCdata))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = update_state_with_RCdata &rArr; sentry_state_reflect
 </UL>
 <BR>[Calls]<UL><LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sentry_state_reflect
@@ -2315,7 +2321,7 @@ Local Symbols
 <LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uxListRemove
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
-<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelayUntil
+<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelayUntil
 </UL>
 
 <P><STRONG><a name="[124]"></a>prvAddNewTaskToReadyList</STRONG> (Thumb, 156 bytes, Stack size 8 bytes, tasks.o(i.prvAddNewTaskToReadyList))

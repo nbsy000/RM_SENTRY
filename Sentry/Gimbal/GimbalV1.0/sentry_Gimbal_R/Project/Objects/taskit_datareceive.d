@@ -44,6 +44,7 @@
 .\objects\taskit_datareceive.o: ..\FWLIB\SEGGER_RTT_V784\RTT\../Config/SEGGER_RTT_Conf.h
 .\objects\taskit_datareceive.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdarg.h
 .\objects\taskit_datareceive.o: ..\user\user_math_lib\user_lib.h
+.\objects\taskit_datareceive.o: ..\hardware\uart5.h
 .\objects\taskit_datareceive.o: ..\algo\algo_PID.h
 .\objects\taskit_datareceive.o: ..\algo\algo_CRC.h
 .\objects\taskit_datareceive.o: ..\algo\algo_ADT_LoopQueue.h

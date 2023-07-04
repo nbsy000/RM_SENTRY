@@ -40,11 +40,10 @@ void ChassisYaw_PC_Act()
 {
 	  if (ChassisYaw_Last_State != ChassisYaw_PC) //应该是用来防止模式切换的时候运动抽风的
     {
-			
         Motor_9025.PCYaw = Gyro_ChassisYaw.YAW_ABS;//使PID参数都是正的
     }
 		
-		if((chassis.PC_State==OUTPOST)||(chassis.PC_State==PATROL)||(chassis.PC_State==PATROL_SAFE))
+		if((chassis.PC_State==OUTPOST)||(chassis.PC_State==PATROL)||(chassis.PC_State==PATROL_SAFE)||(chassis.PC_State==DEFAULT))
 		{
 			if(Motor_9025.aim_flag == SYNE_NONE)//没有识别到目标
 				Motor_9025.PCYaw = Motor_9025.PCYaw + Motor_9025.SYNEYaw;
@@ -170,7 +169,7 @@ void ChassisYaw_Init()
 	Motor_9025.PidPos.D = 0.0f;
 	Motor_9025.PidPos.IMax = 0.0f;
 	Motor_9025.PidPos.SetPoint = 0.0f;
-	Motor_9025.PidPos.OutMax = 110.0f;//目前这个速度不会有异响
+	Motor_9025.PidPos.OutMax = 100.0f;//目前这个速度不会有异响
 
 	Motor_9025.PidSpeed.P = 13.0f;
 	Motor_9025.PidSpeed.I = 0.31f;
@@ -185,5 +184,5 @@ void ChassisYaw_Init()
 	
 	
 	//相关参数初始化
-	Motor_9025.Yaw_init = 35429;
+	Motor_9025.Yaw_init = 14021;
 }

@@ -44,6 +44,7 @@
 .\objects\tim4.o: ..\FWLIB\SEGGER_RTT_V784\RTT\../Config/SEGGER_RTT_Conf.h
 .\objects\tim4.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdarg.h
 .\objects\tim4.o: ..\user\user_math_lib\user_lib.h
+.\objects\tim4.o: ..\hardware\uart5.h
 .\objects\tim4.o: ..\algo\algo_PID.h
 .\objects\tim4.o: ..\algo\algo_CRC.h
 .\objects\tim4.o: ..\algo\algo_ADT_LoopQueue.h

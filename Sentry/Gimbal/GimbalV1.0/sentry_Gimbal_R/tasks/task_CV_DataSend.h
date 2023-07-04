@@ -1,6 +1,7 @@
 #ifndef __TASK_CV_DATA_SEND_H__
 #define __TASK_CV_DATA_SEND_H__
 
+#include "main.h"
 /*   发送数据定义 */
 
 #pragma pack(push, 1)     //不进行字节对齐

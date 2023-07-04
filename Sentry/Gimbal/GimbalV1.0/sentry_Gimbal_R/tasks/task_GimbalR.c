@@ -42,9 +42,9 @@ void task_GimbalR(void *parameter)
 			//根据辅瞄结果来判断云台位值
 			if((Gimbal_R.armor_state==ARMOR_AIMED)&&(Gimbal_L.armor_state==ARMOR_AIMED))			//俩云台都识别到
 				armor_flag = SYNE_BOTH;
-			else if((Gimbal_R.armor_state==ARMOR_AIMED)&&(Gimbal_L.armor_state==ARMOR_NO_AIM))			//右云台识别到
+			else if((Gimbal_R.armor_state==ARMOR_AIMED)&&(Gimbal_L.armor_state!=ARMOR_AIMED))			//右云台识别到
 				armor_flag = SYNE_RIGHT;
-			else if((Gimbal_R.armor_state==ARMOR_NO_AIM)&&(Gimbal_L.armor_state==ARMOR_AIMED))			//左云台识别到
+			else if((Gimbal_R.armor_state!=ARMOR_AIMED)&&(Gimbal_L.armor_state==ARMOR_AIMED))			//左云台识别到
 				armor_flag = SYNE_LEFT;				
 			else//俩云台正常巡航
 				armor_flag = SYNE_NONE;
@@ -110,7 +110,7 @@ void task_GimbalR(void *parameter)
 			{	
 					Gimbal_PC_Act(NO_SYNE);//目前是没有协同的
 //
-				Gimbal_SLEEP_Act(&Gimbal_L);	
+//				Gimbal_SLEEP_Act(&Gimbal_L);	
 				
 			}		
 			
@@ -186,35 +186,42 @@ void Gimbal_PC_Act(uint8_t Syne_Flag)
 				last_armor_flag = SYNE_NONE;
     }
 
+		static uint8_t state = 0;
+		if(((RC_Ctl.rc.ch2-1024)>300))//左右
+				state = 0;//大yaw不动（测试）
+		if(((RC_Ctl.rc.ch2-1024)<-300))//左左
+				state = 1;//大yaw动
 
-//			if(armor_flag == SYNE_LEFT)//识别到目标
-//			{
-//					ChassisYaw_Cnt = 500;//识别到后进行3周的正弦巡航
-//					if(Syne_Flag == SYNE)//开启协同
-//					{
-//							switch(armor_flag)
-//							{
-//								case SYNE_LEFT:
-//									Gimbal_Attack_Left();	
-//									break;
-//								case SYNE_RIGHT:
-//									Gimbal_Attack_Right();
-//									break;	
-//								case SYNE_BOTH:
-//									Gimbal_Attack_Both();
-//									break;														
-//								default:
-//									Gimbal_Attack_Nosyne();
-//									break;
-//							}				
-//					}
-//					else//没开启协同
-//						Gimbal_Attack_Nosyne();			
-//			}
-//			
-//			else//没有识别到目标
+			if(armor_flag == SYNE_RIGHT)//识别到目标
+			{
+					ChassisYaw_Cnt = 500;//调识别到后进行3周的正弦巡航或延时
+					if(Syne_Flag == SYNE)//开启协同
+					{
+							switch(armor_flag)
+							{
+								case SYNE_LEFT:
+									Gimbal_Attack_Left();	
+									break;
+								case SYNE_RIGHT:
+									Gimbal_Attack_Right();
+									break;	
+								case SYNE_BOTH:
+									Gimbal_Attack_Both();
+									break;														
+								default:
+									Gimbal_Attack_Nosyne();
+									break;
+							}				
+					}
+					else//没开启协同
+						Gimbal_Attack_Nosyne();			
+			}
+			
+			else//没有识别到目标
 				Gimbal_Attack_None();
 
+			
+			ChassisYaw_Inc = ChassisYaw_Inc*state;
 			
 //		//低通滤波
 //		MotoPitch_L.PCsetAngle = K_AIM_pitch*MotoPitch_L.PCsetAngle + (1-K_AIM_pitch)*Last_Pitch_L;
@@ -318,8 +325,8 @@ void Gimbal_AIM_Act(Gimbal_Typedef *Gimbal)
         MotoYaw->PCsetAngle = MotoYaw->actualAngle;	
 		}	
 		
-		MotoPitch->PidPos.SetPoint = MotoPitch->PCsetAngle;
-    MotoYaw->PidPos.SetPoint = MotoYaw->PCsetAngle;
+		MotoPitch->TargetPos = MotoPitch->PCsetAngle;
+    MotoYaw->TargetPos = MotoYaw->PCsetAngle;
 		Gimbal_PID_Cal(Gimbal,GYRO,NO_DEBUG_PID);	
 }
 
@@ -399,22 +406,26 @@ float K_Chassis_Yaw = 1.0f;
 void Gimbal_Attack_None()
 {
 		//右
-		Gimbal_Cruise(&Gimbal_R,ONLY_PITCH);	
+		if(time_cnt == 0)
+			Gimbal_Cruise(&Gimbal_R,ONLY_PITCH);
+		else
+			time_cnt --;
 		
 		//左
-//		if(time_cnt_l == 0)
-		Gimbal_Cruise(&Gimbal_L,ONLY_PITCH);
-//		else
-//			time_cnt_l = time_cnt_l-1;
+		if(time_cnt_l == 0)
+			Gimbal_Cruise(&Gimbal_L,ONLY_PITCH);
+		else
+			time_cnt_l --;
 
 	
 		//大Yaw轴(目前假设右云台活动范围为正，左云台活动范围为负)
-//		if(ChassisYaw_Cnt > 0)
-//		{
-////			ChassisYaw_Inc = -Chassis_Yaw_Speed/500.0f*arm_cos_f32((Chassis_Yaw_Speed/(35.0f*K_Chassis_Yaw))*(float)ChassisYaw_Cnt/1000.0f);//最大速度为70，最大范围为2*35
-//			ChassisYaw_Cnt -- ;
-//		}
-//		else
+		if(ChassisYaw_Cnt > 0)
+		{
+//			ChassisYaw_Inc = -Chassis_Yaw_Speed/500.0f*arm_cos_f32((Chassis_Yaw_Speed/(35.0f*K_Chassis_Yaw))*(float)ChassisYaw_Cnt/1000.0f);//最大速度为70，最大范围为2*35
+			ChassisYaw_Cnt -- ;
+			ChassisYaw_Inc = 0;
+		}
+		else
 			ChassisYaw_Inc = -0.12f;//80.0?
 	
 }
@@ -461,18 +472,18 @@ void Gimbal_Attack_Nosyne()
 		}
 		
 		//大Yaw轴
-		if(Gimbal_L.armor_state==ARMOR_AIMED)//
+		if(Gimbal_R.armor_state==ARMOR_AIMED)//
 		{
 			
-			if((MotoYaw_L.PCsetAngle - MotoYaw_L.PATROL_MAX_ANGLE)>-3) 
-				ChassisYaw_Inc = (MotoYaw_L.PCsetAngle - MotoYaw_L.PATROL_MAX_ANGLE)+3;
-			else if((MotoYaw_L.PCsetAngle - MotoYaw_L.PATROL_MIN_ANGLE)<5)
-				ChassisYaw_Inc = (MotoYaw_L.PCsetAngle - MotoYaw_L.PATROL_MIN_ANGLE)-5;
-			else
+//			if((MotoYaw_L.PCsetAngle - MotoYaw_L.PATROL_MAX_ANGLE)>-3) 
+//				ChassisYaw_Inc = (MotoYaw_L.PCsetAngle - MotoYaw_L.PATROL_MAX_ANGLE)+3;
+//			else if((MotoYaw_L.PCsetAngle - MotoYaw_L.PATROL_MIN_ANGLE)<5)
+//				ChassisYaw_Inc = (MotoYaw_L.PCsetAngle - MotoYaw_L.PATROL_MIN_ANGLE)-5;
+//			else
 				ChassisYaw_Inc = 0.0f;//	
 		}
 		else
-				ChassisYaw_Inc = 0.0f;//
+				ChassisYaw_Inc =  -0.12f;//
 }
 
 /**
@@ -887,21 +898,21 @@ void PID_Gimbal_Init(void)
 				
 		//左云台
 		//左云台
-    MotoPitch_L.PidPos.P = 22.0f;//7.1f;//20.0f;
+    MotoPitch_L.PidPos.P = 18;//22.0f;//7.1f;//20.0f;
     MotoPitch_L.PidPos.I = 0.14;//0.32f;
     MotoPitch_L.PidPos.D = 20;//6.0f;
     MotoPitch_L.PidPos.IMax = 50;//90.0f;
     MotoPitch_L.PidPos.RC_DF = 0.5;//没有很明显的滤波效果
 		MotoPitch_L.PidPos.OutMax = 170.0f;
 
-    MotoPitch_L.PidSpeed.P = 190;//220.0f;//150.0f;
+    MotoPitch_L.PidSpeed.P = 170;//220.0f;//150.0f;
     MotoPitch_L.PidSpeed.I = 5.2;//1.45f;
     MotoPitch_L.PidSpeed.D = 1200;//1600;//4.0f;                
     MotoPitch_L.PidSpeed.IMax = 1300.0f;
 		MotoPitch_L.PidSpeed.I_U = 20;//28;
 		MotoPitch_L.PidSpeed.I_L = 6;//8;
 		MotoPitch_L.PidSpeed.OutMax = 28000;
-		MotoPitch_L.PidSpeed.RC_DF = 0.5;
+		MotoPitch_L.PidSpeed.RC_DF = 0.25;
 
 		MotoPitch_L.K1 = 0.0f;
 		MotoPitch_L.K2 = 0.0f;

@@ -17,6 +17,7 @@ enum Syne_State
 /* PC模式下总的状态 */
 enum PC_STATE
 {
+		DEFAULT = 0,
     BEFOREGAME,//比赛开始前
     TOPATH1,//路径1去
     BACKPATH1,//路径1回

@@ -44,6 +44,7 @@
 .\objects\hw_tim8_pwm.o: ..\FWLIB\SEGGER_RTT_V784\RTT\../Config/SEGGER_RTT_Conf.h
 .\objects\hw_tim8_pwm.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdarg.h
 .\objects\hw_tim8_pwm.o: ..\user\user_math_lib\user_lib.h
+.\objects\hw_tim8_pwm.o: ..\hardware\uart5.h
 .\objects\hw_tim8_pwm.o: ..\algo\algo_PID.h
 .\objects\hw_tim8_pwm.o: ..\algo\algo_CRC.h
 .\objects\hw_tim8_pwm.o: ..\algo\algo_ADT_LoopQueue.h

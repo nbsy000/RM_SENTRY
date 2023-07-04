@@ -28,6 +28,7 @@ static void hardware_init(void)
     USART2_Configuration();  //和PC通信用
     USART3_Configuration();  //和遥控器通信用
     UART4_Configuration();  //发送cpu运行状态
+		VOFA_USART_Configuration();//VOFA
 		delay_ms(100);//等陀螺仪初始化完成
     CAN_Configuration();
     //IWDG_Config(IWDG_Prescaler_128,3125);

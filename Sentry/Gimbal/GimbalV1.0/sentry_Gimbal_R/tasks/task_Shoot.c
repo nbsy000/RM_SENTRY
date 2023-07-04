@@ -26,7 +26,7 @@ uint8_t block_bullet_cnt = 0;  //-----目前没用
 //这几个变量是每个shoot_Act共用的，以后也许可以改成一个结构体，然后各自的Act用各自的成员值
 uint32_t shootDelayTick;         //记录单连发模式下，每两发子弹之间的实时时间间隔
 float testInc = 29510.0f;        //26910.0f;//拨一颗弹丸需给到pos的增量值
-uint32_t delayTick_oneShot = 60;//60 //走掉一颗弹丸间隔的时间(ms)------弹频
+uint32_t delayTick_oneShot = 63;//60 //走掉一颗弹丸间隔的时间(ms)------弹频
 float bodanLastPos;              //存放上次单发结束时的拨弹电机位置值
 float RC_Bodan;
 
@@ -89,9 +89,9 @@ static void aiming(void)
 {
     extern uint8_t CV_Shoot_ABLE; //判定视觉方面是否能够打子弹
 
-    if (Gimbal_L.armor_state==ARMOR_AIMED &&
-        ABS(Gimbal_L.aim_Pitch - MotoPitch_L.actualAngle) <= pitch_thresh &&
-        ABS(Gimbal_L.aim_Yaw - MotoYaw_L.actualAngle) <= yaw_thresh)
+    if (Gimbal_R.armor_state==ARMOR_AIMED &&
+        ABS(Gimbal_R.aim_Pitch - MotoPitch.actualAngle) <= pitch_thresh &&
+        ABS(Gimbal_R.aim_Yaw - MotoYaw.actualAngle) <= yaw_thresh)
 		{
         CV_Shoot_ABLE = 1;
 		}
@@ -151,6 +151,7 @@ static void Shoot_PC_Act(void)
 	
     aiming();//瞄准判断
 	
+		Heat_ShootAbleFlag = 1 ;
     if (CV_Shoot_ABLE  && Heat_ShootAbleFlag)
     {
         shootDelayTick++;

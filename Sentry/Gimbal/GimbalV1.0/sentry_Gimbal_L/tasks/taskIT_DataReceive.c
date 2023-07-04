@@ -218,15 +218,17 @@ void Gimbal_Receive(uint8_t Buf[])
 void NAVReceive(uint8_t Buf[])
 {
 	extern NAV_Recv_t NAV_Recv;
-	int x_now,y_now,w_now;
+	float  x_now,y_now,w_now;
 	memcpy(&x_now,&Buf[1], 4); 
 	memcpy(&y_now,&Buf[5], 4); 
 	memcpy(&w_now,&Buf[9], 4);
 	NAV_Recv.x_now = (short)x_now;
 	NAV_Recv.y_now = (short)y_now;
 	NAV_Recv.w_now = (short)w_now;
-	NAV_Recv.Barrier_Flag = Buf[13];
+//	NAV_Recv.Barrier_Flag = Buf[13];
 	NAV_Msg_Send();
+	
+	FrameRate.NavF++;
 }
 
 
@@ -347,6 +349,7 @@ void Frame_Acceptance_Rate(float Rate)
 	FrameRate.SyneR = 	FrameRate.SyneF*2/Rate;
 	FrameRate.heatR = FrameRate.heatF*50/Rate;	
 	FrameRate.bulletSpeedR = FrameRate.bulletSpeedF/Rate;		
+	FrameRate.NavR = FrameRate.NavF/Rate;
 	
 	FrameRate.PitchLF = 0;
 	FrameRate.YawLF = 0;	
@@ -360,6 +363,7 @@ void Frame_Acceptance_Rate(float Rate)
 	FrameRate.RemoteF = 0;	
 	FrameRate.SyneF = 0;
 	FrameRate.heatF = 0;
-	FrameRate.bulletSpeedF = 0;		
+	FrameRate.bulletSpeedF = 0;	
+	FrameRate.NavF = 0;
 
 }

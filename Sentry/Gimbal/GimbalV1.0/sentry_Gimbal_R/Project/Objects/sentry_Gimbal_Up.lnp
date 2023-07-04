@@ -50,6 +50,7 @@
 ".\objects\counter.o"
 ".\objects\debug.o"
 ".\objects\tim4.o"
+".\objects\uart5.o"
 ".\objects\algo_crc.o"
 ".\objects\algo_pid.o"
 ".\objects\icm20602.o"

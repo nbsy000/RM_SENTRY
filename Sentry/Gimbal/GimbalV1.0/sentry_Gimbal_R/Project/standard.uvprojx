@@ -683,6 +683,11 @@
               <FileType>1</FileType>
               <FilePath>..\hardware\tim4.c</FilePath>
             </File>
+            <File>
+              <FileName>uart5.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\hardware\uart5.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

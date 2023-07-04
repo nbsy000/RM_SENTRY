@@ -2,7 +2,7 @@
 #define __UART5_H__ 
 
 #define NAV_SENDBUF_SIZE 16
-#define NAV_RECVBUF_SIZE 15
+#define NAV_RECVBUF_SIZE 14
 
 typedef  struct
 {

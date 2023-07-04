@@ -44,6 +44,7 @@
 .\objects\task_zerocheck.o: ..\FWLIB\SEGGER_RTT_V784\RTT\../Config/SEGGER_RTT_Conf.h
 .\objects\task_zerocheck.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdarg.h
 .\objects\task_zerocheck.o: ..\user\user_math_lib\user_lib.h
+.\objects\task_zerocheck.o: ..\hardware\uart5.h
 .\objects\task_zerocheck.o: ..\algo\algo_PID.h
 .\objects\task_zerocheck.o: ..\algo\algo_CRC.h
 .\objects\task_zerocheck.o: ..\algo\algo_ADT_LoopQueue.h

@@ -71,7 +71,7 @@ static void update_state_with_RCdata(void)
         case 3: //辅瞄模式
             sentry_state_reflect(Gimbal_R_PC,
                                  Gimbal_L_PC,
-                                 Shoot_R_SLEEP,
+                                 Shoot_R_SLEEP,//(abs(RC_Ctl.rc.ch3-1024)>300)?Shoot_R_PC:Shoot_R_SLEEP,
                                  Shoot_L_SLEEP, 
                                  Chassis_SLEEP,
 																 ChassisYaw_PC);
@@ -124,9 +124,9 @@ static void update_state_with_RCdata(void)
 																 ChassisYaw_RC);
             break;
         case 2: //下云台遥控器调试
-            sentry_state_reflect(Gimbal_R_SLEEP,
+            sentry_state_reflect(Gimbal_R_AIM,
                                  Gimbal_L_AIM,
-                                 Shoot_R_SLEEP,
+                                 (abs(RC_Ctl.rc.ch3-1024)>300)?Shoot_R_PC:Shoot_R_SLEEP,
                                  Shoot_L_SLEEP,
                                  Chassis_SLEEP,
 																 ChassisYaw_SLEEP);

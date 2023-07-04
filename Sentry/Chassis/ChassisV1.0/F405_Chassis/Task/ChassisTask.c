@@ -64,7 +64,6 @@ void Chassis_task(void *pvParameters)
 	const portTickType xFrequency = 2;
 	
 	chassis.NavigatePathNum = 1;//路径选择
-	chassis.PC_State = BEFOREGAME;//还未开始比赛
 	while (1) 
 	{
 		xLastWakeTime = xTaskGetTickCount();
@@ -236,7 +235,7 @@ void Chassis_RC_Act(void)
 /*********************************************************************************************************
 *函 数 名: Chassis_Protect_Act
 *功能说明: 使用遥控器控制小陀螺移动，ch3控制 s1 下  s2 上
-						让底盘一边小陀螺一边移动，移动的坐标系是以大Yaw轴,
+						让底盘一边小陀螺一边移动，移动的坐标系是以大Yaw轴,------目前暂时用作导航测试模式
 *形    参: 无
 *返 回 值: 无
 **********************************************************************************************************/
@@ -247,19 +246,50 @@ int dif_encoder[4];
 int test_w = 25;
 float K_W = 0.5f;
 uint8_t test_enable = 0;
+int Gear_SpeedLimit = 0;//限速挡位
+int Limited_Speed;
 void Chassis_Protect_Act(void)
 {
 	//首次进入该模式，进行变量重初始化，主要为了防止出现奇怪问题
 	static float Theta_init = 0.0f;
+	static int count = 0;//延时判断
 	if(Chassis_Last_State != Chassis_Protect)
 	{
 		Chassis_Last_State = Chassis_Protect;
 		Theta_init = (Motor_9025.Yaw_init - Motor_9025.multiAngle)/36000.0f*2*PI;//θ角为与y方向的夹角，具体符号取值与运动分解的θ的取向有关
+		Gear_SpeedLimit = 0;
+		count = 0;
 	}	
 	
 	Theta = (Motor_9025.Yaw_init - Motor_9025.multiAngle)/36000.0f*2*PI;//θ角为与y方向的夹角，具体符号取值与运动分解的θ的取向有关
 	float CosTheTa=arm_cos_f32(Theta);
 	float SinTheTa=arm_sin_f32(Theta);
+	
+	
+	//进行限速
+	if(count>300)//0.6s触发一次判断
+	{
+		if(((RC_Ctl.rc.ch1-1024)>300))//右上
+		{
+			Gear_SpeedLimit = LIMIT_MAX_MIN(Gear_SpeedLimit+1,3,0);
+			count = 0;
+		}
+		if(((RC_Ctl.rc.ch1-1024)<-300))//右下
+		{
+			Gear_SpeedLimit = LIMIT_MAX_MIN(Gear_SpeedLimit-1,3,0);
+			count = 0;
+		}
+		if(((RC_Ctl.rc.ch0-1024)>300)||((RC_Ctl.rc.ch0-1024)<-300))//右右或者右左
+		{
+			Gear_SpeedLimit = 0;
+			count = 0;
+		}
+	}
+	count++;
+	
+	Limited_Speed = 500 + Gear_SpeedLimit*1000;
+	chassis.NAV_vx = LIMIT_MAX_MIN(chassis.NAV_vx,Limited_Speed,-Limited_Speed);//mm/s
+	chassis.NAV_vy = LIMIT_MAX_MIN(chassis.NAV_vy,Limited_Speed,-Limited_Speed);
 	
 	//底盘方位自适应，即以云台的朝向为正前方，使用的是电机角   
 	chassis.carSpeedx = chassis.NAV_vy*SinTheTa + chassis.NAV_vx*CosTheTa; 
@@ -310,7 +340,7 @@ void Chassis_Patrol_Act()
 		chassis.N_Yaw_angle_init = chassis.Alpha;
 		
 		Chassis_Last_State = Chassis_Patrol;
-		chassis.PC_State = PATROL_SAFE;//还未开始比赛		
+		chassis.PC_State = DEFAULT;//还未开始比赛		
 	}		
 	
 	if(((RC_Ctl.rc.ch0-1024)>300))//右右
@@ -395,7 +425,7 @@ void Chassis_Patrol_Act()
 				break;
 				
 			case PATROL_SAFE://前哨战还在时巡逻区（独立于比赛开始状态）
-				Patrol_Safe_Act();
+				Chassis_Patrol_Act2();//Patrol_Safe_Act();
 				break;
 				
 			case PATROL://巡逻区
@@ -410,6 +440,10 @@ void Chassis_Patrol_Act()
 			case TEST2://测试路线2
 				chassis.NavigatePathNum = 4;//测试路线1
 				NAV_PATH_Act(RADAR);
+				break;
+			
+			case DEFAULT://
+				Chassis_SLEEP_Act();
 				break;
 		}
 	}
@@ -540,14 +574,15 @@ void Chassis_Patrol_Act2(void)
 		count = 6000;
 	}
 	count--;
-	chassis.carSpeedw = 65+A*(float)arm_sin_f32(W*((float)count/2000.0f)) ;
+	chassis.carSpeedw = 55+A*(float)arm_sin_f32(W*((float)count/2000.0f)) ;
 		
 	//底盘方位自适应，即以云台的朝向为正前方，使用的是电机角   下面这些系数都是凭感觉给的，想要多少速度转速自己改
-	chassis.carSpeedx = offset_x*SinTheTa + offset_y*CosTheTa; //364-1684  即660*5最大为3300mm/s
-	chassis.carSpeedy = offset_y*CosTheTa - offset_x*SinTheTa;
+//	chassis.carSpeedx = offset_x*SinTheTa + offset_y*CosTheTa; //364-1684  即660*5最大为3300mm/s
+//	chassis.carSpeedy = offset_y*CosTheTa - offset_x*SinTheTa;
 	
 	chassis.carSpeedx = 0.0f;
 	chassis.carSpeedy = 0.0f;
+	chassis.carSpeedw = 60.0f;
 	
 	//分解到每个电机的转速
 	aimRSpeed[0] = -chassis.carSpeedy*60*reRatio/(2*PI*Wheel_R) - chassis.carSpeedw*Chassis_R*reRatio/Wheel_R;
@@ -797,20 +832,32 @@ void Patrol_Act()
 //				Patrol_flag = 0;
 //	}
 //	else
-	chassis.carSpeedy = 0;
-	chassis.carSpeedw = 0;
-	if(x_cnt<1000+rand()%200-100)
+
+	static uint8_t state = 0;
+	short carSpeed = 0;
+	if(((RC_Ctl.rc.ch1-1024)>300))//右上
+		state = 0;//x
+	if((RC_Ctl.rc.ch1-1024)<-300)//右上
+		state = 1;//y
+	
+
+	if(x_cnt<700+rand()%200-100)
 	{
-		chassis.carSpeedx = 1000;
+		carSpeed = 1400;
 	}
 	else
 	{
-		chassis.carSpeedx = -1000;
+		carSpeed = -1400;
 	}
 	
 	x_cnt++;
-	if(x_cnt == 2000)
+	if(x_cnt == 1600)
 		x_cnt = 0;
+	
+	
+	chassis.carSpeedx = state==0?carSpeed:0;
+	chassis.carSpeedy = state==1?carSpeed:0;
+	chassis.carSpeedw = 0;
 	
 	
 	//分解到每个电机的转速

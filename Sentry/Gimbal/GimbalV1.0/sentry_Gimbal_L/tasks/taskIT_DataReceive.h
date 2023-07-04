@@ -123,6 +123,9 @@ typedef struct
 	
 	short bulletSpeedF;
 	float bulletSpeedR;
+	
+	short NavF;
+	float NavR;
 
 }Frame_Rate_t;
 
