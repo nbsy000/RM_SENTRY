@@ -336,7 +336,9 @@ void PCReceive(uint8_t PCReceivebuffer[])
 				aim_yaw = (float)(pc_recv_data.yaw);
 				aim_pitch = -(float)(pc_recv_data.pitch) / 100.0f;
 			
-				if(pc_recv_data.enemy_id != 0)
+				int judge = (aim_yaw < MotoYaw.MAX_ANGLE && aim_yaw > MotoYaw.MIN_ANGLE) && (aim_pitch < MotoPitch.MAX_ANGLE && aim_yaw < MotoPitch.MIN_ANGLE);
+				
+				if((pc_recv_data.enemy_id != 0))
 					Gimbal_R.armor_state = ARMOR_AIMED; //有目标
 				else
 					Gimbal_R.armor_state = ARMOR_NO_AIM; //没目标

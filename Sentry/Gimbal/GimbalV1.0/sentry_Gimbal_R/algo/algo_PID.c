@@ -9,7 +9,7 @@
   * @retval PID反馈计算输出值
   */
 	
-float PID_Calc(PID_Typedef *P, float ActualValue,uint8_t way)
+float PID_Calc(PID_Typedef *P, float ActualValue,uint8_t way,uint8_t DIR_STATE)
 {
 		P->ActualValue = ActualValue;
 		P->PreError = P->SetPoint - ActualValue;
@@ -39,6 +39,9 @@ float PID_Calc(PID_Typedef *P, float ActualValue,uint8_t way)
 
 		P->DOut = P->DOut * P->RC_DF + P->DOut_last * ( 1 - P->RC_DF ); 
 		
+		if(DIR_STATE == DIR_ON)//开启滤波
+			P->DOut = Fir_Dout(P->DOut,P->BufferDout);
+		
 		return LIMIT_MAX_MIN( P->POut+P->IOut+P->DOut,P->OutMax,-P->OutMax);
 }
 	
@@ -52,6 +55,9 @@ void PID_Clear(PID_Typedef *P)
 	P->LastError = 0;
 	P->DOut_last = 0;
 	P->SumError = 0;
+	
+ Fir_Dout_Clear(P->BufferDout);
+
 }
 
 /**********************************************************************************************************
@@ -66,6 +72,51 @@ float FeedForward_Calc(FeedForward_Typedef *FF)
 	  FF->Out = FF->Now_DeltIn*FF->K1 + (FF->Now_DeltIn - FF->Last_DeltIn)*FF->K2;
 	  FF->Last_DeltIn = FF->Now_DeltIn;
     return LIMIT_MAX_MIN(FF->Out,FF->OutMax,-FF->OutMax);
+}
+
+
+/**********************************************************************************************************
+*函 数 名: Filter_Cal
+*功能说明: 滤波
+*形    参: 无
+*返 回 值: 无
+**********************************************************************************************************/
+const float Gains[12] = {
+0.0113765048540653,	0.0231781829849133,	0.0555197388485698,
+0.0999089108396865,	0.142175730207317,	0.167840932265448,
+0.167840932265448,	0.142175730207317,	0.0999089108396865,	
+0.0555197388485698,	0.0231781829849133,	0.0113765048540653
+};
+
+/**
+  * @brief  读入当前浮点型，加入FIR滤波队列
+  * @param  Input: 滤波对象的当前值     
+  * @retval 滤波后最新值
+  */
+float Fir_Dout(float Input,float* Buffer)
+{
+		unsigned int Index;                //下标索引
+		float Output; 
+		for(Index=ORDER;Index>0;Index--) Buffer[Index]=Buffer[Index-1];
+		Buffer[0]=Input;
+		//计算输出
+		for(Index=0;Index<ORDER+1;Index++)
+		{
+			Output+=Gains[Index]*Buffer[Index];
+		}
+		return Output;
+}
+
+
+/**
+  * @brief  Fir_Dout_Clear 滤波器清零
+  * @param  None
+  * @retval None
+  */
+void Fir_Dout_Clear(float* Buffer)
+{
+	for(int i=0;i<ORDER + 1;i++)
+		Buffer[0] = 0;
 }
 
 /*********模糊pid部分*/

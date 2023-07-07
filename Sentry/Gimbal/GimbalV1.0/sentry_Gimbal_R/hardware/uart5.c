@@ -2,7 +2,7 @@
 #include "uart5.h"
 
 
-#define	VOFA_MAX_CHANNEL 10
+#define	VOFA_MAX_CHANNEL 3
 float 	VOFA_justfloat[VOFA_MAX_CHANNEL];
 uint8_t VOFA_send_Data[VOFA_MAX_CHANNEL*4+4];
 DMA_InitTypeDef   dma;
@@ -101,9 +101,9 @@ void VOFA_DMA_TX_INT_FUN(void)
 void VOFA_Send(void)
 {
 	//需转为float型数据存储
-	VOFA_justfloat[0]=(float)0;
-	VOFA_justfloat[1]=(float)0;	
-	VOFA_justfloat[2]=(float)0;	
+	VOFA_justfloat[0]=(float)Gimbal_R.aim_Pitch;
+	VOFA_justfloat[1]=(float)Gimbal_R.aim_Yaw;	
+	VOFA_justfloat[2]=(float) MotoPitch.PidSpeed.DOut;	
 	
 	//拷贝到传输变量
 	memcpy(VOFA_send_Data, (uint8_t *)VOFA_justfloat, sizeof(VOFA_justfloat));

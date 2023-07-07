@@ -4,6 +4,11 @@
 #define I_SEP 1
 #define I_NOSEP 0
 
+#define ORDER  11
+
+#define DIR_ON 1 //开dir
+#define DIR_OFF 0 //关dir
+
 typedef struct{
 		float K1;			
 	  float K2;
@@ -44,6 +49,8 @@ typedef struct PID{
 		float I_L;          //变速积分下限
 		
 		float RC_DF;        //不完全微分滤波系数
+		
+		float BufferDout[ORDER + 1];  //DIR滤波缓冲
 		
 }PID_Typedef;
 
@@ -93,8 +100,10 @@ typedef struct
 	  
 }FuzzyPID;
 
-float PID_Calc(PID_Typedef *P, float ActualValue,uint8_t I_Sep);
+float PID_Calc(PID_Typedef *P, float ActualValue,uint8_t I_Sep,uint8_t DIR_STATE);
 void PID_Clear(PID_Typedef *P);
 float FeedForward_Calc(FeedForward_Typedef *FF);
+float Fir_Dout(float Input,float* Buffer);
+void Fir_Dout_Clear(float* Buffer);
 float FuzzyPID_Calc(FuzzyPID *P,float ActualValue);
 #endif //__ALGO_PID_H

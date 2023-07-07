@@ -110,13 +110,13 @@ void task_GimbalR(void *parameter)
 			{	
 					Gimbal_PC_Act(NO_SYNE);//目前是没有协同的
 //
-//				Gimbal_SLEEP_Act(&Gimbal_L);	
 				
 			}		
 			
 			PitchYaw_Can2Send(MotoPitch.I_Set,MotoYaw.I_Set,MotoPitch_L.I_Set,MotoYaw_L.I_Set);//发送电流值
 			
 			Gimbal_Syne_Send(ChassisYaw_Inc);
+			VOFA_Send();
 			
        vTaskDelay(1);
     }
@@ -635,8 +635,8 @@ void Gimbal_PID_Cal(Gimbal_Typedef *Gimbal,uint8_t Feedback_Type,uint8_t Is_Debu
 		
 		Last_Pitch_I = MotoPitch->I_Set;
 		
-    MotoPitch->PidSpeed.SetPoint = PID_Calc(&MotoPitch->PidPos, MotoPitch->actualAngle, 0) ;
-		fsend = PID_Calc(&MotoPitch->PidSpeed, MotoPitch->Gyro_Speed, 0);
+    MotoPitch->PidSpeed.SetPoint = PID_Calc(&MotoPitch->PidPos, MotoPitch->actualAngle, 0, 0) ;
+		fsend = PID_Calc(&MotoPitch->PidSpeed, MotoPitch->Gyro_Speed, 0, 1);
 		MotoPitch->I_Set = LIMIT_MAX_MIN(fsend, LimitPitch, -LimitPitch);
 //		MotoPitch->PidCurrent.SetPoint = PID_Calc(&MotoPitch->PidSpeed, MotoPitch->Gyro_Speed, 0);
 //		MotoPitch->I_Set = PID_Calc(&MotoPitch->PidCurrent, MotoPitch->real_flow, 0);
@@ -644,8 +644,8 @@ void Gimbal_PID_Cal(Gimbal_Typedef *Gimbal,uint8_t Feedback_Type,uint8_t Is_Debu
 		
 		
 		Last_Yaw_I = MotoYaw->I_Set;
-    MotoYaw->PidSpeed.SetPoint = PID_Calc(&MotoYaw->PidPos, MotoYaw->actualAngle, 0);
-		fsend = PID_Calc(&MotoYaw->PidSpeed, MotoYaw->Gyro_Speed, 0);
+    MotoYaw->PidSpeed.SetPoint = PID_Calc(&MotoYaw->PidPos, MotoYaw->actualAngle, 0,0);
+		fsend = PID_Calc(&MotoYaw->PidSpeed, MotoYaw->Gyro_Speed, 0,0);
 		MotoYaw->I_Set = LIMIT_MAX_MIN(fsend, LimitYaw, -LimitYaw);
 //		MotoYaw->I_Set = (1-MotoYaw->K_LP)*MotoYaw->I_Set + MotoYaw->K_LP*Last_Yaw_I;
 }
@@ -839,9 +839,9 @@ void PID_Gimbal_Init(void)
 {
 /*陀螺仪反馈*/
 		//主云台
-    MotoPitch.PidPos.P = 22.0f;//100;//15.0f;//7.0;//7.3;//25.0f;
-    MotoPitch.PidPos.I = 0.12;//0.3;//0.0f;//0.22;//0.0f;
-    MotoPitch.PidPos.D = 30.0f;//1400;//0;//3;//3.0f;
+    MotoPitch.PidPos.P = 23.0f;//100;//15.0f;//7.0;//7.3;//25.0f;
+    MotoPitch.PidPos.I = 0.06;//0.3;//0.0f;//0.22;//0.0f;
+    MotoPitch.PidPos.D = 0.0f;//1400;//0;//3;//3.0f;
     MotoPitch.PidPos.IMax = 40.0f;
 		MotoPitch.PidPos.I_U = 2.0;
 		MotoPitch.PidPos.I_L = 0.4;
@@ -849,12 +849,12 @@ void PID_Gimbal_Init(void)
 		MotoPitch.PidPos.OutMax = 100.0f;
 
     MotoPitch.PidSpeed.P = 210;//28;//180;//260;//300;//130.0f;//160.0f;
-    MotoPitch.PidSpeed.I = 2.8;//0.5;//2;//1.4;//1.5;//1.6f;
-    MotoPitch.PidSpeed.D = 1000;//0;//4;//0.0f;                
-    MotoPitch.PidSpeed.IMax = 1400;  
+    MotoPitch.PidSpeed.I = 2.7;//0.5;//2;//1.4;//1.5;//1.6f;
+    MotoPitch.PidSpeed.D = 600;//0;//4;//0.0f;                
+    MotoPitch.PidSpeed.IMax = 1300;  
 		MotoPitch.PidSpeed.I_U = 20;//28;
 		MotoPitch.PidSpeed.I_L = 6;//8;
-		MotoPitch.PidSpeed.RC_DF = 0.5;
+		MotoPitch.PidSpeed.RC_DF = 1;
 		MotoPitch.PidSpeed.OutMax = 28000;
 	
 		MotoPitch.K1 = 0.0f;//130.0f;
@@ -911,7 +911,7 @@ void PID_Gimbal_Init(void)
     MotoPitch_L.PidSpeed.IMax = 1300.0f;
 		MotoPitch_L.PidSpeed.I_U = 20;//28;
 		MotoPitch_L.PidSpeed.I_L = 6;//8;
-		MotoPitch_L.PidSpeed.OutMax = 28000;
+		MotoPitch_L.PidSpeed.OutMax = 0;//28000;
 		MotoPitch_L.PidSpeed.RC_DF = 0.25;
 
 		MotoPitch_L.K1 = 0.0f;

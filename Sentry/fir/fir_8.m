@@ -11,7 +11,7 @@ function Hd = fir_8
 Fs = 1000;  % Sampling Frequency
 
 N    = 7;        % Order
-Fc   = 100;      % Cutoff Frequency
+Fc   = 40;      % Cutoff Frequency
 flag = 'scale';  % Sampling Flag
 
 % Create the window vector for the design algorithm.

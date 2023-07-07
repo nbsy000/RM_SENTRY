@@ -126,8 +126,8 @@ static void Shoot_DEBUG_Act(void)
 		if(((RC_Ctl.rc.ch3-1024)>100)||Bodan_Enable_DEBUG)
 			BodanMotor.pid_pos.SetPoint = bodanLastPos + testInc;     		//位置值设定为当前值增加一格弹丸的角度
 		if(Bodan_Speed_Debug == 0)
-			BodanMotor.pid_speed.SetPoint = PID_Calc(&BodanMotor.pid_pos, BodanMotor.Angle_Inc,0); //用位置环算速度环设定值
-    fsend = PID_Calc(&BodanMotor.pid_speed, BodanMotor.RealSpeed,0);                       //用速度环算电流值输出
+			BodanMotor.pid_speed.SetPoint = PID_Calc(&BodanMotor.pid_pos, BodanMotor.Angle_Inc,0,0); //用位置环算速度环设定值
+    fsend = PID_Calc(&BodanMotor.pid_speed, BodanMotor.RealSpeed,0,0);                       //用速度环算电流值输出
 
     BodanMotor.I_Set = (int16_t)LIMIT_MAX_MIN(fsend, BodanCurrentLimit, -BodanCurrentLimit)* Shoot_Enable_DEBUG;
 		FrictionMotor[0].I_Set*= Shoot_Enable_DEBUG;
@@ -221,9 +221,9 @@ static void Shoot_SLEEP_Act(void)
 static void Shoot_PC_PID_Cal(void)
 {
     float fsend;
-    BodanMotor.pid_speed.SetPoint = PID_Calc(&BodanMotor.pid_pos, BodanMotor.Angle_Inc, 0); //
+    BodanMotor.pid_speed.SetPoint = PID_Calc(&BodanMotor.pid_pos, BodanMotor.Angle_Inc, 0,0); //
 //		BodanMotor.pid_speed.SetPoint = 60*18;
-    fsend = PID_Calc(&BodanMotor.pid_speed, BodanMotor.RealSpeed, 0); //用速度环算电流值输出
+    fsend = PID_Calc(&BodanMotor.pid_speed, BodanMotor.RealSpeed, 0,0); //用速度环算电流值输出
     BodanMotor.I_Set = (int16_t)LIMIT_MAX_MIN(fsend, BodanCurrentLimit, -BodanCurrentLimit);
 	  BodanMotor.I_Set = BodanDelay_OVER ?(BodanMotor.I_Set) : (0);
 }
@@ -254,9 +254,9 @@ void FrictionWheel_SetSpeed(int16_t tmpAccelerator0, int16_t tmpAccelerator1)
   FrictionMotor[1].pid_speed.SetPoint = LIMIT_MAX_MIN(tmpAccelerator1, 15050, 0);  ////注意！！！！这个2006的转向是反着的！！！！
 
   float fsend;
-  fsend = PID_Calc(&FrictionMotor[0].pid_speed, FrictionMotor[0].RealSpeed, 0); //用速度环算电流值输出
+  fsend = PID_Calc(&FrictionMotor[0].pid_speed, FrictionMotor[0].RealSpeed, 0,0); //用速度环算电流值输出
   FrictionMotor[0].I_Set = (int16_t)LIMIT_MAX_MIN(fsend, FrictionCurrentLimit, -FrictionCurrentLimit);
-  fsend = PID_Calc(&FrictionMotor[1].pid_speed, FrictionMotor[1].RealSpeed, 0); //用速度环算电流值输出
+  fsend = PID_Calc(&FrictionMotor[1].pid_speed, FrictionMotor[1].RealSpeed, 0,0 ); //用速度环算电流值输出
   FrictionMotor[1].I_Set = (int16_t)LIMIT_MAX_MIN(fsend, FrictionCurrentLimit, -FrictionCurrentLimit);
 
 }

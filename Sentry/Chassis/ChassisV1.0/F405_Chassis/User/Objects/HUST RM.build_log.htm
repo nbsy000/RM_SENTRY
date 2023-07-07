@@ -27,13 +27,19 @@ Project File Date:  06/12/2023
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin'
 Build target 'Target 1'
-compiling task_ActionUpdate.c...
-..\Task\task_ActionUpdate.c(169): warning:  #1-D: last line of file ends without a newline
-  }
-..\Task\task_ActionUpdate.c: 1 warning, 0 errors
+compiling ChassisTask.c...
+..\Task\ChassisTask.c(121): warning:  #177-D: variable "k_ExcessPower"  was declared but never referenced
+  	static float k_ExcessPower;
+..\Task\ChassisTask.c(195): warning:  #550-D: variable "chassis_yaw_init"  was set but never used
+  	static float chassis_yaw_init;
+..\Task\ChassisTask.c(551): warning:  #177-D: variable "angle"  was declared but never referenced
+  	int angle;
+..\Task\ChassisTask.c(799): warning:  #177-D: variable "Toword"  was declared but never referenced
+  	static uint8_t Toword = 1;
+..\Task\ChassisTask.c: 4 warnings, 0 errors
 linking...
-Program Size: Code=40364 RO-data=89076 RW-data=896 ZI-data=28632  
-".\Objects\HUST RM.axf" - 0 Error(s), 1 Warning(s).
+Program Size: Code=40800 RO-data=89076 RW-data=896 ZI-data=28632  
+".\Objects\HUST RM.axf" - 0 Error(s), 4 Warning(s).
 
 <h2>Software Packages used:</h2>
 
