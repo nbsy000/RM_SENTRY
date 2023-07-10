@@ -40,6 +40,7 @@
 ..\obj\start_task.o: ..\Library\inc\stm32f4xx_iwdg.h
 ..\obj\start_task.o: ..\Mylib\laser.h
 ..\obj\start_task.o: ..\Mylib\pc_uart.h
+..\obj\start_task.o: ..\Mylib\uart5.h
 ..\obj\start_task.o: ..\Algorithm\pid.h
 ..\obj\start_task.o: ..\Algorithm\algorithmOfCRC.h
 ..\obj\start_task.o: ..\Algorithm\TD.h

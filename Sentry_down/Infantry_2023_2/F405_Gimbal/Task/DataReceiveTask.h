@@ -109,7 +109,7 @@ void Can1Receive1(CanRxMsg rx_message1);
 void Can1Receive0(CanRxMsg rx_message1);
 void Can2Receive0(CanRxMsg rx_message0);
 void Can2Receive1(CanRxMsg *rx_message1);
-
+void NAVReceive(uint8_t Buf[]);
 void RemoteReceive(volatile unsigned char rx_buffer[]);
 
 void RC_Rst(void);

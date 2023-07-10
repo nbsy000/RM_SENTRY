@@ -41,6 +41,7 @@
 "..\obj\os_tick.o"
 "..\obj\pc_serial.o"
 "..\obj\pc_uart.o"
+"..\obj\uart5.o"
 "..\obj\pid.o"
 "..\obj\algorithmofcrc.o"
 "..\obj\mysensors.o"

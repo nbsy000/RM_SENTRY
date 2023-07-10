@@ -39,6 +39,7 @@
 ..\obj\datareceivetask.o: ..\Library\inc\stm32f4xx_iwdg.h
 ..\obj\datareceivetask.o: ..\Mylib\laser.h
 ..\obj\datareceivetask.o: ..\Mylib\pc_uart.h
+..\obj\datareceivetask.o: ..\Mylib\uart5.h
 ..\obj\datareceivetask.o: ..\Algorithm\pid.h
 ..\obj\datareceivetask.o: ..\Algorithm\algorithmOfCRC.h
 ..\obj\datareceivetask.o: ..\Algorithm\TD.h

@@ -39,6 +39,7 @@
 ..\obj\can2.o: ..\Library\inc\stm32f4xx_iwdg.h
 ..\obj\can2.o: ..\Mylib\laser.h
 ..\obj\can2.o: ..\Mylib\pc_uart.h
+..\obj\can2.o: ..\Mylib\uart5.h
 ..\obj\can2.o: ..\Algorithm\pid.h
 ..\obj\can2.o: ..\Algorithm\algorithmOfCRC.h
 ..\obj\can2.o: ..\Algorithm\TD.h

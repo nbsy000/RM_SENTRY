@@ -39,6 +39,7 @@
 ..\obj\queuedata.o: ..\Library\inc\stm32f4xx_iwdg.h
 ..\obj\queuedata.o: ..\Mylib\laser.h
 ..\obj\queuedata.o: ..\Mylib\pc_uart.h
+..\obj\queuedata.o: ..\Mylib\uart5.h
 ..\obj\queuedata.o: ..\Algorithm\pid.h
 ..\obj\queuedata.o: ..\Algorithm\algorithmOfCRC.h
 ..\obj\queuedata.o: ..\Algorithm\TD.h

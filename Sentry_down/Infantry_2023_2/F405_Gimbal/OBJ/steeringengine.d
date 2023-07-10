@@ -39,6 +39,7 @@
 ..\obj\steeringengine.o: ..\Library\inc\stm32f4xx_iwdg.h
 ..\obj\steeringengine.o: ..\Mylib\laser.h
 ..\obj\steeringengine.o: ..\Mylib\pc_uart.h
+..\obj\steeringengine.o: ..\Mylib\uart5.h
 ..\obj\steeringengine.o: ..\Algorithm\pid.h
 ..\obj\steeringengine.o: ..\Algorithm\algorithmOfCRC.h
 ..\obj\steeringengine.o: ..\Algorithm\TD.h

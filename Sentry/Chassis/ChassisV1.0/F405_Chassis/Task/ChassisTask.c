@@ -89,6 +89,7 @@ void Chassis_task(void *pvParameters)
 		IWDG_Feed();//喂狗	
 		
 		VOFA_Send();
+
 		
 		vTaskDelayUntil(&xLastWakeTime,xFrequency);//2ms		
 		 
@@ -660,14 +661,11 @@ void Chassis_Patrol_Act_mmWave(void)
 **********************************************************************************************************/
 void Chassis_SLEEP_Act(void)
 {
-	//计算每个电机的目标转速
-	aimRSpeed[0] = -chassis.carSpeedy*60*reRatio/(2*PI*Wheel_R) - chassis.carSpeedw*Chassis_R*reRatio/Wheel_R;
-	aimRSpeed[1] = +chassis.carSpeedx*60*reRatio/(2*PI*Wheel_R) - chassis.carSpeedw*Chassis_R*reRatio/Wheel_R;
-	aimRSpeed[2] = +chassis.carSpeedy*60*reRatio/(2*PI*Wheel_R) - chassis.carSpeedw*Chassis_R*reRatio/Wheel_R;
-	aimRSpeed[3] = -chassis.carSpeedx*60*reRatio/(2*PI*Wheel_R) - chassis.carSpeedw*Chassis_R*reRatio/Wheel_R;
-	
-	//PID计算每个电机的控制电流
-	Pid_SpeedCurrent(aimRSpeed);
+	WheelCurrentSend[0] = 0;
+	WheelCurrentSend[1] = 0;
+	WheelCurrentSend[2] = 0;
+	WheelCurrentSend[3] = 0;
+
 }
 
 /*********************************************************************************************************

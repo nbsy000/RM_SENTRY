@@ -17,6 +17,7 @@ PCSendData pc_send_data;
 float pc_pitch,pc_yaw;
 uint8_t PC_Shoot_flag;
 uint8_t last_shoot_flag;
+uint8_t armor_state; 
 
 void PCSolve(void)
 {
@@ -36,9 +37,9 @@ void PCReceive(unsigned char *PCbuffer)
 //        PC_Shoot_flag = pc_recv_data.shoot_flag - last_shoot_flag;
 //        last_shoot_flag = pc_recv_data.shoot_flag;
 				if(pc_recv_data.enemy_id != 0)
-					PC_Shoot_flag = 1;
+					armor_state = ARMOR_AIMED; //有目标
 				else
-					PC_Shoot_flag = 0;
+					armor_state = ARMOR_NO_AIM; //没目标
         PCSolve();
     }
 }

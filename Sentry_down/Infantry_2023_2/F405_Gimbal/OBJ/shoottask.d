@@ -39,6 +39,7 @@
 ..\obj\shoottask.o: ..\Library\inc\stm32f4xx_iwdg.h
 ..\obj\shoottask.o: ..\Mylib\laser.h
 ..\obj\shoottask.o: ..\Mylib\pc_uart.h
+..\obj\shoottask.o: ..\Mylib\uart5.h
 ..\obj\shoottask.o: ..\Algorithm\pid.h
 ..\obj\shoottask.o: ..\Algorithm\algorithmOfCRC.h
 ..\obj\shoottask.o: ..\Algorithm\TD.h

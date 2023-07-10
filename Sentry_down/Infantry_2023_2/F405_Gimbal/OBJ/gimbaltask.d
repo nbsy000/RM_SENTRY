@@ -39,6 +39,7 @@
 ..\obj\gimbaltask.o: ..\Library\inc\stm32f4xx_iwdg.h
 ..\obj\gimbaltask.o: ..\Mylib\laser.h
 ..\obj\gimbaltask.o: ..\Mylib\pc_uart.h
+..\obj\gimbaltask.o: ..\Mylib\uart5.h
 ..\obj\gimbaltask.o: ..\Algorithm\pid.h
 ..\obj\gimbaltask.o: ..\Algorithm\algorithmOfCRC.h
 ..\obj\gimbaltask.o: ..\Algorithm\TD.h

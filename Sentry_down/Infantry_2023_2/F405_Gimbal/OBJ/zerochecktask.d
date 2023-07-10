@@ -39,6 +39,7 @@
 ..\obj\zerochecktask.o: ..\Library\inc\stm32f4xx_iwdg.h
 ..\obj\zerochecktask.o: ..\Mylib\laser.h
 ..\obj\zerochecktask.o: ..\Mylib\pc_uart.h
+..\obj\zerochecktask.o: ..\Mylib\uart5.h
 ..\obj\zerochecktask.o: ..\Algorithm\pid.h
 ..\obj\zerochecktask.o: ..\Algorithm\algorithmOfCRC.h
 ..\obj\zerochecktask.o: ..\Algorithm\TD.h

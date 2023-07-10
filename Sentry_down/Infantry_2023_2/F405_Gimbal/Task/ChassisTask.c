@@ -734,7 +734,7 @@ void Chassis_PC_Cal()
 	NAV_car.NAV_y = 3*(RC_Ctl.rc.ch1-1024);
 	NAV_car.NAV_w = RC_Ctl.rc.ch2-1024;
 	
-	if (NAV_car.NAV_State == 1) // 导航
+	if (NAV_car.Chassis_PC_State == NAV_STATE) // 导航
 	{ 
 		if(Status.GimbalMode == Gimbal_PC_Mode)
 		{
@@ -764,13 +764,19 @@ void Chassis_PC_Cal()
 		chassis.carSpeedx = -NAV_car.NAV_x*SinTheTa + NAV_car.NAV_y*CosTheTa;
 		
 	}
-	else // 巡逻区
+	else if(NAV_car.Chassis_PC_State == PROTECT_STATE) // 巡逻区
 	{
 		chassis.carSpeedx = 0;
 		chassis.carSpeedy = 0;
 		chassis.carSpeedw = -3000;
 	}
 	
+	else//自动模式切换过渡状态
+	{
+		chassis.carSpeedx = 0;
+		chassis.carSpeedy = 0;
+		chassis.carSpeedw = 0;	
+	}
 }
 
 /**********************************************************************************************************

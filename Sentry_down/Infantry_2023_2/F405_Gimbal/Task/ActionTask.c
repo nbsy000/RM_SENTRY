@@ -687,9 +687,6 @@ void Navigation_State()
 	if (NAV_car.Last_NAV_State != NAV_car.NAV_State)
 	{
 		start_time = GetTime_s();
-		NAV_car.Gimbal_State_Update = 1;
-		NAV_car.Chassis_State_Update = 1;
-		NAV_car.Shoot_State_Update = 1;
 	}
 
 	/**********************全局状态***************************/
@@ -725,39 +722,69 @@ void Navigation_State()
 	/***********************决策状态**************************/
 	switch (NAV_car.NAV_State)
 	{
-	case BEFOREGAME:							  // 比赛开始前
+	case BEFOREGAME: // 比赛开始前
+		Chassis_Gimbal_Shoot_State(STOP_STATE, STOP_STATE, STOP_STATE);
 		if (F105.JudgeReceive_info.is_game_start) // 比赛开始
 			NAV_car.NAV_State = TO_OUTPOST;		  // 去前哨战
 		break;
 	case OUTPOST: // 前哨站
+		Chassis_Gimbal_Shoot_State(STOP_STATE, ARMOR_STATE, ARMOR_STATE);
 		break;
 	case PATROL: // 巡逻区
+		Chassis_Gimbal_Shoot_State(PROTECT_STATE, ARMOR_STATE, ARMOR_STATE);
 		break;
 	case SOURCE: // 资源岛
+		Chassis_Gimbal_Shoot_State(STOP_STATE, ARMOR_STATE, ARMOR_STATE);
 		break;
 	case HIGHLAND: // 高地
+		Chassis_Gimbal_Shoot_State(STOP_STATE, ARMOR_STATE, ARMOR_STATE);
 		break;
 	case TO_OUTPOST: // 去前哨站
+		Chassis_Gimbal_Shoot_State(NAV_STATE, NAV_STATE, NAV_STATE);
 		if (0)
 			NAV_car.NAV_State = OUTPOST; // 前哨站
 		break;
 	case TO_SOURCE: // 去资源导
+		Chassis_Gimbal_Shoot_State(NAV_STATE, NAV_STATE, NAV_STATE);
 		break;
 	case TO_PATROL: // 去巡逻区
+		Chassis_Gimbal_Shoot_State(NAV_STATE, NAV_STATE, NAV_STATE);
 		break;
 	case TO_HIGHLAND: // 去高地
+		Chassis_Gimbal_Shoot_State(NAV_STATE, NAV_STATE, NAV_STATE);
 		break;
 	case PATROL_SAFE: // 前哨战还在前的巡逻区状态
+		Chassis_Gimbal_Shoot_State(PROTECT_STATE, ARMOR_STATE, ARMOR_STATE);
 		break;
 	case TEST1: // 测试路线1
 		break;
 	case TEST2: // 路线测试2
 		break;
 	default:
+		Chassis_Gimbal_Shoot_State(STOP_STATE, STOP_STATE, STOP_STATE);
 		break;
 	}
 
+	/**********************状态更新时的过渡状态*************************/
+	if (GetTime_s() - start_time < 1.0) // 过渡时间1s
+	{
+		Chassis_Gimbal_Shoot_State(STOP_STATE, STOP_STATE, STOP_STATE);
+	}
+
 	NAV_car.Last_NAV_State = NAV_car.NAV_State;
+}
+
+/**********************************************************************************************************
+ *函 数 名: Chassis_Gimbal_Shoot_State
+ *功能说明: 模式选择任务
+ *形    参: 无
+ *返 回 值: 无
+ **********************************************************************************************************/
+void Chassis_Gimbal_Shoot_State(int Chassis_Mode, int Gimbal_Mode, int Shoot_Mode)
+{
+	NAV_car.Chassis_PC_State = Chassis_Mode;
+	NAV_car.Gimbal_PC_State = Gimbal_Mode;
+	NAV_car.Shoot_PC_State = Shoot_Mode;
 }
 
 /**********************************************************************************************************

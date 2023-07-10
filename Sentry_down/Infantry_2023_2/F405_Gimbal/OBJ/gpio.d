@@ -39,6 +39,7 @@
 ..\obj\gpio.o: ..\Library\inc\stm32f4xx_iwdg.h
 ..\obj\gpio.o: ..\Mylib\laser.h
 ..\obj\gpio.o: ..\Mylib\pc_uart.h
+..\obj\gpio.o: ..\Mylib\uart5.h
 ..\obj\gpio.o: ..\Algorithm\pid.h
 ..\obj\gpio.o: ..\Algorithm\algorithmOfCRC.h
 ..\obj\gpio.o: ..\Algorithm\TD.h

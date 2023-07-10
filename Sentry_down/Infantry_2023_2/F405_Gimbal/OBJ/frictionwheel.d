@@ -39,6 +39,7 @@
 ..\obj\frictionwheel.o: ..\Library\inc\stm32f4xx_iwdg.h
 ..\obj\frictionwheel.o: ..\Mylib\laser.h
 ..\obj\frictionwheel.o: ..\Mylib\pc_uart.h
+..\obj\frictionwheel.o: ..\Mylib\uart5.h
 ..\obj\frictionwheel.o: ..\Algorithm\pid.h
 ..\obj\frictionwheel.o: ..\Algorithm\algorithmOfCRC.h
 ..\obj\frictionwheel.o: ..\Algorithm\TD.h

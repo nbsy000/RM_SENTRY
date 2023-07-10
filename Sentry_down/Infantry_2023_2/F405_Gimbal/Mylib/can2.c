@@ -88,6 +88,19 @@ void CAN2_Configuration(void)
 	can_filter.CAN_FilterFIFOAssignment = 1;//fifo1
 	can_filter.CAN_FilterActivation = ENABLE;
 	CAN_FilterInit(&can_filter);
+//	
+//		//FIFO1，只接收gyro_id
+//	can_filter.CAN_FilterNumber = 16; //选择过滤器16
+//	can_filter.CAN_FilterMode = CAN_FilterMode_IdMask; //列表模式
+//	can_filter.CAN_FilterScale = CAN_FilterScale_16bit;
+//	can_filter.CAN_FilterIdHigh = 0x00 << 5;
+//	can_filter.CAN_FilterIdLow = 0x0<<5;
+//	can_filter.CAN_FilterMaskIdHigh = 0x0 << 5;
+//	can_filter.CAN_FilterMaskIdLow = 0 | CAN_ID_STD;
+//	can_filter.CAN_FilterFIFOAssignment = 1;//fifo1
+//	can_filter.CAN_FilterActivation = ENABLE;
+//	CAN_FilterInit(&can_filter);
+//	
 	//CAN中断配置
 	CAN_ITConfig(CAN2,CAN_IT_FMP0,ENABLE);
 	CAN_ITConfig(CAN2,CAN_IT_FMP1,ENABLE);

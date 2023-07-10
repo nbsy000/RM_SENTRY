@@ -99,7 +99,7 @@ void Robot_Init(void)
 	PidGimbalMotor_Init();
 	Pid_BodanMotor_Init();
 	Pid_Friction_Init();
-    while (!checkIMUOn()); //检查IMU是否开启
+//	while (!checkIMUOn()); //检查IMU是否开启
     INS_Init();
     ICM20602_init(&IMUReceive, &IMUData);
 }

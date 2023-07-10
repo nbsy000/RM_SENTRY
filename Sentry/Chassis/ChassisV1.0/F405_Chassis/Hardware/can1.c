@@ -92,8 +92,8 @@ void CAN1_Configuration()
 	
 	//掩码模式，所有都接（正常情况下是接收不到FIFO0中的，接收有优先级），用于调试
 	CAN_FilterInitStructure.CAN_FilterNumber = 1; //选择过滤器1
-	//CAN_FilterInitStructure.CAN_FilterMode = CAN_FilterMode_IdMask; //掩码模式
-	CAN_FilterInitStructure.CAN_FilterMode = CAN_FilterMode_IdList;	 // 标识符屏蔽位模式
+	CAN_FilterInitStructure.CAN_FilterMode = CAN_FilterMode_IdMask; //掩码模式
+//	CAN_FilterInitStructure.CAN_FilterMode = CAN_FilterMode_IdList;	 // 标识符屏蔽位模式
 	CAN_FilterInitStructure.CAN_FilterScale = CAN_FilterScale_16bit;
 	CAN_FilterInitStructure.CAN_FilterIdHigh = 0x100<<5;//底盘陀螺仪
 	CAN_FilterInitStructure.CAN_FilterIdLow =  RMD_L_ID<<5;

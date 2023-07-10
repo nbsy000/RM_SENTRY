@@ -49,6 +49,7 @@
 ..\obj\cpu_task.o: ..\Library\inc\stm32f4xx_iwdg.h
 ..\obj\cpu_task.o: ..\Mylib\laser.h
 ..\obj\cpu_task.o: ..\Mylib\pc_uart.h
+..\obj\cpu_task.o: ..\Mylib\uart5.h
 ..\obj\cpu_task.o: ..\Algorithm\pid.h
 ..\obj\cpu_task.o: ..\Algorithm\algorithmOfCRC.h
 ..\obj\cpu_task.o: ..\Algorithm\TD.h

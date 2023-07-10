@@ -59,6 +59,7 @@
 ..\obj\pc_serial.o: ..\Mylib\iwdg.h
 ..\obj\pc_serial.o: ..\Library\inc\stm32f4xx_iwdg.h
 ..\obj\pc_serial.o: ..\Mylib\laser.h
+..\obj\pc_serial.o: ..\Mylib\uart5.h
 ..\obj\pc_serial.o: ..\Algorithm\pid.h
 ..\obj\pc_serial.o: ..\Algorithm\TD.h
 ..\obj\pc_serial.o: ..\User\main.h

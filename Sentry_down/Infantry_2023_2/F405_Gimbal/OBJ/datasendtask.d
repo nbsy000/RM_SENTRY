@@ -39,6 +39,7 @@
 ..\obj\datasendtask.o: ..\Library\inc\stm32f4xx_iwdg.h
 ..\obj\datasendtask.o: ..\Mylib\laser.h
 ..\obj\datasendtask.o: ..\Mylib\pc_uart.h
+..\obj\datasendtask.o: ..\Mylib\uart5.h
 ..\obj\datasendtask.o: ..\Algorithm\pid.h
 ..\obj\datasendtask.o: ..\Algorithm\algorithmOfCRC.h
 ..\obj\datasendtask.o: ..\Algorithm\TD.h

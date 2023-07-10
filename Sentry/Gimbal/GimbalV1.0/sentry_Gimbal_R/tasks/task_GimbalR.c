@@ -475,11 +475,11 @@ void Gimbal_Attack_Nosyne()
 		if(Gimbal_R.armor_state==ARMOR_AIMED)//
 		{
 			
-//			if((MotoYaw_L.PCsetAngle - MotoYaw_L.PATROL_MAX_ANGLE)>-3) 
-//				ChassisYaw_Inc = (MotoYaw_L.PCsetAngle - MotoYaw_L.PATROL_MAX_ANGLE)+3;
-//			else if((MotoYaw_L.PCsetAngle - MotoYaw_L.PATROL_MIN_ANGLE)<5)
-//				ChassisYaw_Inc = (MotoYaw_L.PCsetAngle - MotoYaw_L.PATROL_MIN_ANGLE)-5;
-//			else
+			if((MotoYaw.PCsetAngle - MotoYaw.MAX_ANGLE)>-13) 
+				ChassisYaw_Inc = (MotoYaw.PCsetAngle - MotoYaw.MAX_ANGLE)+13;
+			else if((MotoYaw.PCsetAngle - MotoYaw.MIN_ANGLE)<3)
+				ChassisYaw_Inc = (MotoYaw.PCsetAngle - MotoYaw.MIN_ANGLE)-5;
+			else
 				ChassisYaw_Inc = 0.0f;//	
 		}
 		else

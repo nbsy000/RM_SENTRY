@@ -39,6 +39,7 @@
 ..\obj\chassistask.o: ..\Library\inc\stm32f4xx_iwdg.h
 ..\obj\chassistask.o: ..\Mylib\laser.h
 ..\obj\chassistask.o: ..\Mylib\pc_uart.h
+..\obj\chassistask.o: ..\Mylib\uart5.h
 ..\obj\chassistask.o: ..\Algorithm\pid.h
 ..\obj\chassistask.o: ..\Algorithm\algorithmOfCRC.h
 ..\obj\chassistask.o: ..\Algorithm\TD.h

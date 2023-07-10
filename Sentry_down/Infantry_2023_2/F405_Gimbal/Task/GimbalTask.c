@@ -532,41 +532,31 @@ void T_change(void)
  *形    参: 无
  *返 回 值: 无
  **********************************************************************************************************/
-float Change_Yaw; // 辅瞄丢时的Yaw值
+float Change_Yaw; // 辅瞄丢时的Yaw值,主要方便辅瞄调的时候不会一直一个方向
 int Armor_cnt = 0;
+extern uint8_t armor_state; //没目标
 void Gimbal_PC_Cal()
 {
 	if (GimbalAct_Init_Flag != Gimbal_PC_Mode)
 	{
 		GimbalAct_Init_Flag = Gimbal_PC_Mode;
-		Change_Yaw = last_aim_yaw = GimbalYawPos = Gimbal.Yaw.Gyro;
-		GimbalPitchPos = Gimbal.Pitch.Gyro;
-		pc_yaw = Gimbal.Yaw.Gyro;
-		pc_pitch = Gimbal.Pitch.Gyro;
+		Recent_Yaw_Angle_Armor = Change_Yaw = last_aim_yaw = Gimbal.Yaw.Gyro;
 		Recent_Pitch_Angle_Armor = Gimbal.Pitch.Gyro;
-		Recent_Yaw_Angle_Armor = Gimbal.Yaw.Gyro;
-	}
-	
-	if(Gimbal_State_Update)
-	{
-			GimbalPitchPos = Recent_Pitch_Angle_Armor = Gimbal.Pitch.Gyro;
-		  Change_Yaw = GimbalYawPos = Recent_Yaw_Angle_Armor = Gimbal.Yaw.Gyro;
-			Gimbal_State_Update = 0;
 	}
 
 	DeltaGimbalPitchPos = Gimbal.Pitch.Gyro - Gimbal.Pitch.MotorTransAngle - Infantry.init_delta_pitch;
-	NAV_car.NAV_w = RC_Ctl.rc.ch2-1024;
-	
-	if(NAV_car.NAV_State == 1)//导航--云台跟随
+	NAV_car.NAV_w = RC_Ctl.rc.ch2 - 1024;//模拟导航发送的速度
+
+	if (NAV_car.Gimbal_PC_State == NAV_STATE) // 导航--云台跟随
 	{
-		GimbalYawPos += NAV_car.NAV_w * 0.0005f;
-		FF_w.Now_DeltIn = NAV_car.NAV_w * 0.0005f;
+		GimbalPitchPos = Gimbal.Pitch.Gyro;
+		GimbalYawPos += NAV_car.NAV_w * 0.001f;
+		FF_w.Now_DeltIn = NAV_car.NAV_w * 0.001f;//前馈
 	}
-		
-	else
+
+	else if(NAV_car.Gimbal_PC_State == ARMOR_STATE) //辅瞄模式
 	{
-		pc_recv_data.enemy_id = 0;
-		if (pc_recv_data.enemy_id != 0) // 判断辅瞄是否工作
+		if (armor_state == ARMOR_AIMED) // 判断辅瞄是否工作
 		{
 			Recent_Pitch_Angle_Armor = pc_pitch;
 			Recent_Yaw_Angle_Armor = pc_yaw;
@@ -584,7 +574,7 @@ void Gimbal_PC_Cal()
 				FF_w.Now_DeltIn = 0;
 			}
 			Change_Yaw = GimbalYawPos;
-			Armor_cnt = 200; // 停200ms
+			Armor_cnt = 500; // 停500ms
 		}
 
 		else
@@ -604,7 +594,7 @@ void Gimbal_PC_Cal()
 				Recent_Pitch_Angle_Armor += (patrol_dir_pitch == 1) ? (+patrol_step_pitch) : (-patrol_step_pitch);
 				Recent_Yaw_Angle_Armor += (patrol_dir_yaw == 1) ? (+patrol_step_yaw) : (-patrol_step_yaw);
 			}
-			else
+			else //主要用于辅瞄和巡航的切换过渡
 			{
 				Armor_cnt--;
 				Recent_Pitch_Angle_Armor = Gimbal.Pitch.Gyro;
@@ -615,6 +605,12 @@ void Gimbal_PC_Cal()
 			GimbalYawPos = Recent_Yaw_Angle_Armor;
 		}
 		last_aim_yaw = GimbalYawPos;
+	}
+	
+	else//自动模式过渡
+	{
+			GimbalPitchPos = Gimbal.Pitch.Gyro;
+			GimbalYawPos = Gimbal.Yaw.Gyro;
 	}
 
 	// PITCH限位
@@ -1460,7 +1456,7 @@ extern uint8_t Remote_Receive_Flag;
 void Gimbal_task(void *pvParameters)
 {
 	portTickType xLastWakeTime;
-	const portTickType xFrequency = 2;
+	const portTickType xFrequency = 1;
 
 	Gimbal_FF_Init();
 	vTaskDelay(200);

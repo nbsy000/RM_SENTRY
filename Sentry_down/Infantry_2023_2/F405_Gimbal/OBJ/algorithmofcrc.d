@@ -39,6 +39,7 @@
 ..\obj\algorithmofcrc.o: ..\Library\inc\stm32f4xx_iwdg.h
 ..\obj\algorithmofcrc.o: ..\Mylib\laser.h
 ..\obj\algorithmofcrc.o: ..\Mylib\pc_uart.h
+..\obj\algorithmofcrc.o: ..\Mylib\uart5.h
 ..\obj\algorithmofcrc.o: ..\Algorithm\pid.h
 ..\obj\algorithmofcrc.o: ..\Algorithm\algorithmOfCRC.h
 ..\obj\algorithmofcrc.o: ..\Algorithm\TD.h

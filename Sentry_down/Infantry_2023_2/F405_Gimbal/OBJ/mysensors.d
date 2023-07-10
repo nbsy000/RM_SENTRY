@@ -39,6 +39,7 @@
 ..\obj\mysensors.o: ..\Library\inc\stm32f4xx_iwdg.h
 ..\obj\mysensors.o: ..\Mylib\laser.h
 ..\obj\mysensors.o: ..\Mylib\pc_uart.h
+..\obj\mysensors.o: ..\Mylib\uart5.h
 ..\obj\mysensors.o: ..\Algorithm\pid.h
 ..\obj\mysensors.o: ..\Algorithm\algorithmOfCRC.h
 ..\obj\mysensors.o: ..\Algorithm\TD.h

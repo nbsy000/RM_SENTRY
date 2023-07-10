@@ -10,16 +10,16 @@ typedef struct
 
 typedef __packed struct
 {
-	short NAV_x; 
-	short NAV_y; 
-	short NAV_w; 
+	short NAV_x;
+	short NAV_y;
+	short NAV_w;
 	unsigned char Barrier_Flag;
-	
+
 	uint8_t NAV_State;
 	uint8_t Last_NAV_State;
-	uint8_t Gimbal_State_Update;
-	uint8_t Chassis_State_Update;
-	uint8_t Shoot_State_Update;
+	uint8_t Gimbal_PC_State;
+	uint8_t Chassis_PC_State;
+	uint8_t Shoot_PC_State;
 } NAV_t;
 
 void Chassis_Powerdown_Cal(void);

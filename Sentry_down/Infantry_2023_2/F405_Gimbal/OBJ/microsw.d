@@ -39,6 +39,7 @@
 ..\obj\microsw.o: ..\Library\inc\stm32f4xx_iwdg.h
 ..\obj\microsw.o: ..\Mylib\laser.h
 ..\obj\microsw.o: ..\Mylib\pc_uart.h
+..\obj\microsw.o: ..\Mylib\uart5.h
 ..\obj\microsw.o: ..\Algorithm\pid.h
 ..\obj\microsw.o: ..\Algorithm\algorithmOfCRC.h
 ..\obj\microsw.o: ..\Algorithm\TD.h

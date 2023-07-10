@@ -425,6 +425,7 @@ float bodanLastPos;              //存放上次单发结束时的拨弹电机位置值
 float now_time = 0;
 float IntervalTime;
 const int Shoot_IntervalTime = 80;
+extern uint8_t armor_state;
 void Shoot_PC_Cal()
 {
 	if(ShootAct_Init_Flag!=5)
@@ -436,8 +437,9 @@ void Shoot_PC_Cal()
 //		SendToTx2BullectCnt=PC_Receive.ReceiveFromTx2BullectCnt=0;
 	}
 	
-	
-		if(Shoot.HeatControl.IsShootAble==1 && PC_Shoot_flag/*shoot_test_flag*/ != 0)
+	if(NAV_car.Shoot_PC_State == ARMOR_AIMED)	//辅瞄模式
+	{
+		if(Shoot.HeatControl.IsShootAble==1 && armor_state == ARMOR_AIMED)
     {
 			if(ABS(pc_pitch - Gimbal.Pitch.Gyro)<0.8f && ABS(pc_yaw - Gimbal.Yaw.Gyro)<0.8f)	//已经辅瞄到位，自动开火
 			{
@@ -449,6 +451,7 @@ void Shoot_PC_Cal()
 				}
 			}
 		}
+	}
 	PidBodanMotorPos.SetPoint=bodanLastPos + Onegrid;
 }
 	

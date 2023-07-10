@@ -39,6 +39,7 @@
 ..\obj\controltask.o: ..\Library\inc\stm32f4xx_iwdg.h
 ..\obj\controltask.o: ..\Mylib\laser.h
 ..\obj\controltask.o: ..\Mylib\pc_uart.h
+..\obj\controltask.o: ..\Mylib\uart5.h
 ..\obj\controltask.o: ..\Algorithm\pid.h
 ..\obj\controltask.o: ..\Algorithm\algorithmOfCRC.h
 ..\obj\controltask.o: ..\Algorithm\TD.h

@@ -632,6 +632,11 @@
               <FileType>1</FileType>
               <FilePath>..\Mylib\pc_uart.c</FilePath>
             </File>
+            <File>
+              <FileName>uart5.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Mylib\uart5.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

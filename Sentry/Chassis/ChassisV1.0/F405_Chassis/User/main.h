@@ -135,6 +135,7 @@ typedef  struct{
 		int ChassisDisconnect[4];
 		int ChassisYawconnect;
 		int ChassisGyroDisconnect;
+		uint8_t ChassisYawGyroEnable;
 	  int ChassisYawGyroDisconnect;
 		int JudgeDisconnect;
 		int RemoteDisconnect;
@@ -148,5 +149,5 @@ void System_Config(void);
 void System_Init(void);
 void Offline_Check_task(void *pvParameters);
 
-extern roboDisconnect Robo_Disconnect;
+extern roboDisconnect Robot_Disconnect;
 #endif

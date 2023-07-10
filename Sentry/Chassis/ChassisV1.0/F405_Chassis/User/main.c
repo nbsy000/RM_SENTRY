@@ -120,20 +120,28 @@ void Offline_Check_task(void *pvParameters)
 		/*´óYawÖáµç»úµôÏß¼ì²â*/
 		if(Robot_Disconnect.ChassisYawconnect>100)
 		{
+
 		}
+
 		Robot_Disconnect.ChassisYawconnect++;
 
 		/*µ×ÅÌÍÓÂÝÒÇµôÏß¼ì²â*/
 		if(Robot_Disconnect.ChassisGyroDisconnect>100)
 		{
+			
 		}
 		Robot_Disconnect.ChassisGyroDisconnect++;
 		
 		/*´óYawÖáÍÓÂÝÒÇµôÏß¼ì²â*/
 		if(Robot_Disconnect.ChassisYawGyroDisconnect>100)
 		{
+				Robot_Disconnect.ChassisYawGyroEnable = 0;
 		}
-		Robot_Disconnect.ChassisYawGyroDisconnect++;
+		else
+		{
+			Robot_Disconnect.ChassisYawGyroEnable = 1;
+			Robot_Disconnect.ChassisYawGyroDisconnect++;
+		}
 		
 		IWDG_Feed();//Î¹¹·
 

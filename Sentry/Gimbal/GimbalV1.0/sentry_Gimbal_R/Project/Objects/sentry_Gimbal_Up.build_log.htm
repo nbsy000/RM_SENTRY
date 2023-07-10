@@ -27,7 +27,22 @@ Project File Date:  07/04/2023
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin'
 Build target 'standard'
-".\Objects\sentry_Gimbal_Up.axf" - 0 Error(s), 0 Warning(s).
+compiling task_GimbalR.c...
+..\tasks\task_GimbalR.c(355): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	ChassisYaw_Inc = (MotoYaw_L.PCsetAngle + MotoYaw.PCsetAngle)/2.0; 
+..\tasks\task_GimbalR.c(441): warning:  #177-D: variable "mid_offset"  was declared but never referenced
+  		float mid_offset;//ÖÐÐÄÆ«ÒÆ
+..\tasks\task_GimbalR.c(517): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  			step_speed_yaw = patrol_step_yaw*sqrt(1 - pow(MotoYaw->PCsetAngle*2.0/abs(MotoYaw->PATROL_MAX_ANGLE-MotoYaw->PATROL_MIN_ANGLE),2));
+..\tasks\task_GimbalR.c(615): warning:  #550-D: variable "Last_Pitch_I"  was set but never used
+  		int Last_Pitch_I,Last_Yaw_I;
+..\tasks\task_GimbalR.c(615): warning:  #550-D: variable "Last_Yaw_I"  was set but never used
+  		int Last_Pitch_I,Last_Yaw_I;
+..\tasks\task_GimbalR.c: 5 warnings, 0 errors
+linking...
+Program Size: Code=43444 RO-data=2156 RW-data=996 ZI-data=34532  
+FromELF: creating hex file...
+".\Objects\sentry_Gimbal_Up.axf" - 0 Error(s), 5 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -52,7 +67,7 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:DSP:Library:1.8.0
       Include file:  CMSIS\DSP\Include\arm_math.h
       Library file:  CMSIS\DSP\Lib\ARM\arm_cortexM4lf_math.lib
-Build Time Elapsed:  00:00:00
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

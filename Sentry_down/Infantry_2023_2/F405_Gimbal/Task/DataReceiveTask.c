@@ -224,6 +224,26 @@ void Can2Receive1(CanRxMsg *rx_message1)
     }
 }
 
+
+/**
+  * @brief  雷达信息接收
+  * @param  None
+  * @retval None
+  */
+void NAVReceive(uint8_t Buf[])
+{
+	extern NAV_Recv_t NAV_Recv;
+	float  x_now,y_now,w_now;
+	memcpy(&x_now,&Buf[1], 4); 
+	memcpy(&y_now,&Buf[5], 4); 
+	memcpy(&w_now,&Buf[9], 4);
+	NAV_Recv.x_now = (short)x_now;
+	NAV_Recv.y_now = (short)y_now;
+	NAV_Recv.w_now = (short)w_now;
+//	NAV_Recv.Barrier_Flag = Buf[13];
+
+}
+
 /**********************************************************************************************************
  *函 数 名: RemoteReceive
  *功能说明: 遥控器数据接收

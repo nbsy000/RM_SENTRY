@@ -21,7 +21,7 @@ void ChassisYaw_task(void *pvParameters)
 			else ChassisYaw_SLEEP_Act(); 
 			
 			//发送电流值进行控制
-			Yaw_I_Control(C_I);
+			Yaw_I_Control(C_I*Robot_Disconnect.ChassisYawGyroEnable);
 	 
 			//读取当前状态
 			ChassisYaw_Last_State = Sentry_State.ChassisYaw_Mode;

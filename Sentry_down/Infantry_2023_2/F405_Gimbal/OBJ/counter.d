@@ -39,6 +39,7 @@
 ..\obj\counter.o: ..\Library\inc\stm32f4xx_iwdg.h
 ..\obj\counter.o: ..\Mylib\laser.h
 ..\obj\counter.o: ..\Mylib\pc_uart.h
+..\obj\counter.o: ..\Mylib\uart5.h
 ..\obj\counter.o: ..\Algorithm\pid.h
 ..\obj\counter.o: ..\Algorithm\algorithmOfCRC.h
 ..\obj\counter.o: ..\Algorithm\TD.h

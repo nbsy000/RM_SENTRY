@@ -39,6 +39,7 @@
 ..\obj\usart4_gryo.o: ..\Library\inc\stm32f4xx_iwdg.h
 ..\obj\usart4_gryo.o: ..\Mylib\laser.h
 ..\obj\usart4_gryo.o: ..\Mylib\pc_uart.h
+..\obj\usart4_gryo.o: ..\Mylib\uart5.h
 ..\obj\usart4_gryo.o: ..\Algorithm\pid.h
 ..\obj\usart4_gryo.o: ..\Algorithm\algorithmOfCRC.h
 ..\obj\usart4_gryo.o: ..\Algorithm\TD.h
