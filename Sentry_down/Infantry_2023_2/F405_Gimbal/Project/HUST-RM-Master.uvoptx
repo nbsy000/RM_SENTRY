@@ -767,6 +767,26 @@
           <WinNumber>2</WinNumber>
           <ItemText>sbus_rx_buffer</ItemText>
         </Ww>
+        <Ww>
+          <count>71</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>FricMotorID</ItemText>
+        </Ww>
+        <Ww>
+          <count>72</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>Infantry</ItemText>
+        </Ww>
+        <Ww>
+          <count>73</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>FrictionReceive</ItemText>
+        </Ww>
+        <Ww>
+          <count>74</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>rx_message1</ItemText>
+        </Ww>
       </WatchWindow2>
       <Tracepoint>
         <THDelay>0</THDelay>

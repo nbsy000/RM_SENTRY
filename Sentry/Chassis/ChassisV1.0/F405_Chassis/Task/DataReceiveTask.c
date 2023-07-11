@@ -117,7 +117,7 @@ void JudgeBuffReceive(unsigned char ReceiveBuffer[],uint16_t DataLen)
 					JudgeReceive.hurt_type = (SaveBuffer[PackPoint+7+0]&0xF0) >> 4;
 					chassis.armor_hurt_flag[0] = ((JudgeReceive.hurt_armor_id==0)&&(JudgeReceive.hurt_type==0));
 					chassis.armor_hurt_flag[1] = ((JudgeReceive.hurt_armor_id==1)&&(JudgeReceive.hurt_type==0));
-					chassis.armor_hurt_flag[2] = ((JudgeReceive.hurt_armor_id==2) && (JudgeReceive.hurt_type==0));
+					chassis.armor_hurt_flag[2] = ((JudgeReceive.hurt_armor_id==2)&&(JudgeReceive.hurt_type==0));
 					chassis.armor_hurt_flag[3] = ((JudgeReceive.hurt_armor_id==3)&&(JudgeReceive.hurt_type==0));	
 					if(JudgeReceive.hurt_type)//如果不是因为装甲伤害扣血，认为此时发生了异常情况
 					{

@@ -199,7 +199,7 @@ void Infantry_Init(void)
 	Infantry.PitchMotorID = 0x207;
 	Infantry.YawMotorID = 0x205;
 	Infantry.FricMotorID[0] = 0x202;
-	Infantry.FricMotorID[1] = 0x203;
+	Infantry.FricMotorID[1] = 0x201;
 	Infantry.BodanMotorID = 0x204;
 	Infantry.pitch_max_motor = 38;
 	Infantry.pitch_min_motor = -13;

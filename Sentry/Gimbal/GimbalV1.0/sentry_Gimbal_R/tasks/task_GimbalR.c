@@ -476,9 +476,9 @@ void Gimbal_Attack_Nosyne()
 		{
 			
 			if((MotoYaw.PCsetAngle - MotoYaw.MAX_ANGLE)>-13) 
-				ChassisYaw_Inc = (MotoYaw.PCsetAngle - MotoYaw.MAX_ANGLE)+13;
+				ChassisYaw_Inc = 0.12f;
 			else if((MotoYaw.PCsetAngle - MotoYaw.MIN_ANGLE)<3)
-				ChassisYaw_Inc = (MotoYaw.PCsetAngle - MotoYaw.MIN_ANGLE)-5;
+				ChassisYaw_Inc = -0.12f;
 			else
 				ChassisYaw_Inc = 0.0f;//	
 		}

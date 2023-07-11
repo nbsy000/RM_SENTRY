@@ -76,17 +76,6 @@ void CAN1_Configuration(void)
 		can.CAN_Prescaler = 3;   //CAN BaudRate 42/(1+9+4)/3=1Mbps
     CAN_Init(CAN1, &can);
 
-
-//    can_filter.CAN_FilterNumber=1;
-//		can_filter.CAN_FilterMode=CAN_FilterMode_IdMask;
-//		can_filter.CAN_FilterScale=CAN_FilterScale_32bit;
-//		can_filter.CAN_FilterIdHigh=0x0000;
-//		can_filter.CAN_FilterIdLow=0x0000;
-//		can_filter.CAN_FilterMaskIdHigh=0x0000;
-//		can_filter.CAN_FilterMaskIdLow=0x0000;
-//		can_filter.CAN_FilterFIFOAssignment=1;
-//		can_filter.CAN_FilterActivation=ENABLE;
-//		CAN_FilterInit(&can_filter);
 		
 	  can_filter.CAN_FilterNumber = 0; //选择过滤器0
 		can_filter.CAN_FilterMode = CAN_FilterMode_IdList; //列表模式
@@ -162,9 +151,9 @@ void CAN1_RX0_IRQHandler(void)
 *形    参: 无
 *返 回 值: 无
 **********************************************************************************************************/
+CanRxMsg rx_message1;
 void CAN1_RX1_IRQHandler(void)
 {
-	  CanRxMsg rx_message1;
     if (CAN_GetITStatus(CAN1,CAN_IT_FMP1)!= RESET)
     {
 			  CAN_ClearITPendingBit(CAN1, CAN_IT_FMP1);
