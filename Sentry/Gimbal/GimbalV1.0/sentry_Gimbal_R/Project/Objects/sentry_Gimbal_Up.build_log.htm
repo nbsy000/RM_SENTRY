@@ -27,6 +27,16 @@ Project File Date:  07/04/2023
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin'
 Build target 'standard'
+compiling task_DataSend.c...
+..\tasks\task_DataSend.c(47): warning:  #177-D: variable "i"  was declared but never referenced
+  	static uint8_t i = 0;
+..\tasks\task_DataSend.c: 1 warning, 0 errors
+compiling taskIT_DataReceive.c...
+..\tasks\taskIT_DataReceive.c(194): warning:  #550-D: variable "pitch_last"  was set but never used
+  				short pitch_l,pitch_last;
+..\tasks\taskIT_DataReceive.c(195): warning:  #550-D: variable "yaw_last"  was set but never used
+  				float yaw_l,yaw_last;
+..\tasks\taskIT_DataReceive.c: 2 warnings, 0 errors
 compiling task_GimbalR.c...
 ..\tasks\task_GimbalR.c(355): warning:  #1035-D: single-precision operand implicitly converted to double-precision
   	ChassisYaw_Inc = (MotoYaw_L.PCsetAngle + MotoYaw.PCsetAngle)/2.0; 
@@ -40,9 +50,9 @@ compiling task_GimbalR.c...
   		int Last_Pitch_I,Last_Yaw_I;
 ..\tasks\task_GimbalR.c: 5 warnings, 0 errors
 linking...
-Program Size: Code=43404 RO-data=2156 RW-data=996 ZI-data=34532  
+Program Size: Code=43156 RO-data=2156 RW-data=996 ZI-data=34532  
 FromELF: creating hex file...
-".\Objects\sentry_Gimbal_Up.axf" - 0 Error(s), 5 Warning(s).
+".\Objects\sentry_Gimbal_Up.axf" - 0 Error(s), 8 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -65,9 +75,9 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:DSP:Library:1.8.0
-      Library file:  CMSIS\DSP\Lib\ARM\arm_cortexM4lf_math.lib
       Include file:  CMSIS\DSP\Include\arm_math.h
-Build Time Elapsed:  00:00:01
+      Library file:  CMSIS\DSP\Lib\ARM\arm_cortexM4lf_math.lib
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>

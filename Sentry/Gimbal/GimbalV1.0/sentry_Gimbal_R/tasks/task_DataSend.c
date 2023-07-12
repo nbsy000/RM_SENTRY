@@ -146,7 +146,7 @@ void Remote_Send(void)
 }
 
 /**
-* @brief  Classify_Send_Msg 对发送成功的数据进行分类处理
+* @brief  Classify_Send_Msg 对发送成功的数据进行分类处理（测试使用）
   * @param  None
   * @retval None
   */

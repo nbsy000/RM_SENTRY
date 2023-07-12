@@ -43,12 +43,12 @@ void CAN1_DataReceive_0(void)
 
  
 /**
-  * @brief  上云台两轴电机信息接收
+  * @brief  新陀螺仪代码，目前没使用
   * @param  None
   * @retval None    
   */
 
-void CAN1_DataReceive_1(void) //接收两轴电机数据
+void CAN1_DataReceive_1(void) 
 {
 #ifdef NEW_INS
 		if (Can1_rx_message_1.StdId == Gyro_R_Pitch_ID)
@@ -126,7 +126,7 @@ void CAN2_DataReceive_0(void)
 }
 
 /**
-  * @brief  上云台陀螺仪信息接收
+  * @brief  陀螺仪信息接收
   * @param  None
   * @retval None
   */
@@ -135,32 +135,12 @@ uint32_t gyro_cnt;
 float gyro_pitch_test;
 
 uint32_t cnt_temp, cnt1; //float cnt2,cnt2temp;
-float gz10e6;            //?????
 extern uint8_t Heat_ShootAbleFlag;
 extern uint8_t is_game_start;
 float aim_yaw_l,aim_pitch_l;
 extern Gimbal_Typedef Gimbal_R,Gimbal_L;
 void CAN2_DataReceive_1(void) //接收陀螺仪
 {
-//#ifdef NEW_INS
-//		if (Can2_rx_message_1.StdId == Gyro_R_Pitch_ID)
-//    {
-//				memcpy(&IMUReceive.Gyro[0], Can2_rx_message_1.Data, 2);
-//				memcpy(&IMUReceive.Gyro[1], &Can2_rx_message_1.Data[2], 2);
-//				memcpy(&IMUReceive.Gyro[2], &Can2_rx_message_1.Data[4], 2);
-//				FrameRate.GyroPitchRF++;
-//				global_debugger.imu_debugger[0].recv_msgs_num[1]++;
-//    }
-//    else if (Can2_rx_message_1.StdId == Gyro_R_Yaw_ID)
-//    {
-//				memcpy(&IMUReceive.Acc[0], Can2_rx_message_1.Data, 2);
-//				memcpy(&IMUReceive.Acc[1], &Can2_rx_message_1.Data[2], 2);
-//				memcpy(&IMUReceive.Acc[2], &Can2_rx_message_1.Data[4], 2);
-//				FrameRate.GyroYawRF++;
-//				global_debugger.imu_debugger[0].recv_msgs_num[1]++;
-//    }
-
-//#else	
 		if (Can2_rx_message_1.StdId == Gyro_R_Pitch_ID)
     {
         memcpy(&Gyro_Right.PITCH, &Can2_rx_message_1.Data[0], 4);
@@ -173,8 +153,7 @@ void CAN2_DataReceive_1(void) //接收陀螺仪
         memcpy(&Gyro_Right.GZ, &Can2_rx_message_1.Data[4], 4);
 				FrameRate.GyroYawRF++;
 				
-    }
-//#endif				
+    }			
 		else if (Can2_rx_message_1.StdId == Gyro_L_Pitch_ID)
     {
         memcpy(&Gyro_Left.PITCH, &Can2_rx_message_1.Data[0], 4);
@@ -188,16 +167,6 @@ void CAN2_DataReceive_1(void) //接收陀螺仪
 				FrameRate.GyroYawLF++;
     }
 
-		if(Can2_rx_message_1.StdId == AIM_LEFT_ID)
-		{
-				short pitch_l;
-				int yaw_l;
-				memcpy(&pitch_l, &Can2_rx_message_1.Data[0], 2);
-				memcpy(&yaw_l, &Can2_rx_message_1.Data[2], 4);	
-				Gimbal_L.armor_state = Can2_rx_message_1.Data[6];
-				aim_pitch_l = -pitch_l/100.0f;
-				aim_yaw_l = yaw_l/100.0f;
-		}
 		else if(Can2_rx_message_1.StdId == SHOOTING_HEAT_ID)
 		{
 				memcpy(&Heat_ShootAbleFlag, &Can2_rx_message_1.Data[0], 1);
@@ -220,26 +189,6 @@ void Gimbal_Receive(uint8_t Buf[])
 {
 		switch(Buf[1])
 		{
-			case (uint8_t)(AIM_LEFT_ID &0xff):
-			{
-				short pitch_l;
-				int yaw_l;
-				memcpy(&pitch_l, &Buf[2], 2);
-				memcpy(&yaw_l, &Buf[4], 4);	
-				Gimbal_L.armor_state = Buf[8];
-				Gimbal_L.target_id = Buf[9];
-				aim_pitch_l = -pitch_l/100.0f;
-				aim_yaw_l = yaw_l/100.0f;					
-			}				
-				break;
-			case (uint8_t)(SHOOTING_HEAT_ID &0xff):
-				memcpy(&Heat_ShootAbleFlag, &Buf[2], 1);
-				memcpy(&is_game_start, &Buf[3], 1);			
-				memcpy(&Bullet_Speed, &Buf[4], 2);	
-				memcpy(&Attack_color, &Buf[5], 1);	
-				FrameRate.heatF++;
-				Robo_Disconnect.HeatDiscount = 0;
-				break;
 			case (uint8_t)(GIMBAL_GYRO_ID &0xff):
 			{
 				short pitch_l,pitch_last;
@@ -249,9 +198,6 @@ void Gimbal_Receive(uint8_t Buf[])
 				Gimbal_L.armor_state = Buf[8];
 				aim_pitch_l = -(float)(pitch_l/100.0f+inc_pitch);
 				aim_yaw_l = yaw_l+inc_yaw;
-				
-//				aim_pitch_l = (K_AIM_pitch)*aim_pitch_l + (1-K_AIM_pitch)*pitch_last;
-//				aim_yaw_l = (K_AIM_yaw)*aim_yaw_l + (1-K_AIM_yaw)*yaw_last;
 				
 				pitch_last = aim_pitch_l;
 				yaw_last = aim_yaw_l;

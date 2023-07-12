@@ -45,10 +45,10 @@ void ChassisYaw_PC_Act()
 		
 		if((chassis.PC_State==OUTPOST)||(chassis.PC_State==PATROL)||(chassis.PC_State==PATROL_SAFE)||(chassis.PC_State==DEFAULT))
 		{
-			if(Motor_9025.aim_flag == SYNE_NONE)//没有识别到目标
+//			if(Motor_9025.aim_flag == SYNE_NONE)//没有识别到目标
 				Motor_9025.PCYaw = Motor_9025.PCYaw + Motor_9025.SYNEYaw;
-			else//识别到目标
-				Motor_9025.PCYaw = Gyro_ChassisYaw.YAW_ABS + Motor_9025.SYNEYaw;
+//			else//识别到目标
+//				Motor_9025.PCYaw = Gyro_ChassisYaw.YAW_ABS + Motor_9025.SYNEYaw;
 		}	
 		else if((chassis.PC_State==TOPATH1)||(chassis.PC_State==BACKPATH1))
 		{}

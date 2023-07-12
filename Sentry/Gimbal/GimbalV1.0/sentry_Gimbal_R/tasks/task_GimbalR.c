@@ -839,8 +839,8 @@ void PID_Gimbal_Init(void)
 {
 /*陀螺仪反馈*/
 		//主云台
-    MotoPitch.PidPos.P = 23.0f;//100;//15.0f;//7.0;//7.3;//25.0f;
-    MotoPitch.PidPos.I = 0.06;//0.3;//0.0f;//0.22;//0.0f;
+    MotoPitch.PidPos.P = 19.0f;//100;//15.0f;//7.0;//7.3;//25.0f;
+    MotoPitch.PidPos.I = 0.07;//0.3;//0.0f;//0.22;//0.0f;
     MotoPitch.PidPos.D = 0.0f;//1400;//0;//3;//3.0f;
     MotoPitch.PidPos.IMax = 40.0f;
 		MotoPitch.PidPos.I_U = 2.0;
@@ -848,7 +848,7 @@ void PID_Gimbal_Init(void)
     MotoPitch.PidPos.RC_DF = 0.5;//没有很明显的滤波效果
 		MotoPitch.PidPos.OutMax = 100.0f;
 
-    MotoPitch.PidSpeed.P = 210;//28;//180;//260;//300;//130.0f;//160.0f;
+    MotoPitch.PidSpeed.P = 200;//28;//180;//260;//300;//130.0f;//160.0f;
     MotoPitch.PidSpeed.I = 2.7;//0.5;//2;//1.4;//1.5;//1.6f;
     MotoPitch.PidSpeed.D = 600;//0;//4;//0.0f;                
     MotoPitch.PidSpeed.IMax = 1300;  
