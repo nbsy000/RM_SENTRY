@@ -730,9 +730,13 @@ void Chassis_PC_Cal()
 	SinTheTa = sin(Theta);
 	TanTheTa = tan(Theta);
 	
-	NAV_car.NAV_x = 3*(RC_Ctl.rc.ch0-1024);
-	NAV_car.NAV_y = 3*(RC_Ctl.rc.ch1-1024);
-	NAV_car.NAV_w = RC_Ctl.rc.ch2-1024;
+//	NAV_car.NAV_x = 3*(RC_Ctl.rc.ch0-1024);
+//	NAV_car.NAV_y = 3*(RC_Ctl.rc.ch1-1024);
+//	NAV_car.NAV_w = RC_Ctl.rc.ch2-1024;
+	
+	NAV_car.NAV_x = 0;
+	NAV_car.NAV_y = 0;
+	NAV_car.NAV_w = 0;
 	
 	if (NAV_car.Chassis_PC_State == NAV_STATE) // µ¼º½
 	{ 
@@ -937,7 +941,7 @@ void Pid_ChassisPosition_Init(void)
 uint32_t Chassis_high_water;
 void Chassis_task(void *pvParameters)
 {
-	vTaskDelay(200);
+	vTaskDelay(10);
 	while (1)
 	{
 		Chassis_CurrentPid_Cal();

@@ -185,8 +185,14 @@ void Remote_Process(Remote rc)
 	{
 		Buff_Init = 0;
 		Status.GimbalMode = Gimbal_Act_Mode;
-		Status.ChassisMode = Chassis_Act_Mode; // Chassis_Powerdown_Mode;
-		Status.ShootMode = Shoot_Powerdown_Mode;
+		Status.ChassisMode = Chassis_Powerdown_Mode;
+		if((RC_Ctl.rc.ch1 - 1024) > 300)
+		{
+			Shoot.ShootContinue = 1;
+			Status.ShootMode = Shoot_Fire_Mode;
+		}
+		else
+			Status.ShootMode = Shoot_Powerdown_Mode;
 		SteeringEngine_Set(Infantry.MagClose);
 	}
 	//		if(rc.s2==2) //·ÉÆÂÄ£Ê½

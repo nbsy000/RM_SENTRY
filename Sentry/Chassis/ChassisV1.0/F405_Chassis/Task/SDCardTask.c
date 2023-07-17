@@ -9,7 +9,7 @@
 
 // BYTE ReadBuffer[1024] = {0};         /* 读缓冲区 */
 char WriteBuffer[128] = "";              /* 写缓冲区*/
-TCHAR DataFile[] = "0:infantry3-12.txt"; //文件名
+TCHAR DataFile[] = "0:infantry3_12.txt"; //文件名
 SDStatus sd_status;
 
 void SDLOG(enum SDWRITE write_type, const char *str)

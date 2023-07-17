@@ -169,7 +169,7 @@ void ChassisYaw_Init()
 	Motor_9025.PidPos.D = 0.0f;
 	Motor_9025.PidPos.IMax = 0.0f;
 	Motor_9025.PidPos.SetPoint = 0.0f;
-	Motor_9025.PidPos.OutMax = 100.0f;//目前这个速度不会有异响
+	Motor_9025.PidPos.OutMax = 60.0f;//目前这个速度不会有异响
 
 	Motor_9025.PidSpeed.P = 13.0f;
 	Motor_9025.PidSpeed.I = 0.31f;
@@ -184,5 +184,5 @@ void ChassisYaw_Init()
 	
 	
 	//相关参数初始化
-	Motor_9025.Yaw_init = 14021;
+	Motor_9025.Yaw_init = 11804;
 }

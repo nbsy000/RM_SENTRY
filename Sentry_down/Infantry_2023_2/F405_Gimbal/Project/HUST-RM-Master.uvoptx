@@ -120,7 +120,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGUARM</Key>
-          <Name>d</Name>
+          <Name></Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -415,377 +415,112 @@
         <Ww>
           <count>0</count>
           <WinNumber>2</WinNumber>
-          <ItemText>YawMotorReceive</ItemText>
+          <ItemText>Robot_Disconnect,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>1</count>
           <WinNumber>2</WinNumber>
-          <ItemText>RC_Ctl.key.shift</ItemText>
+          <ItemText>PidBodanMotorSpeed</ItemText>
         </Ww>
         <Ww>
           <count>2</count>
           <WinNumber>2</WinNumber>
-          <ItemText>GimbalYawPos</ItemText>
+          <ItemText>PidBodanMotorPos</ItemText>
         </Ww>
         <Ww>
           <count>3</count>
           <WinNumber>2</WinNumber>
-          <ItemText>Gimbal.Yaw.Gyro</ItemText>
+          <ItemText>PidFrictionSpeed</ItemText>
         </Ww>
         <Ww>
           <count>4</count>
           <WinNumber>2</WinNumber>
-          <ItemText>Robot_Disconnect</ItemText>
+          <ItemText>PidPitchAidPos</ItemText>
         </Ww>
         <Ww>
           <count>5</count>
           <WinNumber>2</WinNumber>
-          <ItemText>Robot_Disconnect.Gyro_DisConnect</ItemText>
+          <ItemText>PidPitchAidSpeed</ItemText>
         </Ww>
         <Ww>
           <count>6</count>
           <WinNumber>2</WinNumber>
-          <ItemText>YawMotorSpeed,0x0A</ItemText>
+          <ItemText>PidYawAidPos</ItemText>
         </Ww>
         <Ww>
           <count>7</count>
           <WinNumber>2</WinNumber>
-          <ItemText>GyroReceive.GZ</ItemText>
+          <ItemText>PidYawAidSpeed</ItemText>
         </Ww>
         <Ww>
           <count>8</count>
           <WinNumber>2</WinNumber>
-          <ItemText>GyroReceive.GY</ItemText>
+          <ItemText>INS</ItemText>
         </Ww>
         <Ww>
           <count>9</count>
           <WinNumber>2</WinNumber>
-          <ItemText>GyroReceive.PITCH</ItemText>
+          <ItemText>Gimbal</ItemText>
         </Ww>
         <Ww>
           <count>10</count>
           <WinNumber>2</WinNumber>
-          <ItemText>GyroReceive.GX</ItemText>
+          <ItemText>RC_Ctl,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>11</count>
           <WinNumber>2</WinNumber>
-          <ItemText>Robot_Disconnect.F105_DisConect</ItemText>
+          <ItemText>NAV_car</ItemText>
         </Ww>
         <Ww>
           <count>12</count>
           <WinNumber>2</WinNumber>
-          <ItemText>GimbalPitchPos</ItemText>
+          <ItemText>patrol_step_yaw</ItemText>
         </Ww>
         <Ww>
           <count>13</count>
           <WinNumber>2</WinNumber>
-          <ItemText>Gimbal.Pitch.MotorTransAngle</ItemText>
+          <ItemText>patrol_step_pitch</ItemText>
         </Ww>
         <Ww>
           <count>14</count>
           <WinNumber>2</WinNumber>
-          <ItemText>chassis.carSpeedx</ItemText>
+          <ItemText>chassis</ItemText>
         </Ww>
         <Ww>
           <count>15</count>
           <WinNumber>2</WinNumber>
-          <ItemText>chassis.carSpeedy</ItemText>
+          <ItemText>sbus_rx_buffer</ItemText>
         </Ww>
         <Ww>
           <count>16</count>
           <WinNumber>2</WinNumber>
-          <ItemText>Gimbal.Pitch.MotorTransAngle</ItemText>
+          <ItemText>PullerSpeed,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>17</count>
           <WinNumber>2</WinNumber>
-          <ItemText>Infantry.Pitch_init</ItemText>
+          <ItemText>FrictionWheel_speed,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>18</count>
           <WinNumber>2</WinNumber>
-          <ItemText>Gimbal.Yaw.MotorTransAngle</ItemText>
+          <ItemText>GimbalYawPos</ItemText>
         </Ww>
         <Ww>
           <count>19</count>
           <WinNumber>2</WinNumber>
-          <ItemText>FF_w.Now_DeltIn</ItemText>
+          <ItemText>\\HUST_RM_Master\../Task/GimbalTask.c\PidYawAidPos</ItemText>
         </Ww>
         <Ww>
           <count>20</count>
           <WinNumber>2</WinNumber>
-          <ItemText>chassis.carSpeedw,0x0A</ItemText>
+          <ItemText>\\HUST_RM_Master\../Task/GimbalTask.c\PidYawAidSpeed</ItemText>
         </Ww>
         <Ww>
           <count>21</count>
           <WinNumber>2</WinNumber>
-          <ItemText>PidBodanMotorSpeed.SetPoint</ItemText>
-        </Ww>
-        <Ww>
-          <count>22</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>MirocPosition</ItemText>
-        </Ww>
-        <Ww>
-          <count>23</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>PidPitchSpeed.PreError</ItemText>
-        </Ww>
-        <Ww>
-          <count>24</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>PidYawSpeed.PreError</ItemText>
-        </Ww>
-        <Ww>
-          <count>25</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>YawCurrent,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>26</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>PidYawPos</ItemText>
-        </Ww>
-        <Ww>
-          <count>27</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>k_yaw</ItemText>
-        </Ww>
-        <Ww>
-          <count>28</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>PidYawSpeed</ItemText>
-        </Ww>
-        <Ww>
-          <count>29</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>PidBodanMotorSpeed</ItemText>
-        </Ww>
-        <Ww>
-          <count>30</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>ShootContinue</ItemText>
-        </Ww>
-        <Ww>
-          <count>31</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>RC_Ctl.mouse.press_l</ItemText>
-        </Ww>
-        <Ww>
-          <count>32</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>PidBodanMotorPos</ItemText>
-        </Ww>
-        <Ww>
-          <count>33</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>BodanMotorCurrent,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>34</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>w</ItemText>
-        </Ww>
-        <Ww>
-          <count>35</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>RC_Ctl.key.w</ItemText>
-        </Ww>
-        <Ww>
-          <count>36</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>GyroReceive</ItemText>
-        </Ww>
-        <Ww>
-          <count>37</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>chassis,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>38</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>rx_message0</ItemText>
-        </Ww>
-        <Ww>
-          <count>39</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>Infantry,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>40</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>BodanReceive</ItemText>
-        </Ww>
-        <Ww>
-          <count>41</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>ReverseRotation</ItemText>
-        </Ww>
-        <Ww>
-          <count>42</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>Reverse_Flag</ItemText>
-        </Ww>
-        <Ww>
-          <count>43</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>PCbuffer</ItemText>
-        </Ww>
-        <Ww>
-          <count>44</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>PC_Receive</ItemText>
-        </Ww>
-        <Ww>
-          <count>45</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>PullerSpeed,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>46</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>Status.ShootMode,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>47</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>PidFrictionSpeed</ItemText>
-        </Ww>
-        <Ww>
-          <count>48</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>FrictionWheel_speed,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>49</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>F105.BulletSpeedLevel,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>50</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>Infantry.Low_FrictionSpeed,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>51</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>PCRecbuffer</ItemText>
-        </Ww>
-        <Ww>
-          <count>52</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>FF_w</ItemText>
-        </Ww>
-        <Ww>
-          <count>53</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>chassis.carSpeedw,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>54</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>diudiao</ItemText>
-        </Ww>
-        <Ww>
-          <count>55</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>PC_ReceiveFlag</ItemText>
-        </Ww>
-        <Ww>
-          <count>56</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>yaw_freq</ItemText>
-        </Ww>
-        <Ww>
-          <count>57</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>yaw_Amplite</ItemText>
-        </Ww>
-        <Ww>
-          <count>58</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>RC_Ctl</ItemText>
-        </Ww>
-        <Ww>
-          <count>59</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>PidPitchAidSpeed</ItemText>
-        </Ww>
-        <Ww>
-          <count>60</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>PidPitchAidPos</ItemText>
-        </Ww>
-        <Ww>
-          <count>61</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>GimbalPitchPos</ItemText>
-        </Ww>
-        <Ww>
-          <count>62</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>DeltaGimbalPitchPos</ItemText>
-        </Ww>
-        <Ww>
-          <count>63</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>Gimbal.Pitch.Gyro</ItemText>
-        </Ww>
-        <Ww>
-          <count>64</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>Gimbal.Pitch.MotorTransAngle</ItemText>
-        </Ww>
-        <Ww>
-          <count>65</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>Infantry.init_delta_pitch,0x0A</ItemText>
-        </Ww>
-        <Ww>
-          <count>66</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>Recent_Pitch_Angle_Armor</ItemText>
-        </Ww>
-        <Ww>
-          <count>67</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>FF_w</ItemText>
-        </Ww>
-        <Ww>
-          <count>68</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>pidChassisPosition</ItemText>
-        </Ww>
-        <Ww>
-          <count>69</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>RC_Ctl</ItemText>
-        </Ww>
-        <Ww>
-          <count>70</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>sbus_rx_buffer</ItemText>
-        </Ww>
-        <Ww>
-          <count>71</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>FricMotorID</ItemText>
-        </Ww>
-        <Ww>
-          <count>72</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>Infantry</ItemText>
-        </Ww>
-        <Ww>
-          <count>73</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>FrictionReceive</ItemText>
-        </Ww>
-        <Ww>
-          <count>74</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>rx_message1</ItemText>
+          <ItemText>YawPosFF</ItemText>
         </Ww>
       </WatchWindow2>
       <Tracepoint>

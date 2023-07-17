@@ -209,15 +209,15 @@ void Chassis_RC_Act(void)
 	float SinTheTa=arm_sin_f32(Theta);
 	
 	//底盘方位自适应，即以云台的朝向为正前方，使用的是电机角   下面这些系数都是凭感觉给的，想要多少速度转速自己改
-	chassis.carSpeedx = (RC_Ctl.rc.ch1-1024)*8*SinTheTa + (RC_Ctl.rc.ch0-1024)*8*CosTheTa; //364-1684  即660*8最大为5280mm/s
-	chassis.carSpeedy = (RC_Ctl.rc.ch1-1024)*8*CosTheTa - (RC_Ctl.rc.ch0-1024)*8*SinTheTa;	
+	chassis.carSpeedx = (RC_Ctl.rc.ch1-1024)*3*SinTheTa + (RC_Ctl.rc.ch0-1024)*3*CosTheTa; //364-1684  即660*8最大为5280mm/s
+	chassis.carSpeedy = (RC_Ctl.rc.ch1-1024)*3*CosTheTa - (RC_Ctl.rc.ch0-1024)*3*SinTheTa;	
 	
-	if((RC_Ctl.rc.ch3-1024)>50)
-		chassis.carSpeedw = (RC_Ctl.rc.ch3-1074)*0.2;
-	else if((RC_Ctl.rc.ch3-1024)<-50)
-		chassis.carSpeedw = (RC_Ctl.rc.ch3-974)*0.2;
-	else 
-		chassis.carSpeedw = 0 ;
+//	if((RC_Ctl.rc.ch3-1024)>50)
+//		chassis.carSpeedw = (RC_Ctl.rc.ch3-1074)*0.2;
+//	else if((RC_Ctl.rc.ch3-1024)<-50)
+//		chassis.carSpeedw = (RC_Ctl.rc.ch3-974)*0.2;
+//	else 
+//		chassis.carSpeedw = 0 ;
 	
 	chassis.carSpeedw = (Theta_init - Theta)*180.0f*10/(6.0f*PI);//单位变为rpm
 	

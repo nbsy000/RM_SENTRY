@@ -59,12 +59,12 @@ void start_task(void *pvParameters)
 {
   taskENTER_CRITICAL();
 
-//	xTaskCreate((TaskFunction_t)Control_task,          //任务函数
-//                (const char *)"Control_task",          //任务名称
-//                (uint16_t)CONTROL_STK_SIZE,            //任务堆栈大小
-//                (void *)NULL,                        //传递给任务函数的参数
-//                (UBaseType_t)CONTROL_TASK_PRIO,        //任务优先级
-//                (TaskHandle_t *)&User_Tasks[CONTROL_TASK]); //任务句柄
+	xTaskCreate((TaskFunction_t)Control_task,          //任务函数
+                (const char *)"Control_task",          //任务名称
+                (uint16_t)CONTROL_STK_SIZE,            //任务堆栈大小
+                (void *)NULL,                        //传递给任务函数的参数
+                (UBaseType_t)CONTROL_TASK_PRIO,        //任务优先级
+                (TaskHandle_t *)&User_Tasks[CONTROL_TASK]); //任务句柄
 								
 								
 	xTaskCreate((TaskFunction_t)Chassis_task,          //任务函数
@@ -109,12 +109,12 @@ void start_task(void *pvParameters)
               (UBaseType_t)OFFLINE_CHECK_TASK_PRIO,       //任务优先级
               (TaskHandle_t *)&User_Tasks[OFFLINE_TASK]); //任务句柄
 
-  xTaskCreate((TaskFunction_t)RCReceive_task,          //任务函数
-              (const char *)"RCReceive_task",          //任务名称
-              (uint16_t)RCRECEIVE_STK_SIZE,            //任务堆栈大小
-              (void *)NULL,                            //传递给任务函数的参数
-              (UBaseType_t)RCRECEIVE_TASK_PRIO,        //任务优先级
-              (TaskHandle_t *)&User_Tasks[RC_TASK]); //任务句柄
+//  xTaskCreate((TaskFunction_t)RCReceive_task,          //任务函数
+//              (const char *)"RCReceive_task",          //任务名称
+//              (uint16_t)RCRECEIVE_STK_SIZE,            //任务堆栈大小
+//              (void *)NULL,                            //传递给任务函数的参数
+//              (UBaseType_t)RCRECEIVE_TASK_PRIO,        //任务优先级
+//              (TaskHandle_t *)&User_Tasks[RC_TASK]); //任务句柄
 
 //  xTaskCreate((TaskFunction_t)PCReceive_task,          //任务函数
 //              (const char *)"PCReceive_task",          //任务名称

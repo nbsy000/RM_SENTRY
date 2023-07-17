@@ -23,30 +23,16 @@ float PID_Calc(Pid_Typedef *P)
 			P->PreError = 0.0f;			
 		}
 		
-		      //微分先行
-		float DM = P->D*(P->Out - P->Out_last);   //微分先行
-	
-         //变速积分   (积分分离)
-    if(ABS(P->PreError) < P->I_L )			
-		{
-	       
+
 		P->SumError += (P->PreError+P->LastError)/2;    
 		P->SumError = LIMIT_MAX_MIN(P->SumError,P->IMax,- P->IMax);
-		}
-		 else if( ABS(P->PreError) < P->I_U )
-		{
-	       //梯形积分
-		P->SumError += (P->PreError+P->LastError)/2*(ABS(P->PreError) - P->I_L)/(P->I_U - P->I_L);    
-		P->SumError = LIMIT_MAX_MIN(P->SumError,P->IMax,- P->IMax);		
-		}
-			
+		
 		P->POut = P->P * P->PreError;
 		
 		P->IOut = P->I * P->SumError;
 		    
-		    //不完全微分
 		P->DOut_last = P->DOut; 
-		P->DOut = DM * P->RC_DF + P->DOut_last * ( 1 - P->RC_DF );    
+		P->DOut = P->D*(P->PreError - P->LastError);    
 		
 		P->Out_last  = P->Out;
 		P->Out = LIMIT_MAX_MIN(P->POut+P->IOut+P->DOut,P->OutMax,-P->OutMax);

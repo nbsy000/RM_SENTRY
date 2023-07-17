@@ -35,7 +35,7 @@ extern char Judge_Lost;
 char Chassis_ID;
 
 extern PCSendData pc_send_data;
-extern uint8_t Remote_Receive_Flag;
+//extern uint8_t Remote_Receive_Flag;
 extern uint8_t PC_ReceiveFlag;
 extern volatile unsigned char sbus_rx_buffer[18];
 extern unsigned char PCRecbuffer[PC_RECVBUF_SIZE];
@@ -240,7 +240,6 @@ void NAVReceive(uint8_t Buf[])
 	NAV_Recv.x_now = (short)x_now;
 	NAV_Recv.y_now = (short)y_now;
 	NAV_Recv.w_now = (short)w_now;
-//	NAV_Recv.Barrier_Flag = Buf[13];
 
 }
 
@@ -361,7 +360,7 @@ void RCReceive_task()
 		ulTaskNotifyTake(pdTRUE, portMAX_DELAY); //若无通知更新，则不唤醒
 
 		/********************************* 遥控器数据处理 *****************************************************/
-		Remote_Receive_Flag = 0;
+//		Remote_Receive_Flag = 0;
 		RemoteReceive(sbus_rx_buffer); //解码函数
         #if INCLUDE_uxTaskGetStackHighWaterMark
 		RC_high_water = uxTaskGetStackHighWaterMark(NULL);

@@ -37,10 +37,11 @@ void ChassisCan1Send(short *carSpeedx, short *carSpeedy, short *carSpeedw)
 	tx_message.StdId = 0x101;
     
     F405.Yaw_100 = (short)(Theta_chassis/3.1415926f*180 * 100);
-
+	
 	memcpy(&tx_message.Data[0], carSpeedx, 2);
 	memcpy(&tx_message.Data[2], carSpeedy, 2);
 	memcpy(&tx_message.Data[4], carSpeedw, 2);
+	
 	memcpy(&tx_message.Data[6], &F405.Yaw_100, 2);
 	CAN_Transmit(CAN1, &tx_message);
 }

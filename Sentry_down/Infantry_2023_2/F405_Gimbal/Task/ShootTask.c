@@ -652,7 +652,7 @@ void Pid_Friction_Init(void)
 	PidFrictionSpeed[0].D=0.0f;
 	PidFrictionSpeed[0].IMax=1500.0f;
 	PidFrictionSpeed[0].SetPoint=0.0f;
-	PidFrictionSpeed[0].OutMax = 9900.0f;
+	PidFrictionSpeed[0].OutMax = 13000.0f;
 	PidFrictionSpeed[0].RC_DF = 0.05F;
 	PidFrictionSpeed[0].I_L = 50;
 	PidFrictionSpeed[0].I_U =100;
@@ -663,7 +663,7 @@ void Pid_Friction_Init(void)
 	PidFrictionSpeed[1].D=0.0f;
 	PidFrictionSpeed[1].IMax=1500.0f;
 	PidFrictionSpeed[1].SetPoint=0.0f;
-	PidFrictionSpeed[1].OutMax = 9900.0f;
+	PidFrictionSpeed[1].OutMax = 13000.0f;
 	PidFrictionSpeed[1].RC_DF = 0.05F;
 	PidFrictionSpeed[1].I_L = 50;
 	PidFrictionSpeed[1].I_U =100;
@@ -677,8 +677,11 @@ void Pid_Friction_Init(void)
 *返 回 值: 无
 **********************************************************************************************************/
 void Shoot_init(){
-	F105.JudgeReceive_info.HeatMax17 = 100; //Shoot.HeatControl.HeatMax17 = 90;
-	F105.JudgeReceive_info.HeatCool17 = 10;
+	F105.JudgeReceive_info.HeatMax17 = 240; //Shoot.HeatControl.HeatMax17 = 90;
+	F105.JudgeReceive_info.HeatCool17 = 80;
+	
+	F105.JudgeReceive_info.BulletSpeedLevel = 2;//30
+	F105.JudgeReceive_info.RobotLevel = 0;//默认
 	
 	Shoot.HeatControl.ShootCount_IntervalTime=0;
 	Shoot.HeatControl.ShootContinue_IntervalTime=0;
@@ -702,8 +705,8 @@ void Shoot_task(void *pvParameters)
 	uint32_t ShootTask_TimeLast = 0;
 	
 	Shoot_init();
-	
-	vTaskDelay(500);
+
+	vTaskDelay(10);
   while (1) {
 	  xLastWakeTime = xTaskGetTickCount();
 		HeatControl(GetDeltaT(&ShootTask_TimeLast));

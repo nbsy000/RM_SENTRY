@@ -25,7 +25,6 @@ void GimbalEstimate_task(void *pvParameters)
     const portTickType xFrequency = 1; // 1kHZ
 
     //适当延时
-    vTaskDelay(50);
 
     while (1)
     {

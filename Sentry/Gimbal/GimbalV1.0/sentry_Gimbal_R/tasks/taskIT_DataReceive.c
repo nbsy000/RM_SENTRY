@@ -288,6 +288,8 @@ void PCReceive(uint8_t PCReceivebuffer[])
 					Gimbal_R.armor_state = ARMOR_AIMED; //有目标
 				else
 					Gimbal_R.armor_state = ARMOR_NO_AIM; //没目标
+			
+//				Gimbal_R.armor_state = ARMOR_NO_AIM;
 				
 				Gimbal_R.target_id = pc_recv_data.enemy_id;
 				

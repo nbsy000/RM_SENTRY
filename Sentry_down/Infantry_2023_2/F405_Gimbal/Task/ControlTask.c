@@ -126,7 +126,7 @@ void Control_task(void *pvParameters)
 {
 	portTickType xLastWakeTime;
 	const portTickType xFrequency = 2;
-	vTaskDelay(300);
+	vTaskDelay(100);
 	
 	while (1)
 	{

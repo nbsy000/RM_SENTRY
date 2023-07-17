@@ -5,7 +5,7 @@
 **********************************************************************************************************/
 #include "main.h"
 
-//unsigned char DataScopeSend_Buf[DataScopeSend_BufSize];
+
 #define	VOFA_MAX_CHANNEL 10
 float 	VOFA_justfloat[VOFA_MAX_CHANNEL];
 uint8_t VOFA_send_Data[VOFA_MAX_CHANNEL*4+4];
@@ -106,6 +106,13 @@ extern JudgeReceive_t JudgeReceive;
 extern float K_Power;
 void VOFA_Send(void)
 {
+
+#ifdef  SD_READ_MODE //SD卡输出
+	extern float sd_read_var[];
+	
+	memcpy(VOFA_justfloat,sd_read_var,4*(VAR_NUMBER+1));
+	
+#else
 	//需转为float型数据存储
 	VOFA_justfloat[0]=(float)(JudgeReceive.realChassispower);
 	VOFA_justfloat[1]=(float)(K_Power);
@@ -113,6 +120,8 @@ void VOFA_Send(void)
 //	VOFA_justfloat[3]=(float)(FuzzyAidPidYawPos.SetPoint);
 //	VOFA_justfloat[4]=(float)(GyroReceive.GX);
 //	VOFA_justfloat[5]=(float)(GyroReceive.ROLL);
+		
+#endif
 
 	//拷贝到传输变量
 	memcpy(VOFA_send_Data, (uint8_t *)VOFA_justfloat, sizeof(VOFA_justfloat));

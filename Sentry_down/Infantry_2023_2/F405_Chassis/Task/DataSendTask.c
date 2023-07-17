@@ -80,7 +80,7 @@ void ChassisCan1Send(short a,short b,short c,short d)
 /**********************************************************************************************************
 *函 数 名: Can2Send0
 *功能说明: can2发送函数
-*形    参: ChassisSpeedw, Remain_power, IsShootAble, RobotRed, BulletSpeedLevel
+*形    参: 
 *返 回 值: 无
 **********************************************************************************************************/
 void Can2Send0(F105_Typedef *F105_Send)

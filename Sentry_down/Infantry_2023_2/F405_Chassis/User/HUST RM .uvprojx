@@ -414,14 +414,14 @@
               <FilePath>..\Algorithm\algorithmOfCRC.c</FilePath>
             </File>
             <File>
-              <FileName>DataScope_DP.C</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Algorithm\DataScope_DP.C</FilePath>
-            </File>
-            <File>
               <FileName>FIR.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Algorithm\FIR.c</FilePath>
+            </File>
+            <File>
+              <FileName>DataScope_DP.C</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Algorithm\DataScope_DP.C</FilePath>
             </File>
             <File>
               <FileName>pid.c</FileName>

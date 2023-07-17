@@ -77,10 +77,12 @@ void Can2Receive1(CanRxMsg *rx_message)
 	switch(rx_message->StdId)
 	{
 		case 0x101:	
+			
 			memcpy(&chassis.carSpeedx, &rx_message->Data[0], 2);
 			memcpy(&chassis.carSpeedy, &rx_message->Data[2], 2);
 			memcpy(&chassis.carSpeedw, &rx_message->Data[4], 2);
       memcpy(&F405.Yaw_100, &rx_message->Data[6],2);
+		
 		
 		if((ABS(chassis.carSpeedx) < 100) && ABS(chassis.carSpeedy)<100 && ABS (chassis.carSpeedw)<2000) //前后方向刹车或变向时
 		{

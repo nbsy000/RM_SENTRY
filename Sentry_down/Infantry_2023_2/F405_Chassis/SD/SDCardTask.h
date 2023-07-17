@@ -12,6 +12,10 @@
 
 #include "counter.h"
 
+#define SD_READ_MODE
+
+
+#define VAR_NUMBER 5
 // #define SDLOG()
 enum SDWRITE
 {
@@ -42,6 +46,7 @@ typedef struct SDStatus
     uint8_t SD_FS_Open_result;  // 打开文件结果
     uint8_t SD_FS_Mount_result; // 挂载文件系统结果
     uint8_t SDCard_task_init;   // SD卡任务成功初始化结果
+		uint8_t SD_FS_DELETE_result;// 删除文件结过
 
     SD_Error Status;
     FATFS fs;
@@ -57,5 +62,6 @@ typedef struct SDStatus
 
 void SDCard_task(void *pvParameters);
 void SDLOG(enum SDWRITE write_type, const char *str);
+void ReadSDCard();
 
 #endif

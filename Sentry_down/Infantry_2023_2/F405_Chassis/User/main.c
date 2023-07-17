@@ -57,7 +57,7 @@ void BSP_Init(void)
 	UART4_Configuration();
 	TIM2_Configuration();
 	TIM4_Configuration();
-	IWDG_Config(IWDG_Prescaler_64 ,625);
+//	IWDG_Config(IWDG_Prescaler_64 ,625);
 	i2c_init();
 	ChargeIO_Configuration();
 	Charge_Off;
@@ -110,7 +110,8 @@ void Offline_Check_task(void *pvParameters)
 		{
 			F405_Rst();
 		}
-		Robot_Disconnect.F405Disconnect++;
+		else
+			Robot_Disconnect.F405Disconnect++;
 		
 		/*²ÃÅÐÏµÍ³µôÏß¼ì²â*/
 		if(Robot_Disconnect.JudgeDisconnect>100)
@@ -120,8 +121,9 @@ void Offline_Check_task(void *pvParameters)
 		}else
 		{
 		  Judge_Lost=0;
+			Robot_Disconnect.JudgeDisconnect++;
 		}
-		Robot_Disconnect.JudgeDisconnect++;
+
 		
 			/*µ×ÅÌµç»úµôÏß¼ì²â*/
 		for(int i=0;i<4;i++)
@@ -129,15 +131,16 @@ void Offline_Check_task(void *pvParameters)
 		if(ABS(Robot_Disconnect.ChassisDisconnect[i])>100)
 		{
 			ChassisSuspend[i]=1;
-		}else
+		}
+		else
 		{
 			if(ChassisSuspend[i])
 			{
 			ChassisSuspend[i]=0;
 			break;
 			}
-		}
-	  Robot_Disconnect.ChassisDisconnect[i]++;
+			Robot_Disconnect.ChassisDisconnect[i]++;
+		}	  
 	}	
 	
 				/*³¬¼¶µçÈÝµôÏß¼ì²â*/
@@ -146,7 +149,8 @@ void Offline_Check_task(void *pvParameters)
 		{
 		
 		}
-	  Robot_Disconnect.SuperPowerDisconnect++;	
+		else 
+			Robot_Disconnect.SuperPowerDisconnect++;	
 		
 		
 		IWDG_Feed();//Î¹¹·

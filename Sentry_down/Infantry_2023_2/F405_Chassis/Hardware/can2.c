@@ -39,11 +39,11 @@ void CAN2_Configuration(void)
 	nvic.NVIC_IRQChannelSubPriority = 2;
 	nvic.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&nvic);
-//	nvic.NVIC_IRQChannel = CAN2_TX_IRQn;
-//	nvic.NVIC_IRQChannelPreemptionPriority = 0;
-//	nvic.NVIC_IRQChannelSubPriority = 1;
-//	nvic.NVIC_IRQChannelCmd = ENABLE;
-//	NVIC_Init(&nvic); 
+	nvic.NVIC_IRQChannel = CAN2_TX_IRQn;
+	nvic.NVIC_IRQChannelPreemptionPriority = 0;
+	nvic.NVIC_IRQChannelSubPriority = 1;
+	nvic.NVIC_IRQChannelCmd = ENABLE;
+	NVIC_Init(&nvic); 
 	CAN_DeInit(CAN2);
 	CAN_StructInit(&can);
 	can.CAN_TTCM = DISABLE;
@@ -52,7 +52,7 @@ void CAN2_Configuration(void)
 	can.CAN_NART = ENABLE; //关闭失败自动重传 
 	can.CAN_RFLM = DISABLE; 
 	can.CAN_TXFP = ENABLE; 
-	can.CAN_Mode = CAN_Mode_Normal;
+	can.CAN_Mode = CAN_Mode_Normal;//CAN_Mode_LoopBack;
 	can.CAN_SJW = CAN_SJW_1tq;
 	can.CAN_BS1 = CAN_BS1_11tq;
 	can.CAN_BS2 = CAN_BS2_2tq;
@@ -74,7 +74,7 @@ void CAN2_Configuration(void)
 	
 	//FIFO1，只接收gyro_id
 	can_filter.CAN_FilterNumber = 16; //选择过滤器16
-//	can_filter.CAN_FilterMode = CAN_FilterMode_IdMask; //列表模式
+//	can_filter.CAN_FilterMode = CAN_FilterMode_IdMask; //掩码模式
 	can_filter.CAN_FilterMode = CAN_FilterMode_IdList; //列表模式
 	can_filter.CAN_FilterScale = CAN_FilterScale_16bit;
 	can_filter.CAN_FilterIdHigh = 0x0 << 5;
@@ -95,13 +95,13 @@ void CAN2_Configuration(void)
 *形    参: 无
 *返 回 值: 无
 **********************************************************************************************************/
-//void CAN2_TX_IRQHandler(void)
-//{
-//	if (CAN_GetITStatus(CAN2,CAN_IT_TME)!= RESET) 
-//	{
-//		CAN_ClearITPendingBit(CAN2,CAN_IT_TME);
-//	}
-//}
+void CAN2_TX_IRQHandler(void)
+{
+	if (CAN_GetITStatus(CAN2,CAN_IT_TME)!= RESET) 
+	{
+		CAN_ClearITPendingBit(CAN2,CAN_IT_TME);
+	}
+}
 /**********************************************************************************************************
 *函 数 名: CAN2_RX0_IRQHandler
 *功能说明: can2接收中断(Pitch,Yaw电机角度接收)

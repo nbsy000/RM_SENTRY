@@ -113,6 +113,8 @@ void task_GimbalR(void *parameter)
 				
 			}		
 			
+										Gimbal_SLEEP_Act(&Gimbal_L);
+			
 			PitchYaw_Can2Send(MotoPitch.I_Set,MotoYaw.I_Set,MotoPitch_L.I_Set,MotoYaw_L.I_Set);//发送电流值
 			
 			Gimbal_Syne_Send(ChassisYaw_Inc);
@@ -803,7 +805,7 @@ void Gimbal_Limit_Init(void)
 		//2400     1980
     MotoPitch.PATROL_MAX_ANGLE =+(2200.0f-1950)/8192.0f*360.0f;;
     MotoPitch.PATROL_ZERO_POS = +0;
-    MotoPitch.PATROL_MIN_ANGLE =-(1950.0f-1800)/8192.0f*360.0f;;
+    MotoPitch.PATROL_MIN_ANGLE =-(1950.0f-1950)/8192.0f*360.0f;;
 
 		//860   1640   1100
     MotoYaw.PATROL_MAX_ANGLE = (1640.0f-1250)/8192.0f*360.0f;

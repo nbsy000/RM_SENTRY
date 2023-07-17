@@ -133,7 +133,7 @@ typedef struct
 		short pitch_min_motor;
 		short pitch_max_gyro;
 		short pitch_min_gyro;
-        short init_delta_pitch; //平地上陀螺仪和电机角差值
+    float init_delta_pitch; //平地上陀螺仪和电机角差值
 }RobotInit_Struct;
 
 void BSP_Init(void);

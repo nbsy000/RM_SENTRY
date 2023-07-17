@@ -9,19 +9,26 @@
 #include "stdlib.h"
 
 char WriteBuffer[128] = "";              /* 写缓冲区*/
-TCHAR DataFile[] = "0:infantry_down.csv"; //文件名
+char ReadBuffer[128] = "";							/* 读缓冲区*/
+float sd_read_var[VAR_NUMBER+1];
+
+//删除文件的结构体变量 3个变量防止误操作
+uint8_t delete_flag1,delete_flag2,delete_flag3;
+TCHAR DataFile[] = "0:SENTRY.csv"; //文件名
 SDStatus sd_status;
+
 extern uint8_t Anomalies_tag;
 extern JudgeReceive_t JudgeReceive;
 extern F405_typedef F405;
 extern INA260 INA260_1;
 float temp1 = 2.0, temp2 = 3.0;
+int count = 0;
 void SDLOG(enum SDWRITE write_type, const char *str)
 {
     memset(WriteBuffer, '\0', sizeof(WriteBuffer)); //清空缓存区
     if (SD_START == write_type)
     {
-        sprintf(WriteBuffer, "Plimit,Power,RemainEnergy,SelfProtect,SuperCap\n");
+        sprintf(WriteBuffer, "Plimit,Power,RemainEnergy,SelfProtect,Count\n");
     }
     else if (SD_WARNING == write_type)
     {
@@ -34,7 +41,8 @@ void SDLOG(enum SDWRITE write_type, const char *str)
     }
 	else if (SD_CSV == write_type)
 	{
-        sprintf(WriteBuffer, "%d,%.1f,%d,%d,%d\n" ,JudgeReceive.MaxPower,JudgeReceive.realChassispower ,JudgeReceive.remainEnergy,F405.Chassis_Flag,F405.SuperPowerLimit);
+				count++;
+        sprintf(WriteBuffer, "%d,%.1f,%d,%d,%d\n" ,JudgeReceive.MaxPower,JudgeReceive.realChassispower ,JudgeReceive.remainEnergy,F405.Chassis_Flag,count);
 	}
     else
     {
@@ -53,15 +61,18 @@ void SDLOG(enum SDWRITE write_type, const char *str)
 }
 void OpenSDCard()
 {
-    sd_status.res_sd = f_open(&sd_status.fnew, (const TCHAR *)DataFile, FA_OPEN_ALWAYS | FA_WRITE); //打开文件，如果文件不存在则创建它
+    sd_status.res_sd = f_open(&sd_status.fnew, (const TCHAR *)DataFile, FA_OPEN_ALWAYS | FA_WRITE | FA_READ); //打开文件，如果文件不存在则创建它
     uint32_t file_size = 0;
 
     if (sd_status.res_sd == FR_OK)
     {
         file_size = f_size(&sd_status.fnew); //获得文件已经写入的长度
         sd_status.SD_FS_Open_result = 1;     //打开文件成功
+
+#ifndef SD_READ_MODE //写入模式
         if (file_size > 0)                   //判断文件非空（大于零的数），并寻找添加头（即文件尾）
             sd_status.res_sd = f_lseek(&sd_status.fnew, file_size);
+#endif
     }
     else
         sd_status.SD_FS_Open_result = 0;
@@ -76,6 +87,38 @@ void CloseSDCard()
 		sd_status.SD_FS_Open_result = 0;
 
 	}
+}
+
+char  temp;
+int res;
+uint32_t bytesRead;
+void ReadSDCard()
+{
+		static int i = 0;
+		// 读取文件中的数据
+		f_read(&sd_status.fnew,&temp,1,&bytesRead);
+		while(temp != 0x0A)
+		{
+				
+				if(temp == 0x0D)
+				{
+					ReadBuffer[i+1] = '\0';//需要'\0'才能正常解析字符串
+					res = sscanf(ReadBuffer, "%f,%f,%f,%f,%f", &sd_read_var[0], &sd_read_var[1], &sd_read_var[2],&sd_read_var[3],&sd_read_var[4]);
+					if(res == 0)//解析错误，即读取到START
+						sd_read_var[VAR_NUMBER]++;
+					else
+						VOFA_Send();
+					i = 0;
+					memset(ReadBuffer, 0, sizeof(ReadBuffer));
+				}
+				else
+				{					
+					ReadBuffer[i] = temp;
+					i = (i+1)%128;
+				}
+				f_read(&sd_status.fnew,&temp,1,&bytesRead);
+		}
+
 }
 
 void SDCard_task(void *pvParameters)
@@ -101,14 +144,18 @@ void SDCard_task(void *pvParameters)
     {
         //任务初始化
         sd_status.SDCard_task_init = 1;
+			
+#ifndef SD_READ_MODE
         SDLOG(SD_START, "");
+#endif
     }
 
     while (1)
     {
-
-		temp1++;
+				temp1++;
         sd_status.count++;
+#ifndef SD_READ_MODE
+
         if (sd_status.count % 1000 == 0) // 1hz
         {
 			if(sd_status.SD_FS_Open_result == 0)
@@ -133,8 +180,23 @@ void SDCard_task(void *pvParameters)
         }
 
 
+#else
 
-		vTaskDelay(1);
+				if(delete_flag1&delete_flag2&delete_flag3)
+				{
+					sd_status.SD_FS_DELETE_result	 = f_unlink(DataFile);
+				}
+				else
+				{
+					if (sd_status.count % 10 == 0) // 100HZ
+					{
+							ReadSDCard();
+					}
+				}
+					
+#endif
+
+			vTaskDelay(1);
 		
     }
 

@@ -61,26 +61,26 @@ int main()
 void BSP_Init(void)
 {
 	USART3_Configuration();
-	delay_ms(100);
+	delay_ms(10);
 	PC_UART_Configuration();
-	delay_ms(100);
+	delay_ms(10);
 	MicroSwConfigration();
-	delay_ms(100);
+	delay_ms(10);
 	SteeringEngine_Configuration();
-	delay_ms(100);
+	delay_ms(10);
 	//TIM7_Configuration();
 	//delay_ms(100);
 	CAN1_Configuration();
-	delay_ms(100);
+	delay_ms(10);
 	CAN2_Configuration();
-	delay_ms(100);
+	delay_ms(10);
 	// IWDG_Config(IWDG_Prescaler_128 ,625);
-	delay_ms(100);
+	delay_ms(10);
 	// VOFA_USART_Configuration();
 	//delay_ms(100);
 	// My_GPIO_Init();
 	SteeringEngine_Set(Infantry.MagOpen);
-	delay_ms(100);
+	delay_ms(10);
 	COUNTER_Configuration();
 }
 /**********************************************************************************************************
@@ -91,15 +91,22 @@ void BSP_Init(void)
  **********************************************************************************************************/
 void Robot_Init(void)
 {
-    global_debugger.imu_debugger[0].recv_msgs_num = 0;
-    global_debugger.imu_debugger[1].recv_msgs_num = 0;
+	float start_time = 0;
+	global_debugger.imu_debugger[0].recv_msgs_num = 0;
+	global_debugger.imu_debugger[1].recv_msgs_num = 0;
 	ZeroCheck_Init();
 	Infantry_Init();
 	Pid_ChassisPosition_Init();
 	PidGimbalMotor_Init();
 	Pid_BodanMotor_Init();
 	Pid_Friction_Init();
-//	while (!checkIMUOn()); //检查IMU是否开启
+	RC_Rst();
+	start_time = GetTime_s();
+	while (!checkIMUOn()) //检查IMU是否开启
+	{
+		if((GetTime_s() - start_time)> 10.0)
+			break;
+	}
     INS_Init();
     ICM20602_init(&IMUReceive, &IMUData);
 }
@@ -191,23 +198,23 @@ void Infantry_Init(void)
 
 #elif Robot_ID == 44
 	/***************************************** 44 号车 **************************************************************/
-	Infantry.Yaw_init = 2015; // 44号车
-	Infantry.Pitch_init = 698;
+	Infantry.Yaw_init = 1318+4096; // 44号车
+	Infantry.Pitch_init = 4755;
 	Infantry.MagOpen = 1900;
-	Infantry.MagClose = 750;
+	Infantry.MagClose = 750;	
 	Infantry.Solo_Yaw_init = 20;
 	Infantry.PitchMotorID = 0x207;
 	Infantry.YawMotorID = 0x205;
 	Infantry.FricMotorID[0] = 0x202;
 	Infantry.FricMotorID[1] = 0x201;
 	Infantry.BodanMotorID = 0x204;
-	Infantry.pitch_max_motor = 38;
-	Infantry.pitch_min_motor = -13;
+	Infantry.pitch_max_motor = 40;
+	Infantry.pitch_min_motor = -14;
 	Infantry.pitch_max_gyro = 40;
-	Infantry.pitch_min_gyro = -13;
+	Infantry.pitch_min_gyro = -14;
 	Infantry.gyro_pn = 1;
 	Infantry.motor_pn = 1;
-    Infantry.init_delta_pitch = -1.54 - 0.57; //实测平地陀螺仪和电机角差值
+    Infantry.init_delta_pitch = -0.8f; //实测平地陀螺仪和电机角差值
 
 #endif
 }
