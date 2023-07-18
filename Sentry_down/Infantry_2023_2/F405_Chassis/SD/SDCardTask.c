@@ -9,7 +9,7 @@
 #include "stdlib.h"
 
 char WriteBuffer[128] = "";              /* 写缓冲区*/
-char ReadBuffer[128] = "";							/* 读缓冲区*/
+char ReadBuffer[100] = "";							/* 读缓冲区*/
 float sd_read_var[VAR_NUMBER+1];
 
 //删除文件的结构体变量 3个变量防止误操作
@@ -96,28 +96,33 @@ void ReadSDCard()
 {
 		static int i = 0;
 		// 读取文件中的数据
-		f_read(&sd_status.fnew,&temp,1,&bytesRead);
-		while(temp != 0x0A)
+		f_read(&sd_status.fnew,ReadBuffer,100,&bytesRead);
+		if(bytesRead)
 		{
-				
-				if(temp == 0x0D)
-				{
-					ReadBuffer[i+1] = '\0';//需要'\0'才能正常解析字符串
-					res = sscanf(ReadBuffer, "%f,%f,%f,%f,%f", &sd_read_var[0], &sd_read_var[1], &sd_read_var[2],&sd_read_var[3],&sd_read_var[4]);
-					if(res == 0)//解析错误，即读取到START
-						sd_read_var[VAR_NUMBER]++;
-					else
-						VOFA_Send();
-					i = 0;
-					memset(ReadBuffer, 0, sizeof(ReadBuffer));
-				}
-				else
-				{					
-					ReadBuffer[i] = temp;
-					i = (i+1)%128;
-				}
-				f_read(&sd_status.fnew,&temp,1,&bytesRead);
+			VOFA_Send();
+			memset(ReadBuffer, 0, sizeof(ReadBuffer));
 		}
+//		while(temp != 0x0A)
+//		{
+//				
+//				if(temp == 0x0D)
+//				{
+//					ReadBuffer[i+1] = '\0';//需要'\0'才能正常解析字符串
+//					res = sscanf(ReadBuffer, "%f,%f,%f,%f,%f", &sd_read_var[0], &sd_read_var[1], &sd_read_var[2],&sd_read_var[3],&sd_read_var[4]);
+//					if(res == 0)//解析错误，即读取到START
+//						sd_read_var[VAR_NUMBER]++;
+//					else
+//						VOFA_Send();
+//					i = 0;
+//					memset(ReadBuffer, 0, sizeof(ReadBuffer));
+//				}
+//				else
+//				{					
+//					ReadBuffer[i] = temp;
+//					i = (i+1)%128;
+//				}
+//				f_read(&sd_status.fnew,&temp,1,&bytesRead);
+//		}
 
 }
 

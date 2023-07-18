@@ -29,6 +29,7 @@ typedef struct PCRecvData
     uint8_t frame_id;
     short pitch;
     float yaw;
+		float distance;
     int16_t crc16;
 } PCRecvData;
 

@@ -10,8 +10,7 @@ extern int16_t Gimbal_init_flag;
 extern gyro_Typedef Gyro_Right,Gyro_Left,Gyro_ChassisYaw;
 extern State_t Sentry_State;
 extern uint8_t aim_flag;
-extern uint8_t distance;
-extern uint8_t is_game_start;
+extern float is_game_start;
 extern uint8_t armor_flag;
 
 uint8_t debug_yaw = 0;

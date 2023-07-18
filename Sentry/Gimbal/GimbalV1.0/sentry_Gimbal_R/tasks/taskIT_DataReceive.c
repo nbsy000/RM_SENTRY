@@ -219,7 +219,6 @@ int pc_yaw;
 short pc_pitch;
 int pc_yaw_l;
 short pc_pitch_l;
-uint8_t distance,distance_l;
 short Armor_Aimed;
 uint8_t armor_state = 0; //表示辅瞄是不是有找到目标
 uint8_t last_armor_state=ARMOR_NO_AIM;
@@ -238,7 +237,7 @@ uint8_t CV_Shoot_ABLE = 0; //判定视觉方面是否能够打子弹
 uint8_t CV_Shoot_ABLE_L = 0; //判定视觉方面是否能够打子弹
 PC_Receive_t PC_Receive_R,PC_Receive_L;
 
-
+float distance;
 extern gimbal_motor_t MotoPitch_L, MotoYaw_L;
 #ifdef PC_OLD
 void PCReceive(uint8_t PCReceivebuffer[])
@@ -288,8 +287,8 @@ void PCReceive(uint8_t PCReceivebuffer[])
 					Gimbal_R.armor_state = ARMOR_AIMED; //有目标
 				else
 					Gimbal_R.armor_state = ARMOR_NO_AIM; //没目标
-			
-//				Gimbal_R.armor_state = ARMOR_NO_AIM;
+
+					distance = pc_recv_data.distance>0?sqrt(pc_recv_data.distance):6.0;//识别距离
 				
 				Gimbal_R.target_id = pc_recv_data.enemy_id;
 				

@@ -5,10 +5,15 @@
 **********************************************************************************************************/
 #include "main.h"
 
-
 #define	VOFA_MAX_CHANNEL 10
+
+#ifndef SD_READ_MODE
+#define VOFA_SEND_SIZE (VOFA_MAX_CHANNEL*4+4)
+#else
+#define VOFA_SEND_SIZE 100
+#endif
 float 	VOFA_justfloat[VOFA_MAX_CHANNEL];
-uint8_t VOFA_send_Data[VOFA_MAX_CHANNEL*4+4];
+uint8_t VOFA_send_Data[VOFA_SEND_SIZE];
 DMA_InitTypeDef   dma;
 extern float INA_Power;
 /**********************************************************************************************************
@@ -40,7 +45,7 @@ void VOFA_USART_Configuration(void)
 			dma.DMA_PeripheralBaseAddr = (uint32_t)&(VOFA_USARTx->DR);
 			dma.DMA_Memory0BaseAddr = (uint32_t)VOFA_send_Data;
 			dma.DMA_DIR = DMA_DIR_MemoryToPeripheral;
-			dma.DMA_BufferSize = (VOFA_MAX_CHANNEL*4+4);
+			dma.DMA_BufferSize = VOFA_SEND_SIZE;
 			dma.DMA_PeripheralInc = DMA_PeripheralInc_Disable;
 			dma.DMA_MemoryInc = DMA_MemoryInc_Enable;
 			dma.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte;
@@ -108,9 +113,9 @@ void VOFA_Send(void)
 {
 
 #ifdef  SD_READ_MODE //SD卡输出
-	extern float sd_read_var[];
+	extern char ReadBuffer[];
 	
-	memcpy(VOFA_justfloat,sd_read_var,4*(VAR_NUMBER+1));
+	memcpy(VOFA_send_Data,ReadBuffer,VOFA_SEND_SIZE);
 	
 #else
 	//需转为float型数据存储
@@ -120,13 +125,15 @@ void VOFA_Send(void)
 //	VOFA_justfloat[3]=(float)(FuzzyAidPidYawPos.SetPoint);
 //	VOFA_justfloat[4]=(float)(GyroReceive.GX);
 //	VOFA_justfloat[5]=(float)(GyroReceive.ROLL);
+	
+	
+	//拷贝到传输变量
+	memcpy(VOFA_send_Data, (uint8_t *)VOFA_justfloat, sizeof(VOFA_justfloat));
 		
 #endif
 
-	//拷贝到传输变量
-	memcpy(VOFA_send_Data, (uint8_t *)VOFA_justfloat, sizeof(VOFA_justfloat));
 	
-	VOFA_DMA_TX_STREAM->NDTR = VOFA_MAX_CHANNEL*4+4; 
+	VOFA_DMA_TX_STREAM->NDTR = VOFA_SEND_SIZE; 
   DMA_Cmd(VOFA_DMA_TX_STREAM, ENABLE);   
 
 }

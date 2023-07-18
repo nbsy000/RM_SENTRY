@@ -7,7 +7,7 @@ _2006_motor_t FrictionMotor[2];
 extern int16_t Shoot_init_flag;
 extern State_t Sentry_State;
 extern block_disconnect_t block_disconnect;
-extern uint8_t distance;
+extern float distance;
 uint8_t Heat_ShootAbleFlag = 0; //底盘给过来的热量控制能否打弹标志位 
 uint8_t is_game_start = 0;        // 底盘给过来的判断是否正式开始比赛的标志位
 
@@ -41,7 +41,7 @@ static void Shoot_RC_PID_Cal(void);
 static void Shoot_PC_PID_Cal(void);
 inline static void Shoot_SLEEP_PID_Cal(void);
 static void Block_Check(void);
-
+static void Firing_Freq_Cal(void);
 
 int test1 =0;
 void task_Shoot(void *parameter)
@@ -56,6 +56,9 @@ void task_Shoot(void *parameter)
         Shoot_LastMode = Sentry_State.Shoot_R_Mode;                              //更新上次状态
         BodanDelay_Tick = (Shoot_ModeUpdate_Flag) ? (0) : (BodanDelay_Tick + 1);  //根据状态是否切换，判断延时tick是清零还是递增
         BodanDelay_OVER = (BodanDelay_Tick >= BodanDelay_Threshold);                //根据延时时间和门限值，判定延时是否结束
+			
+				//距离判断射频
+				Firing_Freq_Cal();
 
 				//掉线检测处理
 				Shoot_Disconnect_Act();			
@@ -261,6 +264,22 @@ void FrictionWheel_SetSpeed(int16_t tmpAccelerator0, int16_t tmpAccelerator1)
 
 }
 
+
+/**
+  * @brief  计算射击频率
+  * @param  None
+  * @retval None
+  */
+void Firing_Freq_Cal()
+{
+	if(distance < 2.0f)//小于3m
+		delayTick_oneShot = 45;
+	else if(distance < 3.5f)
+		delayTick_oneShot = 60;
+	else
+		delayTick_oneShot = 80;
+
+}
 
 /**
   * @brief  堵转检查的处理

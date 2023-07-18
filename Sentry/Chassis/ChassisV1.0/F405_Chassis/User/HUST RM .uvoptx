@@ -203,7 +203,7 @@
         <Ww>
           <count>8</count>
           <WinNumber>2</WinNumber>
-          <ItemText>FrameRate</ItemText>
+          <ItemText>FrameRate,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>9</count>
