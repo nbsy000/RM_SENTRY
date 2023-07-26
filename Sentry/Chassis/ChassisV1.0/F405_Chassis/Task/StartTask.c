@@ -22,9 +22,9 @@ TaskHandle_t CPUTask_Handler; //任务句柄
 #define OFFLINE_CHECK_STK_SIZE 128 //任务堆栈
 TaskHandle_t OfflineCheckTask_Handler; //任务句柄
 
-#define JUDGERECEIVE_TASK_PRIO 20  //任务优先级
-#define JUDGERECEIVE_STK_SIZE 512 //任务堆栈3
-TaskHandle_t JudgeReceiveTask_Handler; //任务句柄
+#define JUDGE_TASK_PRIO 10  //任务优先级
+#define JUDGE_STK_SIZE 512 //任务堆栈3
+TaskHandle_t JudgeTask_Handler; //任务句柄
 
 #define CHASSIS_TASK_PRIO 29  //任务优先级
 #define CHASSIS_STK_SIZE 1024 //任务堆栈4
@@ -109,12 +109,12 @@ void start_task(void *pvParameters)
                 (TaskHandle_t *)&OfflineCheckTask_Handler); //任务句柄
 
 								
-	xTaskCreate((TaskFunction_t)JudgeReceive_task,          //任务函数
-                (const char *)"JudgeReceive_task",          //任务名称
-                (uint16_t)JUDGERECEIVE_STK_SIZE,            //任务堆栈大小
+	xTaskCreate((TaskFunction_t)Judge_task,          //任务函数
+                (const char *)"Judge_task",          //任务名称
+                (uint16_t)JUDGE_STK_SIZE,            //任务堆栈大小
                 (void *)NULL,                        //传递给任务函数的参数
-                (UBaseType_t)JUDGERECEIVE_TASK_PRIO,        //任务优先级
-                (TaskHandle_t *)&JudgeReceiveTask_Handler); //任务句柄
+                (UBaseType_t)JUDGE_TASK_PRIO,        //任务优先级
+                (TaskHandle_t *)&JudgeTask_Handler); //任务句柄
 								
 	//过零检测任务
 	xTaskCreate((TaskFunction_t)task_ZeroCheck,

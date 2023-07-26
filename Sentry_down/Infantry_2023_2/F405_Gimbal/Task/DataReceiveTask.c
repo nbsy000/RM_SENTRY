@@ -68,6 +68,7 @@ void Can1Receive0(CanRxMsg rx_message1)
 		F105.JudgeReceive_info.HeatMax17 = 240; 
 		F105.JudgeReceive_info.RobotLevel = 0;//默认
 		Shoot.HeatControl.HeatUpdateFlag = 1;
+		Robot_Disconnect.F105_DisConect=0;
 		break;
 	case 0x096://大符信息
 		memcpy(&CoolBuffState, &rx_message1.Data[0], 1);
@@ -75,16 +76,6 @@ void Can1Receive0(CanRxMsg rx_message1)
 	case 0x100://底盘控制反馈
 		memcpy(&F105.ChassisSpeedw, &rx_message1.Data[0], 2);
 		break;
-		//		case 0x209:
-		//				 YawMotorReceive=rx_message1.Data[0]<<8 | rx_message1.Data[1];
-		//		     YawMotorSpeed  =rx_message1.Data[2]<<8 | rx_message1.Data[3];
-		//				 Robot_Disconnect.YawMotor_DisConnect=0;
-		//		break;
-		//		case 0x204:
-		//			   BodanReceive.Angle=rx_message1.Data[0]<<8 | rx_message1.Data[1];
-		//				 BodanReceive.RealSpeed=rx_message1.Data[2]<<8 | rx_message1.Data[3];
-		//				 Robot_Disconnect.Pluck_DisConnect=0;
-		//		break;
 	}
 }
 
@@ -101,15 +92,6 @@ void Can1Receive1(CanRxMsg rx_message1)
 {
 	switch (rx_message1.StdId)
 	{
-		//		case 0x100:
-		//		     memcpy(&F105.ChassisSpeedw, &rx_message1.Data[0], 2);
-		//		     memcpy(&F105.Remain_power, &rx_message1.Data[2], 2);
-		//	    	 memcpy(&F105.IsShootAble, &rx_message1.Data[4], 1);
-		//				 memcpy(&F105.RobotRed, &rx_message1.Data[5], 1);
-		//		     memcpy(&F105.BulletSpeedLevel, &rx_message1.Data[6], 1);
-		//				 memcpy(&Chassis_ID,&rx_message1.Data[7],1);
-		//		     Robot_Disconnect.F105_DisConect=0;
-		//		 break;
 	case 0x205:
 		YawMotorReceive = rx_message1.Data[0] << 8 | rx_message1.Data[1];
 		YawMotorSpeed = rx_message1.Data[2] << 8 | rx_message1.Data[3];
@@ -133,30 +115,6 @@ void Can1Receive1(CanRxMsg rx_message1)
 	}
 }
 
-/**********************************************************************************************************
- *函 数 名: Can1Receive1
- *功能说明: Yaw电机、拨弹电机角度接收
- *形    参: rx_message0
- *返 回 值: 无
- **********************************************************************************************************/
-// extern RobotInit_Struct Infantry;
-// short YawMotorSpeed;
-// void Can1Receive1(CanRxMsg rx_message0)
-//{
-//	if(rx_message0.StdId == Infantry.YawMotorID)
-//	{
-//				 YawMotorReceive=rx_message0.Data[0]<<8 | rx_message0.Data[1];
-//		     YawMotorSpeed  =rx_message0.Data[2]<<8 | rx_message0.Data[3];
-//				 Robot_Disconnect.YawMotor_DisConnect=0;
-//
-//	}
-//	else if(rx_message0.StdId == Infantry.BodanMotorID)
-//	{
-//          BodanReceive.Angle=rx_message0.Data[0]<<8 | rx_message0.Data[1];
-//				 BodanReceive.RealSpeed=rx_message0.Data[2]<<8 | rx_message0.Data[3];
-//				 Robot_Disconnect.Pluck_DisConnect=0;
-//	}
-// }
 
 /**********************************************************************************************************
  *函 数 名: Can2Receive0
@@ -224,24 +182,6 @@ void Can2Receive1(CanRxMsg *rx_message1)
     }
 }
 
-
-/**
-  * @brief  雷达信息接收
-  * @param  None
-  * @retval None
-  */
-void NAVReceive(uint8_t Buf[])
-{
-	extern NAV_Recv_t NAV_Recv;
-	float  x_now,y_now,w_now;
-	memcpy(&x_now,&Buf[1], 4); 
-	memcpy(&y_now,&Buf[5], 4); 
-	memcpy(&w_now,&Buf[9], 4);
-	NAV_Recv.x_now = (short)x_now;
-	NAV_Recv.y_now = (short)y_now;
-	NAV_Recv.w_now = (short)w_now;
-
-}
 
 /**********************************************************************************************************
  *函 数 名: RemoteReceive
@@ -367,56 +307,3 @@ void RCReceive_task()
         #endif
 	}
 }
-
-///**********************************************************************************************************
-// *函 数 名: PCReceive_task
-// *功能说明: PC数据处理任务
-// *形    参: 无
-// *返 回 值: 无
-// **********************************************************************************************************/
-//uint32_t PC_high_water;
-//void PCReceive_task()
-//{
-//	//	static BaseType_t DataReceive_Exit = pdFALSE ;  //使用通知实现计数信号量，便于不同中断信息处理
-
-//	static unsigned char temptemp[2 * PC_RECVBUF_SIZE]; //用于PC数据处理的局部变量
-//	short PackPoint, n;
-
-//	while (1)
-//	{
-//		ulTaskNotifyTake(pdTRUE, portMAX_DELAY); //若无通知更新，则不唤醒,通知实现二值信号量
-
-//		/********************************* PC数据处理 *******************************************************/
-
-//		PC_ReceiveFlag = 0;
-
-//		memcpy(temptemp + PC_RECVBUF_SIZE, PCRecbuffer, PC_RECVBUF_SIZE);
-//		for (PackPoint = 0; PackPoint < PC_RECVBUF_SIZE; PackPoint++) //防止错位，不一定数组元素的第一个就为
-//		{
-//			if (temptemp[PackPoint] == '!')
-//			{
-//				for (n = 0; n < PC_RECVBUF_SIZE; n++)
-//				{
-//					tempPC[n] = temptemp[(n + PackPoint)];
-//				}
-//				crcNopass++;
-//				if (Verify_CRC8_Check_Sum(tempPC, PC_RECVBUF_SIZE))
-//				{
-//					PCReceive(tempPC);
-//				}
-//				else
-//				{
-//					buffindex++;
-//					buffindex = buffindex % 4;
-//				}
-//				break;
-//			}
-//		}
-//		memcpy(temptemp, temptemp + PC_RECVBUF_SIZE, PC_RECVBUF_SIZE);
-
-//		/********************************* 其他数据处理 *******************************************************/
-//        #if INCLUDE_uxTaskGetStackHighWaterMark
-//		PC_high_water = uxTaskGetStackHighWaterMark(NULL);
-//        #endif
-//	}
-//}

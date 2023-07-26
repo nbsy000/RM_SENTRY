@@ -29,7 +29,8 @@ extern TaskHandle_t PowerControlTask_Handler; //ÈÎÎñ¾ä±ú
 **********************************************************************************************************/
 int main()
 {
-    BSP_Init();
+
+	BSP_Init();
 	Robot_Init();
 	
 	startTast();

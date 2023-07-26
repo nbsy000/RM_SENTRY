@@ -46,6 +46,9 @@ static void update_state_with_RCdata(void)
                                  Shoot_L_PC,
                                  Chassis_Patrol,
 																 ChassisYaw_PC);
+
+				
+					
             break;
         case 2:
             sentry_state_reflect(Gimbal_R_SLEEP,

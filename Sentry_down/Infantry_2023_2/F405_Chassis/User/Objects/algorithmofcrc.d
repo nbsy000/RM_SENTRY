@@ -48,6 +48,7 @@
 .\objects\algorithmofcrc.o: ..\Task\DataReceiveTask.h
 .\objects\algorithmofcrc.o: ..\Task\DataSendTask.h
 .\objects\algorithmofcrc.o: ..\Task\ChassisTask.h
+.\objects\algorithmofcrc.o: ..\Task\JudgeTask.h
 .\objects\algorithmofcrc.o: ..\Task\PowerControlTask.h
 .\objects\algorithmofcrc.o: ..\Task\GraphicsSendTask.h
 .\objects\algorithmofcrc.o: ..\Task\CharSendTask.h

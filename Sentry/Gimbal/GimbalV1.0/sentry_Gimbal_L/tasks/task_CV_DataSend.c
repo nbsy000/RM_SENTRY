@@ -28,7 +28,7 @@ PCSendData pc_send_data;
 uint32_t TX2_high_water;
 void task_CV_DataSend(void *pvParameters)
 {
-
+		static int count = 0;
     while (1)
     {
 #ifdef NEW_SHOOTAIM			
@@ -36,7 +36,12 @@ void task_CV_DataSend(void *pvParameters)
 #else 
 			USART2_SendtoPC();
 #endif
-				vTaskDelay(5);    //(1)  //为了和视觉那边进行接发匹配
+			
+			if(count%10 == 0)//20Hz
+				SendtoNAV();//发送导航数据
+			
+			count++;
+			vTaskDelay(5);    //(1)  //为了和视觉那边进行接发匹配
 #if INCLUDE_uxTaskGetStackHighWaterMark
         TX2_high_water = uxTaskGetStackHighWaterMark(NULL);
 #endif
@@ -133,4 +138,17 @@ void SendtoPC(void)
     DMA_Cmd(DMA1_Stream6, ENABLE);   //在程序里面使能DMA的发送
 }
 
-
+/**
+  * @brief  发送数据给导航
+  * @param  None
+  * @retval None
+  */
+void SendtoNAV(void)
+{
+		extern uint8_t nav_state;
+		NAV_Send.head = '!';
+		NAV_Send.nav_state = nav_state;
+		Append_CRC8_Check_Sum((unsigned char *)&NAV_Send, NAV_SENDBUF_SIZE);
+		memcpy(NAV_Send_Buf, (void *)&NAV_Send, NAV_SENDBUF_SIZE);
+    DMA_Cmd(DMA1_Stream7, ENABLE);   //在程序里面使能DMA的发送
+}

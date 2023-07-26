@@ -559,19 +559,9 @@
           <GroupName>Task</GroupName>
           <Files>
             <File>
-              <FileName>DataReceiveTask.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Task\DataReceiveTask.c</FilePath>
-            </File>
-            <File>
               <FileName>DataSendTask.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Task\DataSendTask.c</FilePath>
-            </File>
-            <File>
-              <FileName>ChassisTask.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Task\ChassisTask.c</FilePath>
             </File>
             <File>
               <FileName>StartTask.c</FileName>
@@ -589,6 +579,11 @@
               <FilePath>..\Task\ZeroCheckTask.c</FilePath>
             </File>
             <File>
+              <FileName>DataReceiveTask.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Task\DataReceiveTask.c</FilePath>
+            </File>
+            <File>
               <FileName>JudgeTask.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Task\JudgeTask.c</FilePath>
@@ -597,6 +592,11 @@
               <FileName>SDCardTask.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Task\SDCardTask.c</FilePath>
+            </File>
+            <File>
+              <FileName>ChassisTask.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Task\ChassisTask.c</FilePath>
             </File>
             <File>
               <FileName>CPU_Task.c</FileName>

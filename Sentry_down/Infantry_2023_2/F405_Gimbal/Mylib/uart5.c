@@ -2,8 +2,9 @@
 #include "uart5.h"
 
 uint8_t NAV_Recv_Buf[NAV_RECVBUF_SIZE] = {0, 0, 0};
-uint8_t NAV_Send[NAV_SENDBUF_SIZE];
+uint8_t NAV_Send_Buf[NAV_SENDBUF_SIZE];
 NAV_Recv_t NAV_Recv;
+NAV_Send_t NAV_Send;
 /**********************************************************************************************************
 *函 数 名: UART5_Configuration
 *功能说明: usart5配置函数
@@ -46,7 +47,7 @@ void UART5_Configuration(void)
 		
 		USART_ITConfig(UART5, USART_IT_IDLE, ENABLE);  
 		USART_Cmd(UART5,ENABLE);
-		USART_DMACmd(UART5,USART_DMAReq_Rx,ENABLE);	
+		USART_DMACmd(UART5,USART_DMAReq_Rx|USART_DMAReq_Tx,ENABLE);	
 		
 //		nvic.NVIC_IRQChannel = UART5_IRQn;
 //    nvic.NVIC_IRQChannelPreemptionPriority = 1;
@@ -60,6 +61,12 @@ void UART5_Configuration(void)
     nvic.NVIC_IRQChannelCmd = ENABLE;
     NVIC_Init(&nvic);
 		
+		nvic.NVIC_IRQChannel = DMA1_Stream7_IRQn;
+    nvic.NVIC_IRQChannelPreemptionPriority = 1;
+    nvic.NVIC_IRQChannelSubPriority = 1;
+    nvic.NVIC_IRQChannelCmd = ENABLE;
+    NVIC_Init(&nvic);
+		//RX
 		{
 			DMA_InitTypeDef  dma;
 			RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_DMA1,ENABLE);
@@ -82,6 +89,32 @@ void UART5_Configuration(void)
 			DMA_Init(DMA1_Stream0,&dma);
 			DMA_ITConfig(DMA1_Stream0,DMA_IT_TC,ENABLE);
 			DMA_Cmd(DMA1_Stream0,ENABLE);
+		}	
+		
+		//tx
+		{
+			DMA_InitTypeDef  dma;
+			RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_DMA1,ENABLE);
+			DMA_DeInit(DMA1_Stream7);
+			dma.DMA_Channel= DMA_Channel_4;
+			dma.DMA_PeripheralBaseAddr = (uint32_t)&(UART5->DR);
+			dma.DMA_Memory0BaseAddr = (uint32_t)NAV_Send_Buf;
+			dma.DMA_DIR = DMA_DIR_MemoryToPeripheral;
+			dma.DMA_BufferSize = NAV_SENDBUF_SIZE;
+			dma.DMA_PeripheralInc = DMA_PeripheralInc_Disable;
+			dma.DMA_MemoryInc = DMA_MemoryInc_Enable;
+			dma.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte;
+			dma.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;
+			dma.DMA_Mode = DMA_Mode_Normal;
+			dma.DMA_Priority = DMA_Priority_VeryHigh;
+			dma.DMA_FIFOMode = DMA_FIFOMode_Disable;
+			dma.DMA_FIFOThreshold = DMA_FIFOThreshold_1QuarterFull;
+			dma.DMA_MemoryBurst = DMA_MemoryBurst_Single;
+			dma.DMA_PeripheralBurst = DMA_PeripheralBurst_Single;
+			DMA_Init(DMA1_Stream7,&dma);
+			DMA_ITConfig(DMA1_Stream7,DMA_IT_TC,ENABLE);
+			DMA_Cmd(DMA1_Stream7,DISABLE);
+			
 		}	
 }
 
@@ -155,4 +188,23 @@ void DMA1_Stream0_IRQHandler(void)
         memcpy(temptemp, temptemp + NAV_RECVBUF_SIZE, NAV_RECVBUF_SIZE);
         DMA_Cmd(DMA1_Stream0,ENABLE);
     }
+}
+
+/**********************************************************************************************************
+*函 数 名: DMA1_Stream7_IRQHandler
+*功能说明: usart5 DMA发送中断
+*形    参: 无
+*返 回 值: 无
+**********************************************************************************************************/
+void DMA1_Stream7_IRQHandler(void)
+{	
+	if(DMA_GetITStatus(DMA1_Stream7, DMA_IT_TCIF7))
+	{
+		DMA_Cmd(DMA1_Stream7, DISABLE);		
+		DMA_ClearFlag(DMA1_Stream7, DMA_FLAG_TCIF7);
+		DMA_SetCurrDataCounter(DMA1_Stream7, NAV_SENDBUF_SIZE);
+		DMA_ClearITPendingBit(DMA1_Stream7, DMA_IT_TCIF7);
+		while (USART_GetFlagStatus(UART5, USART_FLAG_TXE) == RESET);
+		USART_ClearFlag(UART5, USART_FLAG_TXE);
+	}
 }

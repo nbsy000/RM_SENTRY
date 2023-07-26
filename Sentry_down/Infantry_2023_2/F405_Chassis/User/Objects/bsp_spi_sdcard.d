@@ -48,6 +48,7 @@
 .\objects\bsp_spi_sdcard.o: ..\Task\DataReceiveTask.h
 .\objects\bsp_spi_sdcard.o: ..\Task\DataSendTask.h
 .\objects\bsp_spi_sdcard.o: ..\Task\ChassisTask.h
+.\objects\bsp_spi_sdcard.o: ..\Task\JudgeTask.h
 .\objects\bsp_spi_sdcard.o: ..\Task\PowerControlTask.h
 .\objects\bsp_spi_sdcard.o: ..\Task\GraphicsSendTask.h
 .\objects\bsp_spi_sdcard.o: ..\Task\CharSendTask.h

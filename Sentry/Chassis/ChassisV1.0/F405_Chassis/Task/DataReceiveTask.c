@@ -104,6 +104,15 @@ void JudgeBuffReceive(unsigned char ReceiveBuffer[],uint16_t DataLen)
 					FrameRate.heatF++;
 				}
 				
+				//位置信息
+				if((cmd_id==0x0203)&&(Verify_CRC16_Check_Sum(&SaveBuffer[PackPoint],DataLen+9)))
+				{
+					memcpy(&JudgeReceive.x,&SaveBuffer[PackPoint+7+0],4);
+					memcpy(&JudgeReceive.y,&SaveBuffer[PackPoint+7+4],4);
+					memcpy(&JudgeReceive.z,&SaveBuffer[PackPoint+7+8],4);
+					memcpy(&JudgeReceive.angle,&SaveBuffer[PackPoint+7+12],4);
+				}
+												
 				//实时增益数据
 				if((cmd_id==0x0204)&&(Verify_CRC16_Check_Sum(&SaveBuffer[PackPoint],DataLen+9)))
 				{
@@ -142,7 +151,6 @@ void JudgeBuffReceive(unsigned char ReceiveBuffer[],uint16_t DataLen)
 						Bullet_Speed_2_100 = JudgeReceive.bulletSpeed;
 						ShootCpltFlag_2 = 1;
 					}
-					BulletSpeed_CAN2Send();//发送弹速
 				}	
 
 				//雷达和云台手消息
@@ -153,11 +161,6 @@ void JudgeBuffReceive(unsigned char ReceiveBuffer[],uint16_t DataLen)
 					memcpy(&JudgeReceive.target_position_z,&SaveBuffer[PackPoint+7+8],4);
 					memcpy(&JudgeReceive.commd_keyboard,&SaveBuffer[PackPoint+7+12],1);
 					memcpy(&JudgeReceive.target_robot_ID,&SaveBuffer[PackPoint+7+13],2);
-					
-					if(JudgeReceive.commd_keyboard == 'Q')//左移动
-							Patrol_Cnt = LIMIT_MAX_MIN(Patrol_Cnt++,2,0);
-					if(JudgeReceive.commd_keyboard == 'E')//右移动
-							Patrol_Cnt = LIMIT_MAX_MIN(Patrol_Cnt--,2,0);
 				}
 				
 				//雷达和云台手消息

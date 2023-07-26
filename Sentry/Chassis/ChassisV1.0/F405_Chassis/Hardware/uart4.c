@@ -153,8 +153,7 @@ void DMA1_Stream2_IRQHandler(void)
 {	
 	if(DMA_GetITStatus(DMA1_Stream2, DMA_IT_TCIF2))
 	{ 
-		extern TaskHandle_t JudgeReceiveTask_Handler; //ÈÎÎñ¾ä±ú
-		JudgeReveice_Flag = 1;
+		JudgeBuffReceive(JudgeReceiveBuffer,0);
 		DMA_ClearITPendingBit(DMA1_Stream2, DMA_IT_TCIF2);
 	}
 }

@@ -48,6 +48,7 @@
 .\objects\can1.o: ..\Task\DataReceiveTask.h
 .\objects\can1.o: ..\Task\DataSendTask.h
 .\objects\can1.o: ..\Task\ChassisTask.h
+.\objects\can1.o: ..\Task\JudgeTask.h
 .\objects\can1.o: ..\Task\PowerControlTask.h
 .\objects\can1.o: ..\Task\GraphicsSendTask.h
 .\objects\can1.o: ..\Task\CharSendTask.h

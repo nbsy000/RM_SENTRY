@@ -34,6 +34,7 @@ char Buff_Init;
 short SteeringEngineDelay = 0;
 /*---------------结构体--------------------*/
 Status_t Status;
+NAV_t NAV_car;
 /*--------------外部变量-------------------*/
 extern RC_Ctl_t RC_Ctl;
 extern unsigned char magazineState;
@@ -147,24 +148,6 @@ void Powerdown_Process()
 	Status.ShootMode = Shoot_Powerdown_Mode;
 }
 
-///**********************************************************************************************************
-//*函 数 名: Tx2_Off_Test
-//*功能说明: Tx2关机指令判断，将右拨杆拨至最下，即掉电模式后，两摇杆向内靠，发送关机指令
-//*形    参: 无
-//*返 回 值: 无
-//**********************************************************************************************************/
-// void Tx2_Off_Test(Remote rc)
-//{
-//	if(rc.s1 == 2 && rc.ch0 < 500 && rc.ch2 > 1500)
-//		Tx2_Off_times++;		//计数器
-//	else
-//		{
-//			Tx2_Off_times = 0;
-//			PC_Sendflag = 0;
-//		}
-//	if(Tx2_Off_times > 500)
-//		PC_Sendflag = Tx2_Off;
-//}
 
 /**********************************************************************************************************
  *函 数 名: Remote_Process
@@ -187,128 +170,31 @@ void Remote_Process(Remote rc)
 		Status.GimbalMode = Gimbal_Act_Mode;
 		Status.ChassisMode = Chassis_Powerdown_Mode;
 		if((RC_Ctl.rc.ch1 - 1024) > 300)
-		{
-			Shoot.ShootContinue = 1;
-			Status.ShootMode = Shoot_Fire_Mode;
-		}
+			Status.ShootMode = Shoot_Check_Mode;
 		else
 			Status.ShootMode = Shoot_Powerdown_Mode;
 		SteeringEngine_Set(Infantry.MagClose);
 	}
-	//		if(rc.s2==2) //飞坡模式
-	//	{
-	//		Status.GimbalMode=Gimbal_Jump_Mode;
-	//		Status.ChassisMode=Chassis_SelfProtect_Mode;
-	//		Status.ShootMode=Shoot_Powerdown_Mode;
-	//		SteeringEngine_Set(Infantry.MagClose);
-	//	}
 
-	//
 	if (rc.s2 == 1) // 云台测试模式
 	{
 		Status.GimbalMode = Gimbal_Armor_Mode;
 		Status.ChassisMode = Chassis_Powerdown_Mode;
-		Status.ShootMode = Shoot_Powerdown_Mode;
+		if((RC_Ctl.rc.ch1 - 1024) > 300)
+			Status.ShootMode = Shoot_Tx2_Mode;
+		else
+			Status.ShootMode = Shoot_Powerdown_Mode;
 		SteeringEngine_Set(Infantry.MagOpen);
 	}
 
-	//	if (rc.s2 == 1) //检录模式 单独云台运动
-	//	{
-	//		Status.GimbalMode = Gimbal_Act_Mode;
-	//		Status.ChassisMode = Chassis_Powerdown_Mode;
-	//		Status.ShootMode = Shoot_Powerdown_Mode;
-	//		SteeringEngine_Set(Infantry.MagClose);
-	//	}
 	if (rc.s2 == 2) // 检录模式 单独发射机构
 	{
 		Status.GimbalMode = Gimbal_Act_Mode;
 		Status.ChassisMode = Chassis_Act_Mode;
-		Status.ShootMode = Shoot_Powerdown_Mode;
+			Status.ShootMode = Shoot_Powerdown_Mode;
 		SteeringEngine_Set(Infantry.MagOpen);
 	}
 
-	//			if(rc.s2==2) //底盘测试模式
-	//	{
-	//		Status.GimbalMode=Gimbal_Act_Mode;
-	//		Status.ChassisMode=Chassis_Test_Mode;
-	//		Status.ShootMode=Shoot_Powerdown_Mode;
-	//    SteeringEngine_Set(Infantry.MagOpen);
-	//	}
-	//
-	//	if(rc.s2==2) //检录模式
-	//	{
-	//		Status.GimbalMode=Gimbal_Test_Mode;
-	//		Status.ChassisMode=Chassis_Powerdown_Mode;
-	//		Status.ShootMode=Shoot_Check_Mode;
-	//		SteeringEngine_Set(Infantry.MagClose);
-	//	}
-	//	if (rc.s2 == 1) //辅瞄模式
-	//	{
-	//		Status.GimbalMode = Gimbal_Armor_Mode;
-	//		Status.ChassisMode = Chassis_Act_Mode;
-	//		Status.ShootMode = Shoot_Tx2_Mode;
-	//		SteeringEngine_Set(Infantry.MagClose);
-	//	}
-	//		if(rc.s2==1) //小陀螺模式
-	//	{
-	//		Status.GimbalMode=Gimbal_Act_Mode;
-	//		Status.ChassisMode=Chassis_SelfProtect_Mode;
-	//		Status.ShootMode=Shoot_Powerdown_Mode;
-	//    SteeringEngine_Set(Infantry.MagClose);
-	//	}
-	////
-	//	if(rc.s2==2) //小陀螺辅瞄模式
-	//	{
-	//		Status.GimbalMode=Gimbal_Armor_Mode;
-	//		Status.ChassisMode=Chassis_SelfProtect_Mode;
-	//		Status.ShootMode=Shoot_Tx2_Mode;
-	//    SteeringEngine_Set(Infantry.MagOpen);
-	////	}
-
-	//	if(rc.s2 == 2)//大符模式
-	//	{
-	//		if(Buff_Init==0)
-	//		{
-	//		Buff_Yaw_Motor =Gimbal.Yaw.MotorTransAngle;
-	//		Buff_Init=1;
-	//		}
-	//		Status.GimbalMode = Gimbal_BigBuf_Mode;
-	//    SteeringEngine_Set(Infantry.MagOpen);
-	//		Status.ChassisMode = Chassis_Act_Mode;
-	//		Status.ShootMode = Shoot_Tx2_Mode;
-	//	}
-	//
-
-	//		if(rc.s2 == 1)//小符模式
-	//	{
-	//		if(Buff_Init==0)
-	//		{
-	//		Buff_Yaw_Motor =Gimbal.Yaw.MotorTransAngle;
-	//		Buff_Init=1;
-	//		}
-	//		Status.GimbalMode = Gimbal_SmlBuf_Mode;
-	//    SteeringEngine_Set(Infantry.MagClose);
-	//		Status.ChassisMode = Chassis_Act_Mode;
-	//		Status.ShootMode = Shoot_Tx2_Mode;
-	//	}
-	//
-
-	//
-	//		if(rc.s2==2)  //系统辨识模式
-	//	{
-	//		Status.GimbalMode=Gimbal_SI_Mode;
-	//		Status.ChassisMode=Chassis_Act_Mode;
-	//		Status.ShootMode=Shoot_Powerdown_Mode;
-	//		SteeringEngine_Set(Infantry.MagClose);
-	//  }
-
-	//	if(rc.s2==1)  //系统辨识模式
-	//	{
-	//		Status.GimbalMode=Gimbal_SI_Mode;
-	//		Status.ChassisMode=Chassis_Act_Mode;
-	//		Status.ShootMode=Shoot_Powerdown_Mode;
-	//		SteeringEngine_Set(Infantry.MagClose);
-	//	}
 }
 
 /**********************************************************************************************************
@@ -405,14 +291,14 @@ void MouseKey_Act_Cal(RC_Ctl_t RC_Ctl)
 	/******************************切换优先级 e键*****************************************/
 	e_rising_flag = RC_Ctl.key.e - pre_key_e;
 	pre_key_e = RC_Ctl.key.e;
-	if (RC_Ctl.key.e == 1)
-	{
-		pc_send_data.change_priority_flag = 1;
-	}
-	else
-	{
-		pc_send_data.change_priority_flag = 0;
-	}
+//	if (RC_Ctl.key.e == 1)
+//	{
+//		pc_send_data.change_priority_flag = 1;
+//	}
+//	else
+//	{
+//		pc_send_data.change_priority_flag = 0;
+//	}
 
 	/********************************超级电容控制**********************************************/
 	if (RC_Ctl.key.shift == 1)
@@ -643,7 +529,6 @@ void Mouse_Key_Process(RC_Ctl_t RC_Ctl)
  **********************************************************************************************************/
 uint8_t Gimbal_State_Update;
 uint8_t Chassis_State_Update;
-float start_time;
 void PC_Process(Remote rc)
 {
 	if (Mouse_Key_Flag != 5)
@@ -651,7 +536,7 @@ void PC_Process(Remote rc)
 		Mouse_Key_Flag = 5;
 		Budan = 0;
 		NAV_car.NAV_State = BEFOREGAME; // 比赛开始前
-		start_time = GetTime_s();
+		NAV_car.mode_update_time = NAV_car.pc_mode_time = GetTime_s();
 	}
 
 	Navigation_State(); // 导航策略
@@ -659,7 +544,7 @@ void PC_Process(Remote rc)
 	if (rc.s2 == 3) // 底盘模式
 	{
 		Buff_Init = 0;
-		Status.GimbalMode = Gimbal_Powerdown_Mode;
+		Status.GimbalMode = Gimbal_PC_Mode;
 		Status.ChassisMode = Chassis_PC_Mode; // Chassis_Powerdown_Mode;
 		Status.ShootMode = Shoot_Powerdown_Mode;
 		SteeringEngine_Set(Infantry.MagClose);
@@ -669,21 +554,22 @@ void PC_Process(Remote rc)
 	{
 		Status.GimbalMode = Gimbal_PC_Mode;
 		Status.ChassisMode = Chassis_PC_Mode;
-		Status.ShootMode = Shoot_Powerdown_Mode;
+		Status.ShootMode = Shoot_PC_Mode;
 		SteeringEngine_Set(Infantry.MagOpen);
 	}
 
-	if (rc.s2 == 2) // 云台机构
+	if (rc.s2 == 2) // 导航测试
 	{
+		Chassis_Gimbal_Shoot_State(NAV_STATE, NAV_STATE, NAV_STATE);
 		Status.GimbalMode = Gimbal_PC_Mode;
-		Status.ChassisMode = Chassis_Powerdown_Mode;
+		Status.ChassisMode = Chassis_PC_Mode;
 		Status.ShootMode = Shoot_Powerdown_Mode;
 		SteeringEngine_Set(Infantry.MagOpen);
 	}
 }
 
 /**********************************************************************************************************
- *函 数 名: Filter_Cal
+ *函 数 名: Navigation_State
  *功能说明: 导航决策
  *形    参: 无
  *返 回 值: 无
@@ -692,46 +578,145 @@ void Navigation_State()
 {
 	if (NAV_car.Last_NAV_State != NAV_car.NAV_State)
 	{
-		start_time = GetTime_s();
+		NAV_car.mode_update_time = GetTime_s();
 	}
 
 	/**********************全局状态***************************/
 	/*
 		不管当前状态，直接转跳到目标状态
 		遥控器：用于调试
-		部分裁判系统数据：前哨战无
-		部分云台手指令：回巡逻区
+		部分裁判系统数据：前哨战无。。。
+		部分云台手指令：回巡逻区。。。。
 	*/
-	if (((RC_Ctl.rc.ch0 - 1024) > 300))	 // 右右
-		NAV_car.NAV_State = OUTPOST;	 // 前哨站
-	if (((RC_Ctl.rc.ch0 - 1024) < -300)) // 右左
-		NAV_car.NAV_State = PATROL;		 // 巡逻区
-
-	if (((RC_Ctl.rc.ch1 - 1024) > 300))	 // 右上
-		NAV_car.NAV_State = HIGHLAND;	 // 高地
-	if (((RC_Ctl.rc.ch1 - 1024) < -300)) // 右下
-		NAV_car.NAV_State = SOURCE;		 // 资源岛
-
-	if (((RC_Ctl.rc.ch2 - 1024) > 300)) // 左上
-		NAV_car.NAV_State = TO_OUTPOST; // 去前哨站
-	if ((RC_Ctl.rc.ch2 - 1024) < -300 ||
-		(F105.JudgeReceive_info.commd_keyboard == 'S') ||
-		F105.JudgeReceive_info.defend_flag) // 左下
+	
+	if ((RC_Ctl.rc.ch0 - 1024) > 300||// 右右
+		(F105.JudgeReceive_info.commd_keyboard == 'S') )
+	//	||	F105.JudgeReceive_info.defend_flag)	 
 		NAV_car.NAV_State = TO_PATROL;		// 去巡逻区
-
-	if (((RC_Ctl.rc.ch3 - 1024) > 300))	 // 左左
+	if ((RC_Ctl.rc.ch0 - 1024) < -300) // 右左
+		NAV_car.NAV_State = TO_OUTPOST; // 去前哨站
+	
+	if ((RC_Ctl.rc.ch1 - 1024) > 300) // 右上
 		NAV_car.NAV_State = TO_HIGHLAND; // 去高地
-	if (((RC_Ctl.rc.ch3 - 1024) < -300) ||
-		(F105.JudgeReceive_info.commd_keyboard == 'W' && F105.JudgeReceive_info.is_game_start && !F105.JudgeReceive_info.defend_flag)) // 左右
-		NAV_car.NAV_State = TO_SOURCE;																								   // 去资源岛
+	if ((RC_Ctl.rc.ch1 - 1024) < -300) //右下
+		NAV_car.NAV_State = TO_SOURCE;	// 去资源岛
+	
+	if ((RC_Ctl.rc.ch2 - 1024) > 300 ||// 左右
+		(F105.JudgeReceive_info.commd_keyboard == 'D') )	 
+		NAV_car.NAV_State = PATROL;	 //巡逻区
+	if ((RC_Ctl.rc.ch2 - 1024) < -300) // 左左
+		NAV_car.NAV_State = OUTPOST;		 //  前哨站
 
-	/***********************决策状态**************************/
+	if ((RC_Ctl.rc.ch3 - 1024) > 300)	 // 左上
+		NAV_car.NAV_State = HIGHLAND;	 // 高地
+	if ((RC_Ctl.rc.ch3 - 1024) < -300) // 左下
+		NAV_car.NAV_State = SOURCE;		 // 资源岛
+	
+	/***********************决策状态转换**************************/
+	NAV_State_Invert();		
+	
+	/***********************决策状态执行**************************/
+	NAV_State_Act();	
+	
+	/********************状态更新时的过渡状态***************/
+	if (GetTime_s() - NAV_car.mode_update_time < NAV_car.MODE_UPDATE_INTERVAL) // 过渡时间1s
+	{
+		Chassis_Gimbal_Shoot_State(STOP_STATE, STOP_STATE, STOP_STATE);
+		NAV_car.NAV_x = 0;
+		NAV_car.NAV_y = 0;
+		NAV_car.NAV_w = 0;
+	}
+
+	NAV_car.Last_NAV_State = NAV_car.NAV_State;
+}
+
+
+/**********************************************************************************************************
+*函 数 名: NAV_State_Invert
+*功能说明: 决策转态转换
+*形    参: 无
+*返 回 值: 无
+**********************************************************************************************************/
+void NAV_State_Invert()
+{
+	switch (NAV_car.NAV_State)
+	{
+	case BEFOREGAME: // 比赛开始前  	
+		if (F105.JudgeReceive_info.is_game_start)  
+		{
+			if( GetTime_s() - NAV_car.game_start_time > NAV_car.GAME_START_INTERVAL)//延时10s，等工程
+				NAV_car.NAV_State = F105.JudgeReceive_info.commd_keyboard == 'E'? TO_HIGHLAND: TO_OUTPOST;// 去高地或前哨战
+		}
+		else
+		{
+			NAV_car.game_start_time = GetTime_s();
+			if( GetTime_s() - NAV_car.pc_mode_time > NAV_car.PC_MODE_INTERVAL)//2min内裁判系统数据没有开始比赛
+					NAV_car.NAV_State = PATROL;
+		}
+		break;
+		
+	case OUTPOST: // 前哨站
+		if( F105.JudgeReceive_info.commd_keyboard == 'W' )//云台手按键W
+				NAV_car.NAV_State = TO_SOURCE;
+		break;
+		
+	case PATROL: // 巡逻区
+		break;
+	
+	case SOURCE: // 资源岛
+		break;
+	
+	case HIGHLAND: // 高地
+		if( F105.JudgeReceive_info.enemy_defend_flag)//敌方前哨战无
+				NAV_car.NAV_State = TO_OUTPOST;
+		break;
+	
+	case TO_OUTPOST: // 去前哨站
+		if (NAV_car.NAV_Path_State == FINISHED)
+			NAV_car.NAV_State = OUTPOST; // 前哨站
+		break;
+		
+	case TO_SOURCE: // 去资源导
+		if (NAV_car.NAV_Path_State == FINISHED)
+			NAV_car.NAV_State = SOURCE; // 哨站
+		break;
+		
+	case TO_PATROL: // 去巡逻区
+		if (NAV_car.NAV_Path_State == FINISHED)
+			NAV_car.NAV_State = PATROL; // 巡逻区
+		break;
+		
+	case TO_HIGHLAND: // 去高地
+		if (NAV_car.NAV_Path_State == FINISHED)
+			NAV_car.NAV_State = HIGHLAND; // 高地
+		break;
+		
+	case PATROL_SAFE: // 前哨战还在前的巡逻区状态
+		break;
+	
+	case TEST1: // 测试路线1
+		break;
+	case TEST2: // 路线测试2
+		break;
+	
+	default:
+		NAV_car.NAV_State = BEFOREGAME;//比赛开始前
+		break;
+	}
+}
+
+/**********************************************************************************************************
+*函 数 名: NAV_State_Act
+*功能说明: 决策状态执行，主要根据当前状态给底盘云台发射机构赋状态
+*形    参: 无
+*返 回 值: 无
+**********************************************************************************************************/
+void NAV_State_Act()
+{
 	switch (NAV_car.NAV_State)
 	{
 	case BEFOREGAME: // 比赛开始前
 		Chassis_Gimbal_Shoot_State(STOP_STATE, STOP_STATE, STOP_STATE);
-		if (F105.JudgeReceive_info.is_game_start) // 比赛开始
-			NAV_car.NAV_State = TO_OUTPOST;		  // 去前哨战
 		break;
 	case OUTPOST: // 前哨站
 		Chassis_Gimbal_Shoot_State(STOP_STATE, ARMOR_STATE, ARMOR_STATE);
@@ -747,8 +732,6 @@ void Navigation_State()
 		break;
 	case TO_OUTPOST: // 去前哨站
 		Chassis_Gimbal_Shoot_State(NAV_STATE, NAV_STATE, NAV_STATE);
-		if (0)
-			NAV_car.NAV_State = OUTPOST; // 前哨站
 		break;
 	case TO_SOURCE: // 去资源导
 		Chassis_Gimbal_Shoot_State(NAV_STATE, NAV_STATE, NAV_STATE);
@@ -770,15 +753,8 @@ void Navigation_State()
 		Chassis_Gimbal_Shoot_State(STOP_STATE, STOP_STATE, STOP_STATE);
 		break;
 	}
-
-	/**********************状态更新时的过渡状态*************************/
-	if (GetTime_s() - start_time < 1.0) // 过渡时间1s
-	{
-		Chassis_Gimbal_Shoot_State(STOP_STATE, STOP_STATE, STOP_STATE);
-	}
-
-	NAV_car.Last_NAV_State = NAV_car.NAV_State;
 }
+
 
 /**********************************************************************************************************
  *函 数 名: Chassis_Gimbal_Shoot_State
@@ -788,9 +764,23 @@ void Navigation_State()
  **********************************************************************************************************/
 void Chassis_Gimbal_Shoot_State(int Chassis_Mode, int Gimbal_Mode, int Shoot_Mode)
 {
-	NAV_car.Chassis_PC_State = Chassis_Mode;
-	NAV_car.Gimbal_PC_State = Gimbal_Mode;
-	NAV_car.Shoot_PC_State = Shoot_Mode;
+	NAV_car.Chassis_PC_State = (enum CHASSIS_GIMBAL_SHOOT_STATE)Chassis_Mode;
+	NAV_car.Gimbal_PC_State = (enum CHASSIS_GIMBAL_SHOOT_STATE)Gimbal_Mode;
+	NAV_car.Shoot_PC_State = (enum CHASSIS_GIMBAL_SHOOT_STATE)Shoot_Mode;
+}
+
+
+/**********************************************************************************************************
+*函 数 名: NAV_Init
+*功能说明: 导航相关参数初始化
+*形    参: 无
+*返 回 值: 无
+**********************************************************************************************************/
+void NAV_Init()
+{
+	NAV_car.GAME_START_INTERVAL = 10.0f;
+	NAV_car.MODE_UPDATE_INTERVAL = 1.0f;
+	NAV_car.PC_MODE_INTERVAL = 120.0f;
 }
 
 /**********************************************************************************************************
@@ -803,10 +793,9 @@ uint32_t ModeChoose_high_water;
 extern char Chassis_ID;
 void ModeChoose_task(void *pvParameters)
 {
-
+	NAV_Init();
 	while (1)
 	{
-
 		Status_Act();
 		IWDG_Feed();
 		vTaskDelay(5);

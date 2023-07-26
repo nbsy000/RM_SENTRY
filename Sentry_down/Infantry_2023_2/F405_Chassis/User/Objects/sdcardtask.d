@@ -48,6 +48,7 @@
 .\objects\sdcardtask.o: ..\Task\DataReceiveTask.h
 .\objects\sdcardtask.o: ..\Task\DataSendTask.h
 .\objects\sdcardtask.o: ..\Task\ChassisTask.h
+.\objects\sdcardtask.o: ..\Task\JudgeTask.h
 .\objects\sdcardtask.o: ..\Task\PowerControlTask.h
 .\objects\sdcardtask.o: ..\Task\GraphicsSendTask.h
 .\objects\sdcardtask.o: ..\Task\CharSendTask.h

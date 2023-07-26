@@ -48,6 +48,7 @@
 .\objects\starttask.o: ..\Task\DataReceiveTask.h
 .\objects\starttask.o: ..\Task\DataSendTask.h
 .\objects\starttask.o: ..\Task\ChassisTask.h
+.\objects\starttask.o: ..\Task\JudgeTask.h
 .\objects\starttask.o: ..\Task\PowerControlTask.h
 .\objects\starttask.o: ..\Task\GraphicsSendTask.h
 .\objects\starttask.o: ..\Task\CharSendTask.h

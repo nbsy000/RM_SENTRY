@@ -338,8 +338,8 @@ void Chassis_Speed_Cal(void)
 			k_xy = 60*reRatio/(2*PI*Wheel_R);
 		
 			//进行限幅
-			chassis.carSpeedy = LIMIT_MAX_MIN(chassis.carSpeedy,1500,-1500);
-			chassis.carSpeedx = LIMIT_MAX_MIN(chassis.carSpeedx,1500,-1500);
+			chassis.carSpeedy = LIMIT_MAX_MIN(chassis.carSpeedy,2500,-2500);
+			chassis.carSpeedx = LIMIT_MAX_MIN(chassis.carSpeedx,2500,-2500);
 			carSpeedw = chassis.carSpeedw; 
 			break;
 		
@@ -890,7 +890,7 @@ void Chassis_Power_Control_Init(void)
 	num++;                                            //44号车
 	Power_method[num].Actual_P_max = 150;
 	Power_method[num].Self_Protect_Limit = 9500;
-	Power_method[num].k_BAT = 2.0f;
+	Power_method[num].k_BAT = 1.2f;
 
 #endif
 
@@ -917,11 +917,11 @@ void Pid_ChassisWheelInit(void)
 		Pid_Current[i].OutMax = 8000.0f;	//8000.0f
 		
 		//速度环
-		pidChassisWheelSpeed[i].P = 5.0f;
-		pidChassisWheelSpeed[i].I = 0.0f;
+		pidChassisWheelSpeed[i].P = 6.0f;
+		pidChassisWheelSpeed[i].I = 0.1f;
 		pidChassisWheelSpeed[i].D = 10.0f;
 		pidChassisWheelSpeed[i].ErrorMax = 1000.0f;
-		pidChassisWheelSpeed[i].IMax = 0.0f;
+		pidChassisWheelSpeed[i].IMax = 20000.0f;
 		pidChassisWheelSpeed[i].SetPoint = 0.0f;	
 		pidChassisWheelSpeed[i].OutMax = 16000.0f;	
 	
@@ -1057,7 +1057,28 @@ void BuildF105(void)
 	
 	F105.Sendmessage.is_game_start = (JudgeReceive.game_progress >=0x04)?1:0;//比赛开始
 	
-	F105.Sendmessage.defend_flag = (uint8_t)((JudgeReceive.event >> 10)==0);//前哨站存活
+	// F105.Sendmessage.defend_flag = (uint8_t)((JudgeReceive.event >> 10)==0);//前哨站存活（老版本裁判协议）
+	//以下根据v1.5裁判系统协议修订
+	char base_flag = (JudgeReceive.self_outpost_hp) < 250 ? 1 : 0 ;
+	char outpost_flag = 0;
+	static char first_hp_less_than_100_flag = 0;
+	static double first_hp_less_than_100_time = 0;
+	if(JudgeReceive.self_outpost_hp < 100)//前哨站血量小于100且超过90s
+	{
+		
+		if(first_hp_less_than_100_flag == 0)
+		{
+			first_hp_less_than_100_flag = 1;
+			first_hp_less_than_100_time = GetTime_s();
+		}
+		else if(GetTime_s() - first_hp_less_than_100_time >90) //防止裁判系统抽风
+		{
+			outpost_flag = 1;
+		}
+		
+	}
+	outpost_flag = (JudgeReceive.self_outpost_hp) = 0 ? 1 : outpost_flag ; 
+	F105.Sendmessage.defend_flag = (uint8_t)(outpost_flag || base_flag);
 	
 	F105.Sendmessage.shooterHeat17 = JudgeReceive.shooterHeat17;
 	F105.Sendmessage.outpost_hp = JudgeReceive.outpost_hp;	

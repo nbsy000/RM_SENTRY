@@ -48,6 +48,7 @@
 .\objects\usart2.o: ..\Task\DataReceiveTask.h
 .\objects\usart2.o: ..\Task\DataSendTask.h
 .\objects\usart2.o: ..\Task\ChassisTask.h
+.\objects\usart2.o: ..\Task\JudgeTask.h
 .\objects\usart2.o: ..\Task\PowerControlTask.h
 .\objects\usart2.o: ..\Task\GraphicsSendTask.h
 .\objects\usart2.o: ..\Task\CharSendTask.h

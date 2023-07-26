@@ -28,12 +28,13 @@ float pitchpos;
 
 float patrol_dir_pitch = 1;
 float patrol_dir_yaw = 1;
-float patrol_step_pitch = 0.06f;
-float patrol_step_yaw = 0.1f;
+float patrol_step_pitch = 0.08f;
+float patrol_step_yaw = 0.12f;
 /*-----------------------------------结构体-----------------------------*/
 Pid_Typedef PidPitchSpeed, PidPitchPos, PidYawSpeed, PidYawPos;
 Pid_Typedef PidPitchAidPos, PidPitchAidSpeed, PidYawAidPos, PidYawAidSpeed, PidPitchBuffSpeed, PidYawBuffSpeed;
 FeedForward_t PitchPosFF, PitchSpeedFF, YawPosFF, YawSpeedFF;
+TD_t PitchTD,YawTD;
 /*----------------------------------外部变量---------------------------*/
 extern RC_Ctl_t RC_Ctl;
 extern Status_t Status;
@@ -103,7 +104,7 @@ void MotorGimbal_Act_Cal(Remote rc, Mouse mouse)
 	{
 		if (rc.ch2 != 1024)
 		{
-			GimbalYawPos = GimbalYawPos + (1024 - rc.ch2) * 0.0020f;
+			GimbalYawPos = GimbalYawPos + (1024 - rc.ch2) * 0.0008f;
 			ch2_return_flag = 1;
 		}
 		else if (ch2_return_flag)
@@ -112,7 +113,7 @@ void MotorGimbal_Act_Cal(Remote rc, Mouse mouse)
 			ch2_return_flag = 0;
 		}
 
-		GimbalPitchPos = GimbalPitchPos - (1024 - rc.ch3) * 0.001f;
+		GimbalPitchPos = GimbalPitchPos - (1024 - rc.ch3) * 0.0004f;
 		FF_w.Now_DeltIn = (1024 - rc.ch2) * 0.0016f;
 	}
 	if (Status.ControlMode == Control_MouseKey_Mode) // Mouse_Key
@@ -133,11 +134,6 @@ void MotorGimbal_Act_Cal(Remote rc, Mouse mouse)
 	//	PidPitchPos.SetPoint = GimbalPitchPos;
 	//	PidYawPos.SetPoint = GimbalYawPos;
 	//
-	//  /**************************************计算电流值**************************************/
-	PidYawAidPos.SetPoint = GimbalYawPos;
-
-	// PidYawAidPos.SetPoint = yaw_Amplite * arm_sin_f32(2 * 3.1415 * yaw_freq * xTaskGetTickCount()/configTICK_RATE_HZ);
-	PidPitchAidPos.SetPoint = GimbalPitchPos;
 }
 /**********************************************************************************************************
  *函 数 名: FuzzyGimbal_Act_Cal
@@ -177,9 +173,6 @@ void GyroGimbal_Act_Cal(Remote rc, Mouse mouse)
 				  Infantry.pitch_max_gyro + DeltaGimbalPitchPos,
 				  Infantry.pitch_min_gyro + DeltaGimbalPitchPos);
 
-	/***********************************************************************************/
-	PidPitchPos.SetPoint = GimbalPitchPos;
-	PidYawPos.SetPoint = GimbalYawPos;
 }
 
 /**********************************************************************************************************
@@ -235,9 +228,6 @@ void Gimbal_Armor_Cal(Remote rc, Mouse mouse)
 								   Infantry.pitch_max_gyro + DeltaGimbalPitchPos,
 								   Infantry.pitch_min_gyro + DeltaGimbalPitchPos);
 
-	/***********************************************************************************/
-	PidPitchAidPos.SetPoint = GimbalPitchPos;
-	PidYawAidPos.SetPoint = GimbalYawPos;
 }
 
 /**********************************************************************************************************
@@ -281,9 +271,6 @@ void Gimbal_Buff_Cal(Remote rc, Mouse mouse)
 								   Infantry.pitch_max_gyro + DeltaGimbalPitchPos,
 								   Infantry.pitch_min_gyro + DeltaGimbalPitchPos);
 
-	/***************************************************************************************/
-	PidPitchAidPos.SetPoint = GimbalPitchPos;
-	PidYawAidPos.SetPoint = GimbalYawPos;
 }
 
 ///**********************************************************************************************************
@@ -545,14 +532,12 @@ void Gimbal_PC_Cal()
 	}
 
 	DeltaGimbalPitchPos = Gimbal.Pitch.Gyro - Gimbal.Pitch.MotorTransAngle - Infantry.init_delta_pitch;
-//	NAV_car.NAV_w = RC_Ctl.rc.ch2 - 1024;//模拟导航发送的速度
-	NAV_car.NAV_w = 0;
 
 	if (NAV_car.Gimbal_PC_State == NAV_STATE) // 导航--云台跟随
 	{
 		GimbalPitchPos = Gimbal.Pitch.Gyro;
 		GimbalYawPos += NAV_car.NAV_w * 0.001f;
-		FF_w.Now_DeltIn = NAV_car.NAV_w * 0.001f;//前馈
+//		FF_w.Now_DeltIn = NAV_car.NAV_w * 0.001f;//前馈
 	}
 
 	else if(NAV_car.Gimbal_PC_State == ARMOR_STATE) //辅瞄模式
@@ -575,16 +560,16 @@ void Gimbal_PC_Cal()
 				FF_w.Now_DeltIn = 0;
 			}
 			Change_Yaw = GimbalYawPos;
-			Armor_cnt = 500; // 停500ms
+			Armor_cnt = 1000; // 停500ms
 		}
 
 		else
 		{
 			if (Armor_cnt < 0)
 			{
-				if ((Recent_Pitch_Angle_Armor + patrol_step_pitch >= Infantry.pitch_max_gyro - 5 + DeltaGimbalPitchPos))
+				if ((Recent_Pitch_Angle_Armor + patrol_step_pitch >= Infantry.pitch_max_gyro - 15 + DeltaGimbalPitchPos))
 					patrol_dir_pitch = 0; // 电机到上限反向
-				if ((Recent_Pitch_Angle_Armor - patrol_step_pitch <= Infantry.pitch_min_gyro + 5 + DeltaGimbalPitchPos))
+				if ((Recent_Pitch_Angle_Armor - patrol_step_pitch <= Infantry.pitch_min_gyro + 8 + DeltaGimbalPitchPos))
 					patrol_dir_pitch = 1; // 电机到下限反向
 
 				if ((Recent_Yaw_Angle_Armor + patrol_step_yaw >= Change_Yaw + 200.0f))
@@ -593,7 +578,7 @@ void Gimbal_PC_Cal()
 					patrol_dir_yaw = 1; // 电机到下限反向
 
 				Recent_Pitch_Angle_Armor += (patrol_dir_pitch == 1) ? (+patrol_step_pitch) : (-patrol_step_pitch);
-				Recent_Yaw_Angle_Armor += (patrol_dir_yaw == 1) ? (+patrol_step_yaw) : (-patrol_step_yaw);
+				Recent_Yaw_Angle_Armor +=patrol_step_yaw;
 			}
 			else //主要用于辅瞄和巡航的切换过渡
 			{
@@ -610,8 +595,8 @@ void Gimbal_PC_Cal()
 	
 	else//自动模式过渡
 	{
-			GimbalPitchPos = Gimbal.Pitch.Gyro;
-			GimbalYawPos = Gimbal.Yaw.Gyro;
+			GimbalPitchPos = Recent_Pitch_Angle_Armor = Gimbal.Pitch.Gyro;
+			GimbalYawPos = Recent_Yaw_Angle_Armor = Gimbal.Yaw.Gyro;
 	}
 
 	// PITCH限位
@@ -619,10 +604,6 @@ void Gimbal_PC_Cal()
 	GimbalPitchPos = LIMIT_MAX_MIN(GimbalPitchPos,
 								   Infantry.pitch_max_gyro + DeltaGimbalPitchPos,
 								   Infantry.pitch_min_gyro + DeltaGimbalPitchPos);
-
-	/***********************************************************************************/
-	PidPitchAidPos.SetPoint = GimbalPitchPos;
-	PidYawAidPos.SetPoint = GimbalYawPos;
 }
 
 /**********************************************************************************************************
@@ -698,16 +679,20 @@ void Gimbal_CurrentPid_Cal(void)
 	case Gimbal_Powerdown_Mode:
 		PitchCurrent = 0;
 		YawCurrent = 0;
+		TD_Clear(&PitchTD,Gimbal.Pitch.Gyro);
+	  TD_Clear(&YawTD,Gimbal.Yaw.Gyro);
 		break;
 
 	case Gimbal_Act_Mode:
 	case Gimbal_PC_Mode:
+		PidPitchAidPos.SetPoint = TD_Calculate(&PitchTD,GimbalPitchPos);
 		PidPitchAidPos.ActualValue = Gimbal.Pitch.Gyro;
 		PidPitchAidSpeed.SetPoint = -PID_Calc(&PidPitchAidPos); //+FeedForward_Cal(&PitchPosFF,PidPitchAidPos.SetPoint);
 		PidPitchAidSpeed.ActualValue = Gimbal.Pitch.AngularSpeed;
 		inttoshort[0] = -(PID_Calc(&PidPitchAidSpeed)); // 旧陀螺仪
 		PitchCurrent = -(short)inttoshort[0] * Infantry.motor_pn;
 
+		PidYawAidPos.SetPoint = TD_Calculate(&YawTD,GimbalYawPos);
 		PidYawAidPos.ActualValue = Gimbal.Yaw.Gyro;
 		PidYawAidSpeed.SetPoint = PID_Calc(&PidYawAidPos) + FeedForward_Cal(&YawPosFF, PidYawAidPos.SetPoint);
 		PidYawAidSpeed.ActualValue = Gimbal.Yaw.AngularSpeed;
@@ -716,12 +701,14 @@ void Gimbal_CurrentPid_Cal(void)
 		break;
 
 	case Gimbal_Armor_Mode:
+		PidPitchAidPos.SetPoint = TD_Calculate(&PitchTD,GimbalPitchPos);
 		PidPitchAidPos.ActualValue = Gimbal.Pitch.Gyro;
 		PidPitchAidSpeed.SetPoint = -PID_Calc(&PidPitchAidPos); //+FeedForward_Cal(&PitchPosFF,PidPitchAidPos.SetPoint);
 		PidPitchAidSpeed.ActualValue = Gimbal.Pitch.AngularSpeed;
 		inttoshort[0] = -(PID_Calc(&PidPitchAidSpeed)); // 旧陀螺仪
 		PitchCurrent = -(short)inttoshort[0] * Infantry.motor_pn;
 
+		PidYawAidPos.SetPoint = TD_Calculate(&YawTD,GimbalYawPos);
 		PidYawAidPos.ActualValue = Gimbal.Yaw.Gyro;
 		PidYawAidSpeed.SetPoint = PID_Calc(&PidYawAidPos); //+FeedForward_Cal(&YawPosFF,PidYawAidPos.SetPoint);
 		PidYawAidSpeed.ActualValue = Gimbal.Yaw.AngularSpeed;
@@ -731,12 +718,14 @@ void Gimbal_CurrentPid_Cal(void)
 
 	case Gimbal_BigBuf_Mode:
 	case Gimbal_SmlBuf_Mode:
+		PidPitchAidPos.SetPoint = TD_Calculate(&PitchTD,GimbalPitchPos);
 		PidPitchAidPos.ActualValue = Gimbal.Pitch.Gyro;
 		PidPitchAidSpeed.SetPoint = -PID_Calc(&PidPitchAidPos); //+FeedForward_Cal(&PitchPosFF,PidPitchAidPos.SetPoint);
 		PidPitchAidSpeed.ActualValue = Gimbal.Pitch.AngularSpeed;
 		inttoshort[0] = -(PID_Calc(&PidPitchAidSpeed)); // 旧陀螺仪
 		PitchCurrent = -(short)inttoshort[0] * Infantry.motor_pn;
 
+		PidYawAidPos.SetPoint = TD_Calculate(&YawTD,GimbalYawPos);
 		PidYawAidPos.ActualValue = Gimbal.Yaw.Gyro;
 		PidYawAidSpeed.SetPoint = PID_Calc(&PidYawAidPos) + FeedForward_Cal(&YawPosFF, PidYawAidPos.SetPoint);
 		PidYawAidSpeed.ActualValue = Gimbal.Yaw.AngularSpeed;
@@ -750,13 +739,14 @@ void Gimbal_CurrentPid_Cal(void)
 		break;
 
 	case Gimbal_Jump_Mode:
-
+		PidPitchAidPos.SetPoint = TD_Calculate(&PitchTD,GimbalPitchPos);
 		PidPitchPos.ActualValue = Gimbal.Pitch.Gyro;
 		PidPitchSpeed.SetPoint = -PID_Calc(&PidPitchPos);
 		PidPitchSpeed.ActualValue = GyroReceive.GY;
 		inttoshort[0] = -(PID_Calc(&PidPitchSpeed)); // 旧陀螺仪
 		PitchCurrent = (short)(-inttoshort[0]) * Infantry.motor_pn;
 
+		PidYawAidPos.SetPoint = TD_Calculate(&YawTD,GimbalYawPos);
 		PidYawPos.ActualValue = Gimbal.Yaw.Gyro;
 		PidYawSpeed.SetPoint = PID_Calc(&PidYawPos); // 需要YAW轴陀螺仪角度做ActualValue
 		PidYawSpeed.ActualValue = GyroReceive.GZ;
@@ -766,12 +756,14 @@ void Gimbal_CurrentPid_Cal(void)
 		break;
 
 	case Gimbal_Test_Mode:
+		PidPitchAidPos.SetPoint = TD_Calculate(&PitchTD,GimbalPitchPos);
 		PidPitchAidPos.ActualValue = Gimbal.Pitch.Gyro;
 		PidPitchAidSpeed.SetPoint = -PID_Calc(&PidPitchAidPos); //+FeedForward_Cal(&PitchPosFF,PidPitchAidPos.SetPoint);
 		PidPitchAidSpeed.ActualValue = Gimbal.Pitch.AngularSpeed;
 		inttoshort[0] = -(PID_Calc(&PidPitchAidSpeed)); // 旧陀螺仪
 		PitchCurrent = -(short)inttoshort[0] * Infantry.motor_pn;
-
+	
+		PidYawAidPos.SetPoint = TD_Calculate(&YawTD,GimbalYawPos);
 		PidYawAidPos.ActualValue = Gimbal.Yaw.Gyro;
 		PidYawAidSpeed.SetPoint = PID_Calc(&PidYawAidPos); //+FeedForward_Cal(&YawPosFF,PidYawAidPos.SetPoint);
 		PidYawAidSpeed.ActualValue = Gimbal.Yaw.AngularSpeed;
@@ -818,7 +810,7 @@ void Gimbal_FF_Init()
 	YawPosFF.val_dot = 0;
 	YawPosFF.val_dot_out_RC = 0.8;
 	YawPosFF.val_ddot = 0;
-	YawPosFF.OutMax = 200;
+	YawPosFF.OutMax = 0;
 
 	YawSpeedFF.param[0] = 0;
 	YawSpeedFF.param[1] = 0;
@@ -826,7 +818,7 @@ void Gimbal_FF_Init()
 	YawSpeedFF.val = 0;
 	YawSpeedFF.val_dot = 0;
 	YawSpeedFF.val_ddot = 0;
-	YawSpeedFF.OutMax = 8000;
+	YawSpeedFF.OutMax = 0;
 }
 
 /**********************************************************************************************************
@@ -843,7 +835,7 @@ void PidGimbalMotor_Init(void)
 	/********************************************* 44号车 ********************************************************/
 
 	// 辅瞄yaw
-	PidYawAidPos.P = 25.0f; // yaw PID位置环（辅瞄）
+	PidYawAidPos.P = 22.0f; // yaw PID位置环（辅瞄）
 	PidYawAidPos.I = 0.1f;
 	PidYawAidPos.D = 0.0f;
 	PidYawAidPos.IMax = 40.0f;
@@ -855,7 +847,7 @@ void PidGimbalMotor_Init(void)
 	
 	PidYawAidSpeed.P = -330.0f; // 32000  yaw速度环PID(辅瞄)
 	PidYawAidSpeed.I = -2.0f;
-	PidYawAidSpeed.D = -100.0f;
+	PidYawAidSpeed.D = 0.0f;
 	PidYawAidSpeed.IMax = 1000.0f;
 	PidYawAidSpeed.SetPoint = 0.0f;
 	PidYawAidSpeed.OutMax = 30000.0f;
@@ -863,20 +855,20 @@ void PidGimbalMotor_Init(void)
 	PidYawAidSpeed.I_U = 0.7f;
 	PidYawAidSpeed.RC_DF = 0.5f;
 	// 辅瞄pitch
-	PidPitchAidPos.P = -22.0f; // 普通PID位置环(辅瞄)
-	PidPitchAidPos.I = -0.3f;
+	PidPitchAidPos.P = -20.0f; // 普通PID位置环(辅瞄)
+	PidPitchAidPos.I = -0.055f;
 	PidPitchAidPos.D = 0.0f;
 	PidPitchAidPos.IMax = 40.0f;
 	PidPitchAidPos.SetPoint = 0.0f;
-	PidPitchAidPos.OutMax = 1000.0f;
+	PidPitchAidPos.OutMax = 500.0f;
 	PidPitchAidPos.I_L = 0.2f;
 	PidPitchAidPos.I_U = 0.4f;
 	PidPitchAidPos.RC_DF = 0.5f;
 
-	PidPitchAidSpeed.P = -330.0f; // 速度环PID（辅瞄）
-	PidPitchAidSpeed.I = -1.0f;
+	PidPitchAidSpeed.P = -300.0f; // 速度环PID（辅瞄）
+	PidPitchAidSpeed.I = -2.0f;
 	PidPitchAidSpeed.D = 0.0f;
-	PidPitchAidSpeed.IMax = 3300.0f;
+	PidPitchAidSpeed.IMax = 2500.0f;
 	PidPitchAidSpeed.SetPoint = 0.0f;
 	PidPitchAidSpeed.OutMax = 30000.0f;
 	PidPitchAidSpeed.I_L = 18.0f;

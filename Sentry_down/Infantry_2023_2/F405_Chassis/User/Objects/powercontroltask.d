@@ -48,6 +48,7 @@
 .\objects\powercontroltask.o: ..\Task\DataReceiveTask.h
 .\objects\powercontroltask.o: ..\Task\DataSendTask.h
 .\objects\powercontroltask.o: ..\Task\ChassisTask.h
+.\objects\powercontroltask.o: ..\Task\JudgeTask.h
 .\objects\powercontroltask.o: ..\Task\PowerControlTask.h
 .\objects\powercontroltask.o: ..\Task\GraphicsSendTask.h
 .\objects\powercontroltask.o: ..\Task\CharSendTask.h

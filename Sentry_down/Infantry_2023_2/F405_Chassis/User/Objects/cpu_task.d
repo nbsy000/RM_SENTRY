@@ -58,6 +58,7 @@
 .\objects\cpu_task.o: ..\Task\DataReceiveTask.h
 .\objects\cpu_task.o: ..\Task\DataSendTask.h
 .\objects\cpu_task.o: ..\Task\ChassisTask.h
+.\objects\cpu_task.o: ..\Task\JudgeTask.h
 .\objects\cpu_task.o: ..\Task\PowerControlTask.h
 .\objects\cpu_task.o: ..\Task\GraphicsSendTask.h
 .\objects\cpu_task.o: ..\Task\CharSendTask.h

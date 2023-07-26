@@ -22,15 +22,20 @@ Dialog DLL:      TCM.DLL V1.42.0.0
  
 <h2>Project:</h2>
 D:\LangYa\RM\HUST_RoboMaster2023\Sentry_Git\Sentry\Chassis\ChassisV1.0\F405_Chassis\User\HUST RM .uvprojx
-Project File Date:  06/12/2023
+Project File Date:  07/18/2023
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin'
 Build target 'Target 1'
-compiling SDCardTask.c...
+compiling StartTask.c...
+compiling JudgeTask.c...
+compiling uart4.c...
+..\Hardware\uart4.c(18): warning:  #177-D: variable "dma"  was declared but never referenced
+  	DMA_InitTypeDef   dma;
+..\Hardware\uart4.c: 1 warning, 0 errors
 linking...
-Program Size: Code=40176 RO-data=89076 RW-data=896 ZI-data=28640  
-".\Objects\HUST RM.axf" - 0 Error(s), 0 Warning(s).
+Program Size: Code=38688 RO-data=89076 RW-data=912 ZI-data=28832  
+".\Objects\HUST RM.axf" - 0 Error(s), 1 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -53,9 +58,9 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:DSP:Library:1.8.0
-      Library file:  CMSIS\DSP\Lib\ARM\arm_cortexM4lf_math.lib
       Include file:  CMSIS\DSP\Include\arm_math.h
-Build Time Elapsed:  00:00:02
+      Library file:  CMSIS\DSP\Lib\ARM\arm_cortexM4lf_math.lib
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

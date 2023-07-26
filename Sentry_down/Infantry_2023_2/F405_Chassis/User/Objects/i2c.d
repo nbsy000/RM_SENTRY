@@ -48,6 +48,7 @@
 .\objects\i2c.o: ..\Task\DataReceiveTask.h
 .\objects\i2c.o: ..\Task\DataSendTask.h
 .\objects\i2c.o: ..\Task\ChassisTask.h
+.\objects\i2c.o: ..\Task\JudgeTask.h
 .\objects\i2c.o: ..\Task\PowerControlTask.h
 .\objects\i2c.o: ..\Task\GraphicsSendTask.h
 .\objects\i2c.o: ..\Task\CharSendTask.h

@@ -161,17 +161,6 @@ void PowerLimit(void)
 			
 			//速度环+电流环
 			Pid_Current[i].SetPoint = PID_Calc(&pidChassisWheelSpeed[i],ChassisMotor[i].RealSpeed);
-//			Current_Filter_Excu();
-//			Current_Set_Jump();
-//			Current_Change[i] = PID_Calc(&Pid_Current[i],Flow[i]);
-//			if(Set_Jump[i] == 0)
-//			{
-//				Current_f[i] += Current_Change[i];
-//			}
-//			else if(Set_Jump[i] == 1)
-//			{
-//				Current_f[i] = Pid_Current[i].SetPoint;
-//			}
 			WheelCurrentSend[i] = Pid_Current[i].SetPoint;
 			
 		W_Chassis_t += ABS(WheelCurrentSend[i]*ChassisMotor[i].RealSpeed);//功率计算		
@@ -204,7 +193,6 @@ void Chassis_RC_Act(void)
 	}		
 	
 	float Theta = (Motor_9025.Yaw_init - Motor_9025.multiAngle)/36000.0f*2*PI;//θ角为与y方向的夹角，具体符号取值与运动分解的θ的取向有关
-//	Theta = 0.0f;
 	float CosTheTa=arm_cos_f32(Theta);
 	float SinTheTa=arm_sin_f32(Theta);
 	
@@ -341,33 +329,29 @@ void Chassis_Patrol_Act()
 		chassis.N_Yaw_angle_init = chassis.Alpha;
 		
 		Chassis_Last_State = Chassis_Patrol;
-		chassis.PC_State = DEFAULT;//还未开始比赛		
+		chassis.PC_State = BEFOREGAME;//还未开始比赛		
 	}		
 	
+
+	if(((RC_Ctl.rc.ch1-1024)>300)||(JudgeReceive.commd_keyboard=='W'))//右上
+		chassis.PC_State = TO_HIGHLAND; // 去高地
+	if((RC_Ctl.rc.ch1-1024)<-300||(JudgeReceive.commd_keyboard=='S')||defend_flag)//右
+		chassis.PC_State = TO_SOURCE;	// 去资源岛 
 	if(((RC_Ctl.rc.ch0-1024)>300))//右右
-		chassis.PC_State = PATROL_SAFE;//前哨站
+		chassis.PC_State = TO_PATROL;//回巡逻区 
 	if(((RC_Ctl.rc.ch0-1024)<-300))//右左
-		chassis.PC_State = PATROL;//巡逻区
-//	if(((RC_Ctl.rc.ch1-1024)>300)||(JudgeReceive.commd_keyboard=='W'))//右上
-//		chassis.PC_State = TOPATH1;//去前哨站
-//	if((RC_Ctl.rc.ch1-1024)<-300||(JudgeReceive.commd_keyboard=='S')||defend_flag)//右上
-//		chassis.PC_State = PATROL;	//回巡逻区
-//	if((RC_Ctl.rc.ch3-1024)>300)//左上
-//		chassis.PC_State = TEST1;
-//	if((RC_Ctl.rc.ch3-1024)<-300)//左下
-//		chassis.PC_State = TEST2;	
-
-//	if(((RC_Ctl.rc.ch2-1024)>300))//左左
-//		
-//	if(((RC_Ctl.rc.ch2-1024)>300))//左右
-//	
+		chassis.PC_State = TO_OUTPOST;//去前哨站
 	
-//	if(chassis.Barrier_flag)//遇到障碍物
-//	{
-////		Chassis_SLEEP_Act();
-//	}
+	if((RC_Ctl.rc.ch3-1024)>300)//左上
+		chassis.PC_State = HIGHLAND;	 // 高地
+	if((RC_Ctl.rc.ch3-1024)<-300)//左下
+		chassis.PC_State = SOURCE;		 // 资源岛
 
-//	else
+	if(((RC_Ctl.rc.ch2-1024)>300))//左右
+		chassis.PC_State = PATROL;	 //巡逻区		
+	if(((RC_Ctl.rc.ch2-1024)<-300))//左左
+		chassis.PC_State = OUTPOST;		 //  前哨站	
+	
 	
 	if(Patrol_Cnt != Patrol_Last_Cnt)
 				Patrol_flag = 1;
@@ -376,12 +360,11 @@ void Chassis_Patrol_Act()
 		switch(chassis.PC_State)
 		{
 			case BEFOREGAME://比赛开始前	
-			
 				if(is_game_start)//比赛开始
 				{
 						if(count_cnt == 0)
 						{
-							chassis.PC_State = TOPATH1;//前往前哨站
+							chassis.PC_State = TO_OUTPOST;//前往前哨站
 							chassis.NAV_State = CONTINUED;//路径开始
 							PathDotIndex = 1;
 						}
@@ -389,48 +372,36 @@ void Chassis_Patrol_Act()
 				}
 				break;
 				
-			case TOPATH1://路径1去
-				
-					chassis.NavigatePathNum = 1;//去前哨战
+			case TO_OUTPOST://路径1去
 					NAV_PATH_Act(RADAR);
-			
-					if((chassis.NAV_State == FINISHED)||(PathDotIndex>PathInforms[chassis.NavigatePathNum].PathDotsNum-20))//路径完成
-							chassis.PC_State = OUTPOST;//前哨站
+//					if((chassis.NAV_State == FINISHED)||(PathDotIndex>PathInforms[chassis.NavigatePathNum].PathDotsNum-20))//路径完成
+//							chassis.PC_State = OUTPOST;//前哨站
 					break;
 				
+			case TO_PATROL://路径回
+				NAV_PATH_Act(RADAR);
+//				if((chassis.NAV_State == FINISHED)||(PathDotIndex>PathInforms[chassis.NavigatePathNum].PathDotsNum-20))//路径完成
+//					chassis.PC_State = PATROL;//前哨站
+				break;
+				
+			case TO_SOURCE://去资源导
+				NAV_PATH_Act(RADAR);
+				break;
+			
+			case TO_HIGHLAND://去高地
+				NAV_PATH_Act(RADAR);
+				break;
+			
 			case OUTPOST://前哨站
 				Outpost_Act();
+			break;
 			
-//				if(JudgeReceive.commd_keyboard=='T')
-//				{
-//						chassis.PC_State = SOURCETO;//回巡逻区
-//						chassis.NAV_State = CONTINUED;//路径开始
-//						PathDotIndex = 1;
-//				}
-				
-				if(defend_flag)//前哨站被炸
-				{
-						chassis.PC_State = BACKPATH1;//回巡逻区
-						chassis.NAV_State = CONTINUED;//路径开始
-						PathDotIndex = 1;
-				}
-				break;
-			
-			case BACKPATH1://路径回
-				
-				chassis.NavigatePathNum = 2;//回
-				NAV_PATH_Act(RADAR);
-			
-				if((chassis.NAV_State == FINISHED)||(PathDotIndex>PathInforms[chassis.NavigatePathNum].PathDotsNum-20))//路径完成
-					chassis.PC_State = PATROL;//前哨站
-				break;
-				
 			case PATROL_SAFE://前哨战还在时巡逻区（独立于比赛开始状态）
 				Chassis_Patrol_Act2();//Patrol_Safe_Act();
 				break;
 				
 			case PATROL://巡逻区
-				Patrol_Act();
+				Chassis_Patrol_Act2();
 				break;	
 			
 			case TEST1://测试路线1
@@ -443,7 +414,7 @@ void Chassis_Patrol_Act()
 				NAV_PATH_Act(RADAR);
 				break;
 			
-			case DEFAULT://
+			default://
 				Chassis_SLEEP_Act();
 				break;
 		}
@@ -687,60 +658,95 @@ void Chassis_DEBUG_Act(void)
 
 void NAV_PATH_Act(uint8_t Mode)
 {
-	//首次进入该模式，进行变量重初始化，主要为了防止出现奇怪问题
-	if(chassis.PC_State != chassis.Last_PC_State)
-	{	
-		PathDotIndex = 1;//保证每次重新进入自动模式后从第一个点开始
-	}		
+//	//首次进入该模式，进行变量重初始化，主要为了防止出现奇怪问题
+//	if(chassis.PC_State != chassis.Last_PC_State)
+//	{	
+//		PathDotIndex = 1;//保证每次重新进入自动模式后从第一个点开始
+//	}		
+//	
+//	//读取当前角度
+//	chassis.nowYangle = Gyro_Chassis.YAW_ABS;//当前角度
+//	float Theta = (chassis.nowYangle-chassis.Yangle)*2*PI/360.0f;
+////	float Theta = chassis.Alpha - chassis.Yangle;
+//	float CosTheTa=arm_cos_f32(Theta);
+//	float SinTheTa=arm_sin_f32(Theta);
+//	
+//	//计算里程计
+//	//瞬时速度
+//	chassis.insW = -Wheel_R/(reRatio*Chassis_R)*(ChassisMotor[0].Inencoder+ChassisMotor[1].Inencoder+ChassisMotor[2].Inencoder+ChassisMotor[3].Inencoder);
+//	chassis.insX = Wheel_R*(ChassisMotor[1].Inencoder-ChassisMotor[3].Inencoder)*PI/(8192*reRatio);
+//	chassis.insY = Wheel_R*(ChassisMotor[2].Inencoder-ChassisMotor[0].Inencoder)*PI/(8192*reRatio);
+//	
+//	//XY方向累加，该值为当前实际值，单位mm
+//	chassis.totalX += chassis.insX*CosTheTa - chassis.insY*SinTheTa;
+//	chassis.totalY += chassis.insX*SinTheTa + chassis.insY*CosTheTa;
+//	
+//	//数据传入
+//	if(Mode == ENCODER)
+//	{
+//		chassis.CurrentState.X = chassis.totalX;
+//		chassis.CurrentState.Y = chassis.totalY;
+//	}
+//	else
+//	{
+//		chassis.CurrentState.X = PCReceive.now_x+offset_x;
+//		chassis.CurrentState.Y = PCReceive.now_y+offset_y;	
+//	}
+//	
+////	chassis.CurrentState.Alpha = Theta;//????????------------这个偏航角到底指那个方向
+//	
+//	//进行导航控制
+//	chassisNavigate(&chassis, &PathInforms[chassis.NavigatePathNum]);
+//	
+//	//数据传出
+//	chassis.aimVx = chassis.AimState.Vx;
+//	chassis.aimVy = chassis.AimState.Vy;
+//	
+//	//速度转换，转换成以车为坐标系的速度（不考虑大Yaw轴方向）
+//	chassis.carSpeedx = chassis.aimVy*SinTheTa + chassis.aimVx*CosTheTa;
+//	chassis.carSpeedy = chassis.aimVy*CosTheTa - chassis.aimVx*SinTheTa;
+//	chassis.carSpeedw = 0 ;
+//	
+//	//分解到每个电机的转速
+//	aimRSpeed[0] = -chassis.carSpeedy*60*reRatio/(2*PI*Wheel_R) - chassis.carSpeedw*Chassis_R*reRatio/Wheel_R;
+//	aimRSpeed[1] = +chassis.carSpeedx*60*reRatio/(2*PI*Wheel_R) - chassis.carSpeedw*Chassis_R*reRatio/Wheel_R;
+//	aimRSpeed[2] = +chassis.carSpeedy*60*reRatio/(2*PI*Wheel_R) - chassis.carSpeedw*Chassis_R*reRatio/Wheel_R;
+//	aimRSpeed[3] = -chassis.carSpeedx*60*reRatio/(2*PI*Wheel_R) - chassis.carSpeedw*Chassis_R*reRatio/Wheel_R;
+//	
+//	//PID计算每个电机的控制电流
+//	Pid_SpeedCurrent(aimRSpeed);
 	
-	//读取当前角度
-	chassis.nowYangle = Gyro_Chassis.YAW_ABS;//当前角度
-	float Theta = (chassis.nowYangle-chassis.Yangle)*2*PI/360.0f;
-//	float Theta = chassis.Alpha - chassis.Yangle;
+	
+	//首次进入该模式，进行变量重初始化，主要为了防止出现奇怪问题
+	static float Theta_init = 0.0f;
+	static int count = 0;//延时判断
+	if(chassis.PC_State != chassis.Last_PC_State)
+	{
+		Chassis_Last_State = Chassis_Protect;
+		Theta_init = (Motor_9025.Yaw_init - Motor_9025.multiAngle)/36000.0f*2*PI;//θ角为与y方向的夹角，具体符号取值与运动分解的θ的取向有关
+		Gear_SpeedLimit = 0;
+		count = 0;
+	}	
+	
+	Theta = (Motor_9025.Yaw_init - Motor_9025.multiAngle)/36000.0f*2*PI;//θ角为与y方向的夹角，具体符号取值与运动分解的θ的取向有关
 	float CosTheTa=arm_cos_f32(Theta);
 	float SinTheTa=arm_sin_f32(Theta);
 	
-	//计算里程计
-	//瞬时速度
-	chassis.insW = -Wheel_R/(reRatio*Chassis_R)*(ChassisMotor[0].Inencoder+ChassisMotor[1].Inencoder+ChassisMotor[2].Inencoder+ChassisMotor[3].Inencoder);
-	chassis.insX = Wheel_R*(ChassisMotor[1].Inencoder-ChassisMotor[3].Inencoder)*PI/(8192*reRatio);
-	chassis.insY = Wheel_R*(ChassisMotor[2].Inencoder-ChassisMotor[0].Inencoder)*PI/(8192*reRatio);
+	Limited_Speed = 1000;
+	chassis.NAV_vx = LIMIT_MAX_MIN(chassis.NAV_vx,Limited_Speed,-Limited_Speed);//mm/s
+	chassis.NAV_vy = LIMIT_MAX_MIN(chassis.NAV_vy,Limited_Speed,-Limited_Speed);
 	
-	//XY方向累加，该值为当前实际值，单位mm
-	chassis.totalX += chassis.insX*CosTheTa - chassis.insY*SinTheTa;
-	chassis.totalY += chassis.insX*SinTheTa + chassis.insY*CosTheTa;
+	//底盘方位自适应，即以云台的朝向为正前方，使用的是电机角   
+	chassis.carSpeedx = chassis.NAV_vy*SinTheTa + chassis.NAV_vx*CosTheTa; 
+	chassis.carSpeedy = chassis.NAV_vy*CosTheTa - chassis.NAV_vx*SinTheTa;	
 	
-	//数据传入
-	if(Mode == ENCODER)
-	{
-		chassis.CurrentState.X = chassis.totalX;
-		chassis.CurrentState.Y = chassis.totalY;
-	}
-	else
-	{
-		chassis.CurrentState.X = PCReceive.now_x+offset_x;
-		chassis.CurrentState.Y = PCReceive.now_y+offset_y;	
-	}
-	
-//	chassis.CurrentState.Alpha = Theta;//????????------------这个偏航角到底指那个方向
-	
-	//进行导航控制
-	chassisNavigate(&chassis, &PathInforms[chassis.NavigatePathNum]);
-	
-	//数据传出
-	chassis.aimVx = chassis.AimState.Vx;
-	chassis.aimVy = chassis.AimState.Vy;
-	
-	//速度转换，转换成以车为坐标系的速度（不考虑大Yaw轴方向）
-	chassis.carSpeedx = chassis.aimVy*SinTheTa + chassis.aimVx*CosTheTa;
-	chassis.carSpeedy = chassis.aimVy*CosTheTa - chassis.aimVx*SinTheTa;
-	chassis.carSpeedw = 0 ;
-	
-	//分解到每个电机的转速
-	aimRSpeed[0] = -chassis.carSpeedy*60*reRatio/(2*PI*Wheel_R) - chassis.carSpeedw*Chassis_R*reRatio/Wheel_R;
-	aimRSpeed[1] = +chassis.carSpeedx*60*reRatio/(2*PI*Wheel_R) - chassis.carSpeedw*Chassis_R*reRatio/Wheel_R;
-	aimRSpeed[2] = +chassis.carSpeedy*60*reRatio/(2*PI*Wheel_R) - chassis.carSpeedw*Chassis_R*reRatio/Wheel_R;
-	aimRSpeed[3] = -chassis.carSpeedx*60*reRatio/(2*PI*Wheel_R) - chassis.carSpeedw*Chassis_R*reRatio/Wheel_R;
+	chassis.carSpeedw = (Theta_init - Theta)*180.0f*10/(6.0f*PI);//单位变为rpm
+		
+	//计算每个电机的目标转速
+	aimRSpeed[0] = -chassis.carSpeedy*60*reRatio/(2*PI*Wheel_R) - chassis.carSpeedw*Chassis_R*reRatio/Wheel_R-test_enable*K_W*dif_encoder[0];
+	aimRSpeed[1] = +chassis.carSpeedx*60*reRatio/(2*PI*Wheel_R) - chassis.carSpeedw*Chassis_R*reRatio/Wheel_R-test_enable*K_W*dif_encoder[1];
+	aimRSpeed[2] = +chassis.carSpeedy*60*reRatio/(2*PI*Wheel_R) - chassis.carSpeedw*Chassis_R*reRatio/Wheel_R-test_enable*K_W*dif_encoder[2];
+	aimRSpeed[3] = -chassis.carSpeedx*60*reRatio/(2*PI*Wheel_R) - chassis.carSpeedw*Chassis_R*reRatio/Wheel_R-test_enable*K_W*dif_encoder[3];
 	
 	//PID计算每个电机的控制电流
 	Pid_SpeedCurrent(aimRSpeed);

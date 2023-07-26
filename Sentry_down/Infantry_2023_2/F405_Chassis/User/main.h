@@ -44,6 +44,7 @@
 #include "DataReceiveTask.h"
 #include "DataSendTask.h"
 #include "ChassisTask.h"
+#include "JudgeTask.h"
 #include "PowerControlTask.h"
 #include "GraphicsSendTask.h"
 #include "CharSendTask.h"

@@ -48,6 +48,7 @@
 .\objects\tim2.o: ..\Task\DataReceiveTask.h
 .\objects\tim2.o: ..\Task\DataSendTask.h
 .\objects\tim2.o: ..\Task\ChassisTask.h
+.\objects\tim2.o: ..\Task\JudgeTask.h
 .\objects\tim2.o: ..\Task\PowerControlTask.h
 .\objects\tim2.o: ..\Task\GraphicsSendTask.h
 .\objects\tim2.o: ..\Task\CharSendTask.h

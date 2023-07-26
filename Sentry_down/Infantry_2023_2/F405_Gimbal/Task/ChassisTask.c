@@ -29,7 +29,6 @@ ChassisSpeed_t chassis;
 Pid_Typedef pidChassisPosition, pidChassisPosition_Speed;
 Pid_Typedef SOLO_pidChassisPosition;
 FeedForward_Typedef FF_w;
-NAV_t NAV_car;
 /*----------------------------------外部变量---------------------------*/
 extern RC_Ctl_t RC_Ctl;
 extern Status_t Status;
@@ -704,6 +703,28 @@ void Chassis_Jump_Cal(Remote rc, Key key)
 }
 
 /**********************************************************************************************************
+ *函 数 名: Random_w_generate
+ *功能说明: 生成随机转速
+ *形    参: 无
+ *返 回 值: 无
+ **********************************************************************************************************/
+int16_t Random_w_generate(int w_base)
+{
+	static uint16_t t_cnt = 0;
+	t_cnt = (t_cnt+5)%40000;  //这个任务应该是5ms调用一次
+	static int16_t A_rand;
+	static float w_rand;
+	static float theta_rand;
+	if(t_cnt % 2000 == 0) //2s变一次
+	{
+		A_rand = rand()%1000 ;  //A_rand 范围1000
+		w_rand = rand()%1000 / 300000.0f + 0.004f ; //周期范围1.5s - 0.95s
+		theta_rand = rand()%1000 / 160.0f; 
+	}
+	return w_base + (int16_t)(A_rand * cos(w_rand*t_cnt + theta_rand));
+}
+
+/**********************************************************************************************************
  *函 数 名: Chassis_PC_Cal
  *功能说明: 自动模式
  *形    参: 无
@@ -717,26 +738,12 @@ void Chassis_PC_Cal()
 		chassis.carSpeedx = 0;
 		chassis.carSpeedy = 0;
 	}
-	
-	if(Chassis_State_Update)
-	{
-		chassis.carSpeedw = 0;
-		Chassis_State_Update = 0;
-	}
-	
+
 	Theta = ChassisPostionAngle_TranSform(Infantry.Yaw_init) / 360.0f * 6.28318f; // 弧度
 
 	CosTheTa = cos(Theta);
 	SinTheTa = sin(Theta);
 	TanTheTa = tan(Theta);
-	
-//	NAV_car.NAV_x = 3*(RC_Ctl.rc.ch0-1024);
-//	NAV_car.NAV_y = 3*(RC_Ctl.rc.ch1-1024);
-//	NAV_car.NAV_w = RC_Ctl.rc.ch2-1024;
-	
-	NAV_car.NAV_x = 0;
-	NAV_car.NAV_y = 0;
-	NAV_car.NAV_w = 0;
 	
 	if (NAV_car.Chassis_PC_State == NAV_STATE) // 导航
 	{ 
@@ -759,7 +766,7 @@ void Chassis_PC_Cal()
 
 			// 反馈PID控制+前馈
 			pidChassisPosition.ActualValue = Gimbal.Yaw.Motor;
-			chassis.carSpeedw = -(-PID_Calc(&pidChassisPosition) + FeedForward_Calc(&FF_w));
+			chassis.carSpeedw = -(-PID_Calc(&pidChassisPosition));// + FeedForward_Calc(&FF_w));
 		}
 		else
 			chassis.carSpeedw = NAV_car.NAV_w;
@@ -772,7 +779,7 @@ void Chassis_PC_Cal()
 	{
 		chassis.carSpeedx = 0;
 		chassis.carSpeedy = 0;
-		chassis.carSpeedw = -3000;
+		chassis.carSpeedw = -1000;
 	}
 	
 	else//自动模式切换过渡状态
@@ -925,7 +932,7 @@ void Pid_ChassisPosition_Init(void)
 	pidChassisPosition.DeadZone = 0.0f;
 	pidChassisPosition.RC_DF = 0.07f;
 
-	FF_w.K1 = -8000.0f;
+	FF_w.K1 = -4000.0f;
 	FF_w.K2 = 0.0f;
 	FF_w.OutMax = 16000.0f;
 

@@ -31,6 +31,10 @@ static TaskHandle_t StartTask_Handler; //任务句柄
 #define POWERCONTROL_STK_SIZE 512 //任务堆栈3
 //TaskHandle_t PowerControlTask_Handler; //任务句柄
 
+#define JUDGE_TASK_PRIO 10  //任务优先级
+#define JUDGE_STK_SIZE 512 //任务堆栈3
+//TaskHandle_t JudgeTask_Handler; //任务句柄
+
 #define JUDGERECEIVE_TASK_PRIO 20  //任务优先级
 #define JUDGERECEIVE_STK_SIZE 512 //任务堆栈3
 //TaskHandle_t JudgeReceiveTask_Handler; //任务句柄
@@ -73,12 +77,12 @@ void start_task(void *pvParameters)
                 (UBaseType_t)CPU_TASK_PRIO,        //任务优先级
                 (TaskHandle_t *)&User_Tasks[CPU_TASK]); //任务句柄
 							
-	xTaskCreate((TaskFunction_t)GraphicSendtask,          //任务函数
-                (const char *)"Graphic_task",          //任务名称
-                (uint16_t)GRAPHIC_STK_SIZE,            //任务堆栈大小
-                (void *)NULL,                        //传递给任务函数的参数
-                (UBaseType_t)GRAPHIC_TASK_PRIO,        //任务优先级
-                (TaskHandle_t *)&User_Tasks[GRAPHIC_TASK]); //任务句柄
+//	xTaskCreate((TaskFunction_t)GraphicSendtask,          //任务函数
+//                (const char *)"Graphic_task",          //任务名称
+//                (uint16_t)GRAPHIC_STK_SIZE,            //任务堆栈大小
+//                (void *)NULL,                        //传递给任务函数的参数
+//                (UBaseType_t)GRAPHIC_TASK_PRIO,        //任务优先级
+//                (TaskHandle_t *)&User_Tasks[GRAPHIC_TASK]); //任务句柄
 	
 	xTaskCreate((TaskFunction_t)Chassis_task,          //任务函数
                 (const char *)"Chassis_task",          //任务名称
@@ -108,7 +112,12 @@ void start_task(void *pvParameters)
                 (UBaseType_t)JUDGERECEIVE_TASK_PRIO,        //任务优先级
                 (TaskHandle_t *)&User_Tasks[JUDGERECEIVE_TASK]); //任务句柄
 				
-								
+	xTaskCreate((TaskFunction_t)Judge_task,          //任务函数
+                (const char *)"Judge_task",          //任务名称
+                (uint16_t)JUDGE_STK_SIZE,            //任务堆栈大小
+                (void *)NULL,                        //传递给任务函数的参数
+                (UBaseType_t)JUDGE_TASK_PRIO,        //任务优先级
+                (TaskHandle_t *)&User_Tasks[JUDGE_TASK]); //任务句柄								
 //		xTaskCreate((TaskFunction_t)JumpCal_task,          //任务函数
 //                (const char *)"JumpCal_task",          //任务名称
 //                (uint16_t)JUMPCAL_TASK_SIZE,            //任务堆栈大小

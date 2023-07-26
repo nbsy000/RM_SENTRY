@@ -68,7 +68,7 @@ void ShootCount_Cal(void)
 	if(ShootMode_last!=Status.ShootMode){
 		Shoot.HeatControl.ShootCount_IntervalTime = -200;//切换摩擦轮模式后设置一段时间保护，防止被认为射击
 	}
-	if(PidFrictionSpeed[0].PreError>100 && PidFrictionSpeed[0].PreError < 1000.0)//满足掉速要求
+	if(PidFrictionSpeed[0].PreError>80 && PidFrictionSpeed[0].PreError < 1000.0)//满足掉速要求
 	{
 		if(Shoot.HeatControl.ShootCount_IntervalTime>ShootInterval_Min_time){//连射的最小间隔
 			ShootCount_Number++;//总射击子弹数
@@ -136,7 +136,8 @@ void Pluck_Speed_Choose()
 //		PullerSpeed = 1000;
 		
 //哨兵
-		PullerSpeed = 4500;
+		PullerSpeed = 4000
+		;
 	 }	
   }
 }
@@ -183,16 +184,18 @@ void FrictionSpeedChoose(void)
 const float BulletHeat17 = 10;
 float HeatControlThreshold = 1.0f;   	//开启热量控制的阈值
 float curHeat=0;
+int BulletAllowCnt = 5;
 void HeatControl(float dt)
 {
-	Shoot.HeatControl.HeatMax17 = F105.JudgeReceive_info.HeatMax17 - BulletHeat17;  		//判断能否打蛋的最大热量，保留一个子弹
+	Shoot.HeatControl.HeatMax17 = F105.JudgeReceive_info.HeatMax17 - BulletHeat17*BulletAllowCnt;  		//判断能否打蛋的最大热量，保留一个子弹
 	Shoot.HeatControl.HeatCool17 = F105.JudgeReceive_info.HeatCool17 * dt;          		// 当前热量检测的冷却值
 	
 	/****************************更新当前热量**************************************/
 	if(Shoot.HeatControl.HeatUpdateFlag == 1){												//热量更新了则使用裁判系统
 		Shoot.HeatControl.HeatUpdateFlag = 0;
 		Shoot.HeatControl.CurHeat17 = F105.JudgeReceive_info.shooterHeat17;
-	}else{																														//自行估计热量
+	}
+	else{																														//自行估计热量
 		Shoot.HeatControl.CurHeat17 += Shoot.HeatControl.CurShootNumber*BulletHeat17;
 		Shoot.HeatControl.CurShootNumber = 0;														//当前子弹处理完毕
 		Shoot.HeatControl.CurHeat17 = Shoot.HeatControl.CurHeat17 - Shoot.HeatControl.HeatCool17;															//处理当前周期的冷却
@@ -276,34 +279,6 @@ void Shoot_Fire_Cal()
 	MirocPosition = 0;
 }
 
-/**********************************************************************************************************
-*函 数 名: Shoot_Check_Cal
-*功能说明: 检录模式[打开激光，摩擦轮/射频3~4发]
-*形    参: rc
-*返 回 值: 无
-**********************************************************************************************************/
-int delay_time =-1000;
-void Shoot_Check_Cal()
-{ 
-	delay_time++;
-	if(ShootAct_Init_Flag!=2)
-	ShootAct_Init_Flag=2;
-	MirocPosition = 0;
-	 if(delay_time>0)
-	 {
-		if(Shoot.HeatControl.IsShootAble==1)
-		{	
-//		PidBodanMotorPos.SetPoint=PidBodanMotorPos.SetPoint+500; 
-//		PidBodanMotorSpeed.SetPoint = PID_Calc(&PidBodanMotorPos,Bodan_Pos);
-			PidBodanMotorSpeed.SetPoint=-checkPullerSpeed;
-			delay_time=0;	
-		}
-		else
-		{
-				PidBodanMotorSpeed.SetPoint=0;	
-		}
-	}
-}
 
 /**********************************************************************************************************
 *函 数 名: Shoot_Test_Cal
@@ -311,6 +286,7 @@ void Shoot_Check_Cal()
 *形    参: 
 *返 回 值: 无
 **********************************************************************************************************/
+int delay_time =-1000;
 extern char Aim_Follow;
 extern PCRecvData pc_recv_data;
 TickType_t EnterAimTick,nowAimTick;
@@ -326,7 +302,7 @@ void Shoot_Test_Cal()
 	if(delay_time>0)
 	{ 
 //		if(((nowAimTick-EnterAimTick)>200) && Shoot.HeatControl.IsShootAble==1 && armor_state == ARMOR_AIMED && Aim_Follow==1)
-		if(((nowAimTick-EnterAimTick)>200) && Shoot.HeatControl.IsShootAble==1 && pc_recv_data.shoot_flag)		
+		if(((nowAimTick-EnterAimTick)>200) && Shoot.HeatControl.IsShootAble==1)		
 		{
 			if(ABS(Bodan_Pos-PidBodanMotorPos.SetPoint) < PluckThreholdPos)
 			{
@@ -356,9 +332,9 @@ void Shoot_Powerdown_Cal(void)
 }
 
 /**********************************************************************************************************
-*函 数 名: Shoot_Tx2_Cal
-*功能说明: 辅瞄模式
-*形    参: rc
+*函 数 名: Shoot_PC_Cal
+*功能说明: 滤波
+*形    参: 无
 *返 回 值: 无
 **********************************************************************************************************/
 extern PCRecvData pc_recv_data;
@@ -367,64 +343,10 @@ extern float pc_yaw,pc_pitch;
 extern uint8_t PC_Shoot_flag;
 uint8_t shoot_test_flag = 1;
 uint32_t shoot_dt = 0;
-void Shoot_Tx2_Cal()
-{
-	if(ShootAct_Init_Flag!=3)
-	{
-		MirocPosition = 0;
-		ShootAct_Init_Flag=3;
-//		SendToTx2BullectCnt=PC_Receive.ReceiveFromTx2BullectCnt=0;
-	}
-    shoot_dt++;
-/***********************************************Armor******************************************/	
-	if(Status.GimbalMode == Gimbal_Armor_Mode)
-	{
-		if(Shoot.HeatControl.IsShootAble==1 && PC_Shoot_flag/*shoot_test_flag*/ != 0)
-  	{
-			if(ABS(pc_pitch - Gimbal.Pitch.Gyro)<1.5f && ABS(pc_yaw - Gimbal.Yaw.Gyro)<1.5f)	//已经辅瞄到位，自动开火
-			{
-				if(ABS(PidBodanMotorPos.SetPoint-Bodan_Pos)<5000)
-				{
-//                    if(shoot_dt % 100 == 1)
-					MirocPosition = -k_onegrid * Onegrid * 0.8;         //控制频率很快，需要放慢拨弹速度
-//					SendToTx2BullectCnt++;
-				}
-			}
-    }
-	}
-	
-	if(Status.GimbalMode == Gimbal_BigBuf_Mode || Status.GimbalMode == Gimbal_SmlBuf_Mode)
-	{
-		if(Shoot.HeatControl.IsShootAble==1 && PC_Shoot_flag/*shoot_test_flag*/ != 0)
-        {
-			if(ABS(pc_pitch - Gimbal.Pitch.Gyro)<0.8f && ABS(pc_yaw - Gimbal.Yaw.Gyro)<0.8f)	//已经辅瞄到位，自动开火
-			{
-				if(ABS(PidBodanMotorPos.SetPoint-Bodan_Pos)<8000)
-				{
-//                    if(shoot_dt % 200 == 1)
-					MirocPosition = -k_onegrid * Onegrid * 0.1;
-//					SendToTx2BullectCnt++;
-				}
-			}
-        }
-	}	
-	
-        if(Shoot.HeatControl.IsShootAble==1)
-		PidBodanMotorPos.SetPoint=PidBodanMotorPos.SetPoint+MirocPosition;  
-		MirocPosition = 0;
-}
-
-
-/**********************************************************************************************************
-*函 数 名: Shoot_PC_Cal
-*功能说明: 滤波
-*形    参: 无
-*返 回 值: 无
-**********************************************************************************************************/
 float bodanLastPos;              //存放上次单发结束时的拨弹电机位置值
 float now_time = 0;
 float IntervalTime;
-const int Shoot_IntervalTime = 80;
+int Shoot_IntervalTime = 80;
 extern uint8_t armor_state;
 void Shoot_PC_Cal()
 {
@@ -434,14 +356,13 @@ void Shoot_PC_Cal()
 		ShootAct_Init_Flag=5;
 		bodanLastPos = Bodan_Pos;
 		now_time = xTaskGetTickCount();
-//		SendToTx2BullectCnt=PC_Receive.ReceiveFromTx2BullectCnt=0;
 	}
 	
-	if(NAV_car.Shoot_PC_State == ARMOR_AIMED)	//辅瞄模式
+	if(NAV_car.Shoot_PC_State == ARMOR_STATE)	//辅瞄模式
 	{
 		if(Shoot.HeatControl.IsShootAble==1 && armor_state == ARMOR_AIMED)
     {
-			if(ABS(pc_pitch - Gimbal.Pitch.Gyro)<0.8f && ABS(pc_yaw - Gimbal.Yaw.Gyro)<0.8f)	//已经辅瞄到位，自动开火
+			if(ABS(pc_pitch - Gimbal.Pitch.Gyro)<1.5f && ABS(pc_yaw - Gimbal.Yaw.Gyro)<2.0f)	//已经辅瞄到位，自动开火
 			{
 				IntervalTime = xTaskGetTickCount() - now_time;
 				if(IntervalTime > Shoot_IntervalTime)
@@ -452,9 +373,72 @@ void Shoot_PC_Cal()
 			}
 		}
 	}
-	PidBodanMotorPos.SetPoint=bodanLastPos + Onegrid;
+	PidBodanMotorPos.SetPoint=bodanLastPos - Onegrid;
 }
 	
+
+/**********************************************************************************************************
+*函 数 名: Shoot_Tx2_Cal
+*功能说明: 辅瞄模式
+*形    参: rc
+*返 回 值: 无
+**********************************************************************************************************/
+
+void Shoot_Tx2_Cal()
+{
+	if(ShootAct_Init_Flag!=3)
+	{
+		MirocPosition = 0;
+		ShootAct_Init_Flag=3;
+		bodanLastPos = Bodan_Pos;
+		now_time = xTaskGetTickCount();
+	}
+
+		if(Shoot.HeatControl.IsShootAble==1 && armor_state == ARMOR_AIMED)
+    {
+			if(ABS(pc_pitch - Gimbal.Pitch.Gyro)<1.5f && ABS(pc_yaw - Gimbal.Yaw.Gyro)<2.0f)	//已经辅瞄到位，自动开火
+			{
+				IntervalTime = xTaskGetTickCount() - now_time;
+				if(IntervalTime > Shoot_IntervalTime)
+				{
+					now_time = xTaskGetTickCount();
+					bodanLastPos = Bodan_Pos;					
+				}
+			}
+		}
+	PidBodanMotorPos.SetPoint=bodanLastPos - Onegrid;
+}
+
+
+/**********************************************************************************************************
+*函 数 名: Shoot_Check_Cal
+*功能说明: 检录模式[打开激光，摩擦轮/射频3~4发]
+*形    参: rc
+*返 回 值: 无
+**********************************************************************************************************/
+void Shoot_Check_Cal()
+{ 
+	if(ShootAct_Init_Flag!=2)
+	{
+		MirocPosition = 0;
+		ShootAct_Init_Flag=2;
+		bodanLastPos = Bodan_Pos;
+		now_time = xTaskGetTickCount();
+	}
+
+		if(Shoot.HeatControl.IsShootAble==1)
+    {
+				IntervalTime = xTaskGetTickCount() - now_time;
+				if(IntervalTime > Shoot_IntervalTime)
+				{
+					now_time = xTaskGetTickCount();
+					bodanLastPos = Bodan_Pos;					
+				}
+		}
+	PidBodanMotorPos.SetPoint=bodanLastPos - Onegrid;
+}
+
+
 
 /**********************************************************************************************************
 *函 数 名: FrictionWheel_CurrentPid_Cal
@@ -523,9 +507,6 @@ void BodanMotor_CurrentPid_Cal(void)
 {
 		switch(Status.ShootMode)//射击模式选择
 	{
-		case Shoot_Check_Mode:
-			//不需要位置环
-		break;
 		
 		case Shoot_Fire_Mode:
 			if(Shoot.ShootContinue){//连射模式不需要控制位置
@@ -534,6 +515,7 @@ void BodanMotor_CurrentPid_Cal(void)
 		case Shoot_Tx2_Mode:
 		case Shoot_Powerdown_Mode:
 		case Shoot_PC_Mode:
+		case Shoot_Check_Mode:
 				PidBodanMotorPos.ActualValue = Bodan_Pos;
 				PidBodanMotorSpeed.SetPoint = PID_Calc(&PidBodanMotorPos);	
 			break;
@@ -570,7 +552,7 @@ void Pid_BodanMotor_Init(void)
 	PidBodanMotorPos.I_U = 12000;
 	
 
-	PidBodanMotorSpeed.P=5.0f;  //5.0f
+	PidBodanMotorSpeed.P=6.0f;  //5.0f
 	PidBodanMotorSpeed.I=2.0f;//0.01f;
 	PidBodanMotorSpeed.D=0.0f;
 	PidBodanMotorSpeed.DeadZone=50.0f;
@@ -638,7 +620,7 @@ void Pid_Friction_Init(void)
 
 			Infantry.Low_FrictionSpeed = 4370;
 			Infantry.Medium_FrictionSpeed = 4800;
-			Infantry.High_FrictionSpeed = 7300;
+			Infantry.High_FrictionSpeed = 6500;
 		
 /********************************************* 缺省值 ******************************************************/		
 #else

@@ -338,7 +338,7 @@ static void PID_Shoot_Init(void)
     BodanMotor.pid_speed.I = 0.5f;
     BodanMotor.pid_speed.D = 0.0f;//0.5f;
     BodanMotor.pid_speed.IMax = 600.0f;
-		BodanMotor.pid_speed.OutMax = 16000;
+		BodanMotor.pid_speed.OutMax = 10000;
 
     BodanMotor.pid_pos.P = 0.35f;//0.28f;
     BodanMotor.pid_pos.I = 0.00f;//0.0f;

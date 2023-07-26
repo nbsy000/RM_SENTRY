@@ -48,6 +48,7 @@
 .\objects\pid.o: ..\Task\DataReceiveTask.h
 .\objects\pid.o: ..\Task\DataSendTask.h
 .\objects\pid.o: ..\Task\ChassisTask.h
+.\objects\pid.o: ..\Task\JudgeTask.h
 .\objects\pid.o: ..\Task\PowerControlTask.h
 .\objects\pid.o: ..\Task\GraphicsSendTask.h
 .\objects\pid.o: ..\Task\CharSendTask.h

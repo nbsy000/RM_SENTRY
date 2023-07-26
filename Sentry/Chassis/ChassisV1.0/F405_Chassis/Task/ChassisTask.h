@@ -15,19 +15,27 @@ enum Syne_State
 };
 
 /* PC模式下总的状态 */
-enum PC_STATE
+enum NAV_STATE
 {
-		DEFAULT = 0,
-    BEFOREGAME,//比赛开始前
-    TOPATH1,//路径1去
-    BACKPATH1,//路径1回
-    OUTPOST,//前哨站
-    PATROL,//巡逻区
-		SOURCETO,
-		SOURCEBACK,
-		PATROL_SAFE,//前哨战还在前的巡逻区状态
-		TEST1,//测试路线1
-		TEST2,//路线测试2
+	BEFOREGAME,	 // 比赛开始前
+	TO_HIGHLAND, // 去高地
+	TO_SOURCE,	 // 去资源导
+	TO_PATROL,	 // 去巡逻区
+	TO_OUTPOST,	 // 去前哨站
+	OUTPOST,	 // 前哨站
+	PATROL,		 // 巡逻区
+	SOURCE,		 // 资源岛
+	HIGHLAND,	 // 高地
+	PATROL_SAFE, // 前哨战还在前的巡逻区状态
+	TEST1,		 // 测试路线1
+	TEST2,		 // 路线测试2
+};
+
+//导航路径路径状态
+enum NAV_PATH_STATE
+{
+	CONTINUED,
+	FINISHED,
 };
 
 //固定路径的里程计反馈
@@ -36,14 +44,6 @@ enum NAV_FEEDBACK
 		ENCODER,//编码器
 		RADAR,//雷达
 };
-
-//固定路径状态
-enum NAV_STATE
-{
-		CONTINUED,//进行中
-		FINISHED,//完成
-};
-
 
 typedef struct Power{
 	short Actual_P_max;					//最大功率

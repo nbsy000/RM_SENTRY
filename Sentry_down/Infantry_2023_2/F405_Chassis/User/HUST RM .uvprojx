@@ -563,6 +563,11 @@
               <FileType>1</FileType>
               <FilePath>..\RTOS_Test\CPU_Task.c</FilePath>
             </File>
+            <File>
+              <FileName>JudgeTask.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Task\JudgeTask.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

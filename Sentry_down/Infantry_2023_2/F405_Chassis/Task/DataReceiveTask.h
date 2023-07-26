@@ -26,7 +26,7 @@ typedef struct{
 	char AutoFire_Flag;					//0表示手动开火，1为自动开火
 	char Laser_Flag;				//0表示激光关闭，1为打开
 	short Pitch_100;				//pitch角度,乘了100之后发
-    short Yaw_100;			    	//yaw角度,乘了100之后发
+   short Yaw_100;			    	//yaw角度,乘了100之后发
 	char Gimbal_Flag;				//模式见上
 	char Graphic_Init_Flag;	//0为进入初始化模式，1为初始化结束
 	char Freq_state;			  //射频状态，0表示正常射频，1表示高射频
@@ -34,6 +34,8 @@ typedef struct{
 	/*打包数据*/
 	char Send_Pack1;	
 	char Fric_Flag;
+	
+	char PC_Mode;//PC状态下的模式
 }F405_typedef;
 
 enum ARMOR_ID
@@ -75,6 +77,8 @@ typedef struct
 	
 	//0x101
 	uint32_t event;
+	uint8_t self_outpost_hp;
+	uint16_t self_base_hp;
 	
 	//0x0201
 	uint8_t robot_id;
@@ -92,6 +96,12 @@ typedef struct
 	float realChassispower;
 	uint16_t remainEnergy;       //剩余能量
 	short shooterHeat17;
+
+	//0x0203
+	 float x;
+	 float y;
+	 float z;
+	 float angle;	
 	
 	//0x0207
 	uint8_t bulletFreq;		//射击频率
@@ -121,12 +131,33 @@ typedef struct
 	
 	uint16_t remain_time;
 	
-	//0x303 云台手相关
+	//0x303 雷达的云台手
+	float target_position_x;//目标x m
+	float target_position_y;
+	float target_position_z;
 	uint8_t commd_keyboard;
+	uint16_t target_robot_ID;
 	
 }
 JudgeReceive_t;
 
+
+/* 导航的总状态 */
+enum NAV_STATE
+{
+	BEFOREGAME,	 // 比赛开始前
+	TO_HIGHLAND, // 去高地
+	TO_SOURCE,	 // 去资源导
+	TO_PATROL,	 // 去巡逻区
+	TO_OUTPOST,	 // 去前哨站
+	OUTPOST,	 // 前哨站
+	PATROL,		 // 巡逻区
+	SOURCE,		 // 资源岛
+	HIGHLAND,	 // 高地
+	PATROL_SAFE, // 前哨战还在前的巡逻区状态
+	TEST1,		 // 测试路线1
+	TEST2,		 // 路线测试2
+};
 
 
 void Can1Receive0(CanRxMsg rx_message0);

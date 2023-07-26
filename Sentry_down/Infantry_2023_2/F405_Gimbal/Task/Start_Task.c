@@ -181,19 +181,14 @@ void startTast(void)
               (TaskHandle_t *)&StartTask_Handler); //ÈÎÎñ¾ä±ú
 }
 static char Lost = 0;
+
 void Robot_Stop()
 {
   if (Lost == 0)
   {
-//    taskENTER_CRITICAL();
-//    vTaskSuspend(User_Tasks[CHASSIS_TASK]);
-//    vTaskSuspend(User_Tasks[GIMBAL_TASK]);
-//    vTaskSuspend(ShootTask_Handler);
-    // FrictionBodanCan2Send(0,0,0);
     BodanCan1Send(0);
     FrictionCan2Send(0, 0);
     Lost = 1;
-//    taskEXIT_CRITICAL();
   }
 }
 
@@ -201,12 +196,7 @@ void Robot_Recover()
 {
   if (Lost == 1)
   {
-//    taskENTER_CRITICAL();
-//    vTaskResume(User_Tasks[CHASSIS_TASK]);
-//    vTaskResume(User_Tasks[GIMBAL_TASK]);
-//    vTaskResume(ShootTask_Handler);
     Lost = 0;
-//    taskEXIT_CRITICAL();
   }
 }
 static char Shoot_Lost = 0;
@@ -214,13 +204,9 @@ void Shoot_Stop()
 {
   if (Shoot_Lost == 0)
   {
-//    taskENTER_CRITICAL();
-//    vTaskSuspend(ShootTask_Handler);
-    // FrictionBodanCan2Send(0,0,0);
     BodanCan1Send(0);
     FrictionCan2Send(0, 0);
     Shoot_Lost = 1;
-//    taskEXIT_CRITICAL();
   }
 }
 
@@ -228,12 +214,10 @@ void Shoot_Recover()
 {
   if (Shoot_Lost == 1)
   {
-//    taskENTER_CRITICAL();
-//    vTaskResume(ShootTask_Handler);
     Shoot_Lost = 0;
-//    taskEXIT_CRITICAL();
   }
 }
+
 //extern float aim_yaw, aim_pitch;
 extern float pc_pitch,pc_yaw;
 extern PC_Receive_t PC_Receive;

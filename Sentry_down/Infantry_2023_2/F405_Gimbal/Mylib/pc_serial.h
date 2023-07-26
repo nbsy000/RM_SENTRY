@@ -11,6 +11,8 @@
 void PCReceive(unsigned char *PCbuffer);
 void SendtoPC(void);
 
+void NAVReceive(uint8_t Buf[]);
+void SendtoNAV(void);
 extern PCRecvData pc_recv_data;
 
 #endif // !_PC_SERIAL_H

@@ -12,7 +12,7 @@
 
 #include "counter.h"
 
-#define SD_READ_MODE
+//#define SD_READ_MODE
 
 
 #define VAR_NUMBER 5

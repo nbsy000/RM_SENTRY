@@ -5,7 +5,7 @@
 #include "DataReceivetask.h"
 
 #define PluckThreholdPos        5000       
-#define ShootInterval_Min_time 50 //最快连射的速度是50ms一发(连射情况)
+#define ShootInterval_Min_time 40 //最快连射的速度是50ms一发(连射情况)
 
 #define QueenSampling_number 20 //采样QueenSampling_number个转速来积分
 #define QueenSampling_rate 3 //control task每执行QueenSampling_rate次采样一次摩擦轮转速来积分。减少计算量

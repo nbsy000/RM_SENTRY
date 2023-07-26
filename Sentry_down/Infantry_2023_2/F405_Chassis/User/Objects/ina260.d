@@ -48,6 +48,7 @@
 .\objects\ina260.o: ..\Task\DataReceiveTask.h
 .\objects\ina260.o: ..\Task\DataSendTask.h
 .\objects\ina260.o: ..\Task\ChassisTask.h
+.\objects\ina260.o: ..\Task\JudgeTask.h
 .\objects\ina260.o: ..\Task\PowerControlTask.h
 .\objects\ina260.o: ..\Task\GraphicsSendTask.h
 .\objects\ina260.o: ..\Task\CharSendTask.h

@@ -65,7 +65,8 @@ typedef	__packed struct{
 		uint8_t commd_keyboard;//云台手指令
 		uint8_t is_game_start:1 ;//比赛开始的标志位
 		uint8_t defend_flag:1 ;//前哨战存活标志位
-		uint8_t _:6;
+		uint8_t enemy_defend_flag:1 ;//敌方前哨战存活标志位
+		uint8_t _:5;
 	
 		short HeatMax17;//最大热量
 		unsigned char BulletSpeedLevel;//射速等级
@@ -103,6 +104,7 @@ unsigned int Gyro_DisConnect;
 unsigned int Friction_DisConnect[2];
 unsigned int Pluck_DisConnect;
 unsigned int PC_DisConnect;
+unsigned int NAV_DisConnect;
 }Disconnect;
 
 void Can1Receive1(CanRxMsg rx_message1);

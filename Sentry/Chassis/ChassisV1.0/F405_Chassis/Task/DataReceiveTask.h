@@ -121,6 +121,12 @@ typedef struct
 	short shooterHeat17_0;
 	short shooterHeat17_2;
 	
+	//0x0203
+	 float x;
+	 float y;
+	 float z;
+	 float angle;	
+	
 	//0x204包头相关
 	uint8_t RobotBuffState;
 	uint8_t HPBuff;

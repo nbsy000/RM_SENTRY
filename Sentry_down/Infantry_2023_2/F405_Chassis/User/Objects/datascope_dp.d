@@ -48,6 +48,7 @@
 .\objects\datascope_dp.o: ..\Task\DataReceiveTask.h
 .\objects\datascope_dp.o: ..\Task\DataSendTask.h
 .\objects\datascope_dp.o: ..\Task\ChassisTask.h
+.\objects\datascope_dp.o: ..\Task\JudgeTask.h
 .\objects\datascope_dp.o: ..\Task\PowerControlTask.h
 .\objects\datascope_dp.o: ..\Task\GraphicsSendTask.h
 .\objects\datascope_dp.o: ..\Task\CharSendTask.h

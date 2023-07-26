@@ -32,6 +32,7 @@
 #include "frictionwheel.h"
 #include "iwdg.h"
 #include "laser.h"
+#include "pc_serial.h"
 #include "pc_uart.h"
 #include "uart5.h"
 
@@ -65,7 +66,7 @@
 #include "debug.h"
 
 #define ABS(x) ((x)>0? (x):(-(x))) 
-//#define LIMIT_MAX_MIN(x, max, min)	(((x) <= (min)) ? (min):(((x) >= (max)) ? (max) : (x)))
+#define LIMIT_MAX_MIN(x, max, min)	(((x) <= (min)) ? (min):(((x) >= (max)) ? (max) : (x)))
 #define POWER_OFF 0
 #define CHARGE_ENABLE 1
 

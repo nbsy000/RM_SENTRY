@@ -18,6 +18,7 @@ float pc_pitch,pc_yaw;
 uint8_t PC_Shoot_flag;
 uint8_t last_shoot_flag;
 uint8_t armor_state; 
+extern Disconnect Robot_Disconnect;
 
 void PCSolve(void)
 {
@@ -26,7 +27,7 @@ void PCSolve(void)
 
 void PCReceive(unsigned char *PCbuffer)
 {
-    if (PCbuffer[0] == '!' && Verify_CRC16_Check_Sum(PCbuffer, PC_RECVBUF_SIZE))
+    if (PCbuffer[0] == '!' )//&& Verify_CRC16_Check_Sum(PCbuffer, PC_RECVBUF_SIZE))
     {
         //数据解码
         memcpy(&pc_recv_data, PCbuffer, PC_RECVBUF_SIZE);
@@ -41,6 +42,8 @@ void PCReceive(unsigned char *PCbuffer)
 				else
 					armor_state = ARMOR_NO_AIM; //没目标
         PCSolve();
+				
+				Robot_Disconnect.PC_DisConnect = 0;
     }
 }
 
@@ -54,12 +57,6 @@ extern Status_t Status;
 void SendtoPCPack(unsigned char *buff)
 {
     pc_send_data.start_flag = '!';
-    pc_send_data.robot_color = F105.JudgeReceive_info.RobotRed;
-    pc_send_data.shoot_level = F105.JudgeReceive_info.BulletSpeedLevel;
-    pc_send_data.mode = Status.GimbalMode;
-    //pc_send_data.which_balance = F105.whichbalance - 2; //只有两位，ID-2再发
-    //pc_send_data.change_priority_flag = 0;            //在actiontask中修改
-    pc_send_data.frame_id++;
     pc_send_data.pitch = (short)(Gimbal.Pitch.Gyro * 100.0f);
     pc_send_data.yaw = Gimbal.Yaw.Gyro;
 
@@ -76,4 +73,44 @@ void SendtoPC(void)
     SendtoPCPack(SendToPC_Buff);
 
     DMA_Cmd(PC_UART_SEND_DMAx_Streamx, ENABLE);
+}
+
+/********************************NAV导航雷达数据接发收函数***********************************/
+
+/**
+  * @brief  雷达信息接收
+  * @param  None
+  * @retval None
+  */
+int LimitSpeed = 1500;
+int LimitRotate = 120;
+void NAVReceive(uint8_t Buf[])
+{
+		//数据解码
+		memcpy(&NAV_Recv, Buf, NAV_RECVBUF_SIZE);	
+	
+		//数据引入
+		NAV_car.NAV_x = -LIMIT_MAX_MIN(NAV_Recv.y_now,LimitSpeed,-LimitSpeed);
+		NAV_car.NAV_y = LIMIT_MAX_MIN(NAV_Recv.x_now,LimitSpeed,-LimitSpeed);
+		NAV_car.NAV_w = LIMIT_MAX_MIN((NAV_Recv.w_now/1000.0f)*180.0f/PI,LimitRotate,-LimitRotate);
+		NAV_car.NAV_Path_State = NAV_Recv.nav_path_state;
+	
+		Robot_Disconnect.NAV_DisConnect = 0;
+		
+}
+
+
+
+/**
+  * @brief  发送数据给导航
+  * @param  None
+  * @retval None
+  */
+void SendtoNAV(void)
+{
+		NAV_Send.head = '!';
+		NAV_Send.nav_state = NAV_car.NAV_State;
+		Append_CRC8_Check_Sum((unsigned char *)&NAV_Send, NAV_SENDBUF_SIZE);
+		memcpy(NAV_Send_Buf, (void *)&NAV_Send, NAV_SENDBUF_SIZE);
+    DMA_Cmd(DMA1_Stream7, ENABLE);   //在程序里面使能DMA的发送
 }

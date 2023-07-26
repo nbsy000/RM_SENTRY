@@ -37,6 +37,7 @@ typedef struct PCRecvData
 
 void task_CV_DataSend(void *pvParameters);
 void SendtoPC(void);
+void SendtoNAV(void);
 
 extern PCRecvData pc_recv_data;
 extern PCSendData pc_send_data;

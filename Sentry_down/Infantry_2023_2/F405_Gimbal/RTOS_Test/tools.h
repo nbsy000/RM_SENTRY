@@ -7,7 +7,6 @@
 #ifndef FALSE
 #define FALSE 0
 #endif // !
-#define LIMIT_MAX_MIN(x, max, min) (((x) <= (min)) ? (min) : (((x) >= (max)) ? (max) : (x)))
 #ifndef PI
 #define PI 3.14159265358979f
 #endif

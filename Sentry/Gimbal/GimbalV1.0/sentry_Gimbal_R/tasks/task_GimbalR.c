@@ -112,7 +112,7 @@ void task_GimbalR(void *parameter)
 				
 			}		
 			
-										Gimbal_SLEEP_Act(&Gimbal_L);
+			Gimbal_SLEEP_Act(&Gimbal_L);
 			
 			PitchYaw_Can2Send(MotoPitch.I_Set,MotoYaw.I_Set,MotoPitch_L.I_Set,MotoYaw_L.I_Set);//发送电流值
 			
@@ -187,12 +187,6 @@ void Gimbal_PC_Act(uint8_t Syne_Flag)
 				last_armor_flag = SYNE_NONE;
     }
 
-		static uint8_t state = 0;
-		if(((RC_Ctl.rc.ch2-1024)>300))//左右
-				state = 0;//大yaw不动（测试）
-		if(((RC_Ctl.rc.ch2-1024)<-300))//左左
-				state = 1;//大yaw动
-
 			if(armor_flag == SYNE_RIGHT)//识别到目标
 			{
 					ChassisYaw_Cnt = 500;//调识别到后进行3周的正弦巡航或延时
@@ -222,7 +216,7 @@ void Gimbal_PC_Act(uint8_t Syne_Flag)
 				Gimbal_Attack_None();
 
 			
-			ChassisYaw_Inc = ChassisYaw_Inc*state;
+			ChassisYaw_Inc = ChassisYaw_Inc;
 			
 //		//低通滤波
 //		MotoPitch_L.PCsetAngle = K_AIM_pitch*MotoPitch_L.PCsetAngle + (1-K_AIM_pitch)*Last_Pitch_L;

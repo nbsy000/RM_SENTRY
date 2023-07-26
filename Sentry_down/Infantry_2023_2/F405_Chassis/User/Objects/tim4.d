@@ -49,6 +49,7 @@
 .\objects\tim4.o: ..\User\main.h
 .\objects\tim4.o: ..\Task\DataSendTask.h
 .\objects\tim4.o: ..\Task\ChassisTask.h
+.\objects\tim4.o: ..\Task\JudgeTask.h
 .\objects\tim4.o: ..\Task\PowerControlTask.h
 .\objects\tim4.o: ..\Task\GraphicsSendTask.h
 .\objects\tim4.o: ..\Task\CharSendTask.h

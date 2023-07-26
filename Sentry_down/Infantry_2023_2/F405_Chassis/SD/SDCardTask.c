@@ -28,7 +28,7 @@ void SDLOG(enum SDWRITE write_type, const char *str)
     memset(WriteBuffer, '\0', sizeof(WriteBuffer)); //清空缓存区
     if (SD_START == write_type)
     {
-        sprintf(WriteBuffer, "Plimit,Power,RemainEnergy,SelfProtect,Count\n");
+        sprintf(WriteBuffer, "Plimit,Power,RemainEnergy,HeatCool17,HeatMax17,shooterHeat17,self_outpost_hp,self_base_hp,Chasis_State,Count\n");
     }
     else if (SD_WARNING == write_type)
     {
@@ -42,7 +42,9 @@ void SDLOG(enum SDWRITE write_type, const char *str)
 	else if (SD_CSV == write_type)
 	{
 				count++;
-        sprintf(WriteBuffer, "%d,%.1f,%d,%d,%d\n" ,JudgeReceive.MaxPower,JudgeReceive.realChassispower ,JudgeReceive.remainEnergy,F405.Chassis_Flag,count);
+        sprintf(WriteBuffer, "%d,%.1f,%d,%d,%d,%d,%d,%d,%d,%d\n" , JudgeReceive.MaxPower, JudgeReceive.realChassispower, JudgeReceive.remainEnergy,
+                                                    JudgeReceive.HeatCool17, JudgeReceive.HeatMax17, JudgeReceive.shooterHeat17,
+                                                    JudgeReceive.self_outpost_hp, JudgeReceive.self_base_hp, F405.Chassis_Flag,count);
 	}
     else
     {
@@ -89,8 +91,7 @@ void CloseSDCard()
 	}
 }
 
-char  temp;
-int res;
+
 uint32_t bytesRead;
 void ReadSDCard()
 {
@@ -102,28 +103,6 @@ void ReadSDCard()
 			VOFA_Send();
 			memset(ReadBuffer, 0, sizeof(ReadBuffer));
 		}
-//		while(temp != 0x0A)
-//		{
-//				
-//				if(temp == 0x0D)
-//				{
-//					ReadBuffer[i+1] = '\0';//需要'\0'才能正常解析字符串
-//					res = sscanf(ReadBuffer, "%f,%f,%f,%f,%f", &sd_read_var[0], &sd_read_var[1], &sd_read_var[2],&sd_read_var[3],&sd_read_var[4]);
-//					if(res == 0)//解析错误，即读取到START
-//						sd_read_var[VAR_NUMBER]++;
-//					else
-//						VOFA_Send();
-//					i = 0;
-//					memset(ReadBuffer, 0, sizeof(ReadBuffer));
-//				}
-//				else
-//				{					
-//					ReadBuffer[i] = temp;
-//					i = (i+1)%128;
-//				}
-//				f_read(&sd_status.fnew,&temp,1,&bytesRead);
-//		}
-
 }
 
 void SDCard_task(void *pvParameters)
@@ -132,9 +111,15 @@ void SDCard_task(void *pvParameters)
 //    random = rand();
 //    sprintf(DataFile,"0:infantry_%d.csv",random);
     // SD卡初始化
-    while ((sd_status.Status = SD_Init()) != SD_RESPONSE_NO_ERROR)
+	double start_time_SD = GetTime_s();
+    while ((sd_status.Status = SD_Init()) != SD_RESPONSE_NO_ERROR)	
+	{
+		if( GetTime_s() - start_time_SD > 5.0)
+			break;
         sd_status.SD_init_result = 0; // printf("SD卡初始化失败，请确保SD卡已正确接入开发板，或换一张SD卡测试！\n");
-    sd_status.SD_init_result = 1;     // printf("SD卡初始化成功！\n");
+    }
+	if(sd_status.Status == SD_RESPONSE_NO_ERROR)
+		sd_status.SD_init_result = 1;     // printf("SD卡初始化成功！\n");
 
     //挂载文件系统
     sd_status.res_sd = f_mount(&sd_status.fs, "0:", 1); //在外部SPI Flash挂载文件系统，文件系统挂载时会对SPI设备初始化

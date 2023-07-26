@@ -48,6 +48,7 @@
 .\objects\chassistask.o: ..\Task\DataReceiveTask.h
 .\objects\chassistask.o: ..\Task\DataSendTask.h
 .\objects\chassistask.o: ..\Task\ChassisTask.h
+.\objects\chassistask.o: ..\Task\JudgeTask.h
 .\objects\chassistask.o: ..\Task\PowerControlTask.h
 .\objects\chassistask.o: ..\Task\GraphicsSendTask.h
 .\objects\chassistask.o: ..\Task\CharSendTask.h

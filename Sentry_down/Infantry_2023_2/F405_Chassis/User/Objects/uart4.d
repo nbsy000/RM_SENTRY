@@ -48,6 +48,7 @@
 .\objects\uart4.o: ..\Task\DataReceiveTask.h
 .\objects\uart4.o: ..\Task\DataSendTask.h
 .\objects\uart4.o: ..\Task\ChassisTask.h
+.\objects\uart4.o: ..\Task\JudgeTask.h
 .\objects\uart4.o: ..\Task\PowerControlTask.h
 .\objects\uart4.o: ..\Task\GraphicsSendTask.h
 .\objects\uart4.o: ..\Task\CharSendTask.h

@@ -703,11 +703,6 @@
               <FilePath>..\Task\GimbalTask.c</FilePath>
             </File>
             <File>
-              <FileName>ActionTask.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Task\ActionTask.c</FilePath>
-            </File>
-            <File>
               <FileName>Start_Task.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Task\Start_Task.c</FilePath>
@@ -726,6 +721,11 @@
               <FileName>GimbalEstimateTask.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\INS\GimbalEstimateTask.c</FilePath>
+            </File>
+            <File>
+              <FileName>ActionTask.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Task\ActionTask.c</FilePath>
             </File>
             <File>
               <FileName>ControlTask.c</FileName>

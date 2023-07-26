@@ -13,6 +13,7 @@ extern ChassisState_t chassis;
 
 /*--------------------------临时变量（debug使用）---------------------------*/
 
+/****************************************CAN1**************************************************************/
 
 /**********************************************************************************************************
 *函 数 名: ChassisMotorSend
@@ -40,6 +41,10 @@ void ChassisMotorSend(short a,short b,short c,short d)
 }
 
 
+
+/****************************************CAN2**************************************************************/
+
+
 /**
   * @brief  发送到CAN总线上的上下枪口热量
   * @brief  发送底盘接收到的关于比赛的惺惺相惜，防止在比赛正式开始前，哨兵下枪管抽风
@@ -64,7 +69,7 @@ void ShootingHeat_CAN2Send(void)
   tx_message.Data[2] = is_game_start;  //把核个标志发送给上下云台，防止在正式开始前，云台打弹
   tx_message.Data[3] = chassis.armor_hurt_flag[0];
   tx_message.Data[4] = defend_flag;
-  tx_message.Data[5] = Judge_Lost;//裁判系统离线标志位
+  tx_message.Data[5] = chassis.PC_State;//底盘自动模式状态
   tx_message.Data[6] = Attack_color;//1红0蓝（自己）
   tx_message.Data[7] = chassis.armor_hurt_flag[1];
 
@@ -72,9 +77,15 @@ void ShootingHeat_CAN2Send(void)
 }
 
 
+
+/**********************************************************************************************************
+*函 数 名: BulletSpeed_CAN2Send
+*功能说明: 发送弹速，目前不发
+*形    参: 无
+*返 回 值: 无
+**********************************************************************************************************/
 void BulletSpeed_CAN2Send(void)
 {
-	
 	extern short Bullet_Speed_1_100;
 	extern short Bullet_Speed_2_100;
 	

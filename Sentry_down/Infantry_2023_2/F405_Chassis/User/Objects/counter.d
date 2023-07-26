@@ -48,6 +48,7 @@
 .\objects\counter.o: ..\Task\DataReceiveTask.h
 .\objects\counter.o: ..\Task\DataSendTask.h
 .\objects\counter.o: ..\Task\ChassisTask.h
+.\objects\counter.o: ..\Task\JudgeTask.h
 .\objects\counter.o: ..\Task\PowerControlTask.h
 .\objects\counter.o: ..\Task\GraphicsSendTask.h
 .\objects\counter.o: ..\Task\CharSendTask.h

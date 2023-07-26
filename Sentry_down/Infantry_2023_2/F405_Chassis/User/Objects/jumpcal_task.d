@@ -48,6 +48,7 @@
 .\objects\jumpcal_task.o: ..\Task\DataReceiveTask.h
 .\objects\jumpcal_task.o: ..\Task\DataSendTask.h
 .\objects\jumpcal_task.o: ..\Task\ChassisTask.h
+.\objects\jumpcal_task.o: ..\Task\JudgeTask.h
 .\objects\jumpcal_task.o: ..\Task\PowerControlTask.h
 .\objects\jumpcal_task.o: ..\Task\GraphicsSendTask.h
 .\objects\jumpcal_task.o: ..\Task\CharSendTask.h

@@ -39,8 +39,6 @@ void CAN1_Configuration(void)
 	  gpio.GPIO_PuPd = GPIO_PuPd_UP;
     GPIO_Init(GPIOB, &gpio);
     
-
-
     nvic.NVIC_IRQChannel = CAN1_RX0_IRQn;
     nvic.NVIC_IRQChannelPreemptionPriority = 0;
     nvic.NVIC_IRQChannelSubPriority = 2;

@@ -21,6 +21,7 @@ RobotInit_Struct Infantry;
 char Judge_Lost;
 extern short FrictionWheel_speed;
 extern short KalMan_doneflag;
+extern TD_t PitchTD,YawTD;
 /**********************************************************************************************************
  *函 数 名: main
  *功能说明: 主函数
@@ -68,6 +69,7 @@ void BSP_Init(void)
 	delay_ms(10);
 	SteeringEngine_Configuration();
 	delay_ms(10);
+	UART5_Configuration();
 	//TIM7_Configuration();
 	//delay_ms(100);
 	CAN1_Configuration();
@@ -91,7 +93,7 @@ void BSP_Init(void)
  **********************************************************************************************************/
 void Robot_Init(void)
 {
-	float start_time = 0;
+	double start_time = 0;
 	global_debugger.imu_debugger[0].recv_msgs_num = 0;
 	global_debugger.imu_debugger[1].recv_msgs_num = 0;
 	ZeroCheck_Init();
@@ -100,6 +102,8 @@ void Robot_Init(void)
 	PidGimbalMotor_Init();
 	Pid_BodanMotor_Init();
 	Pid_Friction_Init();
+	TD_Init(&YawTD,20000,0.01);
+  TD_Init(&PitchTD,10000,0.01);	
 	RC_Rst();
 	start_time = GetTime_s();
 	while (!checkIMUOn()) //检查IMU是否开启
@@ -208,9 +212,9 @@ void Infantry_Init(void)
 	Infantry.FricMotorID[0] = 0x202;
 	Infantry.FricMotorID[1] = 0x201;
 	Infantry.BodanMotorID = 0x204;
-	Infantry.pitch_max_motor = 40;
+	Infantry.pitch_max_motor = 30;
 	Infantry.pitch_min_motor = -14;
-	Infantry.pitch_max_gyro = 40;
+	Infantry.pitch_max_gyro = 30;
 	Infantry.pitch_min_gyro = -14;
 	Infantry.gyro_pn = 1;
 	Infantry.motor_pn = 1;
@@ -259,7 +263,7 @@ void Offline_Check_task(void *pvParameters)
 	{
 
 		/*电机\IMU掉线检测*/
-		if(Robot_Disconnect.YawMotor_DisConnect>10||Robot_Disconnect.PitchMotor_DisConnect>10||Robot_Disconnect.Gyro_DisConnect>20)
+		if(Robot_Disconnect.Gyro_DisConnect>20)
 		{
 		    Robot_Stop();
 		}
@@ -303,6 +307,13 @@ void Offline_Check_task(void *pvParameters)
 		{
 		}
 		Robot_Disconnect.PC_DisConnect++;
+		
+		/* 导航掉线 */
+		if (Robot_Disconnect.NAV_DisConnect > 8000)//s没接到
+		{
+		}
+		Robot_Disconnect.NAV_DisConnect++;
+		
 		IWDG_Feed();
 		vTaskDelay(5); // 5
 #if INCLUDE_uxTaskGetStackHighWaterMark

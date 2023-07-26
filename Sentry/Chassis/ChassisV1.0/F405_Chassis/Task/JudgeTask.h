@@ -15,8 +15,14 @@ typedef __packed struct
  int8_t delta_y[49];
 }map_sentry_data_t;
 
-void JudgeReceive_task(void );
+//typedef struct
+//{
+//	
+//};
+
+void Judge_task(void );
 void referee_data_pack_handle(uint8_t sof,uint16_t cmd_id, uint8_t *p_data, uint16_t len);
 void Send_Path_Judge(void);
 
+extern map_sentry_data_t map_sentry_data;
 #endif

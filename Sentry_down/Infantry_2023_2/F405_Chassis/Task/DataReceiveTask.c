@@ -192,7 +192,11 @@ void JudgeBuffReceive(unsigned char ReceiveBuffer[],uint16_t DataLen)
 				}
 				if((cmd_id == 0x101) && (Verify_CRC16_Check_Sum(&SaveBuffer[PackPoint], DataLen + 9)))
 				{
-						memcpy(&JudgeReceive.event,&SaveBuffer[PackPoint+7+3],4);
+						// memcpy(&JudgeReceive.event,&SaveBuffer[PackPoint+7+3],4);
+					uint32_t rcv_buffer;
+					memcpy(&rcv_buffer,&SaveBuffer[PackPoint+7+0],4);
+					JudgeReceive.self_base_hp = (rcv_buffer >> 9) & 0x000000FF;
+					JudgeReceive.self_outpost_hp = (rcv_buffer >> 17) & 0x000007FF;
 				}		
 					
 				//实时功率、热量数据
@@ -205,7 +209,17 @@ void JudgeBuffReceive(unsigned char ReceiveBuffer[],uint16_t DataLen)
 					memcpy(&JudgeReceive.shooterHeat17,&SaveBuffer[PackPoint+7+10],2);                              // 2个字节
 					Last_chassisPower=JudgeReceive.realChassispower;
 				}
-				
+
+				//位置信息
+				if((cmd_id==0x0203)&&(Verify_CRC16_Check_Sum(&SaveBuffer[PackPoint],DataLen+9)))
+				{
+					memcpy(&JudgeReceive.x,&SaveBuffer[PackPoint+7+0],4);
+					memcpy(&JudgeReceive.y,&SaveBuffer[PackPoint+7+4],4);
+					memcpy(&JudgeReceive.z,&SaveBuffer[PackPoint+7+8],4);
+					memcpy(&JudgeReceive.angle,&SaveBuffer[PackPoint+7+12],4);
+				}
+							
+		
 				//实时增益数据
 				if((cmd_id==0x0204)&&(Verify_CRC16_Check_Sum(&SaveBuffer[PackPoint],DataLen+9)))
 				{
@@ -235,7 +249,11 @@ void JudgeBuffReceive(unsigned char ReceiveBuffer[],uint16_t DataLen)
 				//雷达和云台手消息
 				if((cmd_id==0x0303)&&(Verify_CRC16_Check_Sum(&SaveBuffer[PackPoint],DataLen+9)))
 				{	
+					memcpy(&JudgeReceive.target_position_x,&SaveBuffer[PackPoint+7+0],4);
+					memcpy(&JudgeReceive.target_position_y,&SaveBuffer[PackPoint+7+4],4);
+					memcpy(&JudgeReceive.target_position_z,&SaveBuffer[PackPoint+7+8],4);
 					memcpy(&JudgeReceive.commd_keyboard,&SaveBuffer[PackPoint+7+12],1);
+					memcpy(&JudgeReceive.target_robot_ID,&SaveBuffer[PackPoint+7+13],2);
 				}
 				
 				Can2Send1(&F105.Sendmessage);

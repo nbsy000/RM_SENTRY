@@ -48,6 +48,7 @@
 .\objects\adc.o: ..\Task\DataReceiveTask.h
 .\objects\adc.o: ..\Task\DataSendTask.h
 .\objects\adc.o: ..\Task\ChassisTask.h
+.\objects\adc.o: ..\Task\JudgeTask.h
 .\objects\adc.o: ..\Task\PowerControlTask.h
 .\objects\adc.o: ..\Task\GraphicsSendTask.h
 .\objects\adc.o: ..\Task\CharSendTask.h
