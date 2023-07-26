@@ -2,7 +2,7 @@
 .\objects\os_tick.o: ..\RTOS_Test\os_tick.h
 .\objects\os_tick.o: ..\User\stm32f4xx.h
 .\objects\os_tick.o: ..\Library\CMSIS\core_cm4.h
-.\objects\os_tick.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\os_tick.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\os_tick.o: ..\Library\CMSIS\core_cmInstr.h
 .\objects\os_tick.o: ..\Library\CMSIS\core_cmFunc.h
 .\objects\os_tick.o: ..\Library\CMSIS\core_cm4_simd.h
@@ -19,8 +19,8 @@
 .\objects\os_tick.o: ..\Library\inc\stm32f4xx_usart.h
 .\objects\os_tick.o: ..\Library\inc\misc.h
 .\objects\os_tick.o: ..\Library\inc\stm32f4xx_can.h
-.\objects\os_tick.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\os_tick.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\math.h
-.\objects\os_tick.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\os_tick.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\os_tick.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\string.h
+.\objects\os_tick.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\math.h
+.\objects\os_tick.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\os_tick.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\os_tick.o: ..\Library\inc\stm32f4xx_dbgmcu.h

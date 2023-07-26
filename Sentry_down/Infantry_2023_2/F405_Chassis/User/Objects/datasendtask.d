@@ -2,7 +2,7 @@
 .\objects\datasendtask.o: ..\User\main.h
 .\objects\datasendtask.o: ..\User\stm32f4xx.h
 .\objects\datasendtask.o: ..\Library\CMSIS\core_cm4.h
-.\objects\datasendtask.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\datasendtask.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\datasendtask.o: ..\Library\CMSIS\core_cmInstr.h
 .\objects\datasendtask.o: ..\Library\CMSIS\core_cmFunc.h
 .\objects\datasendtask.o: ..\Library\CMSIS\core_cm4_simd.h
@@ -20,12 +20,12 @@
 .\objects\datasendtask.o: ..\Library\inc\misc.h
 .\objects\datasendtask.o: ..\Library\inc\stm32f4xx_can.h
 .\objects\datasendtask.o: ..\Library\inc\stm32f4xx_dac.h
-.\objects\datasendtask.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\datasendtask.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\string.h
 .\objects\datasendtask.o: ..\Library\CMSIS\arm_math.h
 .\objects\datasendtask.o: ..\Library\CMSIS\core_cm4.h
-.\objects\datasendtask.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\math.h
-.\objects\datasendtask.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\datasendtask.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\datasendtask.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\math.h
+.\objects\datasendtask.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\datasendtask.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\datasendtask.o: ..\Hardware\can1.h
 .\objects\datasendtask.o: ..\Hardware\can2.h
 .\objects\datasendtask.o: ..\Hardware\usart2.h
@@ -57,7 +57,7 @@
 .\objects\datasendtask.o: ..\SD\SDCardTask.h
 .\objects\datasendtask.o: ..\User\FreeRTOSConfig.h
 .\objects\datasendtask.o: ..\FreeRTOS\include\FreeRTOS.h
-.\objects\datasendtask.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\datasendtask.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\datasendtask.o: ..\FreeRTOS\include\projdefs.h
 .\objects\datasendtask.o: ..\FreeRTOS\include\portable.h
 .\objects\datasendtask.o: ..\FreeRTOS\include\deprecated_definitions.h

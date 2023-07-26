@@ -2,7 +2,7 @@
 .\objects\pid.o: ..\User\main.h
 .\objects\pid.o: ..\User\stm32f4xx.h
 .\objects\pid.o: ..\Library\CMSIS\core_cm4.h
-.\objects\pid.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\pid.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\pid.o: ..\Library\CMSIS\core_cmInstr.h
 .\objects\pid.o: ..\Library\CMSIS\core_cmFunc.h
 .\objects\pid.o: ..\Library\CMSIS\core_cm4_simd.h
@@ -20,12 +20,12 @@
 .\objects\pid.o: ..\Library\inc\misc.h
 .\objects\pid.o: ..\Library\inc\stm32f4xx_can.h
 .\objects\pid.o: ..\Library\inc\stm32f4xx_dac.h
-.\objects\pid.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\pid.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\string.h
 .\objects\pid.o: ..\Library\CMSIS\arm_math.h
 .\objects\pid.o: ..\Library\CMSIS\core_cm4.h
-.\objects\pid.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\math.h
-.\objects\pid.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\pid.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\pid.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\math.h
+.\objects\pid.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\pid.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\pid.o: ..\Hardware\can1.h
 .\objects\pid.o: ..\Hardware\can2.h
 .\objects\pid.o: ..\Hardware\usart2.h
@@ -57,7 +57,7 @@
 .\objects\pid.o: ..\SD\SDCardTask.h
 .\objects\pid.o: ..\User\FreeRTOSConfig.h
 .\objects\pid.o: ..\FreeRTOS\include\FreeRTOS.h
-.\objects\pid.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\pid.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\pid.o: ..\FreeRTOS\include\projdefs.h
 .\objects\pid.o: ..\FreeRTOS\include\portable.h
 .\objects\pid.o: ..\FreeRTOS\include\deprecated_definitions.h

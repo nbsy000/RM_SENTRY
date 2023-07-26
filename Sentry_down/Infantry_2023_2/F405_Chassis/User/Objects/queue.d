@@ -1,9 +1,9 @@
 .\objects\queue.o: ..\FreeRTOS\src\queue.c
-.\objects\queue.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\queue.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\queue.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\queue.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\string.h
 .\objects\queue.o: ..\FreeRTOS\include\FreeRTOS.h
-.\objects\queue.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stddef.h
-.\objects\queue.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\queue.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\queue.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\queue.o: ..\User\FreeRTOSConfig.h
 .\objects\queue.o: ..\User\stm32f4xx.h
 .\objects\queue.o: ..\Library\CMSIS\core_cm4.h

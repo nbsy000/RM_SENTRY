@@ -21,6 +21,7 @@ extern uint8_t Anomalies_tag;
 extern JudgeReceive_t JudgeReceive;
 extern F405_typedef F405;
 extern INA260 INA260_1;
+extern TaskHandle_t User_Tasks[TASK_NUM];
 float temp1 = 2.0, temp2 = 3.0;
 int count = 0;
 void SDLOG(enum SDWRITE write_type, const char *str)
@@ -104,18 +105,23 @@ void ReadSDCard()
 			memset(ReadBuffer, 0, sizeof(ReadBuffer));
 		}
 }
-
+double start_time_SD = 0;
+double now_time = 0;
 void SDCard_task(void *pvParameters)
 {
 //    int random = 0;
 //    random = rand();
 //    sprintf(DataFile,"0:infantry_%d.csv",random);
     // SD卡初始化
-	double start_time_SD = GetTime_s();
+	start_time_SD = GetTime_s();
     while ((sd_status.Status = SD_Init()) != SD_RESPONSE_NO_ERROR)	
 	{
-		if( GetTime_s() - start_time_SD > 5.0)
-			break;
+		now_time = GetTime_s();
+		if( now_time - start_time_SD > 5.0)
+		{
+			vTaskDelete(User_Tasks[SDCARD_TASK]);
+			return;
+		}
         sd_status.SD_init_result = 0; // printf("SD卡初始化失败，请确保SD卡已正确接入开发板，或换一张SD卡测试！\n");
     }
 	if(sd_status.Status == SD_RESPONSE_NO_ERROR)

@@ -576,10 +576,6 @@ void PC_Process(Remote rc)
  **********************************************************************************************************/
 void Navigation_State()
 {
-	if (NAV_car.Last_NAV_State != NAV_car.NAV_State)
-	{
-		NAV_car.mode_update_time = GetTime_s();
-	}
 
 	/**********************全局状态***************************/
 	/*
@@ -618,8 +614,14 @@ void Navigation_State()
 	/***********************决策状态执行**************************/
 	NAV_State_Act();	
 	
+	
 	/********************状态更新时的过渡状态***************/
-	if (GetTime_s() - NAV_car.mode_update_time < NAV_car.MODE_UPDATE_INTERVAL) // 过渡时间1s
+	if (NAV_car.Last_NAV_State != NAV_car.NAV_State)
+	{
+		NAV_car.mode_update_time = GetTime_s();
+	}
+	
+	if (GetTime_s() - NAV_car.mode_update_time < NAV_car.MODE_UPDATE_INTERVAL) // 过渡时间1.5s
 	{
 		Chassis_Gimbal_Shoot_State(STOP_STATE, STOP_STATE, STOP_STATE);
 		NAV_car.NAV_x = 0;

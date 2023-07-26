@@ -747,8 +747,7 @@ void Chassis_PC_Cal()
 	
 	if (NAV_car.Chassis_PC_State == NAV_STATE) // 导航
 	{ 
-		if(Status.GimbalMode == Gimbal_PC_Mode)
-		{
+
 			ResetPos = (Theta) / 6.28318f * 8192;
 			
 			if ((-3.1416f / 2) > Theta)
@@ -767,10 +766,9 @@ void Chassis_PC_Cal()
 			// 反馈PID控制+前馈
 			pidChassisPosition.ActualValue = Gimbal.Yaw.Motor;
 			chassis.carSpeedw = -(-PID_Calc(&pidChassisPosition));// + FeedForward_Calc(&FF_w));
-		}
-		else
-			chassis.carSpeedw = NAV_car.NAV_w;
-		
+
+		chassis.carSpeedw = -2000;
+			
 		chassis.carSpeedy = NAV_car.NAV_y*SinTheTa + NAV_car.NAV_x*CosTheTa;
 		chassis.carSpeedx = -NAV_car.NAV_x*SinTheTa + NAV_car.NAV_y*CosTheTa;
 		

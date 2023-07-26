@@ -2,7 +2,7 @@
 .\objects\judgetask.o: ..\User\main.h
 .\objects\judgetask.o: ..\User\stm32f4xx.h
 .\objects\judgetask.o: ..\Library\CMSIS\core_cm4.h
-.\objects\judgetask.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\judgetask.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\judgetask.o: ..\Library\CMSIS\core_cmInstr.h
 .\objects\judgetask.o: ..\Library\CMSIS\core_cmFunc.h
 .\objects\judgetask.o: ..\Library\CMSIS\core_cm4_simd.h
@@ -20,12 +20,12 @@
 .\objects\judgetask.o: ..\Library\inc\misc.h
 .\objects\judgetask.o: ..\Library\inc\stm32f4xx_can.h
 .\objects\judgetask.o: ..\Library\inc\stm32f4xx_dac.h
-.\objects\judgetask.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\judgetask.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\string.h
 .\objects\judgetask.o: ..\Library\CMSIS\arm_math.h
 .\objects\judgetask.o: ..\Library\CMSIS\core_cm4.h
-.\objects\judgetask.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\math.h
-.\objects\judgetask.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\judgetask.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\judgetask.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\math.h
+.\objects\judgetask.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\judgetask.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\judgetask.o: ..\Hardware\can1.h
 .\objects\judgetask.o: ..\Hardware\can2.h
 .\objects\judgetask.o: ..\Hardware\usart2.h
@@ -57,7 +57,7 @@
 .\objects\judgetask.o: ..\SD\SDCardTask.h
 .\objects\judgetask.o: ..\User\FreeRTOSConfig.h
 .\objects\judgetask.o: ..\FreeRTOS\include\FreeRTOS.h
-.\objects\judgetask.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\judgetask.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\judgetask.o: ..\FreeRTOS\include\projdefs.h
 .\objects\judgetask.o: ..\FreeRTOS\include\portable.h
 .\objects\judgetask.o: ..\FreeRTOS\include\deprecated_definitions.h

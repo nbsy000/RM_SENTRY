@@ -3,7 +3,7 @@
 .\objects\cpu_task.o: ..\User\FreeRTOSConfig.h
 .\objects\cpu_task.o: ..\User\stm32f4xx.h
 .\objects\cpu_task.o: ..\Library\CMSIS\core_cm4.h
-.\objects\cpu_task.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\cpu_task.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\cpu_task.o: ..\Library\CMSIS\core_cmInstr.h
 .\objects\cpu_task.o: ..\Library\CMSIS\core_cmFunc.h
 .\objects\cpu_task.o: ..\Library\CMSIS\core_cm4_simd.h
@@ -21,7 +21,7 @@
 .\objects\cpu_task.o: ..\Library\inc\misc.h
 .\objects\cpu_task.o: ..\Library\inc\stm32f4xx_can.h
 .\objects\cpu_task.o: ..\FreeRTOS\include\FreeRTOS.h
-.\objects\cpu_task.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\cpu_task.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\cpu_task.o: ..\FreeRTOS\include\projdefs.h
 .\objects\cpu_task.o: ..\FreeRTOS\include\portable.h
 .\objects\cpu_task.o: ..\FreeRTOS\include\deprecated_definitions.h
@@ -30,12 +30,12 @@
 .\objects\cpu_task.o: ..\Task\StartTask.h
 .\objects\cpu_task.o: ..\User\main.h
 .\objects\cpu_task.o: ..\Library\inc\stm32f4xx_dac.h
-.\objects\cpu_task.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\cpu_task.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\string.h
 .\objects\cpu_task.o: ..\Library\CMSIS\arm_math.h
 .\objects\cpu_task.o: ..\Library\CMSIS\core_cm4.h
-.\objects\cpu_task.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\math.h
-.\objects\cpu_task.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\cpu_task.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\cpu_task.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\math.h
+.\objects\cpu_task.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\cpu_task.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\cpu_task.o: ..\Hardware\can1.h
 .\objects\cpu_task.o: ..\Hardware\can2.h
 .\objects\cpu_task.o: ..\Hardware\usart2.h
@@ -75,4 +75,4 @@
 .\objects\cpu_task.o: ..\RTOS_Test\tools.h
 .\objects\cpu_task.o: ..\SEGGER_RTT_V784\RTT\SEGGER_RTT.h
 .\objects\cpu_task.o: ..\SEGGER_RTT_V784\RTT\../Config/SEGGER_RTT_Conf.h
-.\objects\cpu_task.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\objects\cpu_task.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stdarg.h

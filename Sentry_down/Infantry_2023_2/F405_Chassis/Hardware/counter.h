@@ -12,8 +12,8 @@
 /* Params START */
 
 #define COUNTER_APBx_CLOCK_CMD RCC_APB1PeriphClockCmd
-#define COUNTER_RCC_APBx_TIMx RCC_APB1Periph_TIM2
-#define COUNTER_TIMx TIM2
+#define COUNTER_RCC_APBx_TIMx RCC_APB1Periph_TIM5
+#define COUNTER_TIMx TIM5
 #define COUNTER_DBGMCU_TIMx_STOP DBGMCU_TIM2_STOP
 /* TIM_TimeBaseInitStructure配置到源码处修改 */
 #define COUNTER_SAMPLING 1000000

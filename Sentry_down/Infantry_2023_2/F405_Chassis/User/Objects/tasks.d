@@ -1,9 +1,9 @@
 .\objects\tasks.o: ..\FreeRTOS\src\tasks.c
-.\objects\tasks.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\tasks.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\tasks.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\tasks.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\string.h
 .\objects\tasks.o: ..\FreeRTOS\include\FreeRTOS.h
-.\objects\tasks.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stddef.h
-.\objects\tasks.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\tasks.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\tasks.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\tasks.o: ..\User\FreeRTOSConfig.h
 .\objects\tasks.o: ..\User\stm32f4xx.h
 .\objects\tasks.o: ..\Library\CMSIS\core_cm4.h
@@ -32,4 +32,4 @@
 .\objects\tasks.o: ..\FreeRTOS\include\list.h
 .\objects\tasks.o: ..\FreeRTOS\include\timers.h
 .\objects\tasks.o: ..\FreeRTOS\include\StackMacros.h
-.\objects\tasks.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\tasks.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stdio.h

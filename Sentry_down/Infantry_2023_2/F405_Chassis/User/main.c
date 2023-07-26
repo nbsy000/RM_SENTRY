@@ -58,6 +58,7 @@ void BSP_Init(void)
 	UART4_Configuration();
 	TIM2_Configuration();
 	TIM4_Configuration();
+	COUNTER_Configuration();
 //	IWDG_Config(IWDG_Prescaler_64 ,625);
 	i2c_init();
 	ChargeIO_Configuration();

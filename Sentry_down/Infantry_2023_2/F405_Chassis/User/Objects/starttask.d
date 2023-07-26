@@ -2,7 +2,7 @@
 .\objects\starttask.o: ..\User\main.h
 .\objects\starttask.o: ..\User\stm32f4xx.h
 .\objects\starttask.o: ..\Library\CMSIS\core_cm4.h
-.\objects\starttask.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\starttask.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\starttask.o: ..\Library\CMSIS\core_cmInstr.h
 .\objects\starttask.o: ..\Library\CMSIS\core_cmFunc.h
 .\objects\starttask.o: ..\Library\CMSIS\core_cm4_simd.h
@@ -20,12 +20,12 @@
 .\objects\starttask.o: ..\Library\inc\misc.h
 .\objects\starttask.o: ..\Library\inc\stm32f4xx_can.h
 .\objects\starttask.o: ..\Library\inc\stm32f4xx_dac.h
-.\objects\starttask.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\starttask.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\string.h
 .\objects\starttask.o: ..\Library\CMSIS\arm_math.h
 .\objects\starttask.o: ..\Library\CMSIS\core_cm4.h
-.\objects\starttask.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\math.h
-.\objects\starttask.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\starttask.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\starttask.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\math.h
+.\objects\starttask.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\starttask.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\starttask.o: ..\Hardware\can1.h
 .\objects\starttask.o: ..\Hardware\can2.h
 .\objects\starttask.o: ..\Hardware\usart2.h
@@ -57,7 +57,7 @@
 .\objects\starttask.o: ..\SD\SDCardTask.h
 .\objects\starttask.o: ..\User\FreeRTOSConfig.h
 .\objects\starttask.o: ..\FreeRTOS\include\FreeRTOS.h
-.\objects\starttask.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\starttask.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\starttask.o: ..\FreeRTOS\include\projdefs.h
 .\objects\starttask.o: ..\FreeRTOS\include\portable.h
 .\objects\starttask.o: ..\FreeRTOS\include\deprecated_definitions.h

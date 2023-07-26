@@ -151,3 +151,75 @@ Sentry_Space———————全向轮步兵（备用哨兵）
 ### 2023.7.26
 
 + 下供弹导航决策基本完成
++ 修改counter定时器为TIM5，保证系统时间没问题，新增了SD卡识别不到就删除SD卡任务逻辑
+
+
+
+更改人：李蔚明
+
+更改内容：云台代码中决策部分代码的部分顺序
+
+如下：
+
+```C
+void Navigation_State()
+{
+
+	/**********************全局状态***************************/
+	/*
+		不管当前状态，直接转跳到目标状态
+		遥控器：用于调试
+		部分裁判系统数据：前哨战无。。。
+		部分云台手指令：回巡逻区。。。。
+	*/
+	
+	if ((RC_Ctl.rc.ch0 - 1024) > 300||// 右右
+		(F105.JudgeReceive_info.commd_keyboard == 'S') )
+	//	||	F105.JudgeReceive_info.defend_flag)	 
+		NAV_car.NAV_State = TO_PATROL;		// 去巡逻区
+	if ((RC_Ctl.rc.ch0 - 1024) < -300) // 右左
+		NAV_car.NAV_State = TO_OUTPOST; // 去前哨站
+	
+	if ((RC_Ctl.rc.ch1 - 1024) > 300) // 右上
+		NAV_car.NAV_State = TO_HIGHLAND; // 去高地
+	if ((RC_Ctl.rc.ch1 - 1024) < -300) //右下
+		NAV_car.NAV_State = TO_SOURCE;	// 去资源岛
+	
+	if ((RC_Ctl.rc.ch2 - 1024) > 300 ||// 左右
+		(F105.JudgeReceive_info.commd_keyboard == 'D') )	 
+		NAV_car.NAV_State = PATROL;	 //巡逻区
+	if ((RC_Ctl.rc.ch2 - 1024) < -300) // 左左
+		NAV_car.NAV_State = OUTPOST;		 //  前哨站
+
+	if ((RC_Ctl.rc.ch3 - 1024) > 300)	 // 左上
+		NAV_car.NAV_State = HIGHLAND;	 // 高地
+	if ((RC_Ctl.rc.ch3 - 1024) < -300) // 左下
+		NAV_car.NAV_State = SOURCE;		 // 资源岛
+	
+	/***********************决策状态转换**************************/
+	NAV_State_Invert();		
+	
+	/***********************决策状态执行**************************/
+	NAV_State_Act();	
+	
+	
+	/********************状态更新时的过渡状态***************/
+	if (NAV_car.Last_NAV_State != NAV_car.NAV_State)
+	{
+		NAV_car.mode_update_time = GetTime_s();
+	}
+	
+	if (GetTime_s() - NAV_car.mode_update_time < NAV_car.MODE_UPDATE_INTERVAL) // 过渡时间1.5s
+	{
+		Chassis_Gimbal_Shoot_State(STOP_STATE, STOP_STATE, STOP_STATE);
+		NAV_car.NAV_x = 0;
+		NAV_car.NAV_y = 0;
+		NAV_car.NAV_w = 0;
+	}
+
+	NAV_car.Last_NAV_State = NAV_car.NAV_State;
+}
+
+```
+
+之前状态更新部分放在函数开头，其实根本不会运行，导致不会进入过渡态

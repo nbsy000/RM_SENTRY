@@ -5,11 +5,11 @@
 <h2>Tool Versions:</h2>
 IDE-Version: ¦ÌVision V5.30.0.0
 Copyright (C) 2020 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: l wm, hust, LIC=X1E4T-RJNU2-INMA7-ES4DX-ZWPZU-KL24V
+License Information: Yang SU, Hust, LIC=NQQMA-1XAF9-II85V-PZWEG-XKRDD-4JBK7
  
 Tool Versions:
-Toolchain:       MDK-ARM Professional  Version: 5.30.0.0
-Toolchain Path:  D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin
+Toolchain:       MDK-ARM Plus  Version: 5.30.0.0
+Toolchain Path:  D:\RM\Keil\Keil\ARM\ARMCC\Bin
 C Compiler:      Armcc.exe V5.06 update 6 (build 750)
 Assembler:       Armasm.exe V5.06 update 6 (build 750)
 Linker/Locator:  ArmLink.exe V5.06 update 6 (build 750)
@@ -17,29 +17,25 @@ Library Manager: ArmAr.exe V5.06 update 6 (build 750)
 Hex Converter:   FromElf.exe V5.06 update 6 (build 750)
 CPU DLL:         SARMCM3.DLL V5.30.0.0
 Dialog DLL:      DCM.DLL V1.17.3.0
-Target DLL:      CMSIS_AGDI.dll V1.32.5.0
+Target DLL:      Segger\JL2CM3.dll V2.99.18.0
 Dialog DLL:      TCM.DLL V1.42.0.0
  
 <h2>Project:</h2>
-D:\LangYa\RM\HUST_RoboMaster2023\Sentry_Git\Sentry_down\Infantry_2023_2\F405_Chassis\User\HUST RM .uvprojx
-Project File Date:  07/25/2023
+D:\RM\RM_SENTRY-main (1)\RM_SENTRY-main\Sentry_down\Infantry_2023_2\F405_Chassis\User\HUST RM .uvprojx
+Project File Date:  07/26/2023
 
 <h2>Output:</h2>
-*** Using Compiler 'V5.06 update 6 (build 750)', folder: 'D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin'
+*** Using Compiler 'V5.06 update 6 (build 750)', folder: 'D:\RM\Keil\Keil\ARM\ARMCC\Bin'
 Build target 'Target 1'
-compiling ChassisTask.c...
+compiling SDCardTask.c...
 ..\SD\SDCardTask.h(65): warning:  #1295-D: Deprecated declaration ReadSDCard - give arg types
   void ReadSDCard();
-..\Task\ChassisTask.c(199): warning:  #177-D: variable "i"  was declared but never referenced
-  	short i;
-..\Task\ChassisTask.c(241): warning:  #177-D: variable "Angular_Velocity"  was declared but never referenced
-  	static short Angular_Velocity;
-..\Task\ChassisTask.c(412): warning:  #177-D: variable "k_ExcessPower"  was declared but never referenced
-  	static float k_ExcessPower;
-..\Task\ChassisTask.c: 4 warnings, 0 errors
+..\SD\SDCardTask.c(99): warning:  #177-D: variable "i"  was declared but never referenced
+  		static int i = 0;
+..\SD\SDCardTask.c: 2 warnings, 0 errors
 linking...
-Program Size: Code=38948 RO-data=3420 RW-data=896 ZI-data=32088  
-".\Objects\HUST RM.axf" - 0 Error(s), 4 Warning(s).
+Program Size: Code=39072 RO-data=3420 RW-data=912 ZI-data=32088  
+".\Objects\HUST RM.axf" - 0 Error(s), 2 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -50,20 +46,20 @@ Package Vendor: ARM
    * Component: DSP Variant: Library Version: 1.8.0
 
 Package Vendor: Keil
-                http://www.keil.com/pack/Keil.STM32F4xx_DFP.2.16.0.pack
-                Keil.STM32F4xx_DFP.2.16.0
+                http://www.keil.com/pack/Keil.STM32F4xx_DFP.2.14.0.pack
+                Keil.STM32F4xx_DFP.2.14.0
                 STMicroelectronics STM32F4 Series Device Support, Drivers and Examples
 
 <h2>Collection of Component include folders:</h2>
   .\RTE\_Target_1
-  D:\LangYa\Software\Keil\Arm\ARM\CMSIS\5.7.0\CMSIS\DSP\Include
-  D:\LangYa\Software\Keil\Arm\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
+  D:\RM\Keil\Core\ARM\CMSIS\5.7.0\CMSIS\DSP\Include
+  D:\RM\Keil\Core\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:DSP:Library:1.8.0
-      Include file:  CMSIS\DSP\Include\arm_math.h
       Library file:  CMSIS\DSP\Lib\ARM\arm_cortexM4lf_math.lib
+      Include file:  CMSIS\DSP\Include\arm_math.h
 Build Time Elapsed:  00:00:01
 </pre>
 </body>
