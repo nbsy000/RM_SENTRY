@@ -918,10 +918,10 @@ void Pid_ChassisWheelInit(void)
 		
 		//ËÙ¶È»·
 		pidChassisWheelSpeed[i].P = 6.0f;
-		pidChassisWheelSpeed[i].I = 0.1f;
+		pidChassisWheelSpeed[i].I = 0.08f;
 		pidChassisWheelSpeed[i].D = 10.0f;
 		pidChassisWheelSpeed[i].ErrorMax = 1000.0f;
-		pidChassisWheelSpeed[i].IMax = 20000.0f;
+		pidChassisWheelSpeed[i].IMax = 10000.0f;
 		pidChassisWheelSpeed[i].SetPoint = 0.0f;	
 		pidChassisWheelSpeed[i].OutMax = 16000.0f;	
 	

@@ -65,7 +65,7 @@
 ".\objects\tools.o"
 ".\objects\segger_rtt.o"
 ".\objects\segger_rtt_printf.o"
-"..\..\..\..\..\..\Keil\Core\ARM\CMSIS\5.7.0\CMSIS\DSP\Lib\ARM\arm_cortexM4lf_math.lib"
+"..\..\..\..\..\..\..\Software\Keil\Arm\ARM\CMSIS\5.7.0\CMSIS\DSP\Lib\ARM\arm_cortexM4lf_math.lib"
 --library_type=microlib --strict --scatter ".\Objects\HUST RM.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

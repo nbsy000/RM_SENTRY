@@ -2,7 +2,7 @@
 .\objects\tim2.o: ..\User\main.h
 .\objects\tim2.o: ..\User\stm32f4xx.h
 .\objects\tim2.o: ..\Library\CMSIS\core_cm4.h
-.\objects\tim2.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\tim2.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\tim2.o: ..\Library\CMSIS\core_cmInstr.h
 .\objects\tim2.o: ..\Library\CMSIS\core_cmFunc.h
 .\objects\tim2.o: ..\Library\CMSIS\core_cm4_simd.h
@@ -20,12 +20,12 @@
 .\objects\tim2.o: ..\Library\inc\misc.h
 .\objects\tim2.o: ..\Library\inc\stm32f4xx_can.h
 .\objects\tim2.o: ..\Library\inc\stm32f4xx_dac.h
-.\objects\tim2.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\string.h
+.\objects\tim2.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\tim2.o: ..\Library\CMSIS\arm_math.h
 .\objects\tim2.o: ..\Library\CMSIS\core_cm4.h
-.\objects\tim2.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\math.h
-.\objects\tim2.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\tim2.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\tim2.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\math.h
+.\objects\tim2.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\tim2.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\tim2.o: ..\Hardware\can1.h
 .\objects\tim2.o: ..\Hardware\can2.h
 .\objects\tim2.o: ..\Hardware\usart2.h
@@ -57,7 +57,7 @@
 .\objects\tim2.o: ..\SD\SDCardTask.h
 .\objects\tim2.o: ..\User\FreeRTOSConfig.h
 .\objects\tim2.o: ..\FreeRTOS\include\FreeRTOS.h
-.\objects\tim2.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\tim2.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\tim2.o: ..\FreeRTOS\include\projdefs.h
 .\objects\tim2.o: ..\FreeRTOS\include\portable.h
 .\objects\tim2.o: ..\FreeRTOS\include\deprecated_definitions.h

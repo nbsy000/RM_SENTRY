@@ -26,6 +26,7 @@ typedef struct{
 	char ShootContinue;
 }ShootTask_typedef;
 
+
 void FrictionSpeedChoose(void);
 
 

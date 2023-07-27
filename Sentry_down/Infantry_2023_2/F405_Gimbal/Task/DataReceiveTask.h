@@ -134,4 +134,6 @@ enum ARMOR_ID
     ARMOR_ID_Sentry,
 };
 
+
+extern Disconnect Robot_Disconnect;
 #endif

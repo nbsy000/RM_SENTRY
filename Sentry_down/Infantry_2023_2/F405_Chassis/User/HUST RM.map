@@ -4049,58 +4049,58 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       292         16          0          0        180       1481   adc.o
-       292         26        769          4          0       8034   algorithmofcrc.o
-      2560         96          0          1         88      15805   bsp_spi_sdcard.o
-       468         26          0          0         20       2248   can1.o
-       512         26          0          0          0       2566   can2.o
-      6052        550          0        272        760      11960   chassistask.o
-       296         52          0         24         12       2432   counter.o
-       404        222          0          4        832       2656   cpu_task.o
-       128          4          0          0          0        656   dac.o
-      1752         78          0         18        254       5162   datareceivetask.o
-       392         46          0         28          0       3922   datasendtask.o
-       364         10          0          0          0       5408   diskio.o
-         0          0          0          0          0       1484   event_groups.o
-      5582         46          0          6          0      29791   ff.o
-       308         34         24          0        128       2250   fir.o
-         0          0          0        204        344      14430   graphicssendtask.o
-       508         62          0         24      17408       4075   heap_4.o
-        64          4          0          0          0        559   i2c.o
-         8          0          0          0          0        504   iwdg.o
-       452         44          0          5        103       3333   judgetask.o
-       148          0          0          0          0       3462   list.o
-       432         44          0         12         14     380019   main.o
-       120         14          0          0          0       1072   misc.o
-        40          8          0          4          0       1144   os_tick.o
-       340          0          0          0          0       1031   pid.o
-       472         58          0          4          0       9924   port.o
-       176         28          0         96         60       2458   powercontroltask.o
-       848        176        110         52       8556       4470   sdcardtask.o
-       710         54         17         17       1208      10899   segger_rtt.o
-      1096          6         16          0          0       6109   segger_rtt_printf.o
-       328        146          0          4         32       2202   starttask.o
-        36          8        392          0       1024        888   startup_stm32f40_41xxx.o
-       410         20          0          0          0       6270   stm32f4xx_adc.o
-      1654         22          0          0          0       7904   stm32f4xx_can.o
-       156         24          0          0          0       3225   stm32f4xx_dac.o
-       770         72          0          0          0       7259   stm32f4xx_dma.o
-       222          0          0          0          0       3043   stm32f4xx_gpio.o
-        28          0          0          0          0       3415   stm32f4xx_it.o
-        16          6          0          0          0        529   stm32f4xx_iwdg.o
-       392         48          0         16          0       6049   stm32f4xx_rcc.o
-       288         24          0          0          0      12563   stm32f4xx_spi.o
-       230         28          0          0          0       5632   stm32f4xx_tim.o
-       254          8          0          0          0       2796   stm32f4xx_usart.o
-       340         32          0         20          0       1865   system_stm32f4xx.o
-      3444        476          0         68        740      33748   tasks.o
-       194          4          0          4          0       1967   tim2.o
-       124         12          0          0          0       1155   tim4.o
-       580         50          0          1        173       2863   uart4.o
-       484         56          0          0        144       2726   usart2.o
+       292         16          0          0        180       1493   adc.o
+       292         26        769          4          0       8086   algorithmofcrc.o
+      2560         96          0          1         88      15877   bsp_spi_sdcard.o
+       468         26          0          0         20       2264   can1.o
+       512         26          0          0          0       2582   can2.o
+      6052        550          0        272        760      12012   chassistask.o
+       296         52          0         24         12       2452   counter.o
+       404        222          0          4        832       2716   cpu_task.o
+       128          4          0          0          0        660   dac.o
+      1752         78          0         18        254       5190   datareceivetask.o
+       392         46          0         28          0       3946   datasendtask.o
+       364         10          0          0          0       5456   diskio.o
+         0          0          0          0          0       1508   event_groups.o
+      5582         46          0          6          0      29943   ff.o
+       308         34         24          0        128       2266   fir.o
+         0          0          0        204        344      14502   graphicssendtask.o
+       508         62          0         24      17408       4115   heap_4.o
+        64          4          0          0          0        563   i2c.o
+         8          0          0          0          0        508   iwdg.o
+       452         44          0          5        103       3357   judgetask.o
+       148          0          0          0          0       3498   list.o
+       432         44          0         12         14     380279   main.o
+       120         14          0          0          0       1080   misc.o
+        40          8          0          4          0       1156   os_tick.o
+       340          0          0          0          0       1039   pid.o
+       472         58          0          4          0       9968   port.o
+       176         28          0         96         60       2470   powercontroltask.o
+       848        176        110         52       8556       4514   sdcardtask.o
+       710         54         17         17       1208      10963   segger_rtt.o
+      1096          6         16          0          0       6149   segger_rtt_printf.o
+       328        146          0          4         32       2218   starttask.o
+        36          8        392          0       1024        892   startup_stm32f40_41xxx.o
+       410         20          0          0          0       6306   stm32f4xx_adc.o
+      1654         22          0          0          0       7948   stm32f4xx_can.o
+       156         24          0          0          0       3245   stm32f4xx_dac.o
+       770         72          0          0          0       7299   stm32f4xx_dma.o
+       222          0          0          0          0       3063   stm32f4xx_gpio.o
+        28          0          0          0          0       3443   stm32f4xx_it.o
+        16          6          0          0          0        533   stm32f4xx_iwdg.o
+       392         48          0         16          0       6081   stm32f4xx_rcc.o
+       288         24          0          0          0      12595   stm32f4xx_spi.o
+       230         28          0          0          0       5668   stm32f4xx_tim.o
+       254          8          0          0          0       2812   stm32f4xx_usart.o
+       340         32          0         20          0       1881   system_stm32f4xx.o
+      3444        476          0         68        740      33896   tasks.o
+       194          4          0          4          0       1983   tim2.o
+       124         12          0          0          0       1163   tim4.o
+       580         50          0          1        173       2883   uart4.o
+       484         56          0          0        144       2746   usart2.o
 
     ----------------------------------------------------------------------
-     34812       2766       1368        908      32088     645443   Object Totals
+     34812       2766       1368        908      32088     647267   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         46          0          8         20          8          0   (incl. Padding)
 
@@ -4165,8 +4165,8 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     39072       2890       3420        912      32088     630069   Grand Totals
-     39072       2890       3420        276      32088     630069   ELF Image Totals (compressed)
+     39072       2890       3420        912      32088     631893   Grand Totals
+     39072       2890       3420        276      32088     631893   ELF Image Totals (compressed)
      39072       2890       3420        276          0          0   ROM Totals
 
 ==============================================================================

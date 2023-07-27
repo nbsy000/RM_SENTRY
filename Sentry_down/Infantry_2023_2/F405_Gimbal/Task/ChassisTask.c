@@ -717,7 +717,7 @@ int16_t Random_w_generate(int w_base)
 	static float theta_rand;
 	if(t_cnt % 2000 == 0) //2s变一次
 	{
-		A_rand = rand()%1000 ;  //A_rand 范围1000
+		A_rand = rand()%2000 ;  //A_rand 范围1000
 		w_rand = rand()%1000 / 300000.0f + 0.004f ; //周期范围1.5s - 0.95s
 		theta_rand = rand()%1000 / 160.0f; 
 	}
@@ -777,7 +777,7 @@ void Chassis_PC_Cal()
 	{
 		chassis.carSpeedx = 0;
 		chassis.carSpeedy = 0;
-		chassis.carSpeedw = -1000;
+		chassis.carSpeedw = Random_w_generate(-7000);
 	}
 	
 	else//自动模式切换过渡状态

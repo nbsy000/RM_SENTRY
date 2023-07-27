@@ -27,13 +27,15 @@ Project File Date:  07/21/2023
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin'
 Build target 'HUST-RM-Master'
-compiling ActionTask.c...
-..\Task\ActionTask.c(241): warning:  #177-D: variable "waitb"  was declared but never referenced
-  	static int waitb = 0;
-..\Task\ActionTask.c: 1 warning, 0 errors
+compiling ShootTask.c...
+..\Task\ShootTask.c(71): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	if(PidFrictionSpeed[0].PreError>80 && PidFrictionSpeed[0].PreError < 1000.0)//Âú×ãµôËÙÒªÇó
+..\Task\ShootTask.c(231): warning:  #550-D: variable "ShootContinue_init_flag"  was set but never used
+  	static int ShootContinue_init_flag=0;
+..\Task\ShootTask.c: 2 warnings, 0 errors
 linking...
-Program Size: Code=60724 RO-data=3852 RW-data=1184 ZI-data=20144  
-"..\OBJ\HUST-RM-Master.axf" - 0 Error(s), 1 Warning(s).
+Program Size: Code=61740 RO-data=3852 RW-data=1204 ZI-data=20140  
+"..\OBJ\HUST-RM-Master.axf" - 0 Error(s), 2 Warning(s).
 
 <h2>Software Packages used:</h2>
 

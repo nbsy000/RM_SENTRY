@@ -2,7 +2,7 @@
 .\objects\graphicssendtask.o: ..\User\main.h
 .\objects\graphicssendtask.o: ..\User\stm32f4xx.h
 .\objects\graphicssendtask.o: ..\Library\CMSIS\core_cm4.h
-.\objects\graphicssendtask.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\graphicssendtask.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\graphicssendtask.o: ..\Library\CMSIS\core_cmInstr.h
 .\objects\graphicssendtask.o: ..\Library\CMSIS\core_cmFunc.h
 .\objects\graphicssendtask.o: ..\Library\CMSIS\core_cm4_simd.h
@@ -20,12 +20,12 @@
 .\objects\graphicssendtask.o: ..\Library\inc\misc.h
 .\objects\graphicssendtask.o: ..\Library\inc\stm32f4xx_can.h
 .\objects\graphicssendtask.o: ..\Library\inc\stm32f4xx_dac.h
-.\objects\graphicssendtask.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\string.h
+.\objects\graphicssendtask.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\graphicssendtask.o: ..\Library\CMSIS\arm_math.h
 .\objects\graphicssendtask.o: ..\Library\CMSIS\core_cm4.h
-.\objects\graphicssendtask.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\math.h
-.\objects\graphicssendtask.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\graphicssendtask.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\graphicssendtask.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\math.h
+.\objects\graphicssendtask.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\graphicssendtask.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\graphicssendtask.o: ..\Hardware\can1.h
 .\objects\graphicssendtask.o: ..\Hardware\can2.h
 .\objects\graphicssendtask.o: ..\Hardware\usart2.h
@@ -57,7 +57,7 @@
 .\objects\graphicssendtask.o: ..\SD\SDCardTask.h
 .\objects\graphicssendtask.o: ..\User\FreeRTOSConfig.h
 .\objects\graphicssendtask.o: ..\FreeRTOS\include\FreeRTOS.h
-.\objects\graphicssendtask.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\graphicssendtask.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\graphicssendtask.o: ..\FreeRTOS\include\projdefs.h
 .\objects\graphicssendtask.o: ..\FreeRTOS\include\portable.h
 .\objects\graphicssendtask.o: ..\FreeRTOS\include\deprecated_definitions.h

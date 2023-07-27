@@ -555,7 +555,7 @@
         <Ww>
           <count>27</count>
           <WinNumber>2</WinNumber>
-          <ItemText>pc_recv_data</ItemText>
+          <ItemText>pc_recv_data,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>28</count>

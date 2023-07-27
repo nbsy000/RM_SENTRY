@@ -2,7 +2,7 @@
 .\objects\datascope_dp.o: ..\User\main.h
 .\objects\datascope_dp.o: ..\User\stm32f4xx.h
 .\objects\datascope_dp.o: ..\Library\CMSIS\core_cm4.h
-.\objects\datascope_dp.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\datascope_dp.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\datascope_dp.o: ..\Library\CMSIS\core_cmInstr.h
 .\objects\datascope_dp.o: ..\Library\CMSIS\core_cmFunc.h
 .\objects\datascope_dp.o: ..\Library\CMSIS\core_cm4_simd.h
@@ -20,12 +20,12 @@
 .\objects\datascope_dp.o: ..\Library\inc\misc.h
 .\objects\datascope_dp.o: ..\Library\inc\stm32f4xx_can.h
 .\objects\datascope_dp.o: ..\Library\inc\stm32f4xx_dac.h
-.\objects\datascope_dp.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\string.h
+.\objects\datascope_dp.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\datascope_dp.o: ..\Library\CMSIS\arm_math.h
 .\objects\datascope_dp.o: ..\Library\CMSIS\core_cm4.h
-.\objects\datascope_dp.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\math.h
-.\objects\datascope_dp.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\datascope_dp.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\datascope_dp.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\math.h
+.\objects\datascope_dp.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\datascope_dp.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\datascope_dp.o: ..\Hardware\can1.h
 .\objects\datascope_dp.o: ..\Hardware\can2.h
 .\objects\datascope_dp.o: ..\Hardware\usart2.h
@@ -57,7 +57,7 @@
 .\objects\datascope_dp.o: ..\SD\SDCardTask.h
 .\objects\datascope_dp.o: ..\User\FreeRTOSConfig.h
 .\objects\datascope_dp.o: ..\FreeRTOS\include\FreeRTOS.h
-.\objects\datascope_dp.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\datascope_dp.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\datascope_dp.o: ..\FreeRTOS\include\projdefs.h
 .\objects\datascope_dp.o: ..\FreeRTOS\include\portable.h
 .\objects\datascope_dp.o: ..\FreeRTOS\include\deprecated_definitions.h

@@ -2,7 +2,7 @@
 .\objects\sdcardtask.o: ..\User\main.h
 .\objects\sdcardtask.o: ..\User\stm32f4xx.h
 .\objects\sdcardtask.o: ..\Library\CMSIS\core_cm4.h
-.\objects\sdcardtask.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\sdcardtask.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\sdcardtask.o: ..\Library\CMSIS\core_cmInstr.h
 .\objects\sdcardtask.o: ..\Library\CMSIS\core_cmFunc.h
 .\objects\sdcardtask.o: ..\Library\CMSIS\core_cm4_simd.h
@@ -20,12 +20,12 @@
 .\objects\sdcardtask.o: ..\Library\inc\misc.h
 .\objects\sdcardtask.o: ..\Library\inc\stm32f4xx_can.h
 .\objects\sdcardtask.o: ..\Library\inc\stm32f4xx_dac.h
-.\objects\sdcardtask.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\string.h
+.\objects\sdcardtask.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\sdcardtask.o: ..\Library\CMSIS\arm_math.h
 .\objects\sdcardtask.o: ..\Library\CMSIS\core_cm4.h
-.\objects\sdcardtask.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\math.h
-.\objects\sdcardtask.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\sdcardtask.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\sdcardtask.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\math.h
+.\objects\sdcardtask.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\sdcardtask.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\sdcardtask.o: ..\Hardware\can1.h
 .\objects\sdcardtask.o: ..\Hardware\can2.h
 .\objects\sdcardtask.o: ..\Hardware\usart2.h
@@ -57,7 +57,7 @@
 .\objects\sdcardtask.o: ..\SD\SDCardTask.h
 .\objects\sdcardtask.o: ..\User\FreeRTOSConfig.h
 .\objects\sdcardtask.o: ..\FreeRTOS\include\FreeRTOS.h
-.\objects\sdcardtask.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\sdcardtask.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\sdcardtask.o: ..\FreeRTOS\include\projdefs.h
 .\objects\sdcardtask.o: ..\FreeRTOS\include\portable.h
 .\objects\sdcardtask.o: ..\FreeRTOS\include\deprecated_definitions.h

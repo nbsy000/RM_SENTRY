@@ -2,7 +2,7 @@
 .\objects\uart4.o: ..\User\main.h
 .\objects\uart4.o: ..\User\stm32f4xx.h
 .\objects\uart4.o: ..\Library\CMSIS\core_cm4.h
-.\objects\uart4.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\uart4.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\uart4.o: ..\Library\CMSIS\core_cmInstr.h
 .\objects\uart4.o: ..\Library\CMSIS\core_cmFunc.h
 .\objects\uart4.o: ..\Library\CMSIS\core_cm4_simd.h
@@ -20,12 +20,12 @@
 .\objects\uart4.o: ..\Library\inc\misc.h
 .\objects\uart4.o: ..\Library\inc\stm32f4xx_can.h
 .\objects\uart4.o: ..\Library\inc\stm32f4xx_dac.h
-.\objects\uart4.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\string.h
+.\objects\uart4.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\uart4.o: ..\Library\CMSIS\arm_math.h
 .\objects\uart4.o: ..\Library\CMSIS\core_cm4.h
-.\objects\uart4.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\math.h
-.\objects\uart4.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\uart4.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\uart4.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\math.h
+.\objects\uart4.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\uart4.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\uart4.o: ..\Hardware\can1.h
 .\objects\uart4.o: ..\Hardware\can2.h
 .\objects\uart4.o: ..\Hardware\usart2.h
@@ -57,7 +57,7 @@
 .\objects\uart4.o: ..\SD\SDCardTask.h
 .\objects\uart4.o: ..\User\FreeRTOSConfig.h
 .\objects\uart4.o: ..\FreeRTOS\include\FreeRTOS.h
-.\objects\uart4.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\uart4.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\uart4.o: ..\FreeRTOS\include\projdefs.h
 .\objects\uart4.o: ..\FreeRTOS\include\portable.h
 .\objects\uart4.o: ..\FreeRTOS\include\deprecated_definitions.h

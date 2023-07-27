@@ -19,6 +19,7 @@ uint8_t PC_Shoot_flag;
 uint8_t last_shoot_flag;
 uint8_t armor_state; 
 extern Disconnect Robot_Disconnect;
+float distance;
 
 void PCSolve(void)
 {
@@ -41,6 +42,8 @@ void PCReceive(unsigned char *PCbuffer)
 					armor_state = ARMOR_AIMED; //有目标
 				else
 					armor_state = ARMOR_NO_AIM; //没目标
+				
+				distance = pc_recv_data.distance>0?sqrt(pc_recv_data.distance):0.1f;//防止等于0
         PCSolve();
 				
 				Robot_Disconnect.PC_DisConnect = 0;

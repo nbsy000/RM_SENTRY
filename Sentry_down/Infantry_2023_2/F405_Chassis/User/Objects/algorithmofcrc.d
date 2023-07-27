@@ -2,7 +2,7 @@
 .\objects\algorithmofcrc.o: ..\User\main.h
 .\objects\algorithmofcrc.o: ..\User\stm32f4xx.h
 .\objects\algorithmofcrc.o: ..\Library\CMSIS\core_cm4.h
-.\objects\algorithmofcrc.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\algorithmofcrc.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\algorithmofcrc.o: ..\Library\CMSIS\core_cmInstr.h
 .\objects\algorithmofcrc.o: ..\Library\CMSIS\core_cmFunc.h
 .\objects\algorithmofcrc.o: ..\Library\CMSIS\core_cm4_simd.h
@@ -20,12 +20,12 @@
 .\objects\algorithmofcrc.o: ..\Library\inc\misc.h
 .\objects\algorithmofcrc.o: ..\Library\inc\stm32f4xx_can.h
 .\objects\algorithmofcrc.o: ..\Library\inc\stm32f4xx_dac.h
-.\objects\algorithmofcrc.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\string.h
+.\objects\algorithmofcrc.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\algorithmofcrc.o: ..\Library\CMSIS\arm_math.h
 .\objects\algorithmofcrc.o: ..\Library\CMSIS\core_cm4.h
-.\objects\algorithmofcrc.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\math.h
-.\objects\algorithmofcrc.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\algorithmofcrc.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\algorithmofcrc.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\math.h
+.\objects\algorithmofcrc.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\algorithmofcrc.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\algorithmofcrc.o: ..\Hardware\can1.h
 .\objects\algorithmofcrc.o: ..\Hardware\can2.h
 .\objects\algorithmofcrc.o: ..\Hardware\usart2.h
@@ -57,7 +57,7 @@
 .\objects\algorithmofcrc.o: ..\SD\SDCardTask.h
 .\objects\algorithmofcrc.o: ..\User\FreeRTOSConfig.h
 .\objects\algorithmofcrc.o: ..\FreeRTOS\include\FreeRTOS.h
-.\objects\algorithmofcrc.o: D:\RM\Keil\Keil\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\algorithmofcrc.o: D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\algorithmofcrc.o: ..\FreeRTOS\include\projdefs.h
 .\objects\algorithmofcrc.o: ..\FreeRTOS\include\portable.h
 .\objects\algorithmofcrc.o: ..\FreeRTOS\include\deprecated_definitions.h

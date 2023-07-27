@@ -5,11 +5,11 @@
 <h2>Tool Versions:</h2>
 IDE-Version: ¶ÃVision V5.30.0.0
 Copyright (C) 2020 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: Yang SU, Hust, LIC=NQQMA-1XAF9-II85V-PZWEG-XKRDD-4JBK7
+License Information: l wm, hust, LIC=X1E4T-RJNU2-INMA7-ES4DX-ZWPZU-KL24V
  
 Tool Versions:
-Toolchain:       MDK-ARM Plus  Version: 5.30.0.0
-Toolchain Path:  D:\RM\Keil\Keil\ARM\ARMCC\Bin
+Toolchain:       MDK-ARM Professional  Version: 5.30.0.0
+Toolchain Path:  D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin
 C Compiler:      Armcc.exe V5.06 update 6 (build 750)
 Assembler:       Armasm.exe V5.06 update 6 (build 750)
 Linker/Locator:  ArmLink.exe V5.06 update 6 (build 750)
@@ -17,25 +17,224 @@ Library Manager: ArmAr.exe V5.06 update 6 (build 750)
 Hex Converter:   FromElf.exe V5.06 update 6 (build 750)
 CPU DLL:         SARMCM3.DLL V5.30.0.0
 Dialog DLL:      DCM.DLL V1.17.3.0
-Target DLL:      Segger\JL2CM3.dll V2.99.18.0
+Target DLL:      CMSIS_AGDI.dll V1.32.5.0
 Dialog DLL:      TCM.DLL V1.42.0.0
  
 <h2>Project:</h2>
-D:\RM\RM_SENTRY-main (1)\RM_SENTRY-main\Sentry_down\Infantry_2023_2\F405_Chassis\User\HUST RM .uvprojx
-Project File Date:  07/26/2023
+D:\LangYa\RM\HUST_RoboMaster2023\Sentry_Git\Sentry_down\Infantry_2023_2\F405_Chassis\User\HUST RM .uvprojx
+Project File Date:  07/27/2023
 
 <h2>Output:</h2>
-*** Using Compiler 'V5.06 update 6 (build 750)', folder: 'D:\RM\Keil\Keil\ARM\ARMCC\Bin'
+*** Using Compiler 'V5.06 update 6 (build 750)', folder: 'D:\LangYa\Software\Keil\Keil5\ARM\ARMCC\Bin'
 Build target 'Target 1'
+compiling stm32f4xx_it.c...
+compiling system_stm32f4xx.c...
+compiling misc.c...
+compiling pid.c...
+..\SD\SDCardTask.h(65): warning:  #1295-D: Deprecated declaration ReadSDCard - give arg types
+  void ReadSDCard();
+..\Algorithm\pid.c: 1 warning, 0 errors
+compiling algorithmOfCRC.c...
+..\SD\SDCardTask.h(65): warning:  #1295-D: Deprecated declaration ReadSDCard - give arg types
+  void ReadSDCard();
+..\Algorithm\algorithmOfCRC.c: 1 warning, 0 errors
+compiling main.c...
+..\SD\SDCardTask.h(65): warning:  #1295-D: Deprecated declaration ReadSDCard - give arg types
+  void ReadSDCard();
+main.c: 1 warning, 0 errors
+compiling FIR.c...
+..\SD\SDCardTask.h(65): warning:  #1295-D: Deprecated declaration ReadSDCard - give arg types
+  void ReadSDCard();
+..\Algorithm\FIR.c(45): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+      *output=(1-K_Low_setchassis)*(*output)+K_Low_setchassis*In;   
+..\Algorithm\FIR.c(55): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+    past=(1-K_Low_setwheel)*past+K_Low_setwheel*In;
+..\Algorithm\FIR.c(57): warning:  #1-D: last line of file ends without a newline
+  }
+..\Algorithm\FIR.c: 4 warnings, 0 errors
+compiling DataScope_DP.C...
+..\SD\SDCardTask.h(65): warning:  #1295-D: Deprecated declaration ReadSDCard - give arg types
+  void ReadSDCard();
+..\Algorithm\DataScope_DP.C(61): warning:  #111-D: statement is unreachable
+  		 case 1:   DataScope_OutPut_Buffer[5]  =  5; return  6; break;   
+..\Algorithm\DataScope_DP.C(62): warning:  #111-D: statement is unreachable
+  		 case 2:   DataScope_OutPut_Buffer[9]  =  9; return 10; break;
+..\Algorithm\DataScope_DP.C(63): warning:  #111-D: statement is unreachable
+  		 case 3:   DataScope_OutPut_Buffer[13] = 13; return 14; break;
+..\Algorithm\DataScope_DP.C(64): warning:  #111-D: statement is unreachable
+  		 case 4:   DataScope_OutPut_Buffer[17] = 17; return 18; break;
+..\Algorithm\DataScope_DP.C(65): warning:  #111-D: statement is unreachable
+  		 case 5:   DataScope_OutPut_Buffer[21] = 21; return 22; break; 
+..\Algorithm\DataScope_DP.C(66): warning:  #111-D: statement is unreachable
+  		 case 6:   DataScope_OutPut_Buffer[25] = 25; return 26; break;
+..\Algorithm\DataScope_DP.C(67): warning:  #111-D: statement is unreachable
+  		 case 7:   DataScope_OutPut_Buffer[29] = 29; return 30; break;
+..\Algorithm\DataScope_DP.C(68): warning:  #111-D: statement is unreachable
+  		 case 8:   DataScope_OutPut_Buffer[33] = 33; return 34; break;
+..\Algorithm\DataScope_DP.C(69): warning:  #111-D: statement is unreachable
+  		 case 9:   DataScope_OutPut_Buffer[37] = 37; return 38; break;
+..\Algorithm\DataScope_DP.C(70): warning:  #111-D: statement is unreachable
+       case 10:  DataScope_OutPut_Buffer[41] = 41; return 42; break;
+..\Algorithm\DataScope_DP.C: 11 warnings, 0 errors
+compiling stm32f4xx_dma.c...
+compiling stm32f4xx_adc.c...
+compiling stm32f4xx_can.c...
+compiling stm32f4xx_gpio.c...
+assembling startup_stm32f40_41xxx.s...
+compiling stm32f4xx_exti.c...
+compiling stm32f4xx_syscfg.c...
+compiling stm32f4xx_flash.c...
+compiling stm32f4xx_tim.c...
+compiling stm32f4xx_usart.c...
+compiling stm32f4xx_iwdg.c...
+compiling stm32f4xx_dac.c...
+compiling stm32f4xx_dbgmcu.c...
+compiling stm32f4xx_rcc.c...
+compiling stm32f4xx_spi.c...
+compiling DataReceiveTask.c...
+..\SD\SDCardTask.h(65): warning:  #1295-D: Deprecated declaration ReadSDCard - give arg types
+  void ReadSDCard();
+..\Task\DataReceiveTask.c: 1 warning, 0 errors
+compiling ChassisTask.c...
+..\SD\SDCardTask.h(65): warning:  #1295-D: Deprecated declaration ReadSDCard - give arg types
+  void ReadSDCard();
+..\Task\ChassisTask.c(199): warning:  #177-D: variable "i"  was declared but never referenced
+  	short i;
+..\Task\ChassisTask.c(241): warning:  #177-D: variable "Angular_Velocity"  was declared but never referenced
+  	static short Angular_Velocity;
+..\Task\ChassisTask.c(412): warning:  #177-D: variable "k_ExcessPower"  was declared but never referenced
+  	static float k_ExcessPower;
+..\Task\ChassisTask.c: 4 warnings, 0 errors
+compiling DataSendTask.c...
+..\SD\SDCardTask.h(65): warning:  #1295-D: Deprecated declaration ReadSDCard - give arg types
+  void ReadSDCard();
+..\Task\DataSendTask.c: 1 warning, 0 errors
+compiling PowerControlTask.c...
+..\SD\SDCardTask.h(65): warning:  #1295-D: Deprecated declaration ReadSDCard - give arg types
+  void ReadSDCard();
+..\Task\PowerControlTask.c: 1 warning, 0 errors
+compiling StartTask.c...
+..\SD\SDCardTask.h(65): warning:  #1295-D: Deprecated declaration ReadSDCard - give arg types
+  void ReadSDCard();
+..\Task\StartTask.c: 1 warning, 0 errors
+compiling GraphicsSendTask.c...
+..\SD\SDCardTask.h(65): warning:  #1295-D: Deprecated declaration ReadSDCard - give arg types
+  void ReadSDCard();
+..\Task\GraphicsSendTask.c(313): warning:  #177-D: variable "ShootLineName2"  was declared but never referenced
+  	static uint8_t ShootLineName2[] = "SL2";
+..\Task\GraphicsSendTask.c(709): warning:  #177-D: variable "Op_Type"  was declared but never referenced
+  	static int Op_Type = Op_None;
+..\Task\GraphicsSendTask.c: 3 warnings, 0 errors
+compiling JumpCal_Task.c...
+..\SD\SDCardTask.h(65): warning:  #1295-D: Deprecated declaration ReadSDCard - give arg types
+  void ReadSDCard();
+..\Task\JumpCal_Task.c(56): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	MyBuffering_Energy=MyBuffering_Energy-delt_P*0.1;  //º∆À„ª∫≥Âƒ‹¡ø
+..\Task\JumpCal_Task.c(61): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	 if(Kr<=0.1)
+..\Task\JumpCal_Task.c(65): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	 else if(Kr<=0.2)
+..\Task\JumpCal_Task.c: 4 warnings, 0 errors
 compiling SDCardTask.c...
 ..\SD\SDCardTask.h(65): warning:  #1295-D: Deprecated declaration ReadSDCard - give arg types
   void ReadSDCard();
 ..\SD\SDCardTask.c(99): warning:  #177-D: variable "i"  was declared but never referenced
   		static int i = 0;
 ..\SD\SDCardTask.c: 2 warnings, 0 errors
+compiling croutine.c...
+compiling JudgeTask.c...
+..\SD\SDCardTask.h(65): warning:  #1295-D: Deprecated declaration ReadSDCard - give arg types
+  void ReadSDCard();
+..\Task\JudgeTask.c: 1 warning, 0 errors
+compiling CPU_Task.c...
+..\SD\SDCardTask.h(65): warning:  #1295-D: Deprecated declaration ReadSDCard - give arg types
+  void ReadSDCard();
+..\RTOS_Test\tools.h(10): warning:  #47-D: incompatible redefinition of macro "LIMIT_MAX_MIN"  (declared at line 59 of "..\User\main.h")
+  #define LIMIT_MAX_MIN(x, max, min) (((x) <= (min)) ? (min) : (((x) >= (max)) ? (max) : (x)))
+..\RTOS_Test\CPU_Task.c: 2 warnings, 0 errors
+compiling list.c...
+compiling event_groups.c...
+compiling queue.c...
+compiling timers.c...
+compiling tasks.c...
+compiling heap_4.c...
+compiling port.c...
+compiling iwdg.c...
+compiling can1.c...
+..\SD\SDCardTask.h(65): warning:  #1295-D: Deprecated declaration ReadSDCard - give arg types
+  void ReadSDCard();
+..\Hardware\can1.c: 1 warning, 0 errors
+compiling can2.c...
+..\SD\SDCardTask.h(65): warning:  #1295-D: Deprecated declaration ReadSDCard - give arg types
+  void ReadSDCard();
+..\Hardware\can2.c: 1 warning, 0 errors
+compiling tim2.c...
+..\SD\SDCardTask.h(65): warning:  #1295-D: Deprecated declaration ReadSDCard - give arg types
+  void ReadSDCard();
+..\Hardware\tim2.c: 1 warning, 0 errors
+compiling tim4.c...
+..\SD\SDCardTask.h(65): warning:  #1295-D: Deprecated declaration ReadSDCard - give arg types
+  void ReadSDCard();
+..\Hardware\tim4.c: 1 warning, 0 errors
+compiling adc.c...
+..\SD\SDCardTask.h(65): warning:  #1295-D: Deprecated declaration ReadSDCard - give arg types
+  void ReadSDCard();
+..\Hardware\adc.c(58): warning:  #550-D: variable "adc_comm"  was set but never used
+  	ADC_CommonInitTypeDef  adc_comm;
+..\Hardware\adc.c: 2 warnings, 0 errors
+compiling arm_mat_init_f32.c...
+compiling i2c.c...
+..\SD\SDCardTask.h(65): warning:  #1295-D: Deprecated declaration ReadSDCard - give arg types
+  void ReadSDCard();
+..\Hardware\i2c.c: 1 warning, 0 errors
+compiling arm_mat_mult_f32.c...
+compiling ina260.c...
+..\SD\SDCardTask.h(65): warning:  #1295-D: Deprecated declaration ReadSDCard - give arg types
+  void ReadSDCard();
+..\Hardware\ina260.c(22): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	INA260_1.Current = LSB_VOLTAGE*Cur;
+..\Hardware\ina260.c(24): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	INA260_2.Current = LSB_CURRENT*Cur;
+..\Hardware\ina260.c(36): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	INA260_1.Voltage = LSB_VOLTAGE*Vol;
+..\Hardware\ina260.c(38): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	INA260_2.Voltage = LSB_VOLTAGE*Vol;
+..\Hardware\ina260.c: 5 warnings, 0 errors
+compiling dac.c...
+..\SD\SDCardTask.h(65): warning:  #1295-D: Deprecated declaration ReadSDCard - give arg types
+  void ReadSDCard();
+..\Hardware\dac.c: 1 warning, 0 errors
+compiling arm_mat_add_f32.c...
+compiling uart4.c...
+..\SD\SDCardTask.h(65): warning:  #1295-D: Deprecated declaration ReadSDCard - give arg types
+  void ReadSDCard();
+..\Hardware\uart4.c(22): warning:  #177-D: variable "dma"  was declared but never referenced
+  	DMA_InitTypeDef   dma;
+..\Hardware\uart4.c: 2 warnings, 0 errors
+compiling usart2.c...
+..\SD\SDCardTask.h(65): warning:  #1295-D: Deprecated declaration ReadSDCard - give arg types
+  void ReadSDCard();
+..\Hardware\usart2.c: 1 warning, 0 errors
+compiling arm_mat_scale_f32.c...
+compiling arm_mat_sub_f32.c...
+compiling counter.c...
+..\SD\SDCardTask.h(65): warning:  #1295-D: Deprecated declaration ReadSDCard - give arg types
+  void ReadSDCard();
+..\Hardware\counter.c: 1 warning, 0 errors
+compiling tools.c...
+compiling SEGGER_RTT.c...
+compiling SEGGER_RTT_printf.c...
+compiling ff.c...
+compiling diskio.c...
+compiling os_tick.c...
+compiling debug.c...
+compiling bsp_spi_sdcard.c...
+..\SD\SDCardTask.h(65): warning:  #1295-D: Deprecated declaration ReadSDCard - give arg types
+  void ReadSDCard();
+..\SD\bsp_spi_sdcard.c: 1 warning, 0 errors
 linking...
 Program Size: Code=39072 RO-data=3420 RW-data=912 ZI-data=32088  
-".\Objects\HUST RM.axf" - 0 Error(s), 2 Warning(s).
+".\Objects\HUST RM.axf" - 0 Error(s), 56 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -46,21 +245,21 @@ Package Vendor: ARM
    * Component: DSP Variant: Library Version: 1.8.0
 
 Package Vendor: Keil
-                http://www.keil.com/pack/Keil.STM32F4xx_DFP.2.14.0.pack
-                Keil.STM32F4xx_DFP.2.14.0
+                http://www.keil.com/pack/Keil.STM32F4xx_DFP.2.16.0.pack
+                Keil.STM32F4xx_DFP.2.16.0
                 STMicroelectronics STM32F4 Series Device Support, Drivers and Examples
 
 <h2>Collection of Component include folders:</h2>
   .\RTE\_Target_1
-  D:\RM\Keil\Core\ARM\CMSIS\5.7.0\CMSIS\DSP\Include
-  D:\RM\Keil\Core\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
+  D:\LangYa\Software\Keil\Arm\ARM\CMSIS\5.7.0\CMSIS\DSP\Include
+  D:\LangYa\Software\Keil\Arm\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:DSP:Library:1.8.0
-      Library file:  CMSIS\DSP\Lib\ARM\arm_cortexM4lf_math.lib
       Include file:  CMSIS\DSP\Include\arm_math.h
-Build Time Elapsed:  00:00:01
+      Library file:  CMSIS\DSP\Lib\ARM\arm_cortexM4lf_math.lib
+Build Time Elapsed:  00:00:12
 </pre>
 </body>
 </html>

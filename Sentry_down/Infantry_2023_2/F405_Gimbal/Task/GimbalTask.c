@@ -856,16 +856,16 @@ void PidGimbalMotor_Init(void)
 	PidYawAidSpeed.RC_DF = 0.5f;
 	// 辅瞄pitch
 	PidPitchAidPos.P = -20.0f; // 普通PID位置环(辅瞄)
-	PidPitchAidPos.I = -0.055f;
+	PidPitchAidPos.I = -0.06f;
 	PidPitchAidPos.D = 0.0f;
-	PidPitchAidPos.IMax = 40.0f;
+	PidPitchAidPos.IMax = 45.0f;
 	PidPitchAidPos.SetPoint = 0.0f;
 	PidPitchAidPos.OutMax = 500.0f;
 	PidPitchAidPos.I_L = 0.2f;
 	PidPitchAidPos.I_U = 0.4f;
 	PidPitchAidPos.RC_DF = 0.5f;
 
-	PidPitchAidSpeed.P = -300.0f; // 速度环PID（辅瞄）
+	PidPitchAidSpeed.P = -310.0f; // 速度环PID（辅瞄）
 	PidPitchAidSpeed.I = -2.0f;
 	PidPitchAidSpeed.D = 0.0f;
 	PidPitchAidSpeed.IMax = 2500.0f;

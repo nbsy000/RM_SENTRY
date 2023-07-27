@@ -346,23 +346,40 @@ uint32_t shoot_dt = 0;
 float bodanLastPos;              //存放上次单发结束时的拨弹电机位置值
 float now_time = 0;
 float IntervalTime;
-int Shoot_IntervalTime = 80;
+int Shoot_IntervalTime = 70;
 extern uint8_t armor_state;
+extern float distance;
+float distance_min = 2.0f;
+float distance_max = 7.0f;
+int IntervalTime_min = 60;
+int IntervalTime_max = 150;
 void Shoot_PC_Cal()
 {
 	if(ShootAct_Init_Flag!=5)
 	{
 		MirocPosition = 0;
 		ShootAct_Init_Flag=5;
-		bodanLastPos = Bodan_Pos;
+		bodanLastPos = Bodan_Pos + Onegrid;//因为只要一开始一进入改函数，就一定会波一格
 		now_time = xTaskGetTickCount();
 	}
 	
+	//掉线检测处理
+	if (Robot_Disconnect.F105_DisConect > 100 )
+	{
+		Shoot_IntervalTime = 125;//8发1s
+	}
+	
+	//打弹控制
 	if(NAV_car.Shoot_PC_State == ARMOR_STATE)	//辅瞄模式
 	{
+		float K_p = (IntervalTime_max - IntervalTime_min)/(distance_max - distance_min);
+		float K_b = IntervalTime_min-K_p*distance_min;
+		//弹频计算
+		Shoot_IntervalTime = LIMIT_MAX_MIN(distance*K_p+K_b,IntervalTime_min,IntervalTime_max);
 		if(Shoot.HeatControl.IsShootAble==1 && armor_state == ARMOR_AIMED)
     {
-			if(ABS(pc_pitch - Gimbal.Pitch.Gyro)<1.5f && ABS(pc_yaw - Gimbal.Yaw.Gyro)<2.0f)	//已经辅瞄到位，自动开火
+			//动态根据识别距离改射击的阈值角度，0.12f和0.15f是假设的装甲板半径
+			if(ABS(pc_pitch - Gimbal.Pitch.Gyro)< (0.12f/distance*180.0f/PI) && ABS(pc_yaw - Gimbal.Yaw.Gyro)< (0.15f/distance*180.0f/PI))	//已经辅瞄到位，自动开火
 			{
 				IntervalTime = xTaskGetTickCount() - now_time;
 				if(IntervalTime > Shoot_IntervalTime)
