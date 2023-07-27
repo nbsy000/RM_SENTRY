@@ -592,7 +592,7 @@ void Navigation_State()
 	if ((RC_Ctl.rc.ch0 - 1024) < -300) // 右左
 		NAV_car.NAV_State = TO_OUTPOST; // 去前哨站
 	
-	if ((RC_Ctl.rc.ch1 - 1024) > 300) // 右上
+	if ((RC_Ctl.rc.ch1 - 1024) > 300) // 右上s
 		NAV_car.NAV_State = TO_HIGHLAND; // 去高地
 	if ((RC_Ctl.rc.ch1 - 1024) < -300) //右下
 		NAV_car.NAV_State = TO_SOURCE;	// 去资源岛
@@ -621,7 +621,7 @@ void Navigation_State()
 		NAV_car.mode_update_time = GetTime_s();
 	}
 	
-	if (GetTime_s() - NAV_car.mode_update_time < NAV_car.MODE_UPDATE_INTERVAL) // 过渡时间1.5s
+	if (GetTime_s() - NAV_car.mode_update_time < NAV_car.MODE_UPDATE_INTERVAL) // 过渡时间1.0s
 	{
 		Chassis_Gimbal_Shoot_State(STOP_STATE, STOP_STATE, STOP_STATE);
 		NAV_car.NAV_x = 0;
@@ -647,7 +647,7 @@ void NAV_State_Invert()
 		if (F105.JudgeReceive_info.is_game_start)  
 		{
 			if( GetTime_s() - NAV_car.game_start_time > NAV_car.GAME_START_INTERVAL)//延时10s，等工程
-				NAV_car.NAV_State = F105.JudgeReceive_info.commd_keyboard == 'E'? TO_HIGHLAND: TO_OUTPOST;// 去高地或前哨战
+				NAV_car.NAV_State =  TO_OUTPOST;// 去高地或前哨战
 		}
 		else
 		{

@@ -370,7 +370,8 @@ void Shoot_PC_Cal()
 	}
 	
 	//打弹控制
-	if(NAV_car.Shoot_PC_State == ARMOR_STATE)	//辅瞄模式
+	if((NAV_car.Shoot_PC_State == ARMOR_STATE)||//辅瞄模式
+		((NAV_car.Shoot_PC_State == NAV_STATE)&&(armor_state == ARMOR_AIMED)&&ABS(pc_yaw - Gimbal.Yaw.Gyro) < 70 && ABS(pc_pitch - (Gimbal.Pitch.Gyro)) < 60))	//导航辅瞄模式 识别到
 	{
 		float K_p = (IntervalTime_max - IntervalTime_min)/(distance_max - distance_min);
 		float K_b = IntervalTime_min-K_p*distance_min;

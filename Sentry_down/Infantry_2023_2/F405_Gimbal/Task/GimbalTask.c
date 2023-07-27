@@ -535,8 +535,17 @@ void Gimbal_PC_Cal()
 
 	if (NAV_car.Gimbal_PC_State == NAV_STATE) // 导航--云台跟随
 	{
+		if((armor_state == ARMOR_AIMED)&&
+			ABS(pc_yaw - Gimbal.Yaw.Gyro) < 70 && ABS(pc_pitch - (Gimbal.Pitch.Gyro)) < 60)//识别到
+		{
+			GimbalPitchPos = pc_pitch;
+			GimbalYawPos = pc_yaw;
+		}			
+		else //执行导航
+		{
 		GimbalPitchPos = Gimbal.Pitch.Gyro;
 		GimbalYawPos += NAV_car.NAV_w * 0.001f;
+		}
 //		FF_w.Now_DeltIn = NAV_car.NAV_w * 0.001f;//前馈
 	}
 

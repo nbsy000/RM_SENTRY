@@ -38,8 +38,8 @@ void ChassisCan1Send(short *carSpeedx, short *carSpeedy, short *carSpeedw)
     
     F405.Yaw_100 = (short)(Theta_chassis/3.1415926f*180 * 100);
 	
-	*carSpeedx = LIMIT_MAX_MIN(*carSpeedx,1200,-1200);
-	*carSpeedy = LIMIT_MAX_MIN(*carSpeedy,1200,-1200);
+	*carSpeedx = LIMIT_MAX_MIN(*carSpeedx,2000,-2000);
+	*carSpeedy = LIMIT_MAX_MIN(*carSpeedy,2000,-2000);
 	
 	memcpy(&tx_message.Data[0], carSpeedx, 2);
 	memcpy(&tx_message.Data[2], carSpeedy, 2);

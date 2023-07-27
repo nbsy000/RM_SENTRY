@@ -748,6 +748,7 @@ void Chassis_PC_Cal()
 	if (NAV_car.Chassis_PC_State == NAV_STATE) // 导航
 	{ 
 
+
 			ResetPos = (Theta) / 6.28318f * 8192;
 			
 			if ((-3.1416f / 2) > Theta)
@@ -765,12 +766,21 @@ void Chassis_PC_Cal()
 
 			// 反馈PID控制+前馈
 			pidChassisPosition.ActualValue = Gimbal.Yaw.Motor;
-			chassis.carSpeedw = -(-PID_Calc(&pidChassisPosition));// + FeedForward_Calc(&FF_w));
+			chassis.carSpeedw = -(-PID_Calc(&pidChassisPosition));
 
-		chassis.carSpeedw = -2000;
+//		chassis.carSpeedw = -2000;
 			
-		chassis.carSpeedy = NAV_car.NAV_y*SinTheTa + NAV_car.NAV_x*CosTheTa;
-		chassis.carSpeedx = -NAV_car.NAV_x*SinTheTa + NAV_car.NAV_y*CosTheTa;
+		if((armor_state == ARMOR_AIMED)&&
+			ABS(pc_yaw - Gimbal.Yaw.Gyro) < 70 && ABS(pc_pitch - (Gimbal.Pitch.Gyro)) < 60)//识别到
+		{
+				chassis.carSpeedy = 0;
+				chassis.carSpeedx = (distance - 2.0f)*1000 > 0 ? (distance - 2.0f)*1000 :0;
+		}
+		else
+		{			
+			chassis.carSpeedy = NAV_car.NAV_y*SinTheTa + NAV_car.NAV_x*CosTheTa;
+			chassis.carSpeedx = -NAV_car.NAV_x*SinTheTa + NAV_car.NAV_y*CosTheTa;
+		}
 		
 	}
 	else if(NAV_car.Chassis_PC_State == PROTECT_STATE) // 巡逻区
